@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
+}
+
+.loginBackground {
+  background-color: #131318;
+  opacity: 1;
+  background-image: repeating-radial-gradient(
+      circle at 0 0,
+      transparent 0,
+      #09090b 10px
+    ),
+    repeating-linear-gradient(#13131555, #18181b);
+}
