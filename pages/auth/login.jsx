@@ -15,11 +15,28 @@ const Login = () => {
       });
     }
   };
+
+  const handleEmailLogin = async (e) => {
+    e.preventDefault();
+    const emailandusername = e.target.emailandusername.value;
+    const password = e.target.password.value;
+
+    console.log(emailandusername, password);
+
+    signIn("credentials", {
+      isData: emailandusername,
+      password: password,
+      callbackUrl: "/dashboard",
+    });
+  };
   return (
     <div className="min-w-full relative min-h-screen loginBackground text-white flex justify-center items-center">
       <div className="wrapper relative border-2 rounded-sm border-zinc-800 h-auto px-8 flex flex-col items-center py-6 w-full max-w-lg z-10 bg-zinc-950 gap-6 shadow-xl shadow-zinc-950">
         <div className="mailLogin w-full px-10">
-          <form className="flex flex-col gap-4 mt-4">
+          <form
+            className="flex flex-col gap-4 mt-4"
+            onSubmit={handleEmailLogin}
+          >
             <div className="input-group flex  items-center relative">
               <span className="input-group-addon absolute left-4">
                 <FiUser fontSize={20} className=" text-zinc-500" />
