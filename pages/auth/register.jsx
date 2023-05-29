@@ -90,8 +90,8 @@ const Login = () => {
 
   return (
     <div className="min-w-full relative min-h-screen loginBackground text-white flex justify-center items-center">
-      <div className="wrapper relative border-2 rounded-sm border-zinc-800 h-auto px-4 flex flex-col items-center py-6 w-full max-w-xl z-10 bg-zinc-950 gap-6 shadow-xl shadow-zinc-950">
-        <div className="mailLogin w-full px-10">
+      <div className="wrapper relative focus:border-b-yellow-400 duration-300 hover:border-b-yellow-400 border-b-4 border-2 rounded-sm border-zinc-800 h-auto  px-4 sm:px-8 flex flex-col items-center py-3 sm:py-6 w-full max-w-lg z-10 bg-zinc-950 gap-6 shadow-xl sm:shadow-zinc-950 shadow-zinc-950/30  mx-4">
+        <div className="mailLogin w-full px-4 sm:px-10">
           <form className="flex flex-col gap-4 mt-4" onSubmit={handleSubmit}>
             <div className=" flex  gap-4 w-full">
               <div className="input-group flex  items-center relative w-full">
@@ -180,7 +180,7 @@ const Login = () => {
             </button>
           </form>
         </div>
-        <div className="signIn text-sm mt-6">
+        <div className="signIn text-sm mt-6 mb-2">
           <p>
             Do you want to connect?{" "}
             <Link
@@ -190,6 +190,27 @@ const Login = () => {
               Sign in
             </Link>
           </p>
+        </div>
+      </div>
+
+      <div
+        className="fixedLeft absolute
+       h-full bg-yellow-400/80 left-0 py-4 flex items-center  flex-col gap-4 min-w-[80px]"
+      >
+        <span className="font-bold text-5xl px-4 text-zinc-800 hidden sm:flex ">
+          X
+        </span>
+        <div className=" flex-col gap-2 hidden sm:flex ">
+          <span className="w-1 h-4 bg-zinc-900 block rounded-full"></span>
+          <span className="w-1 h-1 bg-zinc-900 block rounded-full"></span>
+          <span className="w-1 h-1 bg-zinc-900 block rounded-full"></span>
+          <span className="w-1 h-1 bg-zinc-900 block rounded-full"></span>
+        </div>
+        <div className=" flex-col items-center  text-2xl font-bold text-zinc-900 hidden sm:flex">
+          <span>C</span>
+          <span>O</span>
+          <span>I</span>
+          <span>N</span>
         </div>
       </div>
     </div>
