@@ -11,7 +11,7 @@ const Login = () => {
     if (address) {
       signIn("credentials", {
         walletAddress: address,
-        callbackUrl: "/account/profile",
+        callbackUrl: "/",
       });
     }
   };
@@ -26,7 +26,7 @@ const Login = () => {
     signIn("credentials", {
       isData: emailandusername,
       password: password,
-      callbackUrl: "/account/profile",
+      callbackUrl: "/",
     });
   };
   return (
