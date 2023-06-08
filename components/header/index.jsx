@@ -3,8 +3,11 @@ import AvatarDropdown from "../avatarDropdown";
 import LangDropdown from "../langDropdown";
 import NotificationDropdown from "../notificationDropdown";
 import { BiMenu } from "react-icons/bi";
+import { useAppContext } from "@/context";
 
-const Header = ({ setIsOpenSidebar, isOpenSidebar }) => {
+const Header = () => {
+  const { isOpenSidebar, setIsOpenSidebar } = useAppContext();
+
   return (
     <header
       className={`h-24 py-4 duration-300  ${

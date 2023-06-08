@@ -1,20 +1,15 @@
 import React from "react";
 import Header from "@/components/header";
-import ProfileSidebar from "@/components/profile/sidebar";
+import Sidebar from "@/components/sidebar/accountSidebar";
+import { useAppContext } from "@/context";
 
 const Layout = ({ children }) => {
-  const [isOpenSidebar, setIsOpenSidebar] = React.useState(true);
+  const { isOpenSidebar } = useAppContext();
   return (
     <div className="w-screen h-screen bg-zinc-950 flex">
-      <ProfileSidebar
-        setIsOpenSidebar={setIsOpenSidebar}
-        isOpenSidebar={isOpenSidebar}
-      />
+      <Sidebar />
       <div className="flex flex-col w-full px-4">
-        <Header
-          setIsOpenSidebar={setIsOpenSidebar}
-          isOpenSidebar={isOpenSidebar}
-        />
+        <Header />
         <main
           className={`h-24 duration-300 ${
             isOpenSidebar ? "sm:ml-[232px]" : " sm:ml-[72px]"

@@ -7,7 +7,7 @@
       "@services/*": ["./services/*"],
       "@models/*": ["./models/*"],
       "@styles/*": ["./styles/*"],
-
+      "@context/*": ["./context/*"]
     }
   }
 }
