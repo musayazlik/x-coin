@@ -11,12 +11,10 @@ const userSchema = mongoose.Schema({
   },
   username: {
     type: String,
-    unique: true,
     default: "",
   },
   email: {
     type: String,
-    unique: true,
     default: "",
   },
   password: {

@@ -5,6 +5,7 @@ import clientPromise from "../../../libs/clientPromise";
 import User from "@models/Users";
 import dbConnect from "@/libs/dbConnect";
 import bcryptjs from "bcryptjs";
+import { uid } from "uid";
 
 export const authOptions = {
   adapter: MongoDBAdapter(clientPromise, {
@@ -17,6 +18,8 @@ export const authOptions = {
       authorize: async (credentials) => {
         await dbConnect();
 
+        const newUserUsernNameId = uid(10);
+
         if (credentials.walletAddress) {
           const user = await User.findOne({
             walletAddress: credentials.walletAddress,
@@ -25,10 +28,22 @@ export const authOptions = {
           if (user) {
             return Promise.resolve(user);
           } else {
-            const createUser = await User.create({
+            const isUser = await User.findOne({
               walletAddress: credentials.walletAddress,
             });
-            return Promise.resolve(createUser);
+
+            if (isUser) {
+              console.log("User var");
+              return Promise.resolve(isUser);
+            } else {
+              console.log("User yok");
+              const newUser = await User.create({
+                walletAddress: credentials.walletAddress,
+                username: `user${newUserUsernNameId}`,
+                email: `user${newUserUsernNameId}@gmail.com`,
+              });
+              return Promise.resolve(newUser);
+            }
           }
         } else {
           const isMail = credentials.isData.includes("@");
