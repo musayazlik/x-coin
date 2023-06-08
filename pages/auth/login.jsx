@@ -4,8 +4,15 @@ import { signIn } from "next-auth/react";
 import { connectMetamask } from "@/services/metamaskConnect";
 import Link from "next/link";
 import { FiUser, FiLock } from "react-icons/fi";
+import { useRouter } from "next/router";
+import { lang } from "@/lang/langT";
+import LangDropdown from "@/components/langDropdown";
 
 const Login = () => {
+  const router = useRouter();
+  const { locale } = router;
+  const t = lang(locale);
+
   const handleMetamaskLogin = async () => {
     const address = await connectMetamask();
     if (address) {
@@ -45,7 +52,7 @@ const Login = () => {
                 type="text"
                 name="emailandusername"
                 id="emailandusername"
-                placeholder="Email or Username"
+                placeholder={t.loginPage.emailorusername}
                 className="border-2 border-zinc-700 rounded-md px-12 pr-4 py-3 bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
               />
             </div>
@@ -58,7 +65,7 @@ const Login = () => {
                 type="password"
                 name="password"
                 id="password"
-                placeholder="Password"
+                placeholder={t.loginPage.password}
                 className="border-2 border-zinc-700 rounded-md px-12 pr-4 py-3 bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
               />
             </div>
@@ -66,13 +73,13 @@ const Login = () => {
               type="submit"
               className="border-zinc-700 border-2 hover:border-blue-900 text-white font-semibold rounded-md px-4 py-3 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-600/50 duration-300"
             >
-              Login
+              {t.loginPage.login}
             </button>
           </form>
         </div>
         <div className="or flex flex-col items-center ">
           <span className="h-6 w-0.5 inline-block bg-zinc-700"></span>
-          <span className="text-sm text-gray-400 font-semibold">or</span>
+          <span className="text-sm text-gray-400 font-semibold">{t.or}</span>
           <span className="h-6 w-0.5 inline-block bg-zinc-700"></span>
         </div>
         <div
@@ -87,17 +94,17 @@ const Login = () => {
             className="bg-white p-1 rounded-full border-2 border-orange-700 shadow-lg shadow-orange-700/70"
           />
           <span className=" text-sm sm:text-xl font-semibold text-orange-900 mt-0.5">
-            Login via Metamask
+            {t.loginPage.metamaskLogin}
           </span>
         </div>
         <div className="signIn text-xs sm:text-sm mt-6">
           <p className="flex sm:flex-row flex-col justify-center items-center gap-2">
-            Do you want to register with e-mail?{" "}
+            {t.loginPage.dontHaveAccount}
             <Link
               href={"/auth/register"}
               className="font-extrabold  cursor-pointer hover:text-yellow-400"
             >
-              Sign up free
+              {t.loginPage.signUpFree}
             </Link>
           </p>
         </div>
@@ -121,6 +128,10 @@ const Login = () => {
           <span>I</span>
           <span>N</span>
         </div>
+      </div>
+
+      <div className="langDropdown fixed top-4 right-4 ">
+        <LangDropdown />
       </div>
     </div>
   );

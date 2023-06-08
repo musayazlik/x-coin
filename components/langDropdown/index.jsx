@@ -1,9 +1,27 @@
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { lang } from "@/lang/langT";
 
 const LangDropdown = () => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const [lang, setLang] = React.useState("tr");
+
+  const router = useRouter();
+  const { locale } = router;
+  const t = lang(locale);
+
+  const [langStatus, setLangStatus] = React.useState(locale);
+
+  const handleLang = (langS) => {
+    setLangStatus(langS);
+    setIsOpen(false);
+
+    if (router.pathname === "/auth/login") {
+      router.push("/auth/login", undefined, { locale: langS });
+    } else {
+      router.push("/", undefined, { locale: langS });
+    }
+  };
   return (
     <>
       <div className="relative">
@@ -13,7 +31,7 @@ const LangDropdown = () => {
             setIsOpen(!isOpen);
           }}
         >
-          {lang === "tr" ? (
+          {langStatus === "tr" ? (
             <Image
               src="/turkish.png"
               alt="tr"
@@ -43,8 +61,7 @@ const LangDropdown = () => {
                 href="#"
                 className="flex px-4 py-2.5 text-sm text-zinc-200 duration-300 hover:bg-indigo-600 hover:text-white gap-3"
                 onClick={() => {
-                  setLang("tr");
-                  setIsOpen(false);
+                  handleLang("tr");
                 }}
               >
                 <Image
@@ -60,8 +77,7 @@ const LangDropdown = () => {
                 href="#"
                 className="flex px-4 py-2.5 text-sm text-zinc-200 duration-300 hover:bg-indigo-600 hover:text-white gap-3 "
                 onClick={() => {
-                  setLang("en");
-                  setIsOpen(false);
+                  handleLang("en");
                 }}
               >
                 <Image
