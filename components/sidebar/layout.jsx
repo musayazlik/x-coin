@@ -10,10 +10,8 @@ import S from "./style.module.css";
 const SidebarLayout = ({ children }) => {
   const { setIsOpenSidebar, isOpenSidebar } = useAppContext();
   return (
-    <aside
-      className={`${S.asideWrapper} ${isOpenSidebar ? "" : ""} duration-300 `}
-    >
-      <div className="logo flex flex-col  items-center justify-center py-4">
+    <aside className={`${S.asideWrapper} duration-300   `}>
+      <div className="logo inline-flex flex-col  items-center justify-center py-4">
         <span
           className={` duration-300 ${
             isOpenSidebar ? "text-5xl" : "text-4xl"
@@ -25,19 +23,8 @@ const SidebarLayout = ({ children }) => {
           Coin
         </span>
       </div>
-      <div
-        className={S.menuOnOffIcon}
-        onClick={() => {
-          setIsOpenSidebar((prev) => !prev);
-        }}
-      >
-        <BiChevronLeft
-          fontSize={28}
-          className={`${isOpenSidebar ? "rotate-0" : "rotate-180"}`}
-        />
-      </div>
-      <nav className="menu flex flex-col justify-between ">
-        <ul className="flex flex-col gap-2  h-full flex-shrink">{children}</ul>
+      <nav className="menu ">
+        <ul className="inline-flex flex-col gap-2">{children}</ul>
       </nav>
     </aside>
   );

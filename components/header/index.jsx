@@ -10,11 +10,9 @@ const Header = () => {
 
   return (
     <header
-      className={`h-24 py-4 duration-300  ${
-        isOpenSidebar ? "sm:ml-[232px]" : "sm:ml-[72px]"
-      }`}
+      className={`h-24 relative px-4 z-10 py-4 bg-zinc-800 duration-300 `}
     >
-      <div className=" bg-zinc-800 h-full rounded-sm flex justify-between items-center px-4">
+      <div className=" bg-zinc-900/80 border-2 border-zinc-950/50 h-full rounded-md shadow-lg shadow-zinc-950/20  flex justify-between items-center px-4 py-6  z-20 relative ">
         <div className="">
           <button
             onClick={() => setIsOpenSidebar((prev) => !prev)}
