@@ -1,14 +1,12 @@
 import React from "react";
 import Header from "@/components/header";
 import Sidebar from "@/components/sidebar";
-import { useAppContext } from "@/context";
 
 const Layout = ({ children }) => {
-  const { isOpenSidebar } = useAppContext();
   return (
-    <div className=" min-h-screen overflow-auto bg-zinc-950  flex gap-4">
+    <div className=" bg-zinc-950  flex gap-4 min-h-screen">
       <Sidebar />
-      <div className={` flex flex-col justify-stretch w-full overflow-auto `}>
+      <div className={` flex flex-col justify-stretch w-full  `}>
         <Header />
         <main className={` h-full duration-300  bg-zinc-800`}>{children}</main>
 

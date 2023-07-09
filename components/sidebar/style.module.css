@@ -1,5 +1,5 @@
 .asideWrapper {
-  @apply border-r-4 border-zinc-700/20 h-screen bg-zinc-800 top-0 left-0  z-20 relative flex flex-col pb-4;
+  @apply border-r-4 border-zinc-700/20 bg-zinc-800  fixed md:relative top-0 left-0  z-20  flex flex-col pb-4;
 }
 
 .menuItem {

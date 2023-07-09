@@ -12,7 +12,7 @@ const DropdownMenu = ({ text, children, dropMenuStatus = false }) => {
   const { pathname } = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <li className="mx-2 ">
+    <li className="mx-2 mb-2 ">
       <div className=" relative">
         <div
           onClick={() => setIsOpen(!isOpen)}
@@ -26,18 +26,15 @@ const DropdownMenu = ({ text, children, dropMenuStatus = false }) => {
             flex justify-between items-center
 
             ${
-              isOpen
+              isOpen && dropMenuStatus
                 ? "bg-zinc-900 border-2 border-transparent"
                 : "border-2 border-b-yellow-500 border-zinc-950"
             }
-
-            
-						
 						 `}
         >
           <div className=" flex items-center">
             <HiOutlineHome fontSize={20} className="inline-block mr-2 " />
-            <span className={`duration-300 `}>{text}</span>
+            <p className={`duration-300 text-base font-medium `}>{text}</p>
           </div>
           {dropMenuStatus && (
             <FiChevronRight
@@ -50,7 +47,7 @@ const DropdownMenu = ({ text, children, dropMenuStatus = false }) => {
         </div>
 
         <ul
-          className={`duration-500 bg-zinc-900/50 rounded-md  flex-col gap-1 ${
+          className={`duration-500 bg-zinc-900/50 rounded-md border-2 border-zinc-950/80   flex-col gap-1 ${
             dropMenuStatus ? "" : "hidden"
           }  ${S.menuSubItemText} 
           ${

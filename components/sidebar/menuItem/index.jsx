@@ -9,7 +9,7 @@ const MenuItem = ({ text, url, Icon }) => {
   const { pathname } = useRouter();
   return (
     <li className=" mx-2">
-      <Link href={url} className=" relative">
+      <Link href={url || "/"} className=" relative">
         <div
           className={`${S.menuItem} rounded-md cursor-pointer
 

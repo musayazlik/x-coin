@@ -10,21 +10,23 @@ import S from "./style.module.css";
 const SidebarLayout = ({ children }) => {
   const { setIsOpenSidebar, isOpenSidebar } = useAppContext();
   return (
-    <aside className={`${S.asideWrapper} duration-300   `}>
-      <div className="logo inline-flex flex-col  items-center justify-center py-4">
-        <span
+    <aside
+      className={`${S.asideWrapper} h-screen w-[320px] duration-300 overflow-auto px-2 py-4 `}
+    >
+      <div className="logo flex flex-col items-center mb-4 ">
+        <div
           className={` duration-300 ${
             isOpenSidebar ? "text-5xl" : "text-4xl"
           } text-yellow-400  font-bold -mb-2 `}
         >
           X
-        </span>
-        <span className="text-lg font-bold tracking-tighter text-slate-600">
+        </div>
+        <div className="text-lg font-bold mt-1 tracking-tighter text-slate-600">
           Coin
-        </span>
+        </div>
       </div>
-      <nav className="menu ">
-        <ul className="inline-flex flex-col gap-2">{children}</ul>
+      <nav className="menu  ">
+        <ul className="">{children}</ul>
       </nav>
     </aside>
   );

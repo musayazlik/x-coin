@@ -10,7 +10,7 @@ const SubMenuItem = ({ text, url, Icon }) => {
   const { pathname } = useRouter();
 
   return (
-    <Link href={url}>
+    <Link href={url || "/"}>
       <li
         className={`${pathname === url ? "text-yellow-500" : ""} ${
           S.menuSubItemText

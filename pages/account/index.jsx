@@ -1,5 +1,3 @@
-import Header from "@/components/header";
-import ProfileSidebar from "@/components/profile/sidebar";
 import React from "react";
 import Layout from "./layout";
 

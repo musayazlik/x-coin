@@ -6,7 +6,7 @@ import { BiMenu } from "react-icons/bi";
 import { useAppContext } from "@/context";
 
 const Header = () => {
-  const { isOpenSidebar, setIsOpenSidebar } = useAppContext();
+  const { setIsOpenSidebar } = useAppContext();
 
   return (
     <header
