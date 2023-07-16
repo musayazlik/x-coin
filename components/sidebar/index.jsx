@@ -23,10 +23,21 @@ const Sidebar = () => {
   const { pathname } = useRouter();
   return (
     <SidebarLayout>
-      <DropdownMenu text={"Kripto"} dropMenuStatus={true}>
+      <DropdownMenu
+        text={"Kripto"}
+        dropMenuStatus={true}
+        subMenuList={[
+          "/",
+          "/total-market-cap",
+          "/altcoin-mix",
+          "/sub-indices",
+          "/binance-coin",
+          "/onchain",
+        ]}
+      >
         <SubMenuItem text={"Total MC"} url={"/total-market-cap"} />
         <SubMenuItem text={"Altcoin Mix"} url={"/altcoin-mix"} />
-        <SubMenuItem text={"Alt Endeksler"} url={"sub-indices"} />
+        <SubMenuItem text={"Alt Endeksler"} url={"/sub-indices"} />
         <SubMenuItem text={"On Chain"} url={"/onchain"} />
         <SubMenuItem
           text={"Kırılım ve Uyumsuzluklar"}
@@ -56,7 +67,11 @@ const Sidebar = () => {
         <SubMenuItem text={"Metal Piyasası"} url={"/metal-piyasasi"} />
         <SubMenuItem text={"Emtialar"} url={"/emtialar"} />
       </DropdownMenu>
-      <MenuItem url={"/"} Icon={HiOutlineHome} text={"Soru Cevap"} />
+      <MenuItem
+        url={"/question-answer"}
+        Icon={HiOutlineHome}
+        text={"Soru Cevap"}
+      />
     </SidebarLayout>
   );
 };

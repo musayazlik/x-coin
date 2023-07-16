@@ -11,12 +11,10 @@ const userSchema = mongoose.Schema({
   },
   username: {
     type: String,
-    unique: true,
     default: "",
   },
   email: {
     type: String,
-    unique: true,
     default: "",
   },
   password: {
@@ -31,6 +29,11 @@ const userSchema = mongoose.Schema({
     type: String,
     default: "user",
   },
+  memberShipType: {
+    type: String,
+    default: "free",
+  },
+
   createdAt: {
     type: Date,
     default: Date.now,

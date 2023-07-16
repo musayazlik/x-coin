@@ -20,8 +20,6 @@ export default async function handler(req, res) {
 
         const isEmail = await User.findOne({ email: email });
 
-        console.log(isEmail);
-
         if (isEmail) {
           return res
             .status(400)

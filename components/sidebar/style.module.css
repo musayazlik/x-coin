@@ -11,16 +11,8 @@
   @apply bg-zinc-800/80 text-zinc-300 before:h-full before:w-1 before:block before:absolute before:top-0 before:left-0 before:bg-yellow-400 flex  items-center relative px-4 py-2 gap-2;
 } */
 
-.menuDontActive {
-  @apply hover:bg-zinc-800/80 hover:text-zinc-500;
-}
-
-.menuNotActive {
-  @apply hover:bg-zinc-800/80 hover:text-zinc-400   hover:before:h-full hover:before:w-1 hover:before:block hover:before:absolute hover:before:top-0 hover:before:left-0 px-4  hover:before:bg-yellow-400;
-}
-
 .menuOnOffIcon {
-  @apply absolute -right-6 top-8 w-10 h-10 bg-zinc-900 text-zinc-400 hover:text-yellow-500 duration-300 border-zinc-700 shadow-lg shadow-zinc-900 hover:border-yellow-500 rounded-full border-2 sm:flex justify-center items-center;
+  @apply absolute -right-6 top-8 w-10 h-10 bg-zinc-900 text-zinc-400  duration-300 border-zinc-700 shadow-lg shadow-zinc-900  rounded-full border-2 sm:flex justify-center items-center;
 }
 
 .menuItemText {

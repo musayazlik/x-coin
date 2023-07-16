@@ -9,11 +9,11 @@ export default function App({
   pageProps: { session, ...pageProps },
 }) {
   return (
-    <Wrapper>
-      <SessionProvider session={session}>
+    <SessionProvider session={session}>
+      <Wrapper>
         <Component {...pageProps} />
         <ToastContainer />
-      </SessionProvider>
-    </Wrapper>
+      </Wrapper>
+    </SessionProvider>
   );
 }

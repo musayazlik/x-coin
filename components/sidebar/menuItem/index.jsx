@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 
 const MenuItem = ({ text, url, Icon }) => {
   const { pathname } = useRouter();
+
   return (
     <li className=" mx-2">
       <Link href={url || "/"} className=" relative">
@@ -14,9 +15,9 @@ const MenuItem = ({ text, url, Icon }) => {
           className={`${S.menuItem} rounded-md cursor-pointer
 
 						${
-              pathname === url
-                ? "bg-zinc-900 border-2 border-transparent"
-                : "border-2 border-b-yellow-500 border-zinc-950"
+              pathname === url || pathname === url + "/[slug]"
+                ? " border-2 border-b-yellow-500 border-zinc-950"
+                : "bg-zinc-900 border-2 border-transparent"
             }
 
 				 `}

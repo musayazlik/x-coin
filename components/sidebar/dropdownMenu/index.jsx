@@ -8,9 +8,16 @@ import S from "../style.module.css";
 import { FiChevronRight } from "react-icons/fi";
 import { BsDot } from "react-icons/bs";
 
-const DropdownMenu = ({ text, children, dropMenuStatus = false }) => {
+const DropdownMenu = ({
+  text,
+  children,
+  dropMenuStatus = false,
+  subMenuList = [],
+}) => {
   const { pathname } = useRouter();
-  const [isOpen, setIsOpen] = useState(false);
+
+  const isItem = subMenuList.includes(pathname);
+  const [isOpen, setIsOpen] = useState(!isItem);
   return (
     <li className="mx-2 mb-2 ">
       <div className=" relative">
@@ -19,7 +26,7 @@ const DropdownMenu = ({ text, children, dropMenuStatus = false }) => {
           className={`${S.menuItem} rounded-md cursor-pointer
 						${
               pathname === "/"
-                ? S.menuActive
+                ? ""
                 : `${S.menuDontActive}  ${S.menuNotActive} rounded-t-md
             `
             }

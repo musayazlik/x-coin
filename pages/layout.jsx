@@ -8,7 +8,9 @@ const Layout = ({ children }) => {
       <Sidebar />
       <div className={` flex flex-col justify-stretch w-full  `}>
         <Header />
-        <main className={` h-full duration-300  bg-zinc-800`}>{children}</main>
+        <main className={` h-full duration-300  bg-zinc-800 px-4`}>
+          {children}
+        </main>
 
         <footer
           className={` h-auto py-4 px-4 duration-300 bg-zinc-800 text-zinc-500`}

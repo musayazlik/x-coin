@@ -28,8 +28,6 @@ const Login = () => {
     const emailandusername = e.target.emailandusername.value;
     const password = e.target.password.value;
 
-    console.log(emailandusername, password);
-
     signIn("credentials", {
       isData: emailandusername,
       password: password,
