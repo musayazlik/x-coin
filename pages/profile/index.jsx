@@ -2,13 +2,162 @@ import React from "react";
 import Layout from "../layout";
 import { FiMessageSquare } from "react-icons/fi";
 import axios from "axios";
-import { useSession, getSession } from "next-auth/react";
+import { useSession, getSession, signOut } from "next-auth/react";
 import { toast } from "react-toastify";
 import Link from "next/link";
 import Membership from "@/components/icons/membership";
 
 const Profile = () => {
   const { data: session } = useSession();
+
+  const handlePassword = async (e) => {
+    e.preventDefault();
+
+    const password = e.target.password.value;
+    const passwordconfirm = e.target.passwordconfirm.value;
+
+    if (password !== passwordconfirm) {
+      toast.error("Şifreler eşleşmiyor.", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+
+      return;
+    }
+
+    const data = {
+      password,
+    };
+
+    axios({
+      method: "PATCH",
+      url:
+        "/api/users/userCrud?status=" + "password" + "&id=" + session.user.id,
+      data,
+    })
+      .then(() => {
+        toast.success("Şifreniz başarıyla değiştirildi.", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+
+        e.target.reset();
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message, {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      });
+  };
+
+  const handleProfile = async (e) => {
+    e.preventDefault();
+
+    const name = e.target.name.value;
+    const surname = e.target.surname.value;
+    const username = e.target.username.value;
+    const walletAddress = e.target.walletAddress.value;
+    const email = e.target.email.value;
+
+    const data = {
+      name,
+      surname,
+      username,
+      walletAddress,
+      email,
+    };
+
+    axios({
+      method: "PATCH",
+      url: "/api/users/userCrud?status=" + "profile" + "&id=" + session.user.id,
+      data,
+    })
+      .then(() => {
+        toast.success("Bilgileriniz başarıyla güncellendi.", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+
+        signOut();
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message, {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      });
+  };
+
+  const handleAvatar = async (e) => {
+    e.preventDefault();
+
+    const avatar = e.target.files[0];
+
+    const formData = new FormData();
+
+    formData.append("avatar", avatar);
+
+    axios({
+      method: "PATCH",
+      url: "/api/users/userCrud?status=" + "avatar" + "&id=" + session.user.id,
+      data: formData,
+    })
+      .then(() => {
+        toast.success("Avatar başarıyla güncellendi.", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message, {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      });
+  };
 
   return (
     <Layout>
@@ -28,6 +177,14 @@ const Profile = () => {
               className="w-32 h-32 p-1 rounded-full ring-2 hover:shadow-lg shadow-yellow-400/60 hover:ring-yellow-400 duration-300 ring-zinc-500 cursor-pointer"
               src="/robot.gif"
               alt="Bordered avatar"
+              onClick={() => document.getElementById("avatar").click()}
+            />
+            <input
+              type="file"
+              name="avatar"
+              id="avatar"
+              className="hidden"
+              onChange={(e) => handleAvatar(e)}
             />
 
             {session?.user?.memberShipType === "standard" && (
@@ -42,7 +199,7 @@ const Profile = () => {
               </div>
             )}
 
-            {session?.user?.memberShipType === "gold" && (
+            {session?.user?.memberShipType === "premium" && (
               <div className="w-12 h-12 rounded-full flex justify-center items-center absolute -top-1.5  bg-yellow-400 -right-1.5 border-2 border-yellow-600 shadow-md shadow-yellow-700">
                 <Membership
                   className=" "
@@ -73,7 +230,7 @@ const Profile = () => {
       </div>
 
       <div className="flex justify-center items-center mt-4">
-        <form action="" className="w-full">
+        <form action="" className="w-full" onSubmit={(e) => handleProfile(e)}>
           <div className="flex flex-col justify-center items-center w-full gap-2">
             <div className="flex flex-col justify-center items-start w-full max-w-lg">
               <label
@@ -105,6 +262,22 @@ const Profile = () => {
                 className="w-full h-12 px-3 mb-2 placeholder-gray-500/50 border-2 border-zinc-700 text-zinc-500 duration-200 focus:shadow-md focus:shadow-indigo-600/20 bg-zinc-900/50 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
                 placeholder="Soyad"
                 defaultValue={session?.user?.surname}
+              />
+            </div>
+            <div className="flex flex-col justify-center items-start w-full max-w-lg">
+              <label
+                htmlFor="surname"
+                className="text-base text-gray-500 font-medium mb-2"
+              >
+                Username
+              </label>
+              <input
+                type="text"
+                name="username"
+                id="username"
+                className="w-full h-12 px-3 mb-2 placeholder-gray-500/50 border-2 border-zinc-700 text-zinc-500 duration-200 focus:shadow-md focus:shadow-indigo-600/20 bg-zinc-900/50 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                placeholder="username"
+                defaultValue={session?.user?.username}
               />
             </div>
             <div className="flex flex-col justify-center items-start w-full max-w-lg">
@@ -153,7 +326,7 @@ const Profile = () => {
       </div>
 
       <div className="flex justify-center items-center mt-4">
-        <form action="" className="w-full">
+        <form action="" className="w-full" onSubmit={(e) => handlePassword(e)}>
           <div className="flex flex-col justify-center items-center w-full gap-2">
             <div className="flex flex-col justify-center items-start w-full max-w-lg">
               <h3 className="my-4 py-3 px-4 bg-zinc-900/60 w-full border-l-2 border-rose-600">
@@ -222,7 +395,6 @@ export async function getServerSideProps(context) {
     }
   );
   const data = await res.json();
-  console.log(data);
 
   return {
     props: {

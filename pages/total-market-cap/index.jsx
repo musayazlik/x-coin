@@ -3,55 +3,59 @@ import Layout from "../layout";
 import { BiLockAlt, BiLockOpenAlt } from "react-icons/bi";
 import Image from "next/image";
 import axios from "axios";
+import { FiTrendingDown, FiTrendingUp } from "react-icons/fi";
 
 const TotalMarketCap = () => {
   const [data, setData] = useState(null);
-  const fetchData = () => {
-    axios({
-      method: "get",
-      url: "/api/kripto",
-    })
-      .then((response) => {
-        console.log(response.data.data.totalMarketCap);
-        const key = Object.keys(response.data.data.totalMarketCap);
-        const value = Object.values(response.data.data.totalMarketCap);
-
-        const dataArray = [];
-
-        if (data === null) {
-          for (let i = 0; i < key.length; i++) {
-            dataArray.push({
-              key: key[i],
-              value1: value[i],
-              value2: value[i],
-            });
-          }
-
-          setData(dataArray);
-        } else {
-          for (let i = 0; i < key.length; i++) {
-            dataArray.push({
-              key: key[i],
-              value1: data[i].value1,
-              value2: value[i],
-            });
-
-            setData(dataArray);
-          }
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
 
   useEffect(() => {
-    fetchData();
+    setTimeout(() => {
+      axios({
+        method: "get",
+        url: "/api/kripto",
+      })
+        .then((response) => {
+          const key = Object.keys(response.data.data.totalMarketCap);
+          const value = Object.values(response.data.data.totalMarketCap);
+
+          const dataArray = [];
+
+          if (data === null) {
+            for (let i = 0; i < key.length; i++) {
+              dataArray.push({
+                key: key[i],
+                value1: value[i],
+                value2: value[i],
+              });
+            }
+
+            setData(dataArray);
+          } else {
+            for (let i = 0; i < key.length; i++) {
+              dataArray.push({
+                key: key[i],
+                value1: data[i].value1,
+                value2: value[i],
+              });
+
+              setData(dataArray);
+            }
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }, 1000);
   }, []);
 
-  setTimeout(() => {
-    fetchData();
-  }, 1000);
+  function convertToMillion(number) {
+    const million = 1000000;
+    const millionValue = number / million;
+    const roundedValue = Math.round(millionValue * 10) / 10;
+    const formattedValue = roundedValue.toLocaleString();
+
+    return formattedValue + "M";
+  }
 
   return (
     <Layout>
@@ -87,11 +91,14 @@ const TotalMarketCap = () => {
                         <td>
                           {item.value1 < item.value2 ? (
                             <span className="block text-sm text-red-600">
-                              {item.value2}
+                              <div className="flex justify-center gap-2 items-center">
+                                <FiTrendingDown />{" "}
+                                {convertToMillion(item.value2)}
+                              </div>
                             </span>
                           ) : (
-                            <span className="block text-sm text-green-600">
-                              {item.value2}
+                            <span className=" text-sm text-green-600 flex justify-center gap-2 items-center">
+                              <FiTrendingUp /> {convertToMillion(item.value2)}
                             </span>
                           )}
                         </td>

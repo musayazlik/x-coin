@@ -31,14 +31,14 @@ const Sidebar = () => {
           "/total-market-cap",
           "/altcoin-mix",
           "/sub-indices",
-          "/binance-coin",
-          "/onchain",
+          "/on-chain",
+          "/break-and-incom",
         ]}
       >
         <SubMenuItem text={"Total MC"} url={"/total-market-cap"} />
         <SubMenuItem text={"Altcoin Mix"} url={"/altcoin-mix"} />
         <SubMenuItem text={"Alt Endeksler"} url={"/sub-indices"} />
-        <SubMenuItem text={"On Chain"} url={"/onchain"} />
+        <SubMenuItem text={"On Chain"} url={"/on-chain"} />
         <SubMenuItem
           text={"Kırılım ve Uyumsuzluklar"}
           url={"break-and-incom"}

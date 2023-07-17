@@ -11,11 +11,7 @@ const QuestionAnswer = ({ questionData }) => {
   const { data: session } = useSession();
   const router = useRouter();
 
-  console.log(router.query.slug);
-
   const [question, setQuestion] = React.useState(questionData.data);
-
-  console.log(question);
 
   const addAnswer = (e) => {
     e.preventDefault();
@@ -110,8 +106,6 @@ const QuestionAnswer = ({ questionData }) => {
       questionId,
       answerId,
     };
-
-    console.log(data);
 
     axios({
       method: "DELETE",
@@ -338,7 +332,6 @@ export async function getServerSideProps(context) {
     }
   );
   const data = await res.json();
-  console.log(data);
 
   return {
     props: {

@@ -37,7 +37,7 @@ const AvatarDropdown = () => {
             </div>
           )}
 
-          {session?.user?.memberShipType === "gold" && (
+          {session?.user?.memberShipType === "premium" && (
             <div className="w-5 h-5 rounded-full flex justify-center items-center absolute -top-1.5  bg-yellow-400 -right-1.5 border-2 border-yellow-600 shadow-md shadow-yellow-700">
               <Membership
                 className=" "
