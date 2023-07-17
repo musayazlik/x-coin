@@ -27,6 +27,7 @@ const QuestionAnswer = ({ questionData }) => {
         image: session.user.image || null,
       },
       answer,
+      status: "addAnswer",
     };
 
     axios({

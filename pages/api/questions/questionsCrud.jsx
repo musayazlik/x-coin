@@ -68,9 +68,12 @@ export default async function handler(req, res) {
 
     case "PATCH":
       try {
-        if (session) {
-          const { user, questionId, answer } = req.body;
-
+        if (!session) {
+          res.status(401).json({ success: false, message: "Unauthorized" });
+          return;
+        }
+        const { user, questionId, answer, status } = req.body;
+        if (status === "addAnswer") {
           const answerAdd = await Question.findOneAndUpdate(
             { _id: questionId },
             { $push: { answers: { user: user, answer: answer } } },
@@ -82,7 +85,7 @@ export default async function handler(req, res) {
           return;
         }
 
-        if (!session || session.user.role !== "admin") {
+        if (session.user.role !== "admin") {
           res.status(401).json({ success: false, message: "Unauthorized" });
           return;
         } else {
