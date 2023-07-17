@@ -106,7 +106,6 @@ export default async function handler(req, res) {
 
     case "DELETE":
       try {
-        console.log(req.query);
         const { questionId, answerId } = req.query;
 
         const deletedAnswer = await Question.findOneAndUpdate(

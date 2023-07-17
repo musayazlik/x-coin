@@ -11,7 +11,7 @@ const SidebarLayout = ({ children }) => {
   const { setIsOpenSidebar, isOpenSidebar } = useAppContext();
   return (
     <aside
-      className={`${S.asideWrapper} h-min-screen w-[320px] duration-300 overflow-auto px-2 py-4 `}
+      className={`${S.asideWrapper} h-min-screen min-w-[280px]  duration-300 overflow-auto px-2 py-4 `}
     >
       <div className="logo flex flex-col items-center mb-4 ">
         <div

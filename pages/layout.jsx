@@ -6,7 +6,9 @@ const Layout = ({ children }) => {
   return (
     <div className=" bg-zinc-950  flex gap-4 min-h-screen">
       <Sidebar />
-      <div className={` flex flex-col justify-stretch w-full  `}>
+      <div
+        className={` flex flex-col justify-stretch w-[calc(100%_-_296px)]  `}
+      >
         <Header />
         <main className={` h-full duration-300  bg-zinc-800 px-4`}>
           {children}

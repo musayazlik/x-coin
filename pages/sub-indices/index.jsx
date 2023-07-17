@@ -1,8 +1,9 @@
 import React from "react";
 import Layout from "../layout";
 import { useSession, getSession } from "next-auth/react";
+import axios from "axios";
 
-const Profile = () => {
+const SubIndices = ({ altIndexes }) => {
   const { data: session } = useSession();
 
   return (
@@ -15,8 +16,71 @@ const Profile = () => {
           Alt endeksler sayfası alt endekslerin listelendiği sayfadır.
         </p>
       </div>
+
+      <section className="dark:bg-zinc-800 dark:text-gray-100">
+        <div className="container mx-auto p-6 overflow-x-auto">
+          <table className="w-full ">
+            <thead>
+              <tr>
+                <th className="text-start">İsim</th>
+                <th>Market</th>
+                <th scope="col">
+                  <h2 className="px-2 text-lg font-medium">Değeri </h2>
+                </th>
+              </tr>
+            </thead>
+            <tbody className="space-y-6 text-center divide-y divide-zinc-700/50 odd:bg-gray-400/50 border-2 border-zinc-700">
+              {altIndexes &&
+                altIndexes.map((item, index) => {
+                  return (
+                    <tr className="odd:bg-gray-600/40" key={index}>
+                      <th scope="row" className="text-left">
+                        <h3 className="py-3 px-2">{item.name}</h3>
+                      </th>
+                      <th scope="row" className="text-left">
+                        <p className="py-3 px-2 font-normal text-center">
+                          {item.market}
+                        </p>
+                      </th>
+
+                      <th scope="row" className="text-left">
+                        <p className="py-3 px-2 font-normal text-center">
+                          {item.last}
+                        </p>
+                      </th>
+                    </tr>
+                  );
+                })}
+            </tbody>
+          </table>
+        </div>
+      </section>
     </Layout>
   );
 };
 
-export default Profile;
+export default SubIndices;
+
+export async function getStaticProps() {
+  try {
+    // CoinGecko API'dan alt endekslerini al
+    const response = await axios.get(
+      "https://api.coingecko.com/api/v3/indexes"
+    );
+    const altIndexes = response.data;
+
+    return {
+      props: {
+        altIndexes,
+      },
+      revalidate: 3600,
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      props: {
+        altIndexes: [],
+      },
+    };
+  }
+}

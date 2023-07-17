@@ -34,8 +34,6 @@ export default async function handler(req, res) {
 
           const hashedPassword = await hash(password, 12);
 
-          console.log(hashedPassword);
-
           await User.findOneAndUpdate(
             { _id: req.query.id },
             { password: hashedPassword },
@@ -93,8 +91,6 @@ export default async function handler(req, res) {
           );
         } else if (req.query.status === "avatar") {
           const { avatar } = req.body;
-
-          console.log(avatar);
 
           cloudinary.upload(
             "https://upload.wikimedia.org/wikipedia/commons/a/ae/Olympic_flag.jpg",
