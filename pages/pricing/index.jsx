@@ -29,6 +29,16 @@ const Packages = () => {
         try {
           await window.ethereum.enable();
           const web3 = new Web3(window.ethereum);
+          const networkId = await web3.eth.net.getId();
+
+          if (networkId !== 1) {
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Please connect to the Ethereum Mainnet.",
+            });
+            return;
+          }
           const toAddress = process.env.NEXT_PUBLIC_TO_ADDRESS;
           const fromAddress = (await web3.eth.getAccounts())[0];
           const message = "ssfddsfsdf";
@@ -74,8 +84,8 @@ const Packages = () => {
           // Hata durumunda bildirim gösterilir
           Swal.fire({
             icon: "error",
-            title: "Oops...Sunucu hatası oluştu.",
-            text: err.message,
+            title: "Oops...",
+            text: "Ödeme işlemi başarısız oldu. Lütfen tekrar deneyin.",
           });
         }
       } else {

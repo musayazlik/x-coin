@@ -137,7 +137,7 @@ const QuestionAnswer = () => {
       </div>
 
       <div className="flex justify-center w-full">
-        <div className="w-full text-center  px-20	">
+        <div className="w-full text-center px-4 sm:px-20	">
           <form onSubmit={(e) => addQuestion(e)}>
             <div className="w-full mb-4 border border-zinc-200 rounded-lg bg-zinc-50 dark:bg-zinc-700 dark:border-zinc-600">
               <div className="px-4 py-2 bg-white rounded-t-lg dark:bg-zinc-800">

@@ -20,8 +20,8 @@ const AvatarDropdown = () => {
           }}
         >
           <img
-            className="w-8 h-8 p-1 rounded-full ring-2 hover:shadow-lg shadow-yellow-400/60 hover:ring-yellow-400 duration-300 ring-zinc-500 cursor-pointer"
-            src="/robot.gif"
+            className="w-8 h-8 p-1 rounded-full ring-2 hover:shadow-lg shadow-yellow-400/60 hover:ring-yellow-400 duration-300 ring-zinc-500 cursor-pointer object-cover"
+            src={session?.user?.image || "/robot.gif"}
             alt="Bordered avatar"
           />
 

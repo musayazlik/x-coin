@@ -70,8 +70,6 @@ const Profile = () => {
   };
 
   const handleProfile = async (e) => {
-    e.preventDefault();
-
     const name = e.target.name.value;
     const surname = e.target.surname.value;
     const username = e.target.username.value;
@@ -86,10 +84,14 @@ const Profile = () => {
       email,
     };
 
+    e.preventDefault();
     axios({
       method: "PATCH",
       url: "/api/users/userCrud?status=" + "profile" + "&id=" + session.user.id,
       data,
+      headers: {
+        "Content-Type": "application/json",
+      },
     })
       .then(() => {
         toast.success("Bilgileriniz başarıyla güncellendi.", {
@@ -121,22 +123,21 @@ const Profile = () => {
 
   const handleAvatar = async (e) => {
     e.preventDefault();
-
     const avatar = e.target.files[0];
-
     const formData = new FormData();
-
-    formData.append("avatar", avatar);
-
+    formData.append("file", avatar);
     axios({
       method: "PATCH",
       url: "/api/users/userCrud?status=" + "avatar" + "&id=" + session.user.id,
       data: formData,
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
     })
       .then(() => {
         toast.success("Avatar başarıyla güncellendi.", {
           position: "top-right",
-          autoClose: 3000,
+          autoClose: 1500,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -144,11 +145,12 @@ const Profile = () => {
           progress: undefined,
           theme: "dark",
         });
+        signOut();
       })
       .catch((err) => {
         toast.error(err.response.data.message, {
           position: "top-right",
-          autoClose: 3000,
+          autoClose: 1500,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -174,8 +176,9 @@ const Profile = () => {
         <div className="flex justify-center mb-4">
           <div className="relative cursor-pointer inline-block">
             <img
-              className="w-32 h-32 p-1 rounded-full ring-2 hover:shadow-lg shadow-yellow-400/60 hover:ring-yellow-400 duration-300 ring-zinc-500 cursor-pointer"
-              src="/robot.gif"
+              className="w-32 h-32 p-1 rounded-full ring-2 hover:shadow-lg shadow-yellow-400/60 hover:ring-yellow-400 duration-300 ring-zinc-500 cursor-pointer object-cover"
+              src={session?.user?.image || "/robot.gif"}
+              title="Profil resmini değiştirmek için tıklayınız."
               alt="Bordered avatar"
               onClick={() => document.getElementById("avatar").click()}
             />
@@ -183,6 +186,7 @@ const Profile = () => {
               type="file"
               name="avatar"
               id="avatar"
+              multiple={true}
               className="hidden"
               onChange={(e) => handleAvatar(e)}
             />

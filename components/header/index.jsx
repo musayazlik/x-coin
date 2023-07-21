@@ -16,7 +16,7 @@ const Header = () => {
         <div className="">
           <button
             onClick={() => setIsOpenSidebar((prev) => !prev)}
-            className="sm:hidden text-zinc-500"
+            className="md:hidden text-zinc-500"
           >
             <BiMenu fontSize={28} />
           </button>
