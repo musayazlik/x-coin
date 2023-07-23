@@ -4,9 +4,12 @@ import { BiLockAlt, BiLockOpenAlt } from "react-icons/bi";
 import Image from "next/image";
 import axios from "axios";
 import { FiTrendingDown, FiTrendingUp } from "react-icons/fi";
+import { useAppContext } from "@/context";
 
 const TotalMarketCap = () => {
   const [data, setData] = useState(null);
+
+  const { isServiceLoading, setIsServiceLoading } = useAppContext();
 
   useEffect(() => {
     setTimeout(() => {
@@ -73,21 +76,25 @@ const TotalMarketCap = () => {
           <div className="container mx-auto p-6 overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr>
-                  <th></th>
+                <tr className="">
+                  <th className="text-start px-4 py-3"></th>
+                  <th className="text-start px-4 py-3">İsim</th>
                   <th scope="col">
-                    <h2 className="px-2 text-lg font-medium">Total </h2>
+                    <h2 className=" text-lg font-medium  px-4 py-3">
+                      Total Market Değeri{" "}
+                    </h2>
                   </th>
                 </tr>
               </thead>
-              <tbody className="space-y-6 text-center divide-y divide-zinc-700/50 odd:bg-gray-400/50 border-2 border-zinc-500">
+              <tbody className="space-y-6 text-center divide-zinc-700/50 odd:bg-transparent ">
                 {data &&
                   data.map((item, index) => {
                     return (
-                      <tr className="odd:bg-gray-600/40" key={index}>
-                        <th scope="row" className="text-left">
-                          <h3 className="py-3 px-2">{item.key}</h3>
-                        </th>
+                      <tr className="odd:bg-zinc-900/40" key={index}>
+                        <td className="text-left px-4 py-3"></td>
+                        <td scope="row" className="text-left ">
+                          <h3 className="py-3 px-4">{item.key}</h3>
+                        </td>
                         <td>
                           {item.value1 < item.value2 ? (
                             <span className="block text-sm text-red-600">

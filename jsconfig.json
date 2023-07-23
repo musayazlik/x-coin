@@ -8,7 +8,8 @@
       "@models/*": ["./models/*"],
       "@styles/*": ["./styles/*"],
       "@context/*": ["./context/*"],
-      "@lang/*": ["./lang/*"]
+      "@lang/*": ["./lang/*"],
+      "@helpers/*": ["./helpers/*"]
     }
   }
 }

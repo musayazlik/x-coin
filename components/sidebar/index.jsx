@@ -11,6 +11,11 @@ import { useRouter } from "next/router";
 import { HiOutlineHome } from "react-icons/hi";
 import { useAppContext } from "@/context";
 
+import { MdCurrencyBitcoin } from "react-icons/md";
+import { BiDollarCircle } from "react-icons/bi";
+import { RiGlobalLine } from "react-icons/ri";
+import { BsQuestionLg } from "react-icons/bs";
+
 /** Style */
 import S from "./style.module.css";
 import SidebarLayout from "./layout";
@@ -26,6 +31,7 @@ const Sidebar = () => {
       <DropdownMenu
         text={"Kripto"}
         dropMenuStatus={true}
+        Icon={MdCurrencyBitcoin}
         subMenuList={[
           "/",
           "/total-market-cap",
@@ -44,7 +50,7 @@ const Sidebar = () => {
           url={"break-and-incom"}
         />
       </DropdownMenu>
-      <DropdownMenu text={"Forex"} dropMenuStatus={true}>
+      <DropdownMenu text={"Forex"} dropMenuStatus={true} Icon={BiDollarCircle}>
         <SubMenuItem text={"Sp500"} url={"/sp500"} />
         <SubMenuItem text={"Nandaq"} url={"/nandaq"} />
         <SubMenuItem text={"Dax"} url={"/dax"} />
@@ -60,7 +66,11 @@ const Sidebar = () => {
           url={"forex-break-and-incom"}
         />
       </DropdownMenu>
-      <DropdownMenu text={"Tüm Piyasalar"} dropMenuStatus={true}>
+      <DropdownMenu
+        text={"Tüm Piyasalar"}
+        dropMenuStatus={true}
+        Icon={RiGlobalLine}
+      >
         <SubMenuItem text={"Borsalar"} url={"/borsalar"} />
         <SubMenuItem text={"Pariteler"} url={"/pariteler"} />
         <SubMenuItem text={"Enerji Piyasası"} url={"enerji-piyasasi"} />
@@ -69,7 +79,7 @@ const Sidebar = () => {
       </DropdownMenu>
       <MenuItem
         url={"/question-answer"}
-        Icon={HiOutlineHome}
+        Icon={BsQuestionLg}
         text={"Soru Cevap"}
       />
     </SidebarLayout>

@@ -3,7 +3,7 @@ import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { BsCurrencyDollar } from "react-icons/bs";
-import { FiSettings } from "react-icons/fi";
+import { FiSettings, FiUser } from "react-icons/fi";
 import { BiExit, BiHelpCircle } from "react-icons/bi";
 import Membership from "../icons/membership";
 
@@ -71,6 +71,16 @@ const AvatarDropdown = () => {
                 </p>
               </div>
               <div className="border-b border-zinc-950"></div>
+              {session && session.user.role === "admin" && (
+                <Link
+                  href="/dashboard"
+                  className="block px-4 py-2 text-sm text-zinc-200 duration-300 hover:bg-indigo-600 hover:text-white"
+                >
+                  <FiSettings className="inline-block mr-2" />
+                  Dashboard
+                </Link>
+              )}
+
               <div className="">
                 <Link
                   href="/pricing"
@@ -87,7 +97,7 @@ const AvatarDropdown = () => {
                 href="/profile"
                 className="block px-4 py-2 text-sm text-zinc-200 duration-300 hover:bg-indigo-600 hover:text-white"
               >
-                <FiSettings className="inline-block mr-2" />
+                <FiUser className="inline-block mr-2" />
                 Profile
               </Link>
               <Link

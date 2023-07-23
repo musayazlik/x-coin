@@ -10,6 +10,8 @@ import Membership from "@/components/icons/membership";
 const Profile = () => {
   const { data: session } = useSession();
 
+  console.log(session);
+
   const handlePassword = async (e) => {
     e.preventDefault();
 
@@ -40,6 +42,9 @@ const Profile = () => {
       url:
         "/api/users/userCrud?status=" + "password" + "&id=" + session.user.id,
       data,
+      headers: {
+        "Content-Type": "application/json",
+      },
     })
       .then(() => {
         toast.success("Şifreniz başarıyla değiştirildi.", {
@@ -54,6 +59,8 @@ const Profile = () => {
         });
 
         e.target.reset();
+
+        signOut();
       })
       .catch((err) => {
         toast.error(err.response.data.message, {
@@ -134,7 +141,7 @@ const Profile = () => {
         "Content-Type": "multipart/form-data",
       },
     })
-      .then(() => {
+      .then((res) => {
         toast.success("Avatar başarıyla güncellendi.", {
           position: "top-right",
           autoClose: 1500,
@@ -145,6 +152,7 @@ const Profile = () => {
           progress: undefined,
           theme: "dark",
         });
+
         signOut();
       })
       .catch((err) => {
@@ -350,6 +358,7 @@ const Profile = () => {
                 type="password"
                 name="password"
                 id="password"
+                autoComplete="new-password"
                 className="w-full h-12 px-3 mb-2 placeholder-gray-500/50 border-2 border-zinc-700 text-zinc-500 duration-200 focus:shadow-md focus:shadow-indigo-600/20 bg-zinc-900/50 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
                 placeholder="Şifreyi Giriniz.."
               />
@@ -365,6 +374,7 @@ const Profile = () => {
                 type="password"
                 name="passwordconfirm"
                 id="passwordconfirm"
+                autoComplete="new-password"
                 className="w-full h-12 px-3 mb-2 placeholder-gray-500/50 border-2 border-zinc-700 text-zinc-500 duration-200 focus:shadow-md focus:shadow-indigo-600/20 bg-zinc-900/50 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
                 placeholder="Şifreyi Tekrar Giriniz.."
               />

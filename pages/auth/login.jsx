@@ -7,6 +7,7 @@ import { FiUser, FiLock } from "react-icons/fi";
 import { useRouter } from "next/router";
 import { lang } from "@/lang/langT";
 import LangDropdown from "@/components/langDropdown";
+import { getSession } from "next-auth/react";
 
 const Login = () => {
   const router = useRouter();
@@ -136,3 +137,20 @@ const Login = () => {
 };
 
 export default Login;
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+
+  if (session) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+}

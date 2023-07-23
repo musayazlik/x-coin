@@ -1,10 +1,7 @@
-import User from "@/models/Users";
 import dbConnect from "@/libs/dbConnect";
 import { hash } from "bcryptjs";
 import cloudinary from "cloudinary";
 import formidable from "formidable";
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "../auth/[...nextauth]";
 
 export const config = {
   api: {
@@ -38,7 +35,7 @@ const updatePassword = async (req, res, fields) => {
 };
 
 // Function to update user's profile information
-const updateProfile = async (req, res, fields) => {
+const BreakAndIncomAdd = async (req, res, fields) => {
   try {
     const { username, walletAddress, email } = fields;
 
@@ -80,39 +77,6 @@ const updateProfile = async (req, res, fields) => {
   }
 };
 
-// Function to update user's avatar
-const updateAvatar = async (req, res, files) => {
-  try {
-    const fileData = files.file;
-    if (!fileData || fileData.length === 0) {
-      sendErrorResponse(res, 400, "Lütfen bir dosya seçiniz.");
-    } else {
-      const uploadedFile = await cloudinary.v2.uploader.upload(
-        fileData[0].filepath,
-        {
-          folder: "xcoin/avatar",
-          use_filename: true,
-          unique_filename: true,
-        }
-      );
-
-      const updatedUser = await User.findOneAndUpdate(
-        { _id: req.query.id },
-        { $set: { image: uploadedFile.secure_url } },
-        { new: true }
-      );
-
-      if (!updatedUser) {
-        sendErrorResponse(res, 404, "User not found");
-      } else {
-        sendSuccessResponse(res, []);
-      }
-    }
-  } catch (error) {
-    sendErrorResponse(res, 400, error.message);
-  }
-};
-
 export default async function handler(req, res) {
   await dbConnect();
 
@@ -142,6 +106,31 @@ export default async function handler(req, res) {
             "-password"
           );
           sendSuccessResponse(res, users);
+        } catch (error) {
+          sendErrorResponse(res, 400, error.message);
+        }
+        break;
+
+      case "POST":
+        try {
+          const { title, description, slug, content, status } = fields;
+          const { path: thumbnailPath, name: thumbnailName } = files.thumbnail;
+          const thumbnailUrl = await cloudinary.v2.uploader.upload(
+            thumbnailPath,
+            {
+              folder: "blog",
+              public_id: thumbnailName,
+            }
+          );
+          const newBlog = await Blog.create({
+            title,
+            description,
+            slug,
+            content,
+            status,
+            thumbnail: thumbnailUrl.secure_url,
+          });
+          sendSuccessResponse(res, newBlog);
         } catch (error) {
           sendErrorResponse(res, 400, error.message);
         }

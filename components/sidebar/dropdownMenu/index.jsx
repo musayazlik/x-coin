@@ -13,13 +13,14 @@ const DropdownMenu = ({
   children,
   dropMenuStatus = false,
   subMenuList = [],
+  Icon,
 }) => {
   const { pathname } = useRouter();
 
   const isItem = subMenuList.includes(pathname);
   const [isOpen, setIsOpen] = useState(!isItem);
   return (
-    <li className="mx-2 mb-2 ">
+    <li className="mx-2 ">
       <div className=" relative">
         <div
           onClick={() => setIsOpen(!isOpen)}
@@ -40,7 +41,7 @@ const DropdownMenu = ({
 						 `}
         >
           <div className=" flex items-center">
-            <HiOutlineHome fontSize={20} className="inline-block mr-2 " />
+            <Icon fontSize={20} className="inline-block mr-2 " />
             <p className={`duration-300 text-base font-medium `}>{text}</p>
           </div>
           {dropMenuStatus && (

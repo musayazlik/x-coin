@@ -2,7 +2,7 @@ import React from "react";
 import Layout from "../layout";
 import { useSession } from "next-auth/react";
 
-const Profile = () => {
+const BreakAndIncom = () => {
   const { data: session } = useSession();
 
   return (
@@ -20,4 +20,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default BreakAndIncom;

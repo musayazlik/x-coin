@@ -4,12 +4,12 @@ import { useSession } from "next-auth/react";
 import { FiArrowRight } from "react-icons/fi";
 import Link from "next/link";
 
-const OnChain = () => {
+const OnChainContext = () => {
   const { data: session } = useSession();
 
   return (
     <Layout>
-      <div className=" mx-auto mb-8 mt-8 text-center relative z-0 max-w-3xl">
+      <div className=" mx-auto mb-8 mt-8 text-center relative z-0">
         <h1 className="text-4xl font-semibold mb-6 lg:text-5xl text-rose-600">
           <span className="text-indigo-600">On-Chain</span>
         </h1>
@@ -80,7 +80,7 @@ const OnChain = () => {
         </div>
 
         <div className="card w-full flex flex-col lg:flex-row gap-4 bg-zinc-900 px-4  rounded-xl py-4">
-          <div className="cardHeader h-[250px] lg:h-auto lg:max-h-[250px] lg:max-w-[250px] min-w-[220px] rounded-lg">
+          <div className="cardHeader h-[250px] lg:h-auto min-w-[220px] rounded-lg">
             <img
               src={session?.user?.image}
               alt=""
@@ -138,4 +138,4 @@ const OnChain = () => {
   );
 };
 
-export default OnChain;
+export default OnChainContext;

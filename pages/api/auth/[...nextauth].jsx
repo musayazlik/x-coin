@@ -81,8 +81,8 @@ export const authOptions = {
 
   session: {
     strategy: "jwt",
-    maxAge: 24 * 60 * 60, // 24 saat
-    updateAge: 60 * 60, // 1 hours
+    maxAge: 21600, // 6 hours
+    updateAge: 600, // 1 hour
   },
 
   jwt: {
@@ -95,27 +95,33 @@ export const authOptions = {
   secret: process.env.SECRET,
 
   callbacks: {
+    async redirect({ url, baseUrl }) {
+      return baseUrl;
+    },
     async jwt({ token, account, user }) {
-      if (account) {
-        token.user = account;
-      }
-
       if (user) {
-        token.user = user;
+        token.name = user.name;
+        token.surname = user.surname;
+        token.username = user.username;
+        token.email = user.email;
+        token.picture = user.image;
+        token.memberShipType = user.memberShipType;
+        token.walletAddress = user.walletAddress;
+        token.role = user.role;
       }
 
       return token;
     },
     async session({ session, token, user }) {
-      session.user.name = token.user.name;
-      session.user.surname = token.user.surname;
-      session.user.username = token.user.username;
-      session.user.email = token.user.email;
-      session.user.image = token.user.image;
-      session.user.memberShipType = token.user.memberShipType;
-      session.user.walletAddress = token.user.walletAddress;
-      session.user.role = token.user.role;
-      session.user.id = token.user._id;
+      session.user.name = token.name;
+      session.user.surname = token.surname;
+      session.user.username = token.username;
+      session.user.email = token.email;
+      session.user.image = token.picture;
+      session.user.memberShipType = token.memberShipType;
+      session.user.walletAddress = token.walletAddress;
+      session.user.role = token.role;
+      session.user.id = token.sub;
 
       return session;
     },

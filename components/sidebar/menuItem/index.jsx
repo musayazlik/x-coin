@@ -5,11 +5,11 @@ import S from "../style.module.css";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-const MenuItem = ({ text, url, Icon }) => {
+const MenuItem = ({ text, url, Icon, customClass }) => {
   const { pathname } = useRouter();
 
   return (
-    <li className=" mx-2">
+    <li className={`mx-2 ${customClass}`}>
       <Link href={url || "/"} className=" relative">
         <div
           className={`${S.menuItem} rounded-md cursor-pointer

@@ -6,6 +6,7 @@ import { useAppContext } from "@/context";
 
 /** Style */
 import S from "./style.module.css";
+import Link from "next/link";
 
 const SidebarLayout = ({ children }) => {
   const { setIsOpenSidebar, isOpenSidebar } = useAppContext();
@@ -18,7 +19,7 @@ const SidebarLayout = ({ children }) => {
           isOpenSidebar ? "" : "!left-0"
         } `}
       >
-        <div className="logo flex flex-col items-center mb-4 ">
+        <Link href={"/"} className="logo flex flex-col items-center mb-4 ">
           <div
             className={` duration-300 text-5xl text-yellow-400  font-bold -mb-2 `}
           >
@@ -27,9 +28,9 @@ const SidebarLayout = ({ children }) => {
           <div className="text-lg font-bold mt-1 tracking-tighter text-slate-600">
             Coin
           </div>
-        </div>
-        <nav className="menu  ">
-          <ul className="">{children}</ul>
+        </Link>
+        <nav className="menu f ">
+          <ul className=" flex flex-col gap-3">{children}</ul>
         </nav>
       </aside>
 
