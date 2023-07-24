@@ -32,7 +32,11 @@ export default async (req, res) => {
 
     case "DELETE":
       try {
-        const userDeleted = await User.deleteOne({ _id: req.query.id });
+        const userDeleted = await User.findUpdate(
+          { _id: req.query.id },
+          { isDeleted: true }
+        );
+
         if (!userDeleted) {
           return res.status(400).json({ success: false });
         }

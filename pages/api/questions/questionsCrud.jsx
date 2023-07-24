@@ -21,7 +21,7 @@ export default async function handler(req, res) {
 
         if (req.query.slug) {
           questions = await Question.findOne({ slug: req.query.slug })
-            .populate("user", "name surname")
+            .populate("user", "name surname image")
             .sort({ createdAt: -1 })
             .select("-__v");
 
@@ -37,7 +37,7 @@ export default async function handler(req, res) {
 
         if (session && session.user.role === "admin") {
           questions = await Question.find({})
-            .populate("user", "name surname")
+            .populate("user", "name surname image")
             .sort({ createdAt: -1 })
             .select("-__v");
           res.status(200).json({ success: true, data: questions });

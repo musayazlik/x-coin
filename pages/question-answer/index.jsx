@@ -107,6 +107,8 @@ const QuestionAnswer = () => {
     getQuestions();
   }, []);
 
+  console.log(questions);
+
   return (
     <Layout>
       <div className="max-w-xl mx-auto mb-14  mt-8 text-center relative z-0">
@@ -171,7 +173,7 @@ const QuestionAnswer = () => {
                 <div className="flex gap-4 relative z-10 flex-grow ">
                   <div className="flex-shrink-0">
                     <img
-                      src="https://i.pravatar.cc/150?img=68"
+                      src={question?.user?.image}
                       alt="avatar"
                       className="w-12 h-12 rounded-full"
                     />
