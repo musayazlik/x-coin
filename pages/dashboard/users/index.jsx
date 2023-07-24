@@ -7,9 +7,11 @@ import DateDayMonthYear from "@helpers/datedaymonthyear";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import { useSession } from "next-auth/react";
 
 const Users = ({ data }) => {
   const router = useRouter();
+  const { data: session } = useSession();
 
   const userDelete = async (id) => {
     const cookie = document.cookie;
@@ -32,6 +34,50 @@ const Users = ({ data }) => {
         });
         router.push("/dashboard/users");
         toast.success("Kullanıcı başarıyla silindi!", {
+          theme: "dark",
+          autoClose: 1500,
+        });
+      }
+    });
+  };
+
+  const handleUserActive = async (id, isActive) => {
+    const cookie = document.cookie;
+
+    if (session.user.role === "admin" && id === session.user.id) {
+      toast.error("Admin'in aktiflik durumu değiştirilemez", {
+        theme: "dark",
+        autoClose: 1500,
+      });
+      return;
+    }
+
+    Swal.fire({
+      title: "Emin misiniz?",
+      text: "Bu işlemi geri alamazsınız!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: isActive ? "Aktif Yap " : "Pasif Yap",
+      cancelButtonText: "Hayır, vazgeç!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        await axios.patch(
+          `/api/dashboard/users`,
+          {
+            id: id,
+            status: "isActive",
+            isActive: isActive,
+          },
+          {
+            headers: {
+              cookie: cookie,
+            },
+          }
+        );
+        router.push("/dashboard/users");
+        toast.success("Kullanıcı başarıyla güncellendi!", {
           theme: "dark",
           autoClose: 1500,
         });
@@ -167,7 +213,25 @@ const Users = ({ data }) => {
                                 )}
                               </td>
                               <td className="text-sm text-zinc-400 font-medium px-6 py-4 whitespace-nowrap">
-                                {item.isActive ? "Aktif" : "Pasif"}
+                                {item.isActive ? (
+                                  <span
+                                    className="bg-green-600 text-green-800 px-2 py-1 rounded-md cursor-pointer"
+                                    onClick={() =>
+                                      handleUserActive(item._id, false)
+                                    }
+                                  >
+                                    Aktif
+                                  </span>
+                                ) : (
+                                  <span
+                                    className="bg-red-600 text-red-800 px-2 py-1 rounded-md cursor-pointer"
+                                    onClick={() =>
+                                      handleUserActive(item._id, true)
+                                    }
+                                  >
+                                    Pasif
+                                  </span>
+                                )}
                               </td>
 
                               <td className="text-sm text-zinc-400 font-light px-6 py-4 whitespace-nowrap">
@@ -175,12 +239,6 @@ const Users = ({ data }) => {
                               </td>
                               <td className="text-sm text-zinc-400 font-medium px-6 py-4 whitespace-nowrap">
                                 <div className="flex items-stretch justify-end gap-4 h-full ">
-                                  <Link
-                                    href={`/dashboard/users/edit/${item._id}`}
-                                    className="bg-blue-600 text-blue-800 px-4 py-2 rounded-md hover:bg-blue-600/80 transition duration-300 ease-in-out "
-                                  >
-                                    Düzenle
-                                  </Link>
                                   {item.role !== "admin" && (
                                     <button
                                       onClick={() => {

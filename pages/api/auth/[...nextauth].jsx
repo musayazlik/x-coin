@@ -27,12 +27,20 @@ export const authOptions = {
             walletAddress: credentials.walletAddress,
           });
 
+          if (user.isActive === false || user.isDeleted === true) {
+            return Promise.resolve(null);
+          }
+
           if (user) {
             return Promise.resolve(user);
           } else {
             const isUser = await User.findOne({
               walletAddress: credentials.walletAddress,
             });
+
+            if (isUser.isActive === false || isUser.isDeleted === true) {
+              return Promise.resolve(null);
+            }
 
             if (isUser) {
               return Promise.resolve(isUser);
@@ -52,6 +60,10 @@ export const authOptions = {
             const user = await User.findOne({
               email: credentials.isData,
             });
+
+            if (user.isActive === false || user.isDeleted === true) {
+              return Promise.resolve(null);
+            }
             const isPassword = await bcryptjs.compare(
               credentials.password,
               user.password
@@ -64,6 +76,10 @@ export const authOptions = {
             const user = await User.findOne({
               username: credentials.isData,
             });
+
+            if (user.isActive === false || user.isDeleted === true) {
+              return Promise.resolve(null);
+            }
             const isPassword = await bcryptjs.compare(
               credentials.password,
               user.password

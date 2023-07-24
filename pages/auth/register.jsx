@@ -60,19 +60,22 @@ const Login = () => {
       data: user,
     })
       .then((res) => {
-        toast.success("Subscription successful!", {
-          position: "top-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-          onClose: () => {
-            push("/auth/login");
-          },
-        });
+        toast.success(
+          "🎉 Üyeliğiniz oluşturuldu. Login sayfasına yönlendiriliyorsunuz...",
+          {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            onClose: () => {
+              push("/auth/login");
+            },
+          }
+        );
       })
       .catch((err) => {
         toast.error(err.response.data.msg, {
