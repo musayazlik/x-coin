@@ -325,7 +325,7 @@ export default QuestionAnswer;
 
 export async function getServerSideProps(context) {
   const res = await fetch(
-    `http://localhost:3000/api/questions/questionsCrud?slug=${context.query.slug}`,
+    `${process.env.APP_URL}/api/questions/questionsCrud?slug=${context.query.slug}`,
     {
       headers: {
         cookie: context.req.headers.cookie,

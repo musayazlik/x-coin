@@ -15,7 +15,6 @@ export default async function handler(req, res) {
           .where("status")
           .equals(true);
 
-        console.log(breakAndIncom);
         sendSuccessResponse(res, breakAndIncom);
       } catch (error) {
         sendErrorResponse(res, 400, error.message);

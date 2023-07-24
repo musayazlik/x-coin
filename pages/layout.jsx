@@ -7,8 +7,6 @@ import { useSession } from "next-auth/react";
 const Layout = ({ children }) => {
   const { data: session } = useSession();
 
-  console.log(session);
-
   return (
     <div className=" bg-zinc-950  flex gap-4 min-h-screen">
       <Sidebar />
