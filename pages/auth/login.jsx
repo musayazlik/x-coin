@@ -25,6 +25,13 @@ const Login = () => {
     }
   };
 
+  handleMetamaskLoginMobile = async () => {
+    const ethereumWalletScheme = "ethereum:"; // Ethereum cüzdanı şema bağlantısı
+    const connectUrl = `${process.env.APP_URL}/connect`; // Bağlan tuşuna tıkladığında yönleneceğiniz URL
+
+    window.location.href = ethereumWalletScheme + connectUrl;
+  };
+
   const handleEmailLogin = async (e) => {
     e.preventDefault();
     const emailandusername = e.target.emailandusername.value;
@@ -98,7 +105,23 @@ const Login = () => {
         </div>
         <div
           onClick={handleMetamaskLogin}
-          className="metemask rounded-md border-b-4 w-full sm:w-auto justify-center  border-orange-600 px-4 sm:px-8 py-2 bg-orange-500 inline-flex  gap-3 sm:gap-6 items-center hover:shadow-lg hover:shadow-orange-600/50 duration-300 hover:scale-105 cursor-pointer"
+          className="metemask hidden rounded-md border-b-4 w-full sm:w-auto justify-center  border-orange-600 px-4 sm:px-8 py-2 bg-orange-500 sm:inline-flex  gap-3 sm:gap-6 items-center hover:shadow-lg hover:shadow-orange-600/50 duration-300 hover:scale-105 cursor-pointer"
+        >
+          <Image
+            src="/metamask.svg"
+            alt="metamask"
+            width={40}
+            height={40}
+            className="bg-white p-1 rounded-full border-2 border-orange-700 shadow-lg shadow-orange-700/70"
+          />
+          <span className=" text-sm sm:text-xl font-semibold text-orange-900 mt-0.5">
+            {t.loginPage.metamaskLogin}
+          </span>
+        </div>
+
+        <div
+          onClick={handleMetamaskLoginMobile}
+          className="metemask rounded-md border-b-4 w-full sm:w-auto justify-center  sm:hidden border-orange-600 px-4 sm:px-8 py-2 bg-orange-500 inline-flex  gap-3 sm:gap-6 items-center hover:shadow-lg hover:shadow-orange-600/50 duration-300 hover:scale-105 cursor-pointer"
         >
           <Image
             src="/metamask.svg"
