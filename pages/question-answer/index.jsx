@@ -188,7 +188,7 @@ const QuestionAnswer = () => {
                       )}
 
                       <h2 className="font-semibold text-lg text-start">
-                        {question.user.name} {question.user.surname}
+                        {question?.user?.name} {question?.user?.surname}
                       </h2>
                       <p className="text-start font-light leading-6">
                         {question.question.length >= 200
@@ -232,3 +232,20 @@ const QuestionAnswer = () => {
 };
 
 export default QuestionAnswer;
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+
+  if (session.user.name === "" || session.user.surname === "") {
+    return {
+      redirect: {
+        destination: "/profile",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: { session },
+  };
+}

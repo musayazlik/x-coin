@@ -38,6 +38,10 @@ const userSchema = mongoose.Schema({
     type: String,
     default: "free",
   },
+  isActive: {
+    type: Boolean,
+    default: true,
+  },
 
   createdAt: {
     type: Date,

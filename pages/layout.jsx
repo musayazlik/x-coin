@@ -1,8 +1,14 @@
 import React from "react";
 import Header from "@/components/header";
 import Sidebar from "@/components/sidebar";
+import IsProfile from "@/components/isProfile";
+import { useSession } from "next-auth/react";
 
 const Layout = ({ children }) => {
+  const { data: session } = useSession();
+
+  console.log(session);
+
   return (
     <div className=" bg-zinc-950  flex gap-4 min-h-screen">
       <Sidebar />
@@ -11,6 +17,9 @@ const Layout = ({ children }) => {
       >
         <Header />
         <main className={` h-full duration-300  bg-zinc-800 px-4`}>
+          {(session?.user?.name === "" || session?.user?.surname === "") && (
+            <IsProfile />
+          )}
           {children}
         </main>
 

@@ -1,6 +1,5 @@
 import dbConnect from "@/libs/dbConnect";
 import User from "@/models/Users";
-
 import notAdmin from "@/helpers/notAdmin";
 
 export default async (req, res) => {
@@ -29,6 +28,17 @@ export default async (req, res) => {
       } catch (error) {
         res.status(400).json({ success: false });
       }
+      break;
+
+    case "DELETE":
+      try {
+        const userDeleted = await User.deleteOne({ _id: req.query.id });
+        if (!userDeleted) {
+          return res.status(400).json({ success: false });
+        }
+        res.status(200).json({ success: true, data: {} });
+      } catch (error) {}
+
       break;
     default:
       res.status(400).json({ success: false });

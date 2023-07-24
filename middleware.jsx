@@ -11,9 +11,7 @@ export default withAuth({
         const isTokenValid = token?.exp && Date.now() < token.exp * 1000;
         const isAdmin = token?.role === "admin";
 
-        console.log(token);
         if (!isAdmin && !isTokenValid) {
-          console.log(req.url);
           return false;
         }
         return !!token && isAdmin;
@@ -24,7 +22,6 @@ export default withAuth({
           return false;
         }
 
-        console.log(token);
         return !!token;
       }
     },
@@ -39,5 +36,7 @@ export const config = {
     "/profile",
     "/dashboard",
     "/dashboard/:path*",
+    "/question-answer",
+    "/question-answer/:path*",
   ],
 };

@@ -6,6 +6,8 @@ import axios from "axios";
 import { FiTrendingDown, FiTrendingUp } from "react-icons/fi";
 import { useAppContext } from "@/context";
 
+import StarButton from "@/components/starButton";
+
 const TotalMarketCap = () => {
   const [data, setData] = useState(null);
 
@@ -90,8 +92,13 @@ const TotalMarketCap = () => {
                 {data &&
                   data.map((item, index) => {
                     return (
-                      <tr className="odd:bg-zinc-900/40" key={index}>
-                        <td className="text-left px-4 py-3"></td>
+                      <tr
+                        className="odd:bg-zinc-900/40 rounded-lg py-2"
+                        key={index}
+                      >
+                        <td className=" py-2 px-3">
+                          <StarButton />
+                        </td>
                         <td scope="row" className="text-left ">
                           <h3 className="py-3 px-4">{item.key}</h3>
                         </td>

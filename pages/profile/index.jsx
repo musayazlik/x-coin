@@ -10,8 +10,6 @@ import Membership from "@/components/icons/membership";
 const Profile = () => {
   const { data: session } = useSession();
 
-  console.log(session);
-
   const handlePassword = async (e) => {
     e.preventDefault();
 
@@ -171,7 +169,7 @@ const Profile = () => {
 
   return (
     <Layout>
-      <div className="max-w-xl mx-auto mb-14  mt-8 text-center relative z-0">
+      <div className="max-w-2xl mx-auto mb-14  mt-8 text-center relative z-0">
         <h1 className="text-4xl font-semibold mb-6 lg:text-5xl text-rose-600">
           <span className="text-indigo-600">Profil</span>
         </h1>
@@ -244,7 +242,7 @@ const Profile = () => {
       <div className="flex justify-center items-center mt-4">
         <form action="" className="w-full" onSubmit={(e) => handleProfile(e)}>
           <div className="flex flex-col justify-center items-center w-full gap-2">
-            <div className="flex flex-col justify-center items-start w-full max-w-lg">
+            <div className="flex flex-col justify-center items-start w-full max-w-2xl">
               <label
                 htmlFor="name"
                 className="text-base text-gray-500 font-medium mb-2"
@@ -260,7 +258,7 @@ const Profile = () => {
                 defaultValue={session?.user?.name}
               />
             </div>
-            <div className="flex flex-col justify-center items-start w-full max-w-lg">
+            <div className="flex flex-col justify-center items-start w-full max-w-2xl">
               <label
                 htmlFor="surname"
                 className="text-base text-gray-500 font-medium mb-2"
@@ -276,7 +274,7 @@ const Profile = () => {
                 defaultValue={session?.user?.surname}
               />
             </div>
-            <div className="flex flex-col justify-center items-start w-full max-w-lg">
+            <div className="flex flex-col justify-center items-start w-full max-w-2xl">
               <label
                 htmlFor="surname"
                 className="text-base text-gray-500 font-medium mb-2"
@@ -292,7 +290,7 @@ const Profile = () => {
                 defaultValue={session?.user?.username}
               />
             </div>
-            <div className="flex flex-col justify-center items-start w-full max-w-lg">
+            <div className="flex flex-col justify-center items-start w-full max-w-2xl">
               <label
                 htmlFor="walletAddress"
                 className="text-base text-gray-500 font-medium mb-2"
@@ -308,7 +306,7 @@ const Profile = () => {
                 defaultValue={session?.user?.walletAddress}
               />
             </div>
-            <div className="flex flex-col justify-center items-start w-full max-w-lg">
+            <div className="flex flex-col justify-center items-start w-full max-w-2xl">
               <label
                 htmlFor="email"
                 className="text-base text-gray-500 font-medium mb-2"
@@ -325,7 +323,7 @@ const Profile = () => {
               />
             </div>
 
-            <div className="flex flex-col justify-center items-start w-full max-w-lg">
+            <div className="flex flex-col justify-center items-start w-full max-w-2xl">
               <button
                 type="submit"
                 className="w-full h-12 px-3 mb-2 mt-6 text-base text-white bg-indigo-600 rounded-md duration-200 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
@@ -340,14 +338,14 @@ const Profile = () => {
       <div className="flex justify-center items-center mt-4">
         <form action="" className="w-full" onSubmit={(e) => handlePassword(e)}>
           <div className="flex flex-col justify-center items-center w-full gap-2">
-            <div className="flex flex-col justify-center items-start w-full max-w-lg">
+            <div className="flex flex-col justify-center items-start w-full max-w-2xl">
               <h3 className="my-4 py-3 px-4 bg-zinc-900/60 w-full border-l-2 border-rose-600">
                 <span className="text-base text-gray-500 font-medium mb-2">
                   Şifre Değiştir
                 </span>
               </h3>
             </div>
-            <div className="flex flex-col justify-center items-start w-full max-w-lg">
+            <div className="flex flex-col justify-center items-start w-full max-w-2xl">
               <label
                 htmlFor="password"
                 className="text-base text-gray-500 font-medium mb-2"
@@ -363,7 +361,7 @@ const Profile = () => {
                 placeholder="Şifreyi Giriniz.."
               />
             </div>
-            <div className="flex flex-col justify-center items-start w-full max-w-lg">
+            <div className="flex flex-col justify-center items-start w-full max-w-2xl">
               <label
                 htmlFor="passwordconfirm"
                 className="text-base text-gray-500 font-medium mb-2"
@@ -380,7 +378,7 @@ const Profile = () => {
               />
             </div>
 
-            <div className="flex flex-col justify-center items-start w-full max-w-lg">
+            <div className="flex flex-col justify-center items-start w-full max-w-2xl">
               <button
                 type="submit"
                 className="w-full h-12 px-3 mb-2 mt-6 text-base text-white bg-indigo-600 rounded-md duration-200 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
