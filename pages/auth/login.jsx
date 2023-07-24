@@ -25,7 +25,7 @@ const Login = () => {
     }
   };
 
-  handleMetamaskLoginMobile = async () => {
+  const handleMetamaskLoginMobile = async () => {
     const ethereumWalletScheme = "ethereum:"; // Ethereum cüzdanı şema bağlantısı
     const connectUrl = `${process.env.APP_URL}/connect`; // Bağlan tuşuna tıkladığında yönleneceğiniz URL
 
