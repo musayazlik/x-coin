@@ -1,5 +1,5 @@
 import dbConnect from "@/libs/dbConnect";
-import BreakAndIncom from "@/models/BreakAndIncom";
+import OnChain from "@/models/OnChain";
 import cloudinary from "cloudinary";
 import formidable from "formidable";
 import sendErrorResponse from "@/helpers/sendErrorResponse";
@@ -13,7 +13,7 @@ export const config = {
 };
 
 // Function to update user's password
-const updateBreakAndIncom = async (req, res, fields, files) => {
+const updateOnChain = async (req, res, fields, files) => {
   const { title, description, slug, content, status, user } = fields;
   let data = {
     title: title[0],
@@ -28,7 +28,7 @@ const updateBreakAndIncom = async (req, res, fields, files) => {
     const thumbnailName = `${fields.slug}-${Date.now()}`;
     const thumbnailPath = files.thumbnail[0].filepath;
     const thumbnailUrl = await cloudinary.v2.uploader.upload(thumbnailPath, {
-      folder: "break-and-incom-thumbnails",
+      folder: "on-chain-thumbnails",
       public_id: thumbnailName,
     });
 
@@ -38,16 +38,16 @@ const updateBreakAndIncom = async (req, res, fields, files) => {
     };
 
     try {
-      const breakAndIncomUpdated = await BreakAndIncom.findOneAndUpdate(
+      const onChainUpdated = await OnChain.findOneAndUpdate(
         { _id: fields.id[0] },
         { $set: data },
         { new: true }
       );
 
-      if (!breakAndIncomUpdated) {
+      if (!onChainUpdated) {
         sendErrorResponse(res, 404, "İçerik bulunamadı.");
       } else {
-        sendSuccessResponse(res, breakAndIncomUpdated);
+        sendSuccessResponse(res, onChainUpdated);
       }
     } catch (error) {
       sendErrorResponse(res, 400, error.message);
@@ -64,7 +64,7 @@ const updateBreakAndIncom = async (req, res, fields, files) => {
         user: user[0],
       };
 
-      const breakAndIncomUpdated = await BreakAndIncom.findOneAndUpdate(
+      const breakAndIncomUpdated = await OnChain.findOneAndUpdate(
         { _id: fields.id[0] },
         { $set: data },
         { new: true }
@@ -78,49 +78,6 @@ const updateBreakAndIncom = async (req, res, fields, files) => {
     } catch (error) {
       sendErrorResponse(res, 400, error.message);
     }
-  }
-};
-
-// Function to update user's profile information
-const BreakAndIncomAdd = async (req, res, fields) => {
-  try {
-    const { username, walletAddress, email } = fields;
-
-    // Check if username, email, and walletAddress are already taken
-    const isUsernameTaken = await User.exists({
-      username: username,
-      _id: { $ne: req.query.id },
-    });
-    const isEmailTaken = await User.exists({
-      email: email,
-      _id: { $ne: req.query.id },
-    });
-    const isWalletAddressTaken = await User.exists({
-      walletAddress: walletAddress,
-      _id: { $ne: req.query.id },
-    });
-
-    if (isUsernameTaken) {
-      sendErrorResponse(res, 400, "Bu kullanıcı adı daha önce alınmış.");
-    } else if (isEmailTaken) {
-      sendErrorResponse(res, 400, "Bu e-posta adresi daha önce alınmış.");
-    } else if (isWalletAddressTaken) {
-      sendErrorResponse(res, 400, "Bu cüzdan adresi daha önce alınmış.");
-    } else {
-      const updatedUser = await User.findOneAndUpdate(
-        { _id: req.query.id },
-        { $set: fields },
-        { new: true }
-      );
-
-      if (!updatedUser) {
-        sendErrorResponse(res, 404, "User not found");
-      } else {
-        sendSuccessResponse(res, updatedUser);
-      }
-    }
-  } catch (error) {
-    sendErrorResponse(res, 400, error.message);
   }
 };
 
@@ -151,13 +108,13 @@ export default async function handler(req, res) {
       case "GET":
         try {
           if (req.query.id) {
-            const breakAndIncomData = await BreakAndIncom.findById({
+            const onChainData = await OnChain.findById({
               _id: req.query.id,
             });
-            sendSuccessResponse(res, breakAndIncomData);
+            sendSuccessResponse(res, onChainData);
           } else {
-            const breakAndIncomData = await BreakAndIncom.find({});
-            sendSuccessResponse(res, breakAndIncomData);
+            const onChainData = await OnChain.find({});
+            sendSuccessResponse(res, onChainData);
           }
         } catch (error) {
           sendErrorResponse(res, 400, error.message);
@@ -172,7 +129,7 @@ export default async function handler(req, res) {
           const thumbnailUrl = await cloudinary.v2.uploader.upload(
             thumbnailPath,
             {
-              folder: "break-and-incom-thumbnails",
+              folder: "on-chain-thumbnails",
               public_id: thumbnailName,
             }
           );
@@ -186,20 +143,20 @@ export default async function handler(req, res) {
             thumbnail: thumbnailUrl.secure_url,
           };
 
-          const newBreakAndIncom = await BreakAndIncom.create(data);
-          sendSuccessResponse(res, newBreakAndIncom);
+          const newOnChain = await OnChain.create(data);
+          sendSuccessResponse(res, newOnChain);
         } catch (error) {
           sendErrorResponse(res, 400, error.message);
         }
         break;
 
       case "PATCH":
-        updateBreakAndIncom(req, res, fields, files);
+        updateOnChain(req, res, fields, files);
         break;
 
       case "DELETE":
         try {
-          const breakAndIncomDeleted = await BreakAndIncom.deleteOne({
+          const breakAndIncomDeleted = await OnChain.deleteOne({
             _id: req.query.id,
           });
 

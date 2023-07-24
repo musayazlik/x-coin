@@ -10,7 +10,7 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { toast } from "react-toastify";
 
-const BreakAndIncomAdd = () => {
+const OnChainAdd = () => {
   const router = useRouter();
   const { data: session } = useSession();
 
@@ -55,7 +55,7 @@ const BreakAndIncomAdd = () => {
 
     axios({
       method: "post",
-      url: "/api/dashboard/break-and-incom/",
+      url: "/api/dashboard/onchain/",
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -69,7 +69,7 @@ const BreakAndIncomAdd = () => {
           showConfirmButton: false,
           timer: 1500,
         }).then(() => {
-          router.push("/dashboard/break-and-incom");
+          router.push("/dashboard/on-chain");
         });
       })
       .catch((err) => {
@@ -87,7 +87,7 @@ const BreakAndIncomAdd = () => {
       <div className="bg-zinc-800 shadow-md shadow-zinc-900/20 px-2 py-8 border-t-2 border-custom_pink">
         <h1 className=" px-2 text-3xl font-bold text-white">İçerik Ekle</h1>
         <p className=" px-2 text-base font-normal mt-2 text-white">
-          Bu sayfa kırılımlar ve uyumsuzluklar için içerik ekleme sayfasıdır.
+          Bu sayfa on chain için içerik ekleme sayfasıdır.
         </p>
 
         <form
@@ -179,4 +179,4 @@ const BreakAndIncomAdd = () => {
   );
 };
 
-export default BreakAndIncomAdd;
+export default OnChainAdd;

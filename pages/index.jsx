@@ -1,6 +1,7 @@
 import Layout from "./layout";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const SpotMarket = () => {
   const { data: session, status } = useSession();
@@ -14,10 +15,14 @@ const SpotMarket = () => {
             <span className="text-yellow-600">X Coin</span> ' e Hoşgeldiniz{" "}
             {session?.user?.name}!
           </h2>
-          <p className=" text-lg lg:text-xl font-medium text-gray-400 mt-4 text-center">
-            X Coin, kripto para piyasasında yer alan tüm coinlerin anlık
-            verilerini sunan bir platformdur.
+          <p className=" text-lg lg:text-xl font-medium text-gray-400 mt-4 text-center max-w-3xl">
+            X Coin, dünya piyasa verilerini kullanarak, kullanıcıların tüm borsa
+            verileri hakkında bilgi edinmelerini sağlayan bir platformdur.
           </p>
+
+          <div className=" flex flex-col lg:flex-row gap-4 mt-12 min-w-full max-w-2xl relative h-[400px]">
+            <Image src="/home-picture.svg" alt="Home Picture" fill />
+          </div>
         </div>
       </Layout>
     </>

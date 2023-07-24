@@ -24,7 +24,7 @@ const LangDropdown = () => {
   };
   return (
     <>
-      <div className="relative">
+      <div className="relative z-50">
         <button
           className="w-8 h-8 p-1 rounded-full hover:scale-110 duration-200 "
           onClick={() => {
@@ -53,7 +53,7 @@ const LangDropdown = () => {
         {isOpen && (
           <>
             <div
-              className={`absolute z-20 border-b-4 before:w-full before:h-2 before:block before:bg-yellow-400/50 before:-bottom-2 before:z-0 before:rounded-md before:blur-[6px] before:absolute border-b-yellow-400 top-14 right-0 w-48 bg-zinc-800 rounded-md py-1 border-2 border-zinc-950 duration-300 ${
+              className={`absolute z-50 border-b-4 before:w-full before:h-2 before:block before:bg-yellow-400/50 before:-bottom-2 before:z-0 before:rounded-md before:blur-[6px] before:absolute border-b-yellow-400 top-14 right-0 w-48 bg-zinc-800 rounded-md py-1 border-2 border-zinc-950 duration-300 ${
                 isOpen ? "top-12" : "top-0"
               }`}
             >

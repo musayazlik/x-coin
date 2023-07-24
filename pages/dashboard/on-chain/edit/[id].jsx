@@ -1,22 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../../layout";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useRouter } from "next/router";
-
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { toast } from "react-toastify";
+import Image from "next/image";
 
-const BreakAndIncomAdd = () => {
+const OnChainEdit = ({ data }) => {
   const router = useRouter();
   const { data: session } = useSession();
 
   const editor = useEditor({
     extensions: [StarterKit],
     placeholder: "Blog içeriğini buraya yazınız...",
+    content: data?.content,
     editorProps: {
       attributes: {
         class:
@@ -24,6 +24,10 @@ const BreakAndIncomAdd = () => {
       },
     },
   });
+
+  useEffect(() => {
+    editor?.commands?.setContent(data.content);
+  }, [editor]);
 
   const blogAdd = (e) => {
     e.preventDefault();
@@ -34,16 +38,8 @@ const BreakAndIncomAdd = () => {
     const status = e.target.status.value;
     const content = editor.getHTML();
 
-    if (!title || !description || !slug || !thumbnail || !content) {
-      toast.error("Lütfen tüm alanları doldurunuz!", {
-        position: "top-center",
-        autoClose: 1500,
-        theme: "colored",
-      });
-      return;
-    }
-
     const data = {
+      id: router.query.id,
       title,
       description,
       slug,
@@ -54,8 +50,8 @@ const BreakAndIncomAdd = () => {
     };
 
     axios({
-      method: "post",
-      url: "/api/dashboard/break-and-incom/",
+      method: "patch",
+      url: "/api/dashboard/onchain/",
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -69,7 +65,7 @@ const BreakAndIncomAdd = () => {
           showConfirmButton: false,
           timer: 1500,
         }).then(() => {
-          router.push("/dashboard/break-and-incom");
+          router.push("/dashboard/on-chain");
         });
       })
       .catch((err) => {
@@ -103,6 +99,7 @@ const BreakAndIncomAdd = () => {
               <input
                 type="text"
                 name="title"
+                defaultValue={data.title}
                 id="title"
                 maxLength={60}
                 placeholder="İçeriğin başlığını giriniz... (Max: 60 karakter) "
@@ -116,6 +113,7 @@ const BreakAndIncomAdd = () => {
                 type="text"
                 name="description"
                 id="description"
+                defaultValue={data.description}
                 maxLength={160}
                 placeholder="İçerik için kısa metin giriniz... (Max: 160 karakter) "
                 className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
@@ -124,16 +122,26 @@ const BreakAndIncomAdd = () => {
 
             <div className="flex flex-col">
               <label className="text-white font-semibold">Kısa Url</label>
+
               <input
                 type="text"
                 name="slug"
                 id="slug"
+                defaultValue={data.slug}
                 placeholder="İçerik için kısa url giriniz..."
                 className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
               />
             </div>
             <div className="flex flex-col">
               <label className="text-white font-semibold">Küçük Resmi</label>
+              <Image
+                src={data.thumbnail}
+                width={64}
+                height={64}
+                quality={50}
+                className="max-w-[64px] max-h-[64px] min-w-[64px] min-h-[64px] object-cover rounded-md border-2 border-yellow-700 mt-2
+              "
+              />
               <input
                 type="file"
                 name="thumbnail"
@@ -157,7 +165,9 @@ const BreakAndIncomAdd = () => {
                 <option defaultValue="" disabled>
                   İçerik durumunu seçiniz...
                 </option>
-                <option value={true}>Yayınla</option>
+                <option value={true} selected>
+                  Yayınla
+                </option>
                 <option value={false}>Taslağa Al</option>
               </select>
             </div>
@@ -167,7 +177,7 @@ const BreakAndIncomAdd = () => {
               type="submit"
               className="bg-custom_green border-2 hover:bg-green-600 duration-300 border-green-700 flex-shrink-0 text-green-800 font-semibold rounded-md px-4  py-3  relative z-100"
             >
-              Blog Oluştur
+              Kaydet
             </button>
             <Link href="/admin/blogs" className="text-red-700">
               İptal Et
@@ -179,4 +189,22 @@ const BreakAndIncomAdd = () => {
   );
 };
 
-export default BreakAndIncomAdd;
+export default OnChainEdit;
+
+export async function getServerSideProps(context) {
+  const cookie = context.req.headers.cookie;
+  const { data } = await axios.get(
+    `${process.env.APP_URL}/api/dashboard/onchain?id=${context.params.id}`,
+    {
+      headers: {
+        cookie: cookie,
+      },
+    }
+  );
+
+  return {
+    props: {
+      data: data.data,
+    },
+  };
+}
