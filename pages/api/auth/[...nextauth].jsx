@@ -22,36 +22,29 @@ export const authOptions = {
 
         const newUserUsernNameId = uid(10);
 
+        console.log(credentials.walletAddress);
+
         if (credentials.walletAddress) {
           const user = await User.findOne({
             walletAddress: credentials.walletAddress,
           });
 
-          if (user.isActive === false || user.isDeleted === true) {
-            return Promise.resolve(null);
-          }
-
           if (user) {
+            if (user.isActive === false || user.isDeleted === true) {
+              return Promise.reject(
+                new Error(
+                  "Your account is not active or has been deleted. Please contact the administrator."
+                )
+              );
+            }
             return Promise.resolve(user);
           } else {
-            const isUser = await User.findOne({
+            const newUser = await User.create({
               walletAddress: credentials.walletAddress,
+              username: `user${newUserUsernNameId}`,
+              email: `user${newUserUsernNameId}@gmail.com`,
             });
-
-            if (isUser.isActive === false || isUser.isDeleted === true) {
-              return Promise.resolve(null);
-            }
-
-            if (isUser) {
-              return Promise.resolve(isUser);
-            } else {
-              const newUser = await User.create({
-                walletAddress: credentials.walletAddress,
-                username: `user${newUserUsernNameId}`,
-                email: `user${newUserUsernNameId}@gmail.com`,
-              });
-              return Promise.resolve(newUser);
-            }
+            return Promise.resolve(newUser);
           }
         } else {
           const isMail = credentials.isData.includes("@");
@@ -146,7 +139,7 @@ export const authOptions = {
   pages: {
     signIn: "/auth/login",
     signOut: "/auth/signout",
-    error: "/auth/error", // Error code passed in query string as ?error=
+    error: "/auth/login", // Error code passed in query string as ?error=
   },
 };
 export default NextAuth(authOptions);
