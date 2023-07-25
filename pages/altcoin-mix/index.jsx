@@ -42,11 +42,14 @@ const AltCoinMix = ({ altcoins }) => {
                 <th className="px-6 text-center py-4">Güncel Fiyat</th>
               </tr>
             </thead>
-            <tbody className="space-y-6 text-center divide-y divide-zinc-700/50 odd:bg-gray-400/50 border-2 border-zinc-700">
+            <tbody className="space-y-6 text-center divide-zinc-700/50 odd:bg-transparent">
               {altcoins &&
                 altcoins.map((altcoin, index) => {
                   return (
-                    <tr className="odd:bg-gray-600/40" key={index}>
+                    <tr
+                      className="odd:bg-zinc-900/40 rounded-lg py-2"
+                      key={index}
+                    >
                       <th
                         scope="row"
                         className="text-left flex gap-2 items-center px-2"

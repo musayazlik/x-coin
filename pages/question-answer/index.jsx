@@ -107,8 +107,6 @@ const QuestionAnswer = () => {
     getQuestions();
   }, []);
 
-  console.log(questions);
-
   return (
     <Layout>
       <div className="max-w-xl mx-auto mb-14  mt-8 text-center relative z-0">

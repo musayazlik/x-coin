@@ -31,10 +31,8 @@ export default async (req, res) => {
       break;
 
     case "PATCH":
-      console.log(req.body);
       try {
         if (req.body.status === "isActive") {
-          console.log("fgdfggdfgf");
           const user = await User.findByIdAndUpdate(
             req.body.id,
             { isActive: req.body.isActive },

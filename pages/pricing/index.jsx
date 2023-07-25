@@ -31,7 +31,7 @@ const Packages = () => {
           const web3 = new Web3(window.ethereum);
           const networkId = await web3.eth.net.getId();
 
-          if (networkId !== 1) {
+          if (networkId !== 1 && process.env.NODE_ENV === "production") {
             Swal.fire({
               icon: "error",
               title: "Oops...",
@@ -194,7 +194,7 @@ const Packages = () => {
           </div>
 
           <section className="dark:bg-zinc-800 dark:text-gray-100">
-            <div className="container mx-auto p-6 overflow-x-auto">
+            <div className="container mx-auto px-3 sm:p-6 overflow-x-auto">
               <table className="w-full">
                 <thead>
                   <tr>

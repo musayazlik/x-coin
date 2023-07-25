@@ -6,6 +6,7 @@ import MenuItem from "./menuItem/index";
 import DropdownMenu from "./dropdownMenu";
 import SubMenuItem from "./subMenuItem/index";
 import { MdCurrencyBitcoin } from "react-icons/md";
+import { BiBasket } from "react-icons/bi";
 
 const Sidebar = () => {
   return (
@@ -16,6 +17,12 @@ const Sidebar = () => {
         url={"/dashboard/users"}
         Icon={HiOutlineUsers}
         text={"Kullanıcılar"}
+      />
+
+      <MenuItem
+        url={"/dashboard/membership-sales"}
+        Icon={BiBasket}
+        text={"Üyelik Satışı"}
       />
 
       <DropdownMenu

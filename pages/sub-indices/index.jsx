@@ -29,13 +29,18 @@ const SubIndices = ({ altIndexes }) => {
                 </th>
               </tr>
             </thead>
-            <tbody className="space-y-6 text-center divide-y divide-zinc-700/50 odd:bg-gray-400/50 border-2 border-zinc-700">
+            <tbody className="space-y-6 text-center divide-zinc-700/50 odd:bg-transparent">
               {altIndexes &&
                 altIndexes.map((item, index) => {
                   return (
-                    <tr className="odd:bg-gray-600/40" key={index}>
+                    <tr
+                      className="odd:bg-zinc-900/40 rounded-lg py-2"
+                      key={index}
+                    >
                       <th scope="row" className="text-left">
-                        <h3 className="py-3 px-2">{item.name}</h3>
+                        <h3 className="py-3 px-2 whitespace-nowrap">
+                          {item.name}
+                        </h3>
                       </th>
                       <th scope="row" className="text-left">
                         <p className="py-3 px-2 font-normal text-center">

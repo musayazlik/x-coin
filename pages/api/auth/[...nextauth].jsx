@@ -22,8 +22,6 @@ export const authOptions = {
 
         const newUserUsernNameId = uid(10);
 
-        console.log(credentials.walletAddress);
-
         if (credentials.walletAddress) {
           const user = await User.findOne({
             walletAddress: credentials.walletAddress,

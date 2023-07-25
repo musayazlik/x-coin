@@ -12,10 +12,12 @@ const SpotMarket = () => {
       <Layout className=" bg-zinc-950 flex">
         <div className=" flex justify-center flex-col w-full items-center my-12">
           <h2 className=" text-2xl lg:text-4xl font-bold text-zinc-500">
-            <span className="text-yellow-600">X Coin</span> ' e Hoşgeldiniz{" "}
-            {session?.user?.name}!
+            <div className="text-center font-extrabold text-4xl">
+              <span className="text-yellow-600">X Coin</span> ' e
+            </div>{" "}
+            Hoşgeldiniz {session?.user?.name}!
           </h2>
-          <p className=" text-lg lg:text-xl font-medium text-gray-400 mt-4 text-center max-w-3xl">
+          <p className=" text-base lg:text-lg font-normal text-gray-400 mt-4 text-center max-w-3xl">
             X Coin, dünya piyasa verilerini kullanarak, kullanıcıların tüm borsa
             verileri hakkında bilgi edinmelerini sağlayan bir platformdur.
           </p>

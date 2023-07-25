@@ -4,10 +4,7 @@ import { NextResponse } from "next/server";
 export default withAuth({
   callbacks: {
     authorized({ req, res, token }) {
-      if (
-        req?.nextUrl?.pathname === "/dashboard" ||
-        req?.nextUrl?.pathname === "/dashboard/:path*"
-      ) {
+      if (req?.nextUrl?.pathname.startsWith("/dashboard")) {
         const isTokenValid = token?.exp && Date.now() < token.exp * 1000;
         const isAdmin = token?.role === "admin";
 

@@ -75,7 +75,7 @@ const TotalMarketCap = () => {
         </div>
 
         <section className="dark:bg-zinc-800 dark:text-gray-100">
-          <div className="container mx-auto p-6 overflow-x-auto">
+          <div className="container mx-auto  sm:p-6 overflow-x-auto">
             <table className="w-full">
               <thead>
                 <tr className="">

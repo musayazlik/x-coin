@@ -5,10 +5,9 @@ import { FiArrowRight } from "react-icons/fi";
 import Link from "next/link";
 import axios from "axios";
 import Image from "next/image";
+import Head from "next/head";
 
 const BreakAndIncom = ({ data }) => {
-  const { data: session } = useSession();
-
   return (
     <>
       <Head>

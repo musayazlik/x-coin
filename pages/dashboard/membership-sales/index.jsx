@@ -1,5 +1,7 @@
 import React from "react";
 import Layout from "../layout";
+import { FiPlus } from "react-icons/fi";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import DateDayMonthYear from "@helpers/datedaymonthyear";
 import axios from "axios";
@@ -7,7 +9,7 @@ import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { useSession } from "next-auth/react";
 
-const Users = ({ data }) => {
+const MembershipSales = ({ data }) => {
   const router = useRouter();
   const { data: session } = useSession();
 
@@ -89,22 +91,12 @@ const Users = ({ data }) => {
         <div className="flex justify-between items-center px-4">
           <div className="flex flex-col justify-center">
             <h1 className="text-lg sm:text-2xl font-bold text-white">
-              Kullanicilar Yönetimi
+              Üyelik Satışı
             </h1>
             <p className="sm:text-sm text-gray-400">
-              Kullanicilari yönetmek için bu sayfayı kullanabilirsiniz.
+              Bu sayfada üyelik satışı ile ilgili işlemleri yapabilirsiniz.
             </p>
           </div>
-
-          {/* <button
-            onClick={() => {
-              router.push(`/dashboard/break-and-incom/add`);
-            }}
-            className="bg-custom_green duration-300 bg-green-600 text-green-800 font-medium pl-2 pr-4 py-2 rounded-md hover:bg-custom_green/20 hover:text-custom_green border-2 border-green-700 flex items-center gap-2  whitespace-nowrap"
-          >
-            <FiPlus className="inline-block " />
-            Ekle
-          </button> */}
         </div>
 
         <div className="contentArea w-full  px-4 overflow-x-auto mt-6">
@@ -125,45 +117,41 @@ const Users = ({ data }) => {
                           scope="col"
                           className="text-sm font-medium text-zinc-400 px-6 py-4 text-left whitespace-nowrap"
                         >
-                          Resim
+                          Üye Resmi
                         </th>
                         <th
                           scope="col"
                           className="text-sm font-medium text-zinc-400 px-6 py-4 text-left "
                         >
-                          Kullanıcı Adı
+                          Üye Kullanıcı Adı
                         </th>
 
                         <th
                           scope="col"
                           className="text-sm font-medium text-zinc-400 px-6 py-4 text-left whitespace-nowrap"
                         >
-                          Yetki Durumu
+                          Ödeme Türü
+                        </th>
+                        <th
+                          scope="col"
+                          className="text-sm font-medium text-zinc-400 px-6 py-4 text-left whitespace-nowrap"
+                        >
+                          Üyelik Türü
                         </th>
 
                         <th
                           scope="col"
                           className="text-sm font-medium text-zinc-400 px-6 py-4 text-left whitespace-nowrap"
                         >
-                          Üyelik Turu
+                          Üyelik Başlangıç Tarihi
                         </th>
 
                         <th
                           scope="col"
                           className="text-sm font-medium text-zinc-400 px-6 py-4 text-left whitespace-nowrap"
                         >
-                          Durum
+                          Üyelik Bitiş Tarihi
                         </th>
-                        <th
-                          scope="col"
-                          className="text-sm font-medium text-zinc-400 px-6 py-4 text-left whitespace-nowrap"
-                        >
-                          Kayıt Tarihi
-                        </th>
-                        <th
-                          scope="col"
-                          className="text-sm font-medium text-zinc-400 px-6 py-4 text-left"
-                        ></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -176,7 +164,7 @@ const Users = ({ data }) => {
                               </td>
                               <td className="text-sm text-zinc-400 font-light px-6 py-4 whitespace-nowrap">
                                 <img
-                                  src={item?.image || "/robot.gif"}
+                                  src={item?.user?.image || "/robot.gif"}
                                   alt=""
                                   width={40}
                                   height={40}
@@ -185,11 +173,11 @@ const Users = ({ data }) => {
                                 />
                               </td>
                               <td className="text-sm text-zinc-400 font-light px-6 py-4 whitespace-nowrap   ">
-                                {item.username}
+                                {item.user.username}
                               </td>
 
-                              <td className="text-sm text-zinc-400 font-medium px-6 py-4 whitespace-nowrap">
-                                {item.role === "admin" ? "Admin" : "Kullanıcı"}
+                              <td className="text-sm text-zinc-400 font-light px-6 py-4 whitespace-nowrap   ">
+                                {item.paymentMethod}
                               </td>
                               <td className="text-sm text-zinc-400 font-medium px-6 py-4 whitespace-nowrap">
                                 {item.memberShipType === "free" && (
@@ -210,44 +198,16 @@ const Users = ({ data }) => {
                                   </span>
                                 )}
                               </td>
-                              <td className="text-sm text-zinc-400 font-medium px-6 py-4 whitespace-nowrap">
-                                {item.isActive ? (
-                                  <span
-                                    className="bg-green-600 text-green-800 px-2 py-1 rounded-md cursor-pointer"
-                                    onClick={() =>
-                                      handleUserActive(item._id, false)
-                                    }
-                                  >
-                                    Aktif
-                                  </span>
-                                ) : (
-                                  <span
-                                    className="bg-red-600 text-red-800 px-2 py-1 rounded-md cursor-pointer"
-                                    onClick={() =>
-                                      handleUserActive(item._id, true)
-                                    }
-                                  >
-                                    Pasif
-                                  </span>
-                                )}
+                              <td className="text-sm text-zinc-400 font-light px-6 py-4 whitespace-nowrap">
+                                {DateDayMonthYear({
+                                  value: item.memberShipDate,
+                                })}
                               </td>
 
                               <td className="text-sm text-zinc-400 font-light px-6 py-4 whitespace-nowrap">
-                                {DateDayMonthYear({ value: item.createdAt })}
-                              </td>
-                              <td className="text-sm text-zinc-400 font-medium px-6 py-4 whitespace-nowrap">
-                                <div className="flex items-stretch justify-end gap-4 h-full ">
-                                  {item.role !== "admin" && (
-                                    <button
-                                      onClick={() => {
-                                        userDelete(item._id);
-                                      }}
-                                      className="bg-red-500 text-red-800 px-4 py-2 rounded-md hover:bg-red-500/80 transition duration-300 ease-in-out"
-                                    >
-                                      Sil
-                                    </button>
-                                  )}
-                                </div>
+                                {DateDayMonthYear({
+                                  value: item.memberShipEndDate,
+                                })}
                               </td>
                             </tr>
                           );
@@ -275,12 +235,12 @@ const Users = ({ data }) => {
   );
 };
 
-export default Users;
+export default MembershipSales;
 
 export async function getServerSideProps(context) {
   const cookie = context.req.headers.cookie;
   const { data } = await axios.get(
-    `${process.env.APP_URL}/api/dashboard/users`,
+    `${process.env.APP_URL}/api/dashboard/membership-sales`,
     {
       headers: {
         cookie: cookie,
