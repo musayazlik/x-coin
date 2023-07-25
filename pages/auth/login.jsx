@@ -9,6 +9,7 @@ import { lang } from "@/lang/langT";
 import LangDropdown from "@/components/langDropdown";
 import { getSession } from "next-auth/react";
 import { toast } from "react-toastify";
+import { MetaMaskSDK } from "@metamask/sdk";
 
 const Login = () => {
   const router = useRouter();
@@ -26,10 +27,18 @@ const Login = () => {
   };
 
   const handleMetamaskLoginMobile = async () => {
-    const ethereumWalletScheme = "ethereum:"; // Ethereum cüzdanı şema bağlantısı
-    const connectUrl = `${process.env.NEXT_PUBLIC_APP_URL}/connect`; // Bağlan tuşuna tıkladığında yönleneceğiniz URL
+    const MMSDK = new MetaMaskSDK({
+      shouldShimWeb3: false,
+      showQrCode: true,
+    });
 
-    window.location.href = ethereumWalletScheme + connectUrl;
+    const ethereum = MMSDK.getProvider();
+    if (ethereum) {
+      signIn("credentials", {
+        walletAddress: ethereum.selectedAddress,
+        callbackUrl: "/",
+      });
+    }
   };
 
   const handleEmailLogin = async (e) => {
@@ -105,7 +114,7 @@ const Login = () => {
         </div>
         <div
           onClick={handleMetamaskLogin}
-          className="metemask  rounded-md border-b-4 w-full sm:w-auto justify-center  border-orange-600 px-4 sm:px-8 py-2 bg-orange-500 inline-flex  gap-3 sm:gap-6 items-center hover:shadow-lg hover:shadow-orange-600/50 duration-300 hover:scale-105 cursor-pointer"
+          className="metemask sm:inline-flex hidden rounded-md border-b-4 w-full sm:w-auto justify-center  border-orange-600 px-4 sm:px-8 py-2 bg-orange-500   gap-3 sm:gap-6 items-center hover:shadow-lg hover:shadow-orange-600/50 duration-300 hover:scale-105 cursor-pointer"
         >
           <Image
             src="/metamask.svg"
@@ -121,7 +130,7 @@ const Login = () => {
 
         <div
           onClick={handleMetamaskLoginMobile}
-          className="metemask rounded-md border-b-4 w-full sm:w-auto justify-center border-orange-600 px-4 sm:px-8 py-2 bg-orange-500 inline-flex  gap-3 sm:gap-6 items-center hover:shadow-lg hover:shadow-orange-600/50 duration-300 hover:scale-105 cursor-pointer"
+          className="metemask inline-flex sm:hidden rounded-md border-b-4 w-full sm:w-auto justify-center border-orange-600 px-4 sm:px-8 py-2 bg-orange-500   gap-3 sm:gap-6 items-center hover:shadow-lg hover:shadow-orange-600/50 duration-300 hover:scale-105 cursor-pointer"
         >
           <Image
             src="/metamask.svg"
