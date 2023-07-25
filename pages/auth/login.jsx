@@ -105,7 +105,7 @@ const Login = () => {
         </div>
         <div
           onClick={handleMetamaskLogin}
-          className="metemask hidden rounded-md border-b-4 w-full sm:w-auto justify-center  border-orange-600 px-4 sm:px-8 py-2 bg-orange-500 sm:inline-flex  gap-3 sm:gap-6 items-center hover:shadow-lg hover:shadow-orange-600/50 duration-300 hover:scale-105 cursor-pointer"
+          className="metemask  rounded-md border-b-4 w-full sm:w-auto justify-center  border-orange-600 px-4 sm:px-8 py-2 bg-orange-500 inline-flex  gap-3 sm:gap-6 items-center hover:shadow-lg hover:shadow-orange-600/50 duration-300 hover:scale-105 cursor-pointer"
         >
           <Image
             src="/metamask.svg"
@@ -121,7 +121,7 @@ const Login = () => {
 
         <div
           onClick={handleMetamaskLoginMobile}
-          className="metemask rounded-md border-b-4 w-full sm:w-auto justify-center  sm:hidden border-orange-600 px-4 sm:px-8 py-2 bg-orange-500 inline-flex  gap-3 sm:gap-6 items-center hover:shadow-lg hover:shadow-orange-600/50 duration-300 hover:scale-105 cursor-pointer"
+          className="metemask rounded-md border-b-4 w-full sm:w-auto justify-center border-orange-600 px-4 sm:px-8 py-2 bg-orange-500 inline-flex  gap-3 sm:gap-6 items-center hover:shadow-lg hover:shadow-orange-600/50 duration-300 hover:scale-105 cursor-pointer"
         >
           <Image
             src="/metamask.svg"
