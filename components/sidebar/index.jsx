@@ -79,7 +79,7 @@ const Sidebar = () => {
         Icon={RiGlobalLine}
         subMenuList={[
           "/all-markets/stock-markets",
-          "/all-markets/pariteler",
+          "/all-markets/parities",
           "/all-markets/energy-market",
           "/all-markets/metal-market",
           "/all-markets/commodities",
