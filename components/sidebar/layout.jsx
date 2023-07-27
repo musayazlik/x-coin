@@ -15,7 +15,7 @@ const SidebarLayout = ({ children }) => {
       <aside
         className={`${
           S.asideWrapper
-        } h-min-screen h-screen md:h-auto min-w-[280px] -left-[280px] md:left-0 relative duration-300 z-30 overflow-auto px-2 py-4 ${
+        } h-min-screen h-screen md:h-auto min-w-[280px] max-w-[280px] -left-[280px] md:left-0 relative duration-300 z-30 overflow-auto px-2 py-4 ${
           isOpenSidebar ? "" : "!left-0"
         } `}
       >
@@ -29,7 +29,7 @@ const SidebarLayout = ({ children }) => {
             Coin
           </div>
         </Link>
-        <nav className="menu f ">
+        <nav className="menu ">
           <ul className=" flex flex-col gap-3">{children}</ul>
         </nav>
       </aside>

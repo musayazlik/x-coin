@@ -20,9 +20,9 @@
 }
 
 .menuSubItemText {
-  @apply font-medium whitespace-nowrap text-[14px] text-zinc-500;
+  @apply font-medium flex  text-[14px] text-zinc-500;
 }
 
 .menuSubItemText li:hover {
-  @apply font-medium whitespace-nowrap  text-yellow-500 duration-200;
+  @apply font-medium flex text-yellow-500 duration-200;
 }

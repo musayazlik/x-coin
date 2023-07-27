@@ -5,11 +5,20 @@ import S from "../style.module.css";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
+/** context */
+import { useAppContext } from "@/context";
+
 const MenuItem = ({ text, url, Icon, customClass }) => {
   const { pathname } = useRouter();
+  const { setIsOpenSidebar } = useAppContext();
 
   return (
-    <li className={`mx-2 ${customClass}`}>
+    <li
+      className={`mx-2 ${customClass}`}
+      onClick={() => {
+        setIsOpenSidebar(true);
+      }}
+    >
       <Link href={url || "/"} className=" relative">
         <div
           className={`${S.menuItem} rounded-md cursor-pointer

@@ -101,7 +101,7 @@ const Packages = () => {
   return (
     <>
       <Layout>
-        <div className=" mt-12">
+        <div className=" mt-12 mb-20">
           <div className="max-w-md mx-auto mb-14 text-center">
             <h1 className="text-4xl font-semibold mb-6 lg:text-5xl">
               <span className="text-indigo-600">Flexible</span> Plans
@@ -111,84 +111,63 @@ const Packages = () => {
             </p>
           </div>
 
-          <div className="flex gap-6 p-4 rounded-2xl bg-zinc-900/50 shadow-lg shadow-zinc-900/50 mb-6 w-1/2 mx-auto">
-            <div className="w-1/3">
-              <div
-                onClick={() => setEnabled("free")}
-                className={`py-2 flex items-center hover:bg-gray-600 bg-gray-500 duration-300 hover:scale-[1.02]  outline-gray-500  outline-dotted rounded-2xl
-														${
-                              enabled === "free"
-                                ? "outline-2 outline-offset-4"
-                                : "outline-0 outline-offset-4 "
-                            }							
-							`}
-              >
-                <div className="ml-5 ">
-                  <span className="block text-xl font-semibold text-gray-100">
-                    Free
-                  </span>
-                  <span>
-                    <span className="font-medium text-gray-300 text-base align-top">
-                      $&thinsp;
-                    </span>
-                    <span className="text-xl text-gray-300 font-bold">0 </span>
-                  </span>
-                  <span className="text-gray-300 font-medium">/ mo</span>
-                </div>
+          <div className="flex gap-2 sm:gap-6 sm:p-4 rounded-xl   py-2 px-2 bg-zinc-700/50 shadow-lg shadow-zinc-900/50 mb-6 sm:w-1/2 mx-auto overflow-auto ">
+            <div
+              onClick={() => {
+                setEnabled("free");
+              }}
+              className={`bg-zinc-500 px-2 py-1 rounded-md w-full border-2 
+            ${enabled === "free" ? "border-zinc-700" : "border-transparent"}
+          
+            `}
+            >
+              <div className="flex flex-col justify-center ">
+                <h3 className="font-bold text-zinc-700/80 text-base sm:text-xl">
+                  Free
+                </h3>
+                <p className="font-bold text-zinc-600 text-sm sm:text-base">
+                  $ 0 / Mo
+                </p>
               </div>
             </div>
-            <div className="w-1/3">
-              <div
-                onClick={() => setEnabled("standard")}
-                className={`py-2 flex items-center hover:bg-slate-600 bg-slate-500 duration-300 hover:scale-[1.02]  outline-slate-500  outline-dotted rounded-2xl
-														${
-                              enabled === "standard"
-                                ? "outline-2 outline-offset-4"
-                                : "outline-0 outline-offset-4 "
-                            }							
-							`}
-              >
-                <div className="ml-5 ">
-                  <span className="block text-xl font-semibold text-slate-100">
-                    Standard
-                  </span>
-                  <span>
-                    <span className="font-medium text-slate-300 text-base align-top">
-                      $&thinsp;
-                    </span>
-                    <span className="text-xl text-slate-300 font-bold">
-                      49{" "}
-                    </span>
-                  </span>
-                  <span className="text-slate-300 font-medium">/ mo</span>
-                </div>
+            <div
+              onClick={() => {
+                setEnabled("standard");
+              }}
+              className={`bg-slate-500 px-2 py-1 rounded-md w-full border-2 
+            ${
+              enabled === "standard" ? "border-slate-700" : "border-transparent"
+            }
+          
+            `}
+            >
+              <div className="flex flex-col justify-center ">
+                <h3 className="font-bold text-slate-700/80 text-base sm:text-xl">
+                  Standard
+                </h3>
+                <p className="font-bold text-slate-600 text-sm sm:text-base">
+                  $ 0 / Mo
+                </p>
               </div>
             </div>
-            <div className="w-1/3">
-              <div
-                onClick={() => setEnabled("premium")}
-                className={`py-2 flex items-center hover:bg-yellow-600 bg-yellow-500 duration-300 hover:scale-[1.02]  outline-yellow-500  outline-dotted rounded-2xl
-														${
-                              enabled === "premium"
-                                ? "outline-2 outline-offset-4"
-                                : "outline-0 outline-offset-4 "
-                            }							
-							`}
-              >
-                <div className="ml-5 ">
-                  <span className="block text-xl font-semibold text-yellow-100">
-                    Premium
-                  </span>
-                  <span>
-                    <span className="font-medium text-yellow-200 text-lg align-top">
-                      $&thinsp;
-                    </span>
-                    <span className="text-xl text-yellow-200 font-bold">
-                      99{" "}
-                    </span>
-                  </span>
-                  <span className="text-yellow-200 font-medium">/ mo</span>
-                </div>
+            <div
+              onClick={() => {
+                setEnabled("premium");
+              }}
+              className={`bg-yellow-500 px-2 py-1 rounded-md w-full border-2 
+            ${
+              enabled === "premium" ? "border-yellow-700" : "border-transparent"
+            }
+          
+            `}
+            >
+              <div className="flex flex-col justify-center border-2 border-transparent ">
+                <h3 className="font-bold text-yellow-700/80 text-base sm:text-xl">
+                  Premium
+                </h3>
+                <p className="font-bold text-yellow-600 text-sm sm:text-base">
+                  $ 0 / Mo
+                </p>
               </div>
             </div>
           </div>
@@ -196,20 +175,23 @@ const Packages = () => {
           <section className="dark:bg-zinc-800 dark:text-gray-100">
             <div className="container mx-auto px-3 sm:p-6 overflow-x-auto">
               <table className="w-full">
-                <thead>
+                <thead className=" text-base sm:text-lg">
                   <tr>
                     <th></th>
                     <th scope="col">
-                      <h2 className="px-2 text-lg font-medium">Availability</h2>
+                      <h2 className="px-2 font-medium">Availability</h2>
                     </th>
                     <th scope="col">
-                      <h2 className="px-2 text-lg font-medium">Limit</h2>
+                      <h2 className="px-2 font-medium">Limit</h2>
                     </th>
                   </tr>
                 </thead>
                 <tbody className="space-y-6 text-center divide-y divide-zinc-700/50 odd:bg-gray-400/50 border-2 border-zinc-700 ">
                   <tr className="odd:bg-gray-600/40">
-                    <th scope="row" className="text-left">
+                    <th
+                      scope="row"
+                      className="text-left text-sm sm:text-base font-medium"
+                    >
                       <h3 className="py-3 px-2">Create Alarm</h3>
                     </th>
                     <td>
@@ -223,7 +205,10 @@ const Packages = () => {
                     </td>
                   </tr>
                   <tr className="odd:bg-gray-600/40">
-                    <th scope="row" className="text-left">
+                    <th
+                      scope="row"
+                      className="text-left text-sm sm:text-base font-medium"
+                    >
                       <h3 className="py-3 px-2">Follow Collection</h3>
                     </th>
                     <td>
@@ -239,7 +224,10 @@ const Packages = () => {
                     </td>
                   </tr>
                   <tr className="odd:bg-gray-600/40">
-                    <th scope="row" className="text-left">
+                    <th
+                      scope="row"
+                      className="text-left text-sm sm:text-base font-medium"
+                    >
                       <h3 className="py-3 px-2">Graphics</h3>
                     </th>
                     <td>
@@ -255,7 +243,10 @@ const Packages = () => {
                     </td>
                   </tr>
                   <tr className="odd:bg-gray-600/40">
-                    <th scope="row" className="text-left">
+                    <th
+                      scope="row"
+                      className="text-left text-sm sm:text-base font-medium"
+                    >
                       <h3 className="py-3 px-2">Changes</h3>
                     </th>
                     <td>
@@ -271,7 +262,10 @@ const Packages = () => {
                     </td>
                   </tr>
                   <tr className="odd:bg-gray-600/40">
-                    <th scope="row" className="text-left">
+                    <th
+                      scope="row"
+                      className="text-left text-sm sm:text-base font-medium"
+                    >
                       <h3 className="py-3 px-2">Holders</h3>
                     </th>
                     <td>
@@ -287,7 +281,10 @@ const Packages = () => {
                     </td>
                   </tr>
                   <tr className="odd:bg-gray-600/40">
-                    <th scope="row" className="text-left">
+                    <th
+                      scope="row"
+                      className="text-left text-sm sm:text-base font-medium"
+                    >
                       <h3 className="py-3 px-2">Max Time Limit</h3>
                     </th>
                     <td>
@@ -303,7 +300,10 @@ const Packages = () => {
                     </td>
                   </tr>
                   <tr className="odd:bg-gray-600/40">
-                    <th scope="row" className="text-left">
+                    <th
+                      scope="row"
+                      className="text-left text-sm sm:text-base font-medium"
+                    >
                       <h3 className="py-3 px-2">Not Available</h3>
                     </th>
                     <td>

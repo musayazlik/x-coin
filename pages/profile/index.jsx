@@ -173,7 +173,7 @@ const Profile = () => {
         <h1 className="text-4xl font-semibold mb-6 lg:text-5xl text-rose-600">
           <span className="text-indigo-600">Profil</span>
         </h1>
-        <p className="text-xl text-gray-500 font-medium mb-2">
+        <p className=" text-base sm:text-xl text-gray-500 font-medium mb-2">
           Bu sayfadan profil bilgilerinizi güncelleyebilirsiniz.
         </p>
       </div>
@@ -224,14 +224,16 @@ const Profile = () => {
         </div>
         <div className="">
           <div className="flex flex-col justify-center items-center">
-            <h1 className="text-xl font-semibold mb-2 lg:text-2xl">
-              <span className="text-zinc-600">
+            <h1 className="text-lg tracking-tight font-normal mb-2 lg:text-2xl">
+              <span className="text-zinc-400">
                 {session?.user?.name} {session?.user?.surname}
               </span>
             </h1>
-            <p className="text-base text-yellow-800 bg-yellow-500 px-8 py-1 rounded-sm border-2 border-yellow-700/50 font-medium mb-2">
-              {session?.user?.walletAddress || "Cüzdan adresi yok."}
-            </p>
+            <div className="">
+              <p className="text-sm sm:text-base text-yellow-800 bg-yellow-500 px-2 sm:px-8 py-1 rounded-sm border-2 border-yellow-700/50 font-medium mb-2 break-all">
+                {session?.user?.walletAddress || "Cüzdan adresi yok."}
+              </p>
+            </div>
             <p className="text-base text-gray-500 font-medium mb-2">
               {session?.user?.email}
             </p>
