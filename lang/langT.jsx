@@ -1,12 +1,12 @@
-import tr from "./tr"
-import en from "./en"
+import tr from "./tr";
+import en from "./en";
 
 const lang = (lang) => {
   if (lang === "tr") {
-    return tr
+    return tr;
   } else if (lang === "en") {
-    return en
+    return en;
   }
-}
+};
 
-export { tr, en, lang }
+export { tr, en, lang };

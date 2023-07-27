@@ -1,15 +1,5 @@
-import Link from "next/link";
-import {
-  BiBasket,
-  BiGlobe,
-  BiBarChartAlt,
-  BiDrink,
-  BiBookmarks,
-  BiBuildings,
-} from "react-icons/bi";
 import { useRouter } from "next/router";
-import { HiOutlineHome } from "react-icons/hi";
-import { useAppContext } from "@/context";
+import { lang } from "@/lang/langT";
 
 import { MdCurrencyBitcoin } from "react-icons/md";
 import { BiDollarCircle } from "react-icons/bi";
@@ -24,12 +14,12 @@ import SubMenuItem from "./subMenuItem/index";
 import MenuItem from "./menuItem/index";
 
 const Sidebar = () => {
-  const { setIsOpenSidebar, isOpenSidebar } = useAppContext();
-  const { pathname } = useRouter();
+  const { locale } = useRouter();
+  const t = lang(locale);
   return (
     <SidebarLayout>
       <DropdownMenu
-        text={"Kripto"}
+        text={t.cryptoPage.crypto}
         dropMenuStatus={true}
         Icon={MdCurrencyBitcoin}
         subMenuList={[
@@ -41,12 +31,12 @@ const Sidebar = () => {
           "/break-and-incom",
         ]}
       >
-        <SubMenuItem text={"Total MC"} url={"/total-market-cap"} />
-        <SubMenuItem text={"Altcoin Mix"} url={"/altcoin-mix"} />
-        <SubMenuItem text={"Alt Endeksler"} url={"/sub-indices"} />
-        <SubMenuItem text={"On Chain"} url={"/on-chain"} />
+        <SubMenuItem text={t.cryptoPage.totalMc} url={"/total-market-cap"} />
+        <SubMenuItem text={t.cryptoPage.subCoinMix} url={"/altcoin-mix"} />
+        <SubMenuItem text={t.cryptoPage.subIndices} url={"/sub-indices"} />
+        <SubMenuItem text={t.cryptoPage.onChain} url={"/on-chain"} />
         <SubMenuItem
-          text={"Kırılım ve Uyumsuzluklar"}
+          text={t.cryptoPage.breakAndIncom}
           url={"/break-and-incom"}
         />
       </DropdownMenu>
@@ -74,30 +64,45 @@ const Sidebar = () => {
         <SubMenuItem text={"Dxy"} url={"/forex/dxy"} />
         <SubMenuItem text={"Eur/Usd"} url={"/forex/eur-usd"} />
         <SubMenuItem text={"Usd/Jpy"} url={"/forex/usd-jpy"} />
-        <SubMenuItem text={"Altın"} url={"/forex/gold"} />
-        <SubMenuItem text={"Gümüş"} url={"/forex/silver"} />
-        <SubMenuItem text={"Petrol"} url={"/forex/oil"} />
+        <SubMenuItem text={t.forexPage.gold} url={"/forex/gold"} />
+        <SubMenuItem text={t.forexPage.silver} url={"/forex/silver"} />
+        <SubMenuItem text={t.forexPage.oil} url={"/forex/oil"} />
         <SubMenuItem text={"Natqas"} url={"/forex/natqas"} />
         <SubMenuItem
-          text={"Kırılım ve Uyumsuzluklar"}
+          text={t.forexPage.breakAndIncom}
           url={"/forex/forex-break-and-incom"}
         />
       </DropdownMenu>
       <DropdownMenu
-        text={"Tüm Piyasalar"}
+        text={t.allMarketsPage.allMarkets}
         dropMenuStatus={true}
         Icon={RiGlobalLine}
       >
-        <SubMenuItem text={"Borsalar"} url={"/borsalar"} />
-        <SubMenuItem text={"Pariteler"} url={"/pariteler"} />
-        <SubMenuItem text={"Enerji Piyasası"} url={"enerji-piyasasi"} />
-        <SubMenuItem text={"Metal Piyasası"} url={"/metal-piyasasi"} />
-        <SubMenuItem text={"Emtialar"} url={"/emtialar"} />
+        <SubMenuItem
+          text={t.allMarketsPage.stockMarkets}
+          url={"all-markets/stock-markets"}
+        />
+        <SubMenuItem
+          text={t.allMarketsPage.parities}
+          url={"all-markets/pariteler"}
+        />
+        <SubMenuItem
+          text={t.allMarketsPage.energyMarket}
+          url={"all-markets/energy-market"}
+        />
+        <SubMenuItem
+          text={t.allMarketsPage.metalMarket}
+          url={"all-markets/metal-market"}
+        />
+        <SubMenuItem
+          text={t.allMarketsPage.commodities}
+          url={"all-markets/emtialar"}
+        />
       </DropdownMenu>
       <MenuItem
         url={"/question-answer"}
         Icon={BsQuestionLg}
-        text={"Soru Cevap"}
+        text={t.questionAnswerPage.questionAnswer}
       />
     </SidebarLayout>
   );

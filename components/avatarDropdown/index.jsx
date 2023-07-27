@@ -6,8 +6,12 @@ import { BsCurrencyDollar } from "react-icons/bs";
 import { FiSettings, FiUser } from "react-icons/fi";
 import { BiExit, BiHelpCircle } from "react-icons/bi";
 import Membership from "../icons/membership";
+import { useRouter } from "next/router";
+import { lang } from "@/lang/langT";
 
 const AvatarDropdown = () => {
+  const { locale } = useRouter();
+  const t = lang(locale);
   const [isOpen, setIsOpen] = React.useState(false);
   const { data: session } = useSession();
   return (
@@ -59,7 +63,7 @@ const AvatarDropdown = () => {
             >
               <div className="authInformation text-zinc-500 px-4 py-2 text-sm">
                 <p className="whitespace-nowrap text-ellipsis overflow-hidden">
-                  Hello,{" "}
+                  {t.profileDropdown.hello},{" "}
                   <span className="font-extrabold whitespace-nowrap">
                     {session?.user?.name} !
                   </span>
@@ -77,7 +81,7 @@ const AvatarDropdown = () => {
                   className="block px-4 py-2 text-sm text-zinc-200 duration-300 hover:bg-indigo-600 hover:text-white"
                 >
                   <FiSettings className="inline-block mr-2" />
-                  Dashboard
+                  {t.profileDropdown.dashboard}
                 </Link>
               )}
 
@@ -90,7 +94,7 @@ const AvatarDropdown = () => {
                     className="inline-block mr-1"
                     fontSize={16}
                   />
-                  Pricing
+                  {t.profileDropdown.pricing}
                 </Link>
               </div>
               <Link
@@ -98,14 +102,14 @@ const AvatarDropdown = () => {
                 className="block px-4 py-2 text-sm text-zinc-200 duration-300 hover:bg-indigo-600 hover:text-white"
               >
                 <FiUser className="inline-block mr-2" />
-                Profile
+                {t.profileDropdown.profile}
               </Link>
               <Link
-                href="/account/support"
+                href="/support"
                 className="block px-4 py-2 text-sm text-zinc-200 duration-300 hover:bg-indigo-600 hover:text-white"
               >
                 <BiHelpCircle className="inline-block mr-2" fontSize={16} />
-                Support
+                {t.profileDropdown.support}
               </Link>
 
               <button
@@ -115,7 +119,7 @@ const AvatarDropdown = () => {
                 }}
               >
                 <BiExit className="inline-block mr-2" fontSize={16} />
-                Sign out
+                {t.profileDropdown.signout}
               </button>
             </div>
           </>
