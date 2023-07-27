@@ -5,52 +5,50 @@ import Image from "next/image";
 import axios from "axios";
 import { FiTrendingDown, FiTrendingUp } from "react-icons/fi";
 import { useAppContext } from "@/context";
-
 import StarButton from "@/components/starButton";
-
 const TotalMarketCap = () => {
   const [data, setData] = useState(null);
-
   const { isServiceLoading, setIsServiceLoading } = useAppContext();
 
   useEffect(() => {
-    setTimeout(() => {
-      axios({
-        method: "get",
-        url: "/api/kripto",
-      })
-        .then((response) => {
-          const key = Object.keys(response.data.data.totalMarketCap);
-          const value = Object.values(response.data.data.totalMarketCap);
+    setIsServiceLoading(true);
+    axios({
+      method: "get",
+      url: "/api/kripto",
+    })
+      .then((response) => {
+        setIsServiceLoading(false);
+        const key = Object.keys(response.data.data.totalMarketCap);
+        const value = Object.values(response.data.data.totalMarketCap);
 
-          const dataArray = [];
+        const dataArray = [];
 
-          if (data === null) {
-            for (let i = 0; i < key.length; i++) {
-              dataArray.push({
-                key: key[i],
-                value1: value[i],
-                value2: value[i],
-              });
-            }
+        if (data === null) {
+          for (let i = 0; i < key.length; i++) {
+            dataArray.push({
+              key: key[i],
+              value1: value[i],
+              value2: value[i],
+            });
+          }
+
+          setData(dataArray);
+        } else {
+          for (let i = 0; i < key.length; i++) {
+            dataArray.push({
+              key: key[i],
+              value1: data[i].value1,
+              value2: value[i],
+            });
 
             setData(dataArray);
-          } else {
-            for (let i = 0; i < key.length; i++) {
-              dataArray.push({
-                key: key[i],
-                value1: data[i].value1,
-                value2: value[i],
-              });
-
-              setData(dataArray);
-            }
           }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }, 1000);
+        }
+      })
+      .catch((error) => {
+        setIsServiceLoading(false);
+        console.log(error);
+      });
   }, []);
 
   function convertToMillion(number) {
@@ -119,6 +117,14 @@ const TotalMarketCap = () => {
                       </tr>
                     );
                   })}
+
+                {isServiceLoading && (
+                  <tr className="odd:bg-zinc-900/40 rounded-lg py-2">
+                    <td colSpan="3" className="text-left ">
+                      <h3 className="py-3 px-4 text-center">Loading...</h3>
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>

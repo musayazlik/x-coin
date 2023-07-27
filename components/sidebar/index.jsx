@@ -26,6 +26,8 @@ import MenuItem from "./menuItem/index";
 const Sidebar = () => {
   const { setIsOpenSidebar, isOpenSidebar } = useAppContext();
   const { pathname } = useRouter();
+
+  console.log(pathname);
   return (
     <SidebarLayout>
       <DropdownMenu
@@ -47,7 +49,7 @@ const Sidebar = () => {
         <SubMenuItem text={"On Chain"} url={"/on-chain"} />
         <SubMenuItem
           text={"Kırılım ve Uyumsuzluklar"}
-          url={"break-and-incom"}
+          url={"/break-and-incom"}
         />
       </DropdownMenu>
       <DropdownMenu text={"Forex"} dropMenuStatus={true} Icon={BiDollarCircle}>

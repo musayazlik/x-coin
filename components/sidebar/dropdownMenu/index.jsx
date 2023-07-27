@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 /** Style */
 import S from "../style.module.css";
 import { FiChevronRight } from "react-icons/fi";
-import { BsDot } from "react-icons/bs";
 
 const DropdownMenu = ({
   text,
