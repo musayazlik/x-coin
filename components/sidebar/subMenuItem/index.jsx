@@ -8,9 +8,6 @@ import S from "../style.module.css";
 
 const SubMenuItem = ({ text, url, Icon }) => {
   const { pathname } = useRouter();
-
-  console.log(pathname, url);
-
   return (
     <Link href={url || "/"}>
       <li

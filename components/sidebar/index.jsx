@@ -26,8 +26,6 @@ import MenuItem from "./menuItem/index";
 const Sidebar = () => {
   const { setIsOpenSidebar, isOpenSidebar } = useAppContext();
   const { pathname } = useRouter();
-
-  console.log(pathname);
   return (
     <SidebarLayout>
       <DropdownMenu
@@ -52,20 +50,37 @@ const Sidebar = () => {
           url={"/break-and-incom"}
         />
       </DropdownMenu>
-      <DropdownMenu text={"Forex"} dropMenuStatus={true} Icon={BiDollarCircle}>
-        <SubMenuItem text={"Sp500"} url={"/sp500"} />
-        <SubMenuItem text={"Nandaq"} url={"/nandaq"} />
-        <SubMenuItem text={"Dax"} url={"/dax"} />
-        <SubMenuItem text={"Dxy"} url={"/dxy"} />
-        <SubMenuItem text={"Eur/Usd"} url={"eur-usd"} />
-        <SubMenuItem text={"Usd/Jpy"} url={"usd-jpy"} />
-        <SubMenuItem text={"Altın"} url={"gold"} />
-        <SubMenuItem text={"Gümüş"} url={"silver"} />
-        <SubMenuItem text={"Petrol"} url={"oil"} />
-        <SubMenuItem text={"Natqas"} url={"natqas"} />
+      <DropdownMenu
+        text={"Forex"}
+        dropMenuStatus={true}
+        Icon={BiDollarCircle}
+        subMenuList={[
+          "/forex/sp500",
+          "/forex/nandaq",
+          "/forex/dax",
+          "/forex/dxy",
+          "/forex/eur-usd",
+          "/forex/usd-jpy",
+          "/forex/gold",
+          "/forex/silver",
+          "/forex/oil",
+          "/forex/natqas",
+          "/forex/forex-break-and-incom",
+        ]}
+      >
+        <SubMenuItem text={"Sp500"} url={"/forex/sp500"} />
+        <SubMenuItem text={"Nandaq"} url={"/forex/nandaq"} />
+        <SubMenuItem text={"Dax"} url={"/forex/dax"} />
+        <SubMenuItem text={"Dxy"} url={"/forex/dxy"} />
+        <SubMenuItem text={"Eur/Usd"} url={"/forex/eur-usd"} />
+        <SubMenuItem text={"Usd/Jpy"} url={"/forex/usd-jpy"} />
+        <SubMenuItem text={"Altın"} url={"/forex/gold"} />
+        <SubMenuItem text={"Gümüş"} url={"/forex/silver"} />
+        <SubMenuItem text={"Petrol"} url={"/forex/oil"} />
+        <SubMenuItem text={"Natqas"} url={"/forex/natqas"} />
         <SubMenuItem
           text={"Kırılım ve Uyumsuzluklar"}
-          url={"forex-break-and-incom"}
+          url={"/forex/forex-break-and-incom"}
         />
       </DropdownMenu>
       <DropdownMenu
