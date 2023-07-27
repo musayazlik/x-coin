@@ -77,14 +77,21 @@ const Sidebar = () => {
         text={t.allMarketsPage.allMarkets}
         dropMenuStatus={true}
         Icon={RiGlobalLine}
+        subMenuList={[
+          "/all-markets/stock-markets",
+          "/all-markets/pariteler",
+          "/all-markets/energy-market",
+          "/all-markets/metal-market",
+          "/all-markets/commodities",
+        ]}
       >
         <SubMenuItem
           text={t.allMarketsPage.stockMarkets}
-          url={"all-markets/stock-markets"}
+          url={"/all-markets/stock-markets"}
         />
         <SubMenuItem
           text={t.allMarketsPage.parities}
-          url={"all-markets/pariteler"}
+          url={"/all-markets/pariteler"}
         />
         <SubMenuItem
           text={t.allMarketsPage.energyMarket}
@@ -92,11 +99,11 @@ const Sidebar = () => {
         />
         <SubMenuItem
           text={t.allMarketsPage.metalMarket}
-          url={"all-markets/metal-market"}
+          url={"/all-markets/metal-market"}
         />
         <SubMenuItem
           text={t.allMarketsPage.commodities}
-          url={"all-markets/emtialar"}
+          url={"/all-markets/commodities"}
         />
       </DropdownMenu>
       <MenuItem
