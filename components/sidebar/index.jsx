@@ -91,11 +91,11 @@ const Sidebar = () => {
         />
         <SubMenuItem
           text={t.allMarketsPage.parities}
-          url={"/all-markets/pariteler"}
+          url={"/all-markets/parities"}
         />
         <SubMenuItem
           text={t.allMarketsPage.energyMarket}
-          url={"all-markets/energy-market"}
+          url={"/all-markets/energy-market"}
         />
         <SubMenuItem
           text={t.allMarketsPage.metalMarket}
