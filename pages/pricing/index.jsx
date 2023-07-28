@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react";
 import Web3 from "web3";
 import axios from "axios";
 import Swal from "sweetalert2";
+import {toast} from "react-toastify";
 
 const Packages = () => {
   const { data: session } = useSession();
@@ -66,27 +67,34 @@ const Packages = () => {
             },
           })
             .then((res) => {
-              Swal.fire({
-                icon: "success",
-                title: "Ödeme başarılı",
-                text: "Üyeliğinizin tadını çıkarın! :)",
-              });
+              toast("Ödeme başarılı. Üyeliğinizin tadını çıkarın. :)", {
+                type: "success",
+                theme: "colored",
+                position: "top-right",
+                autoClose: 2000,
+
+              })
             })
             .catch((err) => {
               console.log(err);
-              Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: err.message,
-              });
+                toast("Ödeme başarısız oldu. Lütfen tekrar deneyin.", {
+                  type: "error",
+                  theme: "colored",
+                  position: "top-right",
+                  autoClose: 2000,
+                })
+                
             });
         } catch (err) {
-          // Hata durumunda bildirim gösterilir
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Ödeme işlemi başarısız oldu. Lütfen tekrar deneyin.",
-          });
+
+          toast("Ödeme başarısız oldu. Lütfen tekrar deneyin.", {
+            type: "error",
+            theme: "colored",
+            position: "top-right",
+            autoClose: 2000,
+
+          })
+
         }
       } else {
         Swal.fire({
@@ -111,13 +119,13 @@ const Packages = () => {
             </p>
           </div>
 
-          <div className="flex gap-2 sm:gap-6 sm:p-4 rounded-xl   py-2 px-2 bg-zinc-700/50 shadow-lg shadow-zinc-900/50 mb-6 sm:w-1/2 mx-auto overflow-auto ">
+          <div className="flex gap-2 sm:gap-6 sm:p-4 rounded-xl  py-2 px-2 bg-zinc-700/50 shadow-lg shadow-zinc-900/50 mb-6 sm:w-1/2 mx-auto overflow-auto ">
             <div
               onClick={() => {
                 setEnabled("free");
               }}
-              className={`bg-zinc-500 px-2 py-1 rounded-md w-full border-2 
-            ${enabled === "free" ? "border-zinc-700" : "border-transparent"}
+              className={`bg-zinc-500 px-2 py-1 rounded-md w-full border-4 
+            ${enabled === "free" ? "border-zinc-400" : "border-transparent"}
           
             `}
             >
@@ -134,9 +142,9 @@ const Packages = () => {
               onClick={() => {
                 setEnabled("standard");
               }}
-              className={`bg-slate-500 px-2 py-1 rounded-md w-full border-2 
+              className={`bg-slate-500 px-2 py-1 rounded-md w-full border-4 
             ${
-              enabled === "standard" ? "border-slate-700" : "border-transparent"
+              enabled === "standard" ? "border-slate-400" : "border-transparent"
             }
           
             `}
@@ -146,7 +154,7 @@ const Packages = () => {
                   Standard
                 </h3>
                 <p className="font-bold text-slate-600 text-sm sm:text-base">
-                  $ 0 / Mo
+                  $ 49 / Mo
                 </p>
               </div>
             </div>
@@ -154,9 +162,9 @@ const Packages = () => {
               onClick={() => {
                 setEnabled("premium");
               }}
-              className={`bg-yellow-500 px-2 py-1 rounded-md w-full border-2 
+              className={`bg-yellow-500 px-2 py-1 rounded-md w-full border-4 
             ${
-              enabled === "premium" ? "border-yellow-700" : "border-transparent"
+              enabled === "premium" ? "border-yellow-400" : "border-transparent"
             }
           
             `}
@@ -166,7 +174,7 @@ const Packages = () => {
                   Premium
                 </h3>
                 <p className="font-bold text-yellow-600 text-sm sm:text-base">
-                  $ 0 / Mo
+                  $ 99 / Mo
                 </p>
               </div>
             </div>

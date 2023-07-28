@@ -170,9 +170,9 @@ const QuestionAnswer = ({ questionData }) => {
           <div className="flex gap-4 relative z-10 flex-grow ">
             <div className="flex-shrink-0">
               <img
-                src={question?.user?.image || "/"}
+                src={question?.user?.image || "/robot.gif"}
                 alt="avatar"
-                className="w-12 h-12 rounded-full"
+                className="w-12 h-12 rounded-full border-2 border-zinc-500"
               />
             </div>
             <div className="flex flex-col justify-between items-start flex-1 gap-6 ">
@@ -186,10 +186,10 @@ const QuestionAnswer = ({ questionData }) => {
                   </button>
                 )}
 
-                <h2 className="font-semibold text-lg text-start mb-2">
+                <h2 className="font-medium text-md text-start mb-2">
                   {question?.user?.name} {question?.user?.surname}
                 </h2>
-                <p className="text-start font-light leading-6">
+                <p className="text-start font-light text-base leading-6">
                   {question?.question}
                 </p>
               </div>
@@ -288,9 +288,9 @@ const QuestionAnswer = ({ questionData }) => {
             <div className="flex gap-4 relative z-10 flex-grow ">
               <div className="flex-shrink-0">
                 <img
-                  src={item.user.image || "/"}
+                  src={item.user.image || "/robot.gif"}
                   alt="avatar"
-                  className="w-8 h-8 rounded-full"
+                  className="w-8 h-8 rounded-full border-2 border-zinc-400/50"
                 />
               </div>
               <div className="flex flex-col justify-between items-start flex-1 gap-6 ">
@@ -303,7 +303,7 @@ const QuestionAnswer = ({ questionData }) => {
                   </p>
 
                   <div className=" flex justify-start mt-3">
-                    {item.user._id === session?.user?._id && (
+                    {(item.user._id === session?.user?._id || session?.user?.role === "admin") && (
                       <button
                         onClick={() => deletedAnswer(question._id, item._id)}
                         className="  bg-red-600 hover:bg-red-600/70 duration-300 rounded-md gap-1 px-2 py-1  flex justify-center items-center text-sm font-normal"

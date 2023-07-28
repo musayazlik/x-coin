@@ -11,11 +11,10 @@ const TotalMarketCap = () => {
   const { isServiceLoading, setIsServiceLoading } = useAppContext();
 
   const fetchData = () => {
-    setTimeout(() => {
-      axios({
-        method: "get",
-        url: "/api/kripto?value=totalmc",
-      })
+    axios({
+      method: "get",
+      url: "/api/kripto?value=totalmc",
+    })
         .then((response) => {
           setIsServiceLoading(false);
           const key = Object.keys(response.data.data.totalMarketCap);
@@ -49,14 +48,15 @@ const TotalMarketCap = () => {
           setIsServiceLoading(false);
           console.log(error);
         });
-    }, 10000);
   };
 
   useEffect(() => {
     setIsServiceLoading(true);
+    setTimeout(() => {
+      fetchData();
+    }
+    , 5000);
   }, []);
-
-  fetchData();
   function convertToMillion(number) {
     const million = 1000000;
     const millionValue = number / million;
@@ -135,7 +135,9 @@ const TotalMarketCap = () => {
                 {isServiceLoading && (
                   <tr className="odd:bg-zinc-900/40 rounded-lg py-2">
                     <td colSpan="3" className="text-left ">
-                      <h3 className="py-3 px-4 text-center">Loading...</h3>
+                      <h3 className="py-3 px-4 text-center">
+                        Lütfen bekleyiniz..
+                      </h3>
                     </td>
                   </tr>
                 )}

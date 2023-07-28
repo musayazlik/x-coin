@@ -52,8 +52,12 @@ export const authOptions = {
               email: credentials.isData,
             });
 
+            if (!user) {
+                return Promise.reject(new Error("Your username or password is incorrect."));
+            }
+
             if (user.isActive === false || user.isDeleted === true) {
-              return Promise.resolve(null);
+              return Promise.reject(new Error("Your account is not active or has been deleted."));
             }
             const isPassword = await bcryptjs.compare(
               credentials.password,
@@ -68,8 +72,12 @@ export const authOptions = {
               username: credentials.isData,
             });
 
+            if (!user) {
+                return Promise.reject(new Error("Your username or password is incorrect."));
+            }
+
             if (user.isActive === false || user.isDeleted === true) {
-              return Promise.resolve(null);
+              return Promise.reject(new Error("Your username or password is incorrect."));
             }
             const isPassword = await bcryptjs.compare(
               credentials.password,
@@ -80,7 +88,7 @@ export const authOptions = {
             }
           }
 
-          return Promise.resolve(null);
+          return Promise.reject(new Error("Your username or password is incorrect."));
         }
       },
     }),

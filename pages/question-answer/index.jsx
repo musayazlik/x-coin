@@ -171,7 +171,7 @@ const QuestionAnswer = () => {
                 <div className="flex gap-4 relative z-10 flex-grow ">
                   <div className="flex-shrink-0">
                     <img
-                      src={question?.user?.image}
+                      src={question?.user?.image || "/robot.gif"}
                       alt="avatar"
                       className="w-12 h-12 rounded-full"
                     />
