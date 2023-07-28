@@ -59,7 +59,7 @@ const DropdownMenu = ({
           }  ${S.menuSubItemText} 
           ${
             isOpen
-              ? "h-0 invisible opacity-0"
+              ? "h-0 invisible opacity-0 overflow-hidden"
               : " mt-2 h-fit visible py-2  opacity-100 "
           }
 
