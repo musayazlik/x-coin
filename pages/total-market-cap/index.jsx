@@ -10,47 +10,53 @@ const TotalMarketCap = () => {
   const [data, setData] = useState(null);
   const { isServiceLoading, setIsServiceLoading } = useAppContext();
 
-  useEffect(() => {
-    setIsServiceLoading(true);
-    axios({
-      method: "get",
-      url: "/api/kripto",
-    })
-      .then((response) => {
-        setIsServiceLoading(false);
-        const key = Object.keys(response.data.data.totalMarketCap);
-        const value = Object.values(response.data.data.totalMarketCap);
+  const fetchData = () => {
+    setTimeout(() => {
+      axios({
+        method: "get",
+        url: "/api/kripto?value=totalmc",
+      })
+        .then((response) => {
+          setIsServiceLoading(false);
+          const key = Object.keys(response.data.data.totalMarketCap);
+          const value = Object.values(response.data.data.totalMarketCap);
 
-        const dataArray = [];
+          const dataArray = [];
 
-        if (data === null) {
-          for (let i = 0; i < key.length; i++) {
-            dataArray.push({
-              key: key[i],
-              value1: value[i],
-              value2: value[i],
-            });
-          }
-
-          setData(dataArray);
-        } else {
-          for (let i = 0; i < key.length; i++) {
-            dataArray.push({
-              key: key[i],
-              value1: data[i].value1,
-              value2: value[i],
-            });
+          if (data === null) {
+            for (let i = 0; i < key.length; i++) {
+              dataArray.push({
+                key: key[i],
+                value1: value[i],
+                value2: value[i],
+              });
+            }
 
             setData(dataArray);
+          } else {
+            for (let i = 0; i < key.length; i++) {
+              dataArray.push({
+                key: key[i],
+                value1: data[i].value1,
+                value2: value[i],
+              });
+
+              setData(dataArray);
+            }
           }
-        }
-      })
-      .catch((error) => {
-        setIsServiceLoading(false);
-        console.log(error);
-      });
+        })
+        .catch((error) => {
+          setIsServiceLoading(false);
+          console.log(error);
+        });
+    }, 10000);
+  };
+
+  useEffect(() => {
+    setIsServiceLoading(true);
   }, []);
 
+  fetchData();
   function convertToMillion(number) {
     const million = 1000000;
     const millionValue = number / million;
@@ -101,16 +107,24 @@ const TotalMarketCap = () => {
                           <h3 className="py-3 px-4">{item.key}</h3>
                         </td>
                         <td>
-                          {item.value1 < item.value2 ? (
+                          {item.value1 < item.value2 && (
                             <span className="block text-sm text-red-600">
                               <div className="flex justify-center gap-2 items-center">
                                 <FiTrendingDown />{" "}
                                 {convertToMillion(item.value2)}
                               </div>
                             </span>
-                          ) : (
+                          )}
+
+                          {item.value1 > item.value2 && (
                             <span className=" text-sm text-green-600 flex justify-center gap-2 items-center">
                               <FiTrendingUp /> {convertToMillion(item.value2)}
+                            </span>
+                          )}
+
+                          {item.value1 === item.value2 && (
+                            <span className=" text-sm text-gray-600 flex justify-center gap-2 items-center">
+                              {convertToMillion(item.value2)}
                             </span>
                           )}
                         </td>

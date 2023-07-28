@@ -150,6 +150,14 @@ const OnChainPage = ({ data }) => {
                 </div>
               </div>
             ))}
+
+          {data.length === 0 && (
+            <div>
+              <p className="text-center text-zinc-500 text-xl bg-zinc-700 py-6 font-bold rounded-md">
+                Henüz içerik yüklenmedi. Takipte kalın :)
+              </p>
+            </div>
+          )}
         </div>
       </Layout>
     </>

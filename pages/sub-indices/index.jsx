@@ -38,19 +38,19 @@ const SubIndices = ({ altIndexes }) => {
                       key={index}
                     >
                       <th scope="row" className="text-left">
-                        <h3 className="py-3 px-2 whitespace-nowrap">
+                        <h3 className="py-3 px-2 whitespace-nowrap text-sm font-medium">
                           {item.name}
                         </h3>
                       </th>
                       <th scope="row" className="text-left">
-                        <p className="py-3 px-2 font-normal text-center">
+                        <p className="py-3 px-2  text-center text-sm font-light ">
                           {item.market}
                         </p>
                       </th>
 
                       <th scope="row" className="text-left">
-                        <p className="py-3 px-2 font-normal text-center">
-                          {item.last}
+                        <p className="py-3 px-2  text-center text-sm font-light">
+                          {item.last} $
                         </p>
                       </th>
                     </tr>

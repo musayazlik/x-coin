@@ -8,11 +8,12 @@ async function fetchDataAndStoreInDatabase() {
   await dbConnect();
   try {
     const response = await axios.get("https://api.coingecko.com/api/v3/global");
-
+    const subcoinmix = await axios.get(
+      "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc"
+    );
     const totalMarketCap = response.data.data.total_market_cap;
-
-    const totalMarketCapData = await ApiData.countDocuments({});
-    if (totalMarketCapData > 0) {
+    const apiData = await ApiData.countDocuments({});
+    if (apiData > 0) {
       await ApiData.findOneAndUpdate(
         {},
         {
@@ -24,6 +25,16 @@ async function fetchDataAndStoreInDatabase() {
       await ApiData.create({
         totalMarketCap: totalMarketCap,
       });
+    }
+
+    if (apiData > 0) {
+      await ApiData.findOneAndUpdate(
+        {},
+        {
+          subcoinmix: subcoinmix.data,
+        },
+        { new: true }
+      );
     }
   } catch (error) {
     console.error("Verileri MongoDB'ye kaydetme hatası:", error);

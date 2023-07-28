@@ -8,9 +8,21 @@ export default async function handler(req, res) {
   switch (method) {
     case "GET":
       try {
-        const apiData = await ApiData.findOne({}).select("-__v");
+        const limit = 20;
+        const page = req.query.page;
+        if (req.query.value === "totalmc") {
+          const apiData = await ApiData.findOne({}).select("totalMarketCap");
 
-        res.status(200).json({ success: true, data: apiData });
+          res.status(200).json({ success: true, data: apiData });
+        }
+
+        if (req.query.value === "subcoinmix") {
+          const apiData = await ApiData.findOne({}).select("subcoinmix");
+
+          console.log(apiData);
+          res.status(200).json({ success: true, data: apiData });
+        }
+        res.status(200).json({ success: false, message: "Bad Request" });
       } catch (error) {
         res.status(400).json({ success: false, message: error.message });
       }

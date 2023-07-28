@@ -94,7 +94,7 @@ const LangDropdown = () => {
 
       {isOpen && (
         <div
-          className="absolute top-0 right-0 w-screen h-screen bg-transparent z-10 rounded-md shadow-lg py-1"
+          className="fixed top-0 right-0 w-screen h-screen bg-transparent z-10 rounded-md shadow-lg py-1"
           onClick={() => {
             setIsOpen(false);
           }}
