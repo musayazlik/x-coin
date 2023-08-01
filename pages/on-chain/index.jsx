@@ -60,7 +60,7 @@ const OnChainPage = ({ data }) => {
                       <div className="flex justify-between items-center mt-4">
                         <div className="flex gap-2">
                           <Image
-                            src={data[0].user.image}
+                            src={data[0].user.image || "/robot.gif"}
                             alt="avatar"
                             width={32}
                             height={32}
@@ -122,7 +122,7 @@ const OnChainPage = ({ data }) => {
                     <div className="flex justify-between items-center mt-4 ">
                       <div className="flex gap-2">
                         <img
-                          src={item.user.image}
+                          src={item.user.image || "/robot.gif"}
                           alt="avatar"
                           className="w-8 h-8 max-h-8 flex-shrink rounded-full object-cover border-2 border-zinc-400"
                         />

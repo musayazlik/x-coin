@@ -9,6 +9,19 @@ export default async function handler(req, res) {
   switch (req.method) {
     case "GET":
       try {
+        if (req.query.slug) {
+          const onChain = await OnChain.findOne({
+            slug: req.query.slug,
+          }).populate("user", "name surname role image");
+
+          if (!onChain) {
+            sendErrorResponse(res, 404, "Not found");
+            return;
+          }
+
+          sendSuccessResponse(res, onChain);
+          return;
+        }
         const onChain = await OnChain.find({})
           .populate("user", "name surname role image")
           .where("status")

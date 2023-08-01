@@ -10,6 +10,19 @@ export default async function handler(req, res) {
   switch (req.method) {
     case "GET":
       try {
+        if (req.query.slug) {
+          const breakAndIncom = await BreakAndIncom.findOne({
+            slug: req.query.slug,
+          }).populate("user", "name surname role image");
+
+          if (!breakAndIncom) {
+            sendErrorResponse(res, 404, "Not found");
+            return;
+          }
+
+          sendSuccessResponse(res, breakAndIncom);
+          return;
+        }
         const breakAndIncom = await BreakAndIncom.find({})
           .populate("user", "name surname role image")
           .where("status")

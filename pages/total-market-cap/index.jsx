@@ -6,6 +6,7 @@ import axios from "axios";
 import { FiTrendingDown, FiTrendingUp } from "react-icons/fi";
 import { useAppContext } from "@/context";
 import StarButton from "@/components/starButton";
+import { toast } from "react-toastify";
 const TotalMarketCap = () => {
   const [data, setData] = useState(null);
   const { isServiceLoading, setIsServiceLoading } = useAppContext();
@@ -15,47 +16,50 @@ const TotalMarketCap = () => {
       method: "get",
       url: "/api/kripto?value=totalmc",
     })
-        .then((response) => {
-          setIsServiceLoading(false);
-          const key = Object.keys(response.data.data.totalMarketCap);
-          const value = Object.values(response.data.data.totalMarketCap);
+      .then((response) => {
+        setIsServiceLoading(false);
+        const key = Object.keys(response.data.data.totalMarketCap);
+        const value = Object.values(response.data.data.totalMarketCap);
 
-          const dataArray = [];
+        const dataArray = [];
 
-          if (data === null) {
-            for (let i = 0; i < key.length; i++) {
-              dataArray.push({
-                key: key[i],
-                value1: value[i],
-                value2: value[i],
-              });
-            }
+        if (data === null) {
+          for (let i = 0; i < key.length; i++) {
+            dataArray.push({
+              key: key[i],
+              value1: value[i],
+              value2: value[i],
+            });
+          }
+
+          setData(dataArray);
+        } else {
+          for (let i = 0; i < key.length; i++) {
+            dataArray.push({
+              key: key[i],
+              value1: data[i].value1,
+              value2: value[i],
+            });
 
             setData(dataArray);
-          } else {
-            for (let i = 0; i < key.length; i++) {
-              dataArray.push({
-                key: key[i],
-                value1: data[i].value1,
-                value2: value[i],
-              });
-
-              setData(dataArray);
-            }
           }
-        })
-        .catch((error) => {
-          setIsServiceLoading(false);
-          console.log(error);
+        }
+      })
+      .catch((error) => {
+        setIsServiceLoading(false);
+        toast.error(error.message, {
+          position: "top-center",
+          autoClose: 3000,
+          theme: "colored",
         });
+      });
   };
 
   useEffect(() => {
     setIsServiceLoading(true);
     setTimeout(() => {
       fetchData();
-    }
-    , 5000);
+    }, 5000);
   }, []);
   function convertToMillion(number) {
     const million = 1000000;

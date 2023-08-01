@@ -4,8 +4,6 @@ import { useSession, getSession } from "next-auth/react";
 import axios from "axios";
 
 const AltCoinMix = ({ altcoins }) => {
-  console.log(altcoins);
-
   return (
     <Layout>
       <div className="max-w-xl mx-auto mb-14  mt-8 text-center relative z-0">

@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 import Web3 from "web3";
 import axios from "axios";
 import Swal from "sweetalert2";
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 
 const Packages = () => {
   const { data: session } = useSession();
@@ -72,29 +72,23 @@ const Packages = () => {
                 theme: "colored",
                 position: "top-right",
                 autoClose: 2000,
-
-              })
+              });
             })
             .catch((err) => {
-              console.log(err);
-                toast("Ödeme başarısız oldu. Lütfen tekrar deneyin.", {
-                  type: "error",
-                  theme: "colored",
-                  position: "top-right",
-                  autoClose: 2000,
-                })
-                
+              toast("Ödeme başarısız oldu. Lütfen tekrar deneyin.", {
+                type: "error",
+                theme: "colored",
+                position: "top-right",
+                autoClose: 2000,
+              });
             });
         } catch (err) {
-
           toast("Ödeme başarısız oldu. Lütfen tekrar deneyin.", {
             type: "error",
             theme: "colored",
             position: "top-right",
             autoClose: 2000,
-
-          })
-
+          });
         }
       } else {
         Swal.fire({

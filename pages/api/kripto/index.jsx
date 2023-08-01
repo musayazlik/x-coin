@@ -19,7 +19,6 @@ export default async function handler(req, res) {
         if (req.query.value === "subcoinmix") {
           const apiData = await ApiData.findOne({}).select("subcoinmix");
 
-          console.log(apiData);
           res.status(200).json({ success: true, data: apiData });
         }
         res.status(200).json({ success: false, message: "Bad Request" });

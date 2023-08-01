@@ -132,7 +132,8 @@ export default async function handler(req, res) {
 
   form.parse(req, async (err, fields, files) => {
     if (err) {
-      console.log(err);
+      sendErrorResponse(res, 400, err.message);
+      return;
     }
 
     switch (req.method) {

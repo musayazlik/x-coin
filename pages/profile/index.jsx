@@ -38,7 +38,7 @@ const Profile = () => {
     axios({
       method: "PATCH",
       url:
-        "/api/users/userCrud?status=" + "password" + "&id=" + session.user.id,
+        "/api/users/userCrud?status=" + "password" + "&id=" + session?.user?.id,
       data,
       headers: {
         "Content-Type": "application/json",
@@ -399,6 +399,15 @@ export default Profile;
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/auth/login",
+        permanent: false,
+      },
+    };
+  }
 
   const res = await fetch(
     `${process.env.APP_URL}/api/users/userCrud?id=${session.user.id}`,
