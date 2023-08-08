@@ -1,12 +1,10 @@
 import Layout from "./layout";
-import { useSession, getSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { lang } from "@/lang/langT";
 import parse from "html-react-parser";
 
 const SpotMarket = () => {
-  const { data: session, status } = useSession();
   const { locale } = useRouter();
   const t = lang(locale);
 

@@ -41,3 +41,32 @@
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-yellow-500;
 }
+
+.tradingview-widget-container {
+  width: 100% !important;
+}
+
+iframe {
+  width: 100% !important;
+}
+
+iframe #mediumwidgetembed {
+  width: 100% !important;
+}
+
+.tv-widget-chart__copyrightingContainer{
+  display: none !important;
+  color: red;
+}
+
+
+.html body, html.theme-dark body {
+  background-color: #09090b;
+}
+
+html.theme-dark .tv-widget-chart--with-border {
+  border: none !important;
+}
+
+
+

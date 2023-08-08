@@ -8,7 +8,15 @@ import bcryptjs from "bcryptjs";
 import { uid } from "uid";
 
 export const authOptions = {
-  adapter: MongoDBAdapter(clientPromise),
+  adapter: MongoDBAdapter(clientPromise, {
+    collections: {
+      Accounts: "accounts",
+      Sessions: "sessions",
+      Users: "users",
+      VerificationTokens: "verificationTokens",
+    },
+    databaseName: "xCoin",
+  }),
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -53,11 +61,15 @@ export const authOptions = {
             });
 
             if (!user) {
-                return Promise.reject(new Error("Your username or password is incorrect."));
+              return Promise.reject(
+                new Error("Your username or password is incorrect.")
+              );
             }
 
             if (user.isActive === false || user.isDeleted === true) {
-              return Promise.reject(new Error("Your account is not active or has been deleted."));
+              return Promise.reject(
+                new Error("Your account is not active or has been deleted.")
+              );
             }
             const isPassword = await bcryptjs.compare(
               credentials.password,
@@ -73,11 +85,15 @@ export const authOptions = {
             });
 
             if (!user) {
-                return Promise.reject(new Error("Your username or password is incorrect."));
+              return Promise.reject(
+                new Error("Your username or password is incorrect.")
+              );
             }
 
             if (user.isActive === false || user.isDeleted === true) {
-              return Promise.reject(new Error("Your username or password is incorrect."));
+              return Promise.reject(
+                new Error("Your username or password is incorrect.")
+              );
             }
             const isPassword = await bcryptjs.compare(
               credentials.password,
@@ -88,7 +104,9 @@ export const authOptions = {
             }
           }
 
-          return Promise.reject(new Error("Your username or password is incorrect."));
+          return Promise.reject(
+            new Error("Your username or password is incorrect.")
+          );
         }
       },
     }),
@@ -99,6 +117,8 @@ export const authOptions = {
     maxAge: 21600, // 6 hours
     updateAge: 600, // 1 hour
   },
+
+  debug: true,
 
   jwt: {
     encryption: true,
