@@ -26,9 +26,9 @@ const Layout = ({ children }) => {
           className={` h-auto py-4 px-4 duration-300 bg-zinc-800 text-zinc-500 text-center md:text-start  flex flex-col sm:flex-row justify-between items-center`}
         >
           <p className="font-normal text-sm">
-            2023 © X-Coin - All rights reserved.
+            2023 © Trader Haber - All rights reserved.
           </p>
-          <p className="font-normal text-sm">
+        {/*  <p className="font-normal text-sm">
             Made with{" "}
             <span role="img" aria-label="heart">
               ❤️
@@ -37,12 +37,13 @@ const Layout = ({ children }) => {
             <Link
               href="https://musayazlik.com"
               target="_blank"
+              aria-label={`Musa Yazlık's website`}
               rel="noopener noreferrer"
               className="font-semibold hover:text-green-600 duration-200"
             >
               Musa Yazlık
             </Link>
-          </p>
+          </p>*/}
         </footer>
       </div>
     </div>
