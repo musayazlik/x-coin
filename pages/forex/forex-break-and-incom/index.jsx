@@ -25,7 +25,7 @@ const BreakAndIncom = ({ data }) => {
       <Layout>
         <div className=" mx-auto mb-8 mt-8 text-center relative z-0 max-w-3xl">
           <h1 className="text-4xl font-semibold mb-6 lg:text-5xl text-rose-600">
-            <div className=" border-b-4 inline-block mb-4 px-4 border-rose-600">
+            <div className=" border-b-4 inline-block border-rose-600">
               Forex
             </div>
             <div className="text-indigo-600">Kırılımlar ve Uyumsuzluklar</div>
@@ -171,7 +171,7 @@ export default BreakAndIncom;
 export async function getServerSideProps(context) {
   const cookie = context.req.headers.cookie;
   const { data } = await axios.get(
-    `${process.env.APP_URL}/api/break-and-incom`,
+    `${process.env.APP_URL}/api/dashboard/forex-break-and-incom`,
     {
       headers: {
         cookie: cookie,

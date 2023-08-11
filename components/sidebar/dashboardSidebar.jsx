@@ -7,6 +7,7 @@ import DropdownMenu from "./dropdownMenu";
 import SubMenuItem from "./subMenuItem/index";
 import { MdCurrencyBitcoin } from "react-icons/md";
 import { BiBasket } from "react-icons/bi";
+import { AiOutlineDollarCircle } from "react-icons/ai";
 
 const Sidebar = () => {
   return (
@@ -35,6 +36,18 @@ const Sidebar = () => {
         <SubMenuItem
           text={"Kırılım ve Uyumsuzluklar"}
           url={"/dashboard/break-and-incom"}
+        />
+      </DropdownMenu>
+
+      <DropdownMenu
+        text={"Forex Ayarları"}
+        dropMenuStatus={true}
+        Icon={AiOutlineDollarCircle}
+        subMenuList={["/dashboard/forex-break-and-incom"]}
+      >
+        <SubMenuItem
+          text={"Forex Kırılım ve Uyumsuzluklar"}
+          url={"/dashboard/forex-break-and-incom"}
         />
       </DropdownMenu>
     </SidebarLayout>

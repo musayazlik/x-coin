@@ -7,7 +7,7 @@ import DateDayMonthYear from "@helpers/datedaymonthyear";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-const BreakAndIncom = ({ data }) => {
+const BreakAndIncomPage = ({ data }) => {
   const router = useRouter();
 
   const blogDelete = (id) => {
@@ -197,7 +197,7 @@ const BreakAndIncom = ({ data }) => {
   );
 };
 
-export default BreakAndIncom;
+export default BreakAndIncomPage;
 
 export async function getServerSideProps(context) {
   const cookie = context.req.headers.cookie;
