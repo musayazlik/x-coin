@@ -59,7 +59,7 @@ const Sidebar = () => {
         ]}
       >
         <SubMenuItem text={"Sp500"} url={"/forex/sp500"} />
-        <SubMenuItem text={"Nandaq"} url={"/forex/nasdaq"} />
+        <SubMenuItem text={"Nasdaq"} url={"/forex/nasdaq"} />
         <SubMenuItem text={"Dax"} url={"/forex/dax"} />
         <SubMenuItem text={"Dxy"} url={"/forex/dxy"} />
         <SubMenuItem text={"Eur/Usd"} url={"/forex/eur-usd"} />
