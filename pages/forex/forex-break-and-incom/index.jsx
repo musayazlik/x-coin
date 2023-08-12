@@ -81,7 +81,7 @@ const BreakAndIncom = ({ data }) => {
                         </div>
                         <div className="">
                           <Link
-                            href={`/break-and-incom/${data[0].slug}`}
+                            href={`/forex/forex-break-and-incom/${data[0].slug}`}
                             className="border-2 border-rose-600 hover:bg-rose-600 hover:text-rose-50 hover:outline-2 hover:outline-dotted hover:outline-offset-4 outline-offset-0 outline-rose-700 outline-2  px-4 py-2 rounded-lg text-rose-600 duration-300 flex items-center gap-2 hover:shadow-lg hover:shadow-rose-600/50"
                           >
                             <span>Devamını Oku</span>
@@ -142,7 +142,7 @@ const BreakAndIncom = ({ data }) => {
                       </div>
                       <div className="">
                         <Link
-                          href={`/break-and-incom/${item.slug}`}
+                          href={`/forex/forex-break-and-incom/${item.slug}`}
                           className="border-2 border-rose-600 hover:bg-rose-600 hover:text-rose-50 hover:outline-2 hover:outline-dotted hover:outline-offset-4 outline-offset-0 outline-rose-700 outline-2  px-4 py-2 rounded-lg text-rose-600 duration-300 flex items-center gap-2 hover:shadow-lg hover:shadow-rose-600/50"
                         >
                           <span>Devamını Oku</span>

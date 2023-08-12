@@ -1,8 +1,8 @@
 import React from "react";
-import Layout from "../layout";
+import Layout from "../../layout";
 import axios from "axios";
 
-const BreakAndIncomContext = ({ data }) => {
+const ForexBreakAndIncomContext = ({ data }) => {
   return (
     <Layout>
       <div className="flex flex-col gap-4 bg-zinc-900 rounded-lg  mt-6">
@@ -63,11 +63,13 @@ const BreakAndIncomContext = ({ data }) => {
   );
 };
 
-export default BreakAndIncomContext;
+export default ForexBreakAndIncomContext;
 
 export async function getServerSideProps(context) {
   const res = await axios
-    .get(`http://localhost:3000/api/break-and-incom?slug=${context.query.slug}`)
+    .get(
+      `http://localhost:3000/api/forex-break-and-incom?slug=${context.query.slug}`
+    )
     .then((res) => res)
     .catch((err) => err.response);
 
