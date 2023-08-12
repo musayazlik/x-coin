@@ -173,7 +173,7 @@ export default BreakAndIncom;
 export async function getServerSideProps(context) {
   const cookie = context.req.headers.cookie;
   const { data } = await axios.get(
-    `${process.env.APP_URL}/api/dashboard/forex-break-and-incom`,
+    `${process.env.APP_URL}/api/forex-break-and-incom`,
     {
       headers: {
         cookie: cookie,
