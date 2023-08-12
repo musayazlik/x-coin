@@ -55,7 +55,7 @@ const BreakAndIncomAdd = () => {
 
     axios({
       method: "post",
-      url: "/api/dashboard/break-and-incom/",
+      url: "/api/dashboard/forex-break-and-incom/",
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -69,7 +69,7 @@ const BreakAndIncomAdd = () => {
           showConfirmButton: false,
           timer: 1500,
         }).then(() => {
-          router.push("/dashboard/break-and-incom");
+          router.push("/dashboard/forex-break-and-incom");
         });
       })
       .catch((err) => {

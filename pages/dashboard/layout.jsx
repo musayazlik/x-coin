@@ -18,7 +18,7 @@ const Layout = ({ children }) => {
           className={` h-auto py-4 px-4 duration-300 bg-zinc-800 text-zinc-500 text-center md:text-start`}
         >
           <p className="font-normal text-sm">
-            2023 © X-Coin - All rights reserved.
+            2023 © Thader Haber - All rights reserved.
           </p>
         </footer>
       </div>

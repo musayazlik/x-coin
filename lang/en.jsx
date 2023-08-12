@@ -51,15 +51,15 @@ export default {
   },
 
   home: {
-    welcome: ` <h2 className=" text-2xl lg:text-4xl font-bold text-zinc-500">
+    welcome: ` <h2 className=" text-center text-2xl lg:text-4xl font-bold text-zinc-500">
     <div className="text-center font-extrabold text-4xl">
     Welcome to 
-      <span className="text-yellow-600">X Coin</span> ' e
+      <span className="text-yellow-600">Trader Haber</span> ' e
     </div>
   </h2>`,
 
     subText:
-      "X Coin is a platform that allows users to learn about all stock market data using world market data.",
+      "Trader Haber is a platform that allows users to learn about all stock market data using world market data.",
   },
 
   profileDropdown: {

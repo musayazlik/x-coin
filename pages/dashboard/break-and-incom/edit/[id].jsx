@@ -179,7 +179,7 @@ const BreakAndIncomEdit = ({ data }) => {
             >
               Kaydet
             </button>
-            <Link href="/admin/blogs" className="text-red-700">
+            <Link href="/dashboard/break-and-incom" className="text-red-700">
               İptal Et
             </Link>
           </div>

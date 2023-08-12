@@ -51,7 +51,7 @@ const BreakAndIncomEdit = ({ data }) => {
 
     axios({
       method: "patch",
-      url: "/api/dashboard/break-and-incom/",
+      url: "/api/dashboard/forex-break-and-incom/",
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -65,7 +65,7 @@ const BreakAndIncomEdit = ({ data }) => {
           showConfirmButton: false,
           timer: 1500,
         }).then(() => {
-          router.push("/dashboard/break-and-incom");
+          router.push("/dashboard/forex-break-and-incom");
         });
       })
       .catch((err) => {
@@ -179,7 +179,10 @@ const BreakAndIncomEdit = ({ data }) => {
             >
               Kaydet
             </button>
-            <Link href="/admin/blogs" className="text-red-700">
+            <Link
+              href="/dashboard/forex-break-and-incom"
+              className="text-red-700"
+            >
               İptal Et
             </Link>
           </div>

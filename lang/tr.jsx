@@ -19,7 +19,7 @@ export default {
   },
 
   cryptoPage: {
-    crypto: "kripto",
+    crypto: "Kripto",
     totalMc: "Toplam MC",
     subCoinMix: "Altcoin Mix",
     subIndices: "Alt Endeksler",
@@ -52,14 +52,14 @@ export default {
   },
 
   home: {
-    welcome: ` <h2 className=" text-2xl lg:text-4xl font-bold text-zinc-500">
+    welcome: ` <h2 className=" text-center text-2xl lg:text-4xl font-bold text-zinc-500">
     <div className="text-center font-extrabold text-4xl">
-      <span className="text-yellow-600">X Coin</span> ' e
+      <span className="text-yellow-600">Trader Haber</span> ' e
     </div>
     Hoşgeldiniz
   </h2>`,
     subText:
-      " X Coin, dünya piyasa verilerini kullanarak, kullanıcıların tüm borsa verileri hakkında bilgi edinmelerini sağlayan bir platformdur.",
+      " Trader Haber, dünya piyasa verilerini kullanarak, kullanıcıların tüm borsa verileri hakkında bilgi edinmelerini sağlayan bir platformdur.",
   },
 
   profileDropdown: {

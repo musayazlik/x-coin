@@ -68,10 +68,11 @@ const BreakAndIncom = ({ data }) => {
                             height={32}
                             className="w-8 h-8 max-h-8 flex-shrink rounded-full object-cover border-2 border-zinc-400"
                           />
-                          <div className="flex flex-col ">
+                          <div className="flex flex-col justify-center ">
                             <h4 className="text-md font-semibold text-zinc-400 leading-tight">
                               {data[0].user.name ||
-                                "Anonim" + " " + data[0].user.surname}
+                                "Anonim" + " " + data[0].user.surname ||
+                                ""}
                             </h4>
                             <p className="text-sm text-gray-600 leading-normal">
                               {data[0].user.role}
@@ -128,10 +129,11 @@ const BreakAndIncom = ({ data }) => {
                           alt="avatar"
                           className="w-8 h-8 max-h-8 flex-shrink rounded-full object-cover border-2 border-zinc-400"
                         />
-                        <div className="flex flex-col ">
+                        <div className="flex flex-col justify-center ">
                           <h2 className="text-md font-semibold text-zinc-400 leading-tight">
                             {item.user.name ||
-                              "Anonim" + " " + item.user.surname}
+                              "Anonim" + " " + item.user.surname ||
+                              ""}
                           </h2>
                           <p className="text-sm text-gray-600 leading-normal">
                             {item.user.role}

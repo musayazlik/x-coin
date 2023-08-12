@@ -118,7 +118,7 @@ export const authOptions = {
     updateAge: 600, // 1 hour
   },
 
-  debug: true,
+  debug: process.env.NODE_ENV === "development" ? true : false,
 
   jwt: {
     encryption: true,

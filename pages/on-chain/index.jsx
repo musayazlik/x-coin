@@ -10,7 +10,7 @@ const OnChainPage = ({ data }) => {
   return (
     <>
       <Head>
-        <title>On-Chain | X-Coin</title>
+        <title>On-Chain | Thader Haber</title>
         <meta
           name="description"
           content="On-Chain, kullanıcıların düşüncelerini ve fikirlerini dünyayla paylaşmalarını sağlayan merkezi olmayan bir sosyal medya platformudur. Kullanıcıların düşünce ve fikirlerini dünya ile paylaşabilecekleri bir platformdur."
