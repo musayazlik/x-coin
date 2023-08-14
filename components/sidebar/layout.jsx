@@ -21,12 +21,12 @@ const SidebarLayout = ({ children }) => {
       >
         <Link href={"/"} className="logo flex flex-col items-center mb-4 ">
           <div
-            className={` duration-300 text-5xl text-yellow-400  font-bold -mb-2 `}
+            className={` duration-300 text-4xl text-yellow-400  font-bold -mb-2 `}
           >
-            X
+            Trader
           </div>
           <div className="text-lg font-bold mt-1 tracking-tighter text-slate-600">
-            Coin
+            Haber
           </div>
         </Link>
         <nav className="menu ">

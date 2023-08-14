@@ -18,6 +18,18 @@ export default {
     signUpFree: "Ücretsiz Kayıt Ol",
   },
 
+  registerPage: {
+    name: "Ad",
+    surname: "Soyad",
+    username: "Kullanıcı Adı",
+    email: "Eposta",
+    password: "Şifre",
+    confrimPassword: "Şifreyi Onayla",
+    register: "Kayıt Ol",
+    login: "Giriş Yap",
+    alreadyHaveAccount: "Zaten bir hesabınız var mı?",
+  },
+
   cryptoPage: {
     crypto: "Kripto",
     totalMc: "Toplam MC",

@@ -18,6 +18,18 @@ export default {
     signUpFree: "Sign Up Free",
   },
 
+  registerPage: {
+    name: "Name",
+    surname: "Surname",
+    username: "Username",
+    email: "Email",
+    password: "Password",
+    confrimPassword: "Confirm Password",
+    register: "Register",
+    login: "Login",
+    alreadyHaveAccount: "Already have an account?",
+  },
+
   cryptoPage: {
     crypto: "Crypto",
     totalMc: "Total MC",

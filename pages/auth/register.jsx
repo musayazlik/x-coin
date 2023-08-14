@@ -6,9 +6,12 @@ import { useRouter } from "next/router";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
 import axios from "axios";
+import LangDropdown from "@/components/langDropdown";
+import { lang } from "@/lang/langT";
 
 const Login = () => {
-  const { push } = useRouter();
+  const { push, locale } = useRouter();
+  const t = lang(locale);
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -105,7 +108,7 @@ const Login = () => {
                   type="text"
                   name="name"
                   id="name"
-                  placeholder="Name"
+                  placeholder={t.registerPage.name}
                   className=" border-2 border-zinc-700 rounded-md px-12 pr-4 py-3 bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
                 />
               </div>
@@ -117,7 +120,7 @@ const Login = () => {
                   type="text"
                   name="surname"
                   id="surname"
-                  placeholder="Surname"
+                  placeholder={t.registerPage.surname}
                   className=" border-2 border-zinc-700 rounded-md px-12 pr-4 py-3 bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
                 />
               </div>
@@ -131,7 +134,7 @@ const Login = () => {
                 type="text"
                 name="username"
                 id="username"
-                placeholder="Username"
+                placeholder={t.registerPage.username}
                 className=" border-2 border-zinc-700 rounded-md px-12 pr-4 py-3 bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
               />
             </div>
@@ -144,7 +147,7 @@ const Login = () => {
                 type="email"
                 name="email"
                 id="email"
-                placeholder="Email"
+                placeholder={t.registerPage.email}
                 className=" border-2 border-zinc-700 rounded-md px-12 pr-4 py-3 bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
               />
             </div>
@@ -157,7 +160,7 @@ const Login = () => {
                 type="password"
                 name="password"
                 id="password"
-                placeholder="Password"
+                placeholder={t.registerPage.password}
                 className=" border-2 border-zinc-700 rounded-md px-12 pr-4 py-3 bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
               />
             </div>
@@ -170,7 +173,7 @@ const Login = () => {
                 type="password"
                 name="confirmPassword"
                 id="confirmPassword"
-                placeholder="Confirm Password"
+                placeholder={t.registerPage.confrimPassword}
                 className=" border-2 border-zinc-700 rounded-md px-12 pr-4 py-3 bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
               />
             </div>
@@ -179,18 +182,18 @@ const Login = () => {
               type="submit"
               className="bg-zinc-900/20 border-2 border-zinc-800 hover:border-blue-900 text-white font-semibold rounded-md px-4 py-3 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-600/50 duration-300"
             >
-              Register
+              {t.registerPage.register}
             </button>
           </form>
         </div>
         <div className="signIn text-sm mt-6 mb-2">
           <p>
-            Do you want to connect?{" "}
+            {t.registerPage.alreadyHaveAccount}{" "}
             <Link
               href={"/auth/login"}
               className="font-extrabold ml-2 cursor-pointer hover:text-yellow-400"
             >
-              Sign in
+              {t.registerPage.login}
             </Link>
           </p>
         </div>
@@ -201,7 +204,7 @@ const Login = () => {
        h-full bg-yellow-400/80 left-0 py-4 flex items-center  flex-col gap-4 min-w-[80px]"
       >
         <span className="font-bold text-5xl px-4 text-zinc-800 hidden sm:flex ">
-          X
+          T
         </span>
         <div className=" flex-col gap-2 hidden sm:flex ">
           <span className="w-1 h-4 bg-zinc-900 block rounded-full"></span>
@@ -210,11 +213,16 @@ const Login = () => {
           <span className="w-1 h-1 bg-zinc-900 block rounded-full"></span>
         </div>
         <div className=" flex-col items-center  text-2xl font-bold text-zinc-900 hidden sm:flex">
-          <span>C</span>
-          <span>O</span>
-          <span>I</span>
-          <span>N</span>
+          <span>H</span>
+          <span>A</span>
+          <span>B</span>
+          <span>E</span>
+          <span>R</span>
         </div>
+      </div>
+
+      <div className="langDropdown fixed top-4 right-4 z-50 ">
+        <LangDropdown />
       </div>
     </div>
   );

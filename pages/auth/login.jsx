@@ -159,7 +159,7 @@ const Login = () => {
        h-full bg-yellow-400/80 left-0 py-4 flex items-center  flex-col gap-4 min-w-[80px]"
       >
         <span className="font-bold text-5xl px-4 text-zinc-800 hidden sm:flex ">
-          X
+          T
         </span>
         <div className=" flex-col gap-2 hidden sm:flex ">
           <span className="w-1 h-4 bg-zinc-900 block rounded-full"></span>
@@ -168,10 +168,11 @@ const Login = () => {
           <span className="w-1 h-1 bg-zinc-900 block rounded-full"></span>
         </div>
         <div className=" flex-col items-center  text-2xl font-bold text-zinc-900 hidden sm:flex">
-          <span>C</span>
-          <span>O</span>
-          <span>I</span>
-          <span>N</span>
+          <span>H</span>
+          <span>A</span>
+          <span>B</span>
+          <span>E</span>
+          <span>R</span>
         </div>
       </div>
 
