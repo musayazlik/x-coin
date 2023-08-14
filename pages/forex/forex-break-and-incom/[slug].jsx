@@ -68,7 +68,7 @@ export default ForexBreakAndIncomContext;
 export async function getServerSideProps(context) {
   const res = await axios
     .get(
-      `http://localhost:3000/api/forex-break-and-incom?slug=${context.query.slug}`
+      `${process.env.APP_URL}/api/forex-break-and-incom?slug=${context.query.slug}`
     )
     .then((res) => res)
     .catch((err) => err.response);
