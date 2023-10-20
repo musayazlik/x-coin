@@ -3,6 +3,7 @@ import { SessionProvider } from "next-auth/react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Wrapper } from "@/context";
+import { NextUIProvider } from "@nextui-org/react";
 
 export default function App({
   Component,
@@ -11,7 +12,9 @@ export default function App({
   return (
     <SessionProvider session={session}>
       <Wrapper>
-        <Component {...pageProps} />
+        <NextUIProvider>
+          <Component {...pageProps} />
+        </NextUIProvider>
         <ToastContainer />
       </Wrapper>
     </SessionProvider>

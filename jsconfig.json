@@ -10,6 +10,7 @@
       "@context/*": ["./context/*"],
       "@lang/*": ["./lang/*"],
       "@helpers/*": ["./helpers/*"]
-    }
+    },
+    "types": ["node"]
   }
 }

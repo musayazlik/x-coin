@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
-import { connectMetamask } from "@/services/metamaskConnect";
 import Link from "next/link";
 import { FiUser, FiLock } from "react-icons/fi";
 import { useRouter } from "next/router";
@@ -9,36 +8,11 @@ import { lang } from "@/lang/langT";
 import LangDropdown from "@/components/langDropdown";
 import { getSession } from "next-auth/react";
 import { toast } from "react-toastify";
-import { MetaMaskSDK } from "@metamask/sdk";
 
 const Login = () => {
   const router = useRouter();
   const { locale } = router;
   const t = lang(locale);
-
-  const handleMetamaskLogin = async () => {
-    const address = await connectMetamask();
-    if (address) {
-      signIn("credentials", {
-        walletAddress: address,
-        callbackUrl: "/",
-      });
-    }
-  };
-
-  const handleMetamaskLoginMobile = async () => {
-    const MMSDK = new MetaMaskSDK();
-
-    const ethereum = await MMSDK.getProvider();
-    await ethereum.request({ method: "eth_requestAccounts", params: [] });
-
-    if (ethereum.isConnected()) {
-      signIn("credentials", {
-        walletAddress: ethereum.selectedAddress,
-        callbackUrl: "/",
-      });
-    }
-  };
 
   const handleEmailLogin = async (e) => {
     e.preventDefault();
@@ -106,42 +80,7 @@ const Login = () => {
             </button>
           </form>
         </div>
-        <div className="or flex flex-col items-center ">
-          <span className="h-6 w-0.5 inline-block bg-zinc-700"></span>
-          <span className="text-sm text-gray-400 font-semibold">{t.or}</span>
-          <span className="h-6 w-0.5 inline-block bg-zinc-700"></span>
-        </div>
-        <div
-          onClick={handleMetamaskLogin}
-          className="metemask hidden rounded-md border-b-4 w-full sm:w-auto justify-center  border-orange-600 px-4 sm:px-8 py-2 bg-orange-500 sm:inline-flex  gap-3 sm:gap-6 items-center hover:shadow-lg hover:shadow-orange-600/50 duration-300 hover:scale-105 cursor-pointer"
-        >
-          <Image
-            src="/metamask.svg"
-            alt="metamask"
-            width={40}
-            height={40}
-            className="bg-white p-1 rounded-full border-2 border-orange-700 shadow-lg shadow-orange-700/70"
-          />
-          <span className=" text-sm sm:text-xl font-semibold text-orange-900 mt-0.5">
-            {t.loginPage.metamaskLogin}
-          </span>
-        </div>
 
-        <div
-          onClick={handleMetamaskLoginMobile}
-          className="metemask rounded-md border-b-4 w-full sm:w-auto justify-center  sm:hidden border-orange-600 px-4 sm:px-8 py-2 bg-orange-500 inline-flex  gap-3 sm:gap-6 items-center hover:shadow-lg hover:shadow-orange-600/50 duration-300 hover:scale-105 cursor-pointer"
-        >
-          <Image
-            src="/metamask.svg"
-            alt="metamask"
-            width={40}
-            height={40}
-            className="bg-white p-1 rounded-full border-2 border-orange-700 shadow-lg shadow-orange-700/70"
-          />
-          <span className=" text-sm sm:text-xl font-semibold text-orange-900 mt-0.5">
-            {t.loginPage.metamaskLogin}
-          </span>
-        </div>
         <div className="signIn text-xs sm:text-sm mt-6">
           <p className="flex sm:flex-row flex-col justify-center items-center gap-2">
             {t.loginPage.dontHaveAccount}
@@ -168,11 +107,10 @@ const Login = () => {
           <span className="w-1 h-1 bg-zinc-900 block rounded-full"></span>
         </div>
         <div className=" flex-col items-center  text-2xl font-bold text-zinc-900 hidden sm:flex">
-          <span>H</span>
-          <span>A</span>
-          <span>B</span>
           <span>E</span>
-          <span>R</span>
+          <span>D</span>
+          <span>I</span>
+          <span>T</span>
         </div>
       </div>
 
