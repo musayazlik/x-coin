@@ -20,6 +20,10 @@ module.exports = {
         extraBold: 800,
         black: 900,
       },
+      container: {
+        center: true,
+        padding: "1rem",
+      },
     },
   },
   darkMode: "class",

@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "../layout";
+import Layout from "@/layouts/dashboardLayout";
 import { FiPlus } from "react-icons/fi";
 import Link from "next/link";
 import { useRouter } from "next/router";

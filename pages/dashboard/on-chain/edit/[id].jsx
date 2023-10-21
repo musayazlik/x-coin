@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Layout from "../../layout";
+import Layout from "@/layouts/dashboardLayout";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useRouter } from "next/router";

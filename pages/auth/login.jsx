@@ -9,6 +9,11 @@ import LangDropdown from "@/components/langDropdown";
 import { getSession } from "next-auth/react";
 import { toast } from "react-toastify";
 
+/**
+ * Styles
+ */
+import styles from "./authStyles.module.scss";
+
 const Login = () => {
   const router = useRouter();
   const { locale } = router;
@@ -22,7 +27,7 @@ const Login = () => {
     signIn("credentials", {
       isData: emailandusername,
       password: password,
-      callbackUrl: "/",
+      callbackUrl: "/feed/",
     });
   };
 
@@ -41,7 +46,7 @@ const Login = () => {
 
   return (
     <div className="min-w-full relative min-h-screen loginBackground text-white flex justify-center items-center">
-      <div className="wrapper relative focus:border-b-yellow-400 duration-300 hover:border-b-yellow-400 hover:before:w-full hover:before:h-2 hover:before:block hover:before:bg-yellow-400/50 hover:before:-bottom-2 hover:before:z-0 hover:before:rounded-md hover:before:blur-[6px] hover:before:absolute border-b-4 border-2 rounded-sm border-zinc-800 h-auto  px-4 sm:px-8 flex flex-col items-center py-3 sm:py-6 w-full max-w-lg z-10 bg-zinc-950 gap-6 shadow-xl sm:shadow-zinc-950 shadow-zinc-950/30 mx-4">
+      <div className={styles.wrapper}>
         <div className="mailLogin w-full sm:px-10">
           <form
             className="flex flex-col gap-4 mt-4"
@@ -129,7 +134,7 @@ export async function getServerSideProps(context) {
   if (session) {
     return {
       redirect: {
-        destination: "/",
+        destination: "/feed/",
         permanent: false,
       },
     };

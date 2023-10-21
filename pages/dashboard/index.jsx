@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "./layout";
+import Layout from "@/layouts/dashboardLayout";
 import { FiUsers } from "react-icons/fi";
 import dbConnect from "@/libs/dbConnect";
 import Users from "@/models/Users";

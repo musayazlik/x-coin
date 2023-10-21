@@ -87,7 +87,7 @@ const AvatarDropdown = () => {
 
           <div className="">
             <Link
-              href="/pricing"
+              href="/feed/pricing"
               className="block px-4 py-2 text-sm border bg-indigo-700/80 border-indigo-600 duration-300 hover:bg-indigo-700 hover:text-white bg-inborder-indigo-500 border-s-0 border-e-0 text-indigo-200"
             >
               <BsCurrencyDollar className="inline-block mr-1" fontSize={16} />
@@ -95,14 +95,14 @@ const AvatarDropdown = () => {
             </Link>
           </div>
           <Link
-            href="/profile"
+            href="/feed/profile"
             className="block px-4 py-2 text-sm text-zinc-200 duration-300 hover:bg-indigo-600 hover:text-white"
           >
             <FiUser className="inline-block mr-2" />
             {t.profileDropdown.profile}
           </Link>
           <Link
-            href="/support"
+            href="/feed/support"
             className="block px-4 py-2 text-sm text-zinc-200 duration-300 hover:bg-indigo-600 hover:text-white"
           >
             <BiHelpCircle className="inline-block mr-2" fontSize={16} />

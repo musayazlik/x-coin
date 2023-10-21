@@ -80,6 +80,9 @@ dependencies:
   next-auth:
     specifier: ^4.22.1
     version: 4.24.3(next@13.4.2)(react-dom@18.2.0)(react@18.2.0)
+  next-themes:
+    specifier: ^0.2.1
+    version: 0.2.1(next@13.4.2)(react-dom@18.2.0)(react@18.2.0)
   node-cron:
     specifier: ^3.0.2
     version: 3.0.2
@@ -122,7 +125,7 @@ devDependencies:
     specifier: ^8.4.24
     version: 8.4.31
   sass:
-    specifier: ^1.62.1
+    specifier: ^1.69.4
     version: 1.69.4
   tailwindcss:
     specifier: ^3.3.2
@@ -8493,6 +8496,18 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       uuid: 8.3.2
+    dev: false
+
+  /next-themes@0.2.1(next@13.4.2)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-B+AKNfYNIzh0vqQQKqQItTS8evEouKD7H5Hj3kmuPERwddR2TxvDSFZuTj6T7Jfn1oyeUyJMydPl1Bkxkh0W7A==}
+    peerDependencies:
+      next: '*'
+      react: '*'
+      react-dom: '*'
+    dependencies:
+      next: 13.4.2(@babel/core@7.23.2)(react-dom@18.2.0)(react@18.2.0)(sass@1.69.4)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /next-tick@1.1.0:

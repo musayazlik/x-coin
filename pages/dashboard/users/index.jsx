@@ -1,11 +1,19 @@
 import React from "react";
-import Layout from "../layout";
+import DashboardLayout from "@/layouts/dashboardLayout";
 import { useRouter } from "next/router";
 import DateDayMonthYear from "@helpers/datedaymonthyear";
 import axios from "axios";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { useSession } from "next-auth/react";
+import {
+  Table,
+  TableHeader,
+  TableColumn,
+  TableBody,
+  TableRow,
+  TableCell,
+} from "@nextui-org/react";
 
 const Users = ({ data }) => {
   const router = useRouter();
@@ -84,7 +92,7 @@ const Users = ({ data }) => {
   };
 
   return (
-    <Layout>
+    <DashboardLayout>
       <div className="bg-zinc-800 shadow-md shadow-zinc-900/20 px-2 py-8 border-t-2 border-rose-600">
         <div className="flex justify-between items-center px-4">
           <div className="flex flex-col justify-center">
@@ -112,7 +120,7 @@ const Users = ({ data }) => {
             <div className="overflow-x-auto ">
               <div className="py-2 ">
                 <div className="">
-                  <table className="min-w-full">
+                  {/*<table className="min-w-full">
                     <thead className="bg-zinc-800 border-b">
                       <tr>
                         <th
@@ -264,14 +272,47 @@ const Users = ({ data }) => {
                         </tr>
                       )}
                     </tbody>
-                  </table>
+                  </table>*/}
+
+                  <Table
+                    hideHeader
+                    aria-label="Example static collection table"
+                  >
+                    <TableHeader>
+                      <TableColumn>NAME</TableColumn>
+                      <TableColumn>ROLE</TableColumn>
+                      <TableColumn>STATUS</TableColumn>
+                    </TableHeader>
+                    <TableBody>
+                      <TableRow key="1">
+                        <TableCell>Tony Reichert</TableCell>
+                        <TableCell>CEO</TableCell>
+                        <TableCell>Active</TableCell>
+                      </TableRow>
+                      <TableRow key="2">
+                        <TableCell>Zoey Lang</TableCell>
+                        <TableCell>Technical Lead</TableCell>
+                        <TableCell>Paused</TableCell>
+                      </TableRow>
+                      <TableRow key="3">
+                        <TableCell>Jane Fisher</TableCell>
+                        <TableCell>Senior Developer</TableCell>
+                        <TableCell>Active</TableCell>
+                      </TableRow>
+                      <TableRow key="4">
+                        <TableCell>William Howard</TableCell>
+                        <TableCell>Community Manager</TableCell>
+                        <TableCell>Vacation</TableCell>
+                      </TableRow>
+                    </TableBody>
+                  </Table>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </Layout>
+    </DashboardLayout>
   );
 };
 
