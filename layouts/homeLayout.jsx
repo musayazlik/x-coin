@@ -3,9 +3,11 @@ import Header from "@/components/header";
 import Sidebar from "@/components/sidebar";
 import IsProfile from "@/components/isProfile";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 const Layout = ({ children }) => {
   const { data: session } = useSession();
+  const { pathname } = useRouter();
 
   return (
     <div className=" bg-zinc-950  flex gap-4 min-h-screen">

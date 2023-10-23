@@ -1,6 +1,6 @@
 // TradingViewWidget.jsx
 import React, { useEffect, useRef, memo } from "react";
-import Layout from "@/layouts/feedLayout";
+import Layout from "@/layouts/homeLayout";
 import { useRouter } from "next/router";
 
 function GoldPage() {

@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "@layouts/feedLayout";
+import Layout from "@/layouts/homeLayout";
 import axios from "axios";
 
 const ForexBreakAndIncomContext = ({ data }) => {

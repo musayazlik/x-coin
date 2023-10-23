@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Layout from "@/layouts/feedLayout";
+import Layout from "@/layouts/homeLayout";
 import { FiMessageSquare } from "react-icons/fi";
 import axios from "axios";
 import { useSession } from "next-auth/react";

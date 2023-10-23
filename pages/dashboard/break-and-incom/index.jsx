@@ -1,5 +1,5 @@
 import React from "react";
-import FeedLayout from "@/layouts/feedLayout";
+import FeedLayout from "@/layouts/homeLayout";
 import { FiPlus } from "react-icons/fi";
 import Link from "next/link";
 import { useRouter } from "next/router";

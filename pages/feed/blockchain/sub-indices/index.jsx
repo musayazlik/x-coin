@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "@layouts/feedLayout";
+import Layout from "@/layouts/homeLayout";
 import { useSession, getSession } from "next-auth/react";
 import axios from "axios";
 

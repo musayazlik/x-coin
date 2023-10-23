@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Layout from "@/layouts/feedLayout";
+import Layout from "@/layouts/homeLayout";
 import { BiLockAlt, BiLockOpenAlt } from "react-icons/bi";
 import Image from "next/image";
 import axios from "axios";

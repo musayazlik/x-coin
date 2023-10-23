@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "@/layouts/feedLayout";
+import Layout from "@/layouts/homeLayout";
 import { FiArrowRight } from "react-icons/fi";
 import Link from "next/link";
 import axios from "axios";

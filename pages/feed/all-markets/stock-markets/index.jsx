@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "@/layouts/feedLayout";
+import Layout from "@/layouts/homeLayout";
 
 const StockMarkets = () => {
   return (

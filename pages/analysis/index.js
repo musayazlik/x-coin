@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "@/layouts/feedLayout";
+import Layout from "@/layouts/homeLayout";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 
