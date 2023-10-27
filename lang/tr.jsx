@@ -16,8 +16,7 @@ export default {
       aboutus: "Hakkımızda",
       pricing: "Fiyatlandırma",
       contact: "İletişim",
-      login: "Giriş Yap",
-      register: "Kayıt Ol",
+
     },
     avatarDropdown: {
 
@@ -28,6 +27,8 @@ export default {
       profile: "Profil",
       support: "Destek",
       signout: "Çıkış Yap",
+      login: "Giriş Yap",
+      register: "Kayıt Ol",
     }
   },
 

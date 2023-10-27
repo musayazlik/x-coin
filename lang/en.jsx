@@ -17,8 +17,7 @@ export default {
       aboutus: "About Us",
       pricing: "Pricing",
       contact: "Contact",
-      login: "Sign In",
-      register: "Sign Up",
+
     },
     avatarDropdown: {
       hello: "Hello",
@@ -28,6 +27,8 @@ export default {
       profile: "Profile",
       support: "Support",
       signout: "Sign Out",
+      login: "Sign In",
+      register: "Sign Up",
     }
   },
 

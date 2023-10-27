@@ -17,6 +17,7 @@ import {useRouter} from "next/router";
 import LangDropdown from "@components/langDropdown";
 import Membership from "@components/icons/membership";
 import {lang} from "@/lang/langT";
+import {RiUser6Fill, RiUserAddLine, RiUserFill} from "react-icons/ri";
 
 const Menu = () => {
   const {locale, push} = useRouter();
@@ -159,26 +160,52 @@ const Menu = () => {
           </>
         ) : (
           <>
-            <Button
-              color="default"
-              radius="sm"
-              variant="light"
-              className="border-2 border-zinc-800"
-              size="lg"
-              onClick={() => push("/auth/login")}
-            >
-              Sign In
-            </Button>
-            <Button
-              color="warning"
-              radius="sm"
-              variant="shadow"
-              className="border-2 border-yellow-600"
-              size="lg"
-              onClick={() => push("/auth/register")}
-            >
-              Sign Up
-            </Button>
+
+
+            <Dropdown backdrop="blur">
+              <DropdownTrigger>
+
+
+                <Button isIconOnly={true} variant={"faded"}
+
+                        className={"w-10 h-10 p-1 flex " +
+                          " justify-center" +
+                          " items-center" +
+                          " rounded-full"}>
+                  <RiUser6Fill fontSize={20} className={"text-gray-500"}/>
+                </Button>
+
+              </DropdownTrigger>
+              <DropdownMenu variant="flat" aria-label="Static Actions">
+                <DropdownItem className={"duration-300"}
+                              onClick={() => push("/auth/login")}>
+                  <div className={"flex items-center gap-3 py-2 px-2 "}
+
+                  >
+                    <RiUserFill fontSize={24}
+                    />
+                    <span> {
+                      t.homepage.avatarDropdown.login
+                    }</span>
+
+                  </div>
+                </DropdownItem>
+                <DropdownItem variant={"bordered"} color={"warning"}
+                              className={"duration-300"}
+                              onClick={() => push("/auth/register")}
+                >
+                  <div className={"flex items-center gap-3 py-1.5 px-2"}>
+                    <RiUserAddLine fontSize={24}/>
+                    <span> {
+                      t.homepage.avatarDropdown.register
+                    }</span>
+
+                  </div>
+                </DropdownItem>
+
+              </DropdownMenu>
+            </Dropdown>
+
           </>
         )}
       </NavbarContent>

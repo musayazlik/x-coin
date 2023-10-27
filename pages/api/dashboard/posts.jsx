@@ -151,13 +151,15 @@ export default async function handler(req, res) {
     switch (req.method) {
       case "GET":
         try {
-          if (req.query.id) {
-            const breakAndIncomData = await Posts.findById({
-              _id: req.query.id,
-            });
+          if (req.query.category) {
+            const breakAndIncomData = await Posts.find({
+              category: req.query.category,
+            }).populate("user").select("-password -walletAddress -email")
+
+            console.log(Posts.populate("user", "name"))
             sendSuccessResponse(res, breakAndIncomData);
           } else {
-            const breakAndIncomData = await Posts.find({});
+            const breakAndIncomData = await Posts.find({}).populate("user", "-password -walletAddress -email ")
             sendSuccessResponse(res, breakAndIncomData);
           }
         } catch (error) {

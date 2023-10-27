@@ -52,42 +52,6 @@ const Posts = ({data}) => {
     });
   };
 
-  const handleUserActive = async (id, isActive) => {
-    const cookie = document.cookie;
-
-    if (session.user.role === "admin" && id === session.user.id) {
-      toast.error("Admin'in aktiflik durumu değiştirilemez", {
-        theme: "dark", autoClose: 1500,
-      });
-      return;
-    }
-
-    Swal.fire({
-      title: "Emin misiniz?",
-      text: "Bu işlemi geri alamazsınız!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#d33",
-      cancelButtonColor: "#3085d6",
-      confirmButtonText: isActive ? "Aktif Yap " : "Pasif Yap",
-      cancelButtonText: "Hayır, vazgeç!",
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        await axios.patch(`/api/dashboard/users`, {
-          id: id, status: "isActive", isActive: isActive,
-        }, {
-          headers: {
-            cookie: cookie,
-          },
-        });
-        router.push("/dashboard/users");
-        toast.success("Kullanıcı başarıyla güncellendi!", {
-          theme: "dark", autoClose: 1500,
-        });
-      }
-    });
-  };
-
   return (<DashboardLayout>
     <div
       className="bg-zinc-800 shadow-md shadow-zinc-900/20 px-2 py-8 border-t-2 border-rose-600">

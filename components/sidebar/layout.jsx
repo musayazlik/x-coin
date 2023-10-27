@@ -13,11 +13,11 @@ const SidebarLayout = ({children}) => {
       <aside
         className={`${
           S.asideWrapper
-        } h-min-screen h-screen max-h-screen md:h-auto min-w-[280px] max-w-[280px] -left-[280px] md:left-0 relative duration-300 z-30 overflow-auto px-2 py-4 ${
+        } h-min-screen h-screen md:h-auto min-w-[280px] max-w-[280px] -left-[280px] md:left-0 relative duration-300 z-30 overflow-auto px-2 py-4 ${
           isOpenSidebar ? "" : "!left-0"
         } `}
       >
-        <Link href={"/"} className="logo flex flex-col items-center mb-4 ">
+        <Link href={"/"} className="logo flex flex-col items-center mb-4 py-4 ">
           <div
             className={` duration-300 text-4xl text-yellow-400  font-bold -mb-2 `}
           >
