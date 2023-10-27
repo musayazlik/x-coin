@@ -3,8 +3,32 @@ export default {
   login: "Login",
   logout: "Logout",
   register: "Register",
-  home: "Home",
   or: "or",
+  freeTools: "Free Tools",
+  analysis: "Analysis",
+
+  homepage: {
+    title: "Trader Haber",
+    description: "Trader Haber is a platform that allows users to learn about all stock market data using world market data.",
+    keywords: "Trader Haber, Stock Market, Crypto, Forex, All Markets",
+    menu: {
+      feed: "Feed",
+      aboutus: "About Us",
+      pricing: "Pricing",
+      contact: "Contact",
+      login: "Sign In",
+      register: "Sign Up",
+    },
+    avatarDropdown: {
+      hello: "Hello",
+      dashboard: "Dashboard",
+      feed: "Feed",
+      pricing: "Pricing",
+      profile: "Profile",
+      support: "Support",
+      signout: "Sign Out",
+    }
+  },
 
   loginPage: {
     title: "Login",

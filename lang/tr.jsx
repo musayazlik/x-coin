@@ -3,8 +3,33 @@ export default {
   login: "Giriş Yap",
   logout: "Çıkış Yap",
   register: "Kayıt Ol",
-  home: "Anasayfa",
   or: "veya",
+  freeTools: "Ücretsiz Araçlar",
+  analysis: "Analiz",
+
+  homepage: {
+    title: "Trader Haber",
+    description: "Trader Haber, dünya piyasa verilerini kullanarak, kullanıcıların tüm borsa verileri hakkında bilgi edinmelerini sağlayan bir platformdur.",
+    keywords: "Trader Haber, Borsa, Kripto, Forex, Tüm Piyasalar",
+    menu: {
+      feed: "Akış",
+      aboutus: "Hakkımızda",
+      pricing: "Fiyatlandırma",
+      contact: "İletişim",
+      login: "Giriş Yap",
+      register: "Kayıt Ol",
+    },
+    avatarDropdown: {
+
+      hello: "Merhaba",
+      dashboard: "Yönetim Paneli",
+      feed: "Akış",
+      pricing: "Fiyatlandırma",
+      profile: "Profil",
+      support: "Destek",
+      signout: "Çıkış Yap",
+    }
+  },
 
   loginPage: {
     title: "Giriş Yap",

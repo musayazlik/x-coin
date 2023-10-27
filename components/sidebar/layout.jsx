@@ -1,15 +1,13 @@
 /** Icons */
-import { BiChevronLeft } from "react-icons/bi";
-
 /** Context */
-import { useAppContext } from "@/context";
+import {useAppContext} from "@/context";
 
 /** Style */
 import S from "./style.module.css";
 import Link from "next/link";
 
-const SidebarLayout = ({ children }) => {
-  const { setIsOpenSidebar, isOpenSidebar } = useAppContext();
+const SidebarLayout = ({children}) => {
+  const {setIsOpenSidebar, isOpenSidebar} = useAppContext();
   return (
     <>
       <aside
@@ -25,8 +23,9 @@ const SidebarLayout = ({ children }) => {
           >
             Trader
           </div>
-          <div className="text-lg font-bold mt-1 tracking-tighter text-slate-600">
-            Haber
+          <div
+            className="text-lg font-bold mt-1 tracking-tighter text-slate-600">
+            Edit
           </div>
         </Link>
         <nav className="menu ">

@@ -1,29 +1,39 @@
-import { HiOutlineUsers, HiViewList } from "react-icons/hi";
-
 /** Style */
 import SidebarLayout from "./layout";
 import MenuItem from "./menuItem/index";
 import DropdownMenu from "./dropdownMenu";
 import SubMenuItem from "./subMenuItem/index";
-import { MdCurrencyBitcoin } from "react-icons/md";
-import { BiBasket } from "react-icons/bi";
-import { AiOutlineDollarCircle } from "react-icons/ai";
+import {MdCurrencyBitcoin} from "react-icons/md";
+import {AiOutlineDollarCircle} from "react-icons/ai";
+import {
+  RiDraftLine,
+  RiLayout2Line,
+  RiShoppingBasketLine,
+  RiUser3Line
+} from "react-icons/ri";
 
 const Sidebar = () => {
   return (
     <SidebarLayout>
-      <MenuItem url={"/dashboard"} Icon={HiViewList} text={"Kontrol Paneli"} />
+      <MenuItem url={"/dashboard"} Icon={RiLayout2Line}
+                text={"Kontrol Paneli"}/>
 
       <MenuItem
         url={"/dashboard/users"}
-        Icon={HiOutlineUsers}
+        Icon={RiUser3Line}
         text={"Kullanıcılar"}
       />
 
       <MenuItem
         url={"/dashboard/membership-sales"}
-        Icon={BiBasket}
+        Icon={RiShoppingBasketLine}
         text={"Üyelik Satışı"}
+      />
+
+      <MenuItem
+        url={"/dashboard/posts"}
+        Icon={RiDraftLine}
+        text={"Yazılar"}
       />
 
       <DropdownMenu
@@ -32,7 +42,7 @@ const Sidebar = () => {
         Icon={MdCurrencyBitcoin}
         subMenuList={["/dashboard/on-chain", "/dashboard/break-and-incom"]}
       >
-        <SubMenuItem text={"On Chain"} url={"/dashboard/on-chain"} />
+        <SubMenuItem text={"On Chain"} url={"/dashboard/on-chain"}/>
         <SubMenuItem
           text={"Kırılım ve Uyumsuzluklar"}
           url={"/dashboard/break-and-incom"}
