@@ -1,23 +1,25 @@
-import React, { useState } from "react";
-import Link from "next/link";
-import { HiOutlineHome } from "react-icons/hi";
-import { useRouter } from "next/router";
+import React, {useState} from "react";
+import {useRouter} from "next/router";
 
 /** Style */
 import S from "../style.module.css";
-import { FiChevronRight } from "react-icons/fi";
+import {FiChevronRight} from "react-icons/fi";
 
 const DropdownMenu = ({
-  text,
-  children,
-  dropMenuStatus = false,
-  subMenuList = [],
-  Icon,
-}) => {
-  const { pathname } = useRouter();
+                        text,
+                        children,
+                        dropMenuStatus = false,
+                        subMenuList = [],
+                        Icon,
+                        defaultOpen = false,
+                      }) => {
+  const {pathname} = useRouter();
+
+  const pathData = null
 
   const isItem = subMenuList.includes(pathname);
-  const [isOpen, setIsOpen] = useState(!isItem);
+  const [isOpen, setIsOpen] = useState(defaultOpen ? !defaultOpen : !isItem);
+
   return (
     <li className="mx-2 ">
       <div className=" relative">
@@ -25,22 +27,22 @@ const DropdownMenu = ({
           onClick={() => setIsOpen(!isOpen)}
           className={`${S.menuItem} rounded-md cursor-pointer
 						${
-              pathname === "/"
-                ? ""
-                : `${S.menuDontActive}  ${S.menuNotActive} rounded-t-md
+            pathname === "/"
+              ? ""
+              : `${S.menuDontActive}  ${S.menuNotActive} rounded-t-md
             `
-            }
+          }
             flex justify-between items-center
 
             ${
-              isOpen && dropMenuStatus
-                ? "bg-zinc-900 border-2 border-transparent"
-                : "border-2 border-b-yellow-500 border-zinc-950"
-            }
+            isOpen && dropMenuStatus
+              ? "bg-zinc-900 border-2 border-transparent"
+              : "border-2 border-b-yellow-500 border-zinc-950"
+          }
 						 `}
         >
           <div className=" flex items-center">
-            <Icon fontSize={20} className="inline-block mr-2 " />
+            <Icon fontSize={20} className="inline-block mr-2 "/>
             <p className={`duration-300 text-base font-medium `}>{text}</p>
           </div>
           {dropMenuStatus && (

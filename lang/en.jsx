@@ -7,6 +7,7 @@ export default {
   freeTools: "Free Tools",
   analysis: "Analysis",
 
+
   homepage: {
     title: "Trader Haber",
     description: "Trader Haber is a platform that allows users to learn about all stock market data using world market data.",
@@ -87,6 +88,7 @@ export default {
   },
 
   home: {
+    menuName: "Home",
     welcome: ` <h2 className=" text-center text-2xl lg:text-4xl font-bold text-zinc-500">
     <div className="text-center font-extrabold text-4xl">
     Welcome to 

@@ -1,27 +1,34 @@
-import { useRouter } from "next/router";
-import { lang } from "@/lang/langT";
+import {useRouter} from "next/router";
+import {lang} from "@/lang/langT";
 
-import { MdCurrencyBitcoin } from "react-icons/md";
-import { BiDollarCircle } from "react-icons/bi";
-import { RiGlobalLine } from "react-icons/ri";
-import { BsQuestionLg } from "react-icons/bs";
+import {MdCurrencyBitcoin} from "react-icons/md";
+import {BiDollarCircle} from "react-icons/bi";
+import {RiGlobalLine, RiLayout2Fill} from "react-icons/ri";
+import {BsQuestionLg} from "react-icons/bs";
 
 import SidebarLayout from "./layout";
 import DropdownMenu from "./dropdownMenu";
 import SubMenuItem from "./subMenuItem/index";
 import MenuItem from "./menuItem/index";
-import { Accordion, AccordionItem } from "@nextui-org/react";
 
 export const FeedMenu = () => {
-  const { locale } = useRouter();
+  const {locale} = useRouter();
   const t = lang(locale);
   return (
     <>
+      {/*
       <Accordion>
         <AccordionItem key="1" aria-label="Accordion 1" title="Accordion 1">
           sdfsdsdfsdfslfffljk wewefkwefwle kfwejflwekfa eaeklfkle ffef jel
         </AccordionItem>
       </Accordion>
+*/}
+
+      <MenuItem
+        url={"/feed"}
+        Icon={RiLayout2Fill}
+        text={t.home.menuName}
+      />
 
       <DropdownMenu
         text={t.cryptoPage.crypto}
@@ -75,16 +82,16 @@ export const FeedMenu = () => {
           "/feed/forex/forex-break-and-incom",
         ]}
       >
-        <SubMenuItem text={"Sp500"} url={"/feed/forex/sp500"} />
-        <SubMenuItem text={"Nasdaq"} url={"/feed/forex/nasdaq"} />
-        <SubMenuItem text={"Dax"} url={"/feed/forex/dax"} />
-        <SubMenuItem text={"Dxy"} url={"/feed/forex/dxy"} />
-        <SubMenuItem text={"Eur/Usd"} url={"/feed/forex/eur-usd"} />
-        <SubMenuItem text={"Usd/Jpy"} url={"/feed/forex/usd-jpy"} />
-        <SubMenuItem text={t.forexPage.gold} url={"/feed/forex/gold"} />
-        <SubMenuItem text={t.forexPage.silver} url={"/feed/forex/silver"} />
-        <SubMenuItem text={t.forexPage.oil} url={"/feed/forex/oil"} />
-        <SubMenuItem text={"Natqas"} url={"/feed/forex/natqas"} />
+        <SubMenuItem text={"Sp500"} url={"/feed/forex/sp500"}/>
+        <SubMenuItem text={"Nasdaq"} url={"/feed/forex/nasdaq"}/>
+        <SubMenuItem text={"Dax"} url={"/feed/forex/dax"}/>
+        <SubMenuItem text={"Dxy"} url={"/feed/forex/dxy"}/>
+        <SubMenuItem text={"Eur/Usd"} url={"/feed/forex/eur-usd"}/>
+        <SubMenuItem text={"Usd/Jpy"} url={"/feed/forex/usd-jpy"}/>
+        <SubMenuItem text={t.forexPage.gold} url={"/feed/forex/gold"}/>
+        <SubMenuItem text={t.forexPage.silver} url={"/feed/forex/silver"}/>
+        <SubMenuItem text={t.forexPage.oil} url={"/feed/forex/oil"}/>
+        <SubMenuItem text={"Natqas"} url={"/feed/forex/natqas"}/>
         <SubMenuItem
           text={t.forexPage.breakAndIncom}
           url={"/feed/forex/forex-break-and-incom"}
@@ -133,7 +140,7 @@ export const FeedMenu = () => {
 };
 
 export const AnalysisMenu = () => {
-  const { locale } = useRouter();
+  const {locale} = useRouter();
   const t = lang(locale);
   return (
     <>
@@ -141,6 +148,7 @@ export const AnalysisMenu = () => {
         text={t.cryptoPage.crypto}
         dropMenuStatus={true}
         Icon={MdCurrencyBitcoin}
+        defaultOpen={true}
         subMenuList={[
           "/analysis/blockchain/",
           "/analysis/blockchain/total-market-cap",
@@ -174,6 +182,7 @@ export const AnalysisMenu = () => {
       <DropdownMenu
         text={"Forex"}
         dropMenuStatus={true}
+        defaultOpen={true}
         Icon={BiDollarCircle}
         subMenuList={[
           "/analysis/forex/sp500",
@@ -189,16 +198,16 @@ export const AnalysisMenu = () => {
           "/feed/forex/forex-break-and-incom",
         ]}
       >
-        <SubMenuItem text={"Sp500"} url={"/analysis/forex/sp500"} />
-        <SubMenuItem text={"Nasdaq"} url={"/analysis/forex/nasdaq"} />
-        <SubMenuItem text={"Dax"} url={"/analysis/forex/dax"} />
-        <SubMenuItem text={"Dxy"} url={"/analysis/forex/dxy"} />
-        <SubMenuItem text={"Eur/Usd"} url={"/analysis/forex/eur-usd"} />
-        <SubMenuItem text={"Usd/Jpy"} url={"/analysis/forex/usd-jpy"} />
-        <SubMenuItem text={t.forexPage.gold} url={"/analysis/forex/gold"} />
-        <SubMenuItem text={t.forexPage.silver} url={"/analysis/forex/silver"} />
-        <SubMenuItem text={t.forexPage.oil} url={"/analysis/forex/oil"} />
-        <SubMenuItem text={"Natqas"} url={"/analysis/forex/natqas"} />
+        <SubMenuItem text={"Sp500"} url={"/analysis/forex/sp500"}/>
+        <SubMenuItem text={"Nasdaq"} url={"/analysis/forex/nasdaq"}/>
+        <SubMenuItem text={"Dax"} url={"/analysis/forex/dax"}/>
+        <SubMenuItem text={"Dxy"} url={"/analysis/forex/dxy"}/>
+        <SubMenuItem text={"Eur/Usd"} url={"/analysis/forex/eur-usd"}/>
+        <SubMenuItem text={"Usd/Jpy"} url={"/analysis/forex/usd-jpy"}/>
+        <SubMenuItem text={t.forexPage.gold} url={"/analysis/forex/gold"}/>
+        <SubMenuItem text={t.forexPage.silver} url={"/analysis/forex/silver"}/>
+        <SubMenuItem text={t.forexPage.oil} url={"/analysis/forex/oil"}/>
+        <SubMenuItem text={"Natqas"} url={"/analysis/forex/natqas"}/>
         <SubMenuItem
           text={t.forexPage.breakAndIncom}
           url={"/feed/forex/forex-break-and-incom"}
@@ -207,6 +216,7 @@ export const AnalysisMenu = () => {
       <DropdownMenu
         text={t.allMarketsPage.allMarkets}
         dropMenuStatus={true}
+        defaultOpen={true}
         Icon={RiGlobalLine}
         subMenuList={[
           "/analysis/all-markets/stock-markets",
@@ -247,12 +257,12 @@ export const AnalysisMenu = () => {
 };
 
 const Sidebar = () => {
-  const { locale, pathname } = useRouter();
+  const {locale, pathname} = useRouter();
   const t = lang(locale);
   return (
     <SidebarLayout>
-      {pathname.includes("/feed") && <FeedMenu />}
-      {pathname.includes("/analysis") && <AnalysisMenu />}
+      {pathname.includes("/feed") && <FeedMenu/>}
+      {pathname.includes("/analysis") && <AnalysisMenu/>}
     </SidebarLayout>
   );
 };

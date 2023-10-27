@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import {useSession} from "next-auth/react";
 import {FiPlus} from "react-icons/fi";
 import {
+  Chip,
   Table,
   TableBody,
   TableCell,
@@ -16,6 +17,7 @@ import {
   Tooltip
 } from "@nextui-org/react";
 import {RiDeleteBinFill, RiEditFill, RiEyeFill} from "react-icons/ri";
+import Image from "next/image";
 
 
 const Posts = ({data}) => {
@@ -23,9 +25,9 @@ const Posts = ({data}) => {
   const {data: session} = useSession();
   const [selectedColor, setSelectedColor] = useState("default");
 
-  const userDelete = async (id) => {
+  const postDelete = async (e, id) => {
     const cookie = document.cookie;
-
+    e.preventDefault()
     Swal.fire({
       title: "Emin misiniz?",
       text: "Bu işlemi geri alamazsınız!",
@@ -37,13 +39,13 @@ const Posts = ({data}) => {
       cancelButtonText: "Hayır, vazgeç!",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        await axios.delete(`/api/dashboard/users?id=${id}`, {
+        await axios.delete(`/api/dashboard/posts?id=${id}`, {
           headers: {
             cookie: cookie,
           },
         });
-        router.push("/dashboard/users");
-        toast.success("Kullanıcı başarıyla silindi!", {
+        router.push("/dashboard/posts");
+        toast.success("İçerik silindi", {
           theme: "dark", autoClose: 1500,
         });
       }
@@ -115,203 +117,103 @@ const Posts = ({data}) => {
           <div className="overflow-x-auto ">
             <div className="py-2 ">
               <div className="">
-                {/*<table className="min-w-full">
-                    <thead className="bg-zinc-800 border-b">
-                      <tr>
-                        <th
-                          scope="col"
-                          className="text-sm font-medium text-zinc-400 px-6 py-4 text-left"
-                        >
-                          #
-                        </th>
-                        <th
-                          scope="col"
-                          className="text-sm font-medium text-zinc-400 px-6 py-4 text-left whitespace-nowrap"
-                        >
-                          Resim
-                        </th>
-                        <th
-                          scope="col"
-                          className="text-sm font-medium text-zinc-400 px-6 py-4 text-left "
-                        >
-                          Kullanıcı Adı
-                        </th>
-
-                        <th
-                          scope="col"
-                          className="text-sm font-medium text-zinc-400 px-6 py-4 text-left whitespace-nowrap"
-                        >
-                          Yetki Durumu
-                        </th>
-
-                        <th
-                          scope="col"
-                          className="text-sm font-medium text-zinc-400 px-6 py-4 text-left whitespace-nowrap"
-                        >
-                          Üyelik Turu
-                        </th>
-
-                        <th
-                          scope="col"
-                          className="text-sm font-medium text-zinc-400 px-6 py-4 text-left whitespace-nowrap"
-                        >
-                          Durum
-                        </th>
-                        <th
-                          scope="col"
-                          className="text-sm font-medium text-zinc-400 px-6 py-4 text-left whitespace-nowrap"
-                        >
-                          Kayıt Tarihi
-                        </th>
-                        <th
-                          scope="col"
-                          className="text-sm font-medium text-zinc-400 px-6 py-4 text-left"
-                        ></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {data &&
-                        data?.map((item, index) => {
-                          return (
-                            <tr key={item._id} className="bg-zinc-700 border-b">
-                              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-400">
-                                {index + 1}
-                              </td>
-                              <td className="text-sm text-zinc-400 font-light px-6 py-4 whitespace-nowrap">
-                                <img
-                                  src={item?.image || "/robot.gif"}
-                                  alt=""
-                                  width={40}
-                                  height={40}
-                                  quality={20}
-                                  className="min-w-[40px] min-h-[40px] max-w-[40px] max-h-[40px] object-cover rounded-md border-2 border-zinc-800"
-                                />
-                              </td>
-                              <td className="text-sm text-zinc-400 font-light px-6 py-4 whitespace-nowrap   ">
-                                {item.username}
-                              </td>
-
-                              <td className="text-sm text-zinc-400 font-medium px-6 py-4 whitespace-nowrap">
-                                {item.role === "admin" ? "Admin" : "Kullanıcı"}
-                              </td>
-                              <td className="text-sm text-zinc-400 font-medium px-6 py-4 whitespace-nowrap">
-                                {item.memberShipType === "free" && (
-                                  <span className="bg-zinc-600 text-zinc-800 px-2 py-1 rounded-md">
-                                    Ücretsiz
-                                  </span>
-                                )}
-
-                                {item.memberShipType === "standard" && (
-                                  <span className="bg-slate-600 text-slate-800 px-2 py-1 rounded-md">
-                                    Standart
-                                  </span>
-                                )}
-
-                                {item.memberShipType === "premium" && (
-                                  <span className="bg-yellow-600 text-yellow-800 px-2 py-1 rounded-md">
-                                    Premium
-                                  </span>
-                                )}
-                              </td>
-                              <td className="text-sm text-zinc-400 font-medium px-6 py-4 whitespace-nowrap">
-                                {item.isActive ? (
-                                  <span
-                                    className="bg-green-600 text-green-800 px-2 py-1 rounded-md cursor-pointer"
-                                    onClick={() =>
-                                      handleUserActive(item._id, false)
-                                    }
-                                  >
-                                    Aktif
-                                  </span>
-                                ) : (
-                                  <span
-                                    className="bg-red-600 text-red-800 px-2 py-1 rounded-md cursor-pointer"
-                                    onClick={() =>
-                                      handleUserActive(item._id, true)
-                                    }
-                                  >
-                                    Pasif
-                                  </span>
-                                )}
-                              </td>
-
-                              <td className="text-sm text-zinc-400 font-light px-6 py-4 whitespace-nowrap">
-                                {DateDayMonthYear({ value: item.createdAt })}
-                              </td>
-                              <td className="text-sm text-zinc-400 font-medium px-6 py-4 whitespace-nowrap">
-                                <div className="flex items-stretch justify-end gap-4 h-full ">
-                                  {item.role !== "admin" && (
-                                    <button
-                                      onClick={() => {
-                                        userDelete(item._id);
-                                      }}
-                                      className="bg-red-500 text-red-800 px-4 py-2 rounded-md hover:bg-red-500/80 transition duration-300 ease-in-out"
-                                    >
-                                      Sil
-                                    </button>
-                                  )}
-                                </div>
-                              </td>
-                            </tr>
-                          );
-                        })}
-
-                      {data?.length === 0 && (
-                        <tr className="bg-zinc-900/50 text-zinc-400">
-                          <td
-                            colSpan="7"
-                            className="text-center py-6 font-medium text-lg"
-                          >
-                            Hiçbir veri bulunamadı.
-                          </td>
-                        </tr>
-                      )}
-                    </tbody>
-                  </table>*/}
 
                 <Table color={selectedColor}
                        selectionMode="single"
                        aria-label="Example static collection table">
                   <TableHeader className={"w-full"}>
-                    <TableColumn className={"w-4/12"}>NAME</TableColumn>
-                    <TableColumn className={"w-3/12"}>ROLE</TableColumn>
-                    <TableColumn className={"w-3/12"}>STATUS</TableColumn>
+                    <TableColumn>Id</TableColumn>
+                    <TableColumn>Image</TableColumn>
+                    <TableColumn>Title</TableColumn>
+                    <TableColumn>
+                      Description
+                    </TableColumn>
+                    <TableColumn>
+                      Kateogri
+                    </TableColumn>
+                    <TableColumn>
+                      Status
+                    </TableColumn>
                     <TableColumn
                       className={"w-2/12 "}>
 
                     </TableColumn>
                   </TableHeader>
-                  <TableBody>
+                  {data.length > 0 && (
+                    <TableBody>
 
-                    <TableRow key="4">
-                      <TableCell className={"w-4/12"}>William Howard</TableCell>
-                      <TableCell className={"w-3/12"}>Community
-                        Manager</TableCell>
-                      <TableCell className={"w-3/12"}>Vacation</TableCell>
-                      <TableCell className={" flex justify-center "}>
-                        <div className="relative flex items-center gap-4">
-                          <Tooltip content="Details">
+                      {data.map((item, index) => (
+                        <TableRow key={item.id}>
+                          <TableCell>
+                            {
+                              index + 1
+                            }
+                          </TableCell>
+                          <TableCell>
+                            <Image src={item.image} alt={"Post Image"}
+                                   width={50}
+                                   height={50} className={"border-4" +
+                              " border-gray-600 rounded-lg"}/>
+                          </TableCell>
+                          <TableCell>
+                            {item.title}
+                          </TableCell>
+                          <TableCell>
+                            {
+                              item.description.length > 160 ? item.description.splice(0, 160) + "..." : item.description
+                            }
+                          </TableCell>
+                          <TableCell className={"whitespace-nowrap capitalize"}>
+                            {item.category.replace(/-/g, " ")}
+                          </TableCell>
+
+                          <TableCell>
+                            <Chip className="capitalize"
+                                  color={
+                                    item.status ? "success" : "danger"
+                                  } size="sm"
+                                  variant="flat">
+                              {item.status ? "Yayında" : "Yayında Değil"}
+                            </Chip>
+                          </TableCell>
+                          <TableCell>
+                            <div
+                              className="relative flex items-center gap-4 justify-center">
+                              <Tooltip content="Detay">
               <span
                 className="text-lg text-default-400 cursor-pointer active:opacity-50">
                 <RiEyeFill fontSize={24}/>
               </span>
-                          </Tooltip>
-                          <Tooltip content="Edit user">
+                              </Tooltip>
+                              <Tooltip content="Düzenle">
               <span
                 className="text-lg text-default-400 cursor-pointer active:opacity-50">
                 <RiEditFill fontSize={24}/>
               </span>
-                          </Tooltip>
-                          <Tooltip color="danger" content="Delete user">
+                              </Tooltip>
+                              <Tooltip color="danger" content="Sil">
               <span
                 className="text-lg text-danger cursor-pointer active:opacity-50">
-                <RiDeleteBinFill fontSize={24}/>
+                <RiDeleteBinFill fontSize={24} onClick={
+                  (e) => {
+                    postDelete(e, item._id);
+                  }
+                }/>
               </span>
-                          </Tooltip>
-                        </div>
-                      </TableCell>
-                    </TableRow>
-                  </TableBody>
+                              </Tooltip>
+                            </div>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+
+
+                    </TableBody>
+                  )}
+
+                  {data.length === 0 && (
+                    <TableBody
+                      emptyContent={"Henüz içerik eklenmemiş"}>{[]}</TableBody>
+                  )}
                 </Table>
               </div>
             </div>
@@ -326,7 +228,7 @@ export default Posts;
 
 export async function getServerSideProps(context) {
   const cookie = context.req.headers.cookie;
-  const {data} = await axios.get(`${process.env.APP_URL}/api/dashboard/users`, {
+  const {data} = await axios.get(`${process.env.APP_URL}/api/dashboard/posts`, {
     headers: {
       cookie: cookie,
     },

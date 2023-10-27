@@ -89,6 +89,7 @@ export default {
   },
 
   home: {
+    menuName: "Anasayfa",
     welcome: ` <h2 className=" text-center text-2xl lg:text-4xl font-bold text-zinc-500">
     <div className="text-center font-extrabold text-4xl">
       <span className="text-yellow-600">Trader Haber</span> ' e

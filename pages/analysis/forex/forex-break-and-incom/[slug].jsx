@@ -1,11 +1,8 @@
 import React from "react";
 import Layout from "@/layouts/homeLayout";
-import { useSession } from "next-auth/react";
 import axios from "axios";
 
-const OnChainContext = ({ data }) => {
-  const { data: session } = useSession();
-
+const ForexBreakAndIncomContext = ({ data }) => {
   return (
     <Layout>
       <div className="flex flex-col gap-4 bg-zinc-900 rounded-lg  mt-6">
@@ -66,11 +63,13 @@ const OnChainContext = ({ data }) => {
   );
 };
 
-export default OnChainContext;
+export default ForexBreakAndIncomContext;
 
 export async function getServerSideProps(context) {
   const res = await axios
-    .get(`http://localhost:3000/api/onchain?slug=${context.query.slug}`)
+    .get(
+      `${process.env.APP_URL}/api/forex-break-and-incom?slug=${context.query.slug}`
+    )
     .then((res) => res)
     .catch((err) => err.response);
 
