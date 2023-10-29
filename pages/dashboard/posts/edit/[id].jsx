@@ -8,9 +8,9 @@ import {EditorContent, useEditor} from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import {useSession} from "next-auth/react";
 import Link from "next/link";
-import {toast} from "react-toastify";
+import Image from "next/image";
 
-const PostAdd = () => {
+const PostEdit = ({resData}) => {
   const router = useRouter();
   const {data: session} = useSession();
 
@@ -47,16 +47,9 @@ const PostAdd = () => {
       subCategory,
     })
 
-    if (!title || !description || !slug || !image || !content || !category || !subCategory || !status) {
-      toast.error("Lütfen tüm alanları doldurunuz!", {
-        position: "top-center",
-        autoClose: 1500,
-        theme: "colored",
-      });
-      return;
-    }
 
     const data = {
+      id: resData._id,
       title,
       description,
       slug,
@@ -68,8 +61,10 @@ const PostAdd = () => {
       subCategory,
     };
 
+    console.log(data)
+
     axios({
-      method: "post",
+      method: "PATCH",
       url: "/api/dashboard/posts",
       headers: {
         "Content-Type": "multipart/form-data",
@@ -121,6 +116,7 @@ const PostAdd = () => {
                 name="title"
                 id="title"
                 maxLength={60}
+                defaultValue={resData.title}
                 placeholder="İçeriğin başlığını giriniz... (Max: 60 karakter) "
                 className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
               />
@@ -133,6 +129,7 @@ const PostAdd = () => {
                 name="description"
                 id="description"
                 maxLength={160}
+                defaultValue={resData.description}
                 placeholder="İçerik için kısa metin giriniz... (Max: 160 karakter) "
                 className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
               />
@@ -144,6 +141,7 @@ const PostAdd = () => {
                 type="text"
                 name="slug"
                 id="slug"
+                defaultValue={resData.slug}
                 placeholder="İçerik için kısa url giriniz..."
                 className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
               />
@@ -209,6 +207,18 @@ const PostAdd = () => {
 
             <div className="flex flex-col">
               <label className="text-white font-semibold">Küçük Resmi</label>
+              <Image src={
+                resData.image
+              } alt={
+                "Post Image"
+              } width={50} height={50}
+                     className={
+                       "border-4" +
+                       " border-gray-600 rounded-lg"
+                     }
+
+
+              />
               <input
                 type="file"
                 name="image"
@@ -228,12 +238,20 @@ const PostAdd = () => {
                 name="status"
                 id="status"
                 className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
+
+
               >
                 <option defaultValue="" disabled>
                   İçerik durumunu seçiniz...
                 </option>
-                <option value={true}>Yayınla</option>
-                <option value={false}>Taslağa Al</option>
+                <option value={true}
+                        selected={resData.status === true}
+                >Yayınla
+                </option>
+                <option value={false}
+                        selected={resData.status === false}
+                >Taslağa Al
+                </option>
               </select>
             </div>
           </div>
@@ -242,7 +260,7 @@ const PostAdd = () => {
               type="submit"
               className="bg-custom_green border-2 hover:bg-green-600 duration-300 border-green-700 flex-shrink-0 text-green-800 font-semibold rounded-md px-4  py-3  relative z-100"
             >
-              Blog Oluştur
+              Kaydet
             </button>
             <Link href="/admin/blogs" className="text-red-700">
               İptal Et
@@ -254,4 +272,20 @@ const PostAdd = () => {
   );
 };
 
-export default PostAdd;
+export default PostEdit;
+
+export async function getServerSideProps(context) {
+  const cookie = context.req.headers.cookie;
+
+  const {data} = await axios.get(`${process.env.APP_URL}/api/dashboard/posts?id=${context.params.id}`, {
+    headers: {
+      cookie: cookie,
+    },
+  });
+
+  return {
+    props: {
+      resData: data.data,
+    },
+  };
+}

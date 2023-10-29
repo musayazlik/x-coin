@@ -14,20 +14,30 @@ export const config = {
 
 // Function to update user's password
 const updatePosts = async (req, res, fields, files) => {
-  const {title, description, slug, content, status, user, category} = fields;
+  const {
+    title,
+    description,
+    slug,
+    content,
+    status,
+    user,
+    category,
+    subCategory
+  } = fields;
   let data = {
-    title: title[0],
-    description: description[0],
-    slug: slug[0].trim().toLowerCase().replace(/ /g, "-"),
-    content: content[0],
-    category: category[0],
-    status: status[0] === "true" ? true : false,
-    user: user[0],
+    title: title?.[0],
+    description: description?.[0],
+    slug: slug?.[0].trim().toLowerCase().replace(/ /g, "-"),
+    content: content?.[0],
+    category: category?.[0],
+    subCategory: subCategory?.[0],
+    status: status?.[0] === "true" ? true : false,
+    user: user?.[0],
   };
 
   if (files.image || files.image !== undefined) {
     const imageName = `${fields.slug}-${Date.now()}`;
-    const imagePath = files.image[0].filepath;
+    const imagePath = files.image?.[0].filepath;
     const imageUrl = await cloudinary.v2.uploader.upload(imagePath, {
       folder: "posts",
       public_id: imageName,
@@ -158,6 +168,12 @@ export default async function handler(req, res) {
 
             console.log(Posts.populate("user", "name"))
             sendSuccessResponse(res, breakAndIncomData);
+          } else if (req.query.id) {
+
+            console.log("fgfdifgldfkggfjkldgjkl")
+
+            const breakAndIncomData = await Posts.findById(req.query.id).populate("user", "-password -walletAddress -email ")
+            sendSuccessResponse(res, breakAndIncomData);
           } else {
             const breakAndIncomData = await Posts.find({}).populate("user", "-password -walletAddress -email ")
             sendSuccessResponse(res, breakAndIncomData);
@@ -176,7 +192,8 @@ export default async function handler(req, res) {
             content,
             status,
             user,
-            category
+            category,
+            subCategory,
           } = fields;
 
           const imageName = `${slug[0]}-${Date.now()}`;
@@ -200,6 +217,7 @@ export default async function handler(req, res) {
             status: status[0] === "true" ? true : false,
             user: user[0],
             category: category[0],
+            subCategory: subCategory[0],
             image: imageUrl.secure_url,
           };
 

@@ -6,6 +6,8 @@ export default {
   or: "veya",
   freeTools: "Ücretsiz Araçlar",
   analysis: "Analiz",
+  education: "Eğitim",
+  feed: "Akış",
 
   homepage: {
     title: "Trader Haber",

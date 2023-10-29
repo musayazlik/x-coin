@@ -18,6 +18,10 @@ const postSchema = mongoose.Schema({
     type: String,
     default: "",
   },
+  subCategory: {
+    type: String,
+    default: "",
+  },
   slug: {
     type: String,
     default: "",

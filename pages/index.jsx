@@ -2,44 +2,53 @@ import Menu from "@/components/menü";
 import {Button} from "@nextui-org/react";
 import {RiArrowRightDoubleFill} from "react-icons/ri";
 import Image from "next/image";
+import {useRouter} from "next/router";
 
 const Home = () => {
+  const {push} = useRouter();
 
   return (
     <>
       <Menu/>
 
       <section>
-        <div className="container">
-          <div className="flex gap-6 ">
-            <div className={"py-40 flex flex-col gap-4 w-1/2"}>
-              <h2 className={"mb-12"}>
-                <div className=" font-extrabold text-5xl">
+        <div className="xl:container px-6">
+          <div className=" py-20 lg:py-0 flex flex-col lg:flex-row gap-6 ">
+            <div className={" lg:py-40 flex flex-col gap-4 w-full" +
+              " lg:w-1/2"}>
+              <h2 className={"mb-4"}>
+                <div
+                  className=" text-center lg:text-start font-extrabold  text-4xl xl:text-5xl">
                   Welcome to {' '}
                   <span className="text-yellow-600">Trader Edit</span> ' e
                 </div>
               </h2>
 
-              <p className={"max-w-3xl text-lg mb-8"}>
+              <p className={" text-lg mb-8 text-center lg:text-start" +
+                " text-zinc-400"}>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Aperiam, autem consectetur delectus eaque et eum eveniet iure
-                iusto minus nostrum perspiciatis provident, quaerat quasi quia
-                soluta. Accusamus, atque, consectetur ex laborum minima nesciunt
-                odio omnis perspiciatis quae repellendus reprehenderit voluptas.
+                iusto minus nostrum perspiciatis provident.
               </p>
 
-              <div className="flex gap-4">
-                <Button color={"warning"} variant={"bordered"}
-                        className={"py-8 pl-8 pr-12 text-xl"}>
+              <div className="flex gap-4 justify-center lg:justify-start">
+                <Button color={"warning"} variant={"bordered"} size={"lg"}
+                        className={" text-xl rounded pr-8 py-7"}
+                        onClick={() => {
+                          push("/auth/register")
+                        }}
+                >
                   <RiArrowRightDoubleFill fontSize={26}/>
                   <span> Get Started</span>
 
                 </Button>
               </div>
             </div>
-            <div className={"flex justify-center items-center w-1/2"}>
-              <Image src={"/Home.png"} alt={"animation"} width={700}
-                     height={700}/>
+            <div className={"flex justify-center items-center relative" +
+              " w-full min-h-[600px]" +
+              " lg:w-1/2"}>
+              <Image src={"/Home.png"} alt={"animation"} fill
+                     className={"object-contain"}/>
             </div>
           </div>
         </div>

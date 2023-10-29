@@ -10,6 +10,7 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
+  Spinner,
   User,
 } from "@nextui-org/react";
 import {signOut, useSession} from "next-auth/react";
@@ -29,7 +30,7 @@ const Menu = () => {
       <NavbarBrand>
         <p className="font-bold text-inherit">TraderEdit</p>
       </NavbarBrand>
-      <NavbarContent className="hidden sm:flex gap-8" justify="center">
+      <NavbarContent className="hidden lg:flex gap-4 md:gap-8" justify="center">
         <NavbarItem>
           <Link color="foreground" href="/feed/">
             {
@@ -64,9 +65,9 @@ const Menu = () => {
         <LangDropdown/>
         {status === "authenticated" ? (
           <>
-            <Dropdown placement="bottom-start" backdrop="blur">
+            <Dropdown placement="bottom-start">
               <DropdownTrigger>
-                <div className={"relative"}>
+                <div className={"relative flex flex-shrink-0"}>
                   <User
                     as="button"
                     avatarProps={{
@@ -153,11 +154,7 @@ const Menu = () => {
             </Dropdown>
           </>
         ) : status === "loading" ? (
-          <>
-            <div className={"text-white"}>
-
-            </div>
-          </>
+          <Spinner/>
         ) : (
           <>
 

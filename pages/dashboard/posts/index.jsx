@@ -89,15 +89,10 @@ const Posts = ({data}) => {
                     <TableColumn>Id</TableColumn>
                     <TableColumn>Image</TableColumn>
                     <TableColumn>Title</TableColumn>
-                    <TableColumn>
-                      Description
-                    </TableColumn>
-                    <TableColumn>
-                      Kateogri
-                    </TableColumn>
-                    <TableColumn>
-                      Status
-                    </TableColumn>
+                    <TableColumn>Description</TableColumn>
+                    <TableColumn>Kategori</TableColumn>
+                    <TableColumn>Alt Kategori</TableColumn>
+                    <TableColumn>Status</TableColumn>
                     <TableColumn
                       className={"w-2/12 "}>
 
@@ -130,6 +125,10 @@ const Posts = ({data}) => {
                           <TableCell className={"whitespace-nowrap capitalize"}>
                             {item.category.replace(/-/g, " ")}
                           </TableCell>
+                          <TableCell className={"whitespace-nowrap capitalize"}>
+                            {item.subCategory.replace(/-/g, " ") || "-"}
+                          </TableCell>
+
 
                           <TableCell>
                             <Chip className="capitalize"
@@ -149,9 +148,16 @@ const Posts = ({data}) => {
                 <RiEyeFill fontSize={24}/>
               </span>
                               </Tooltip>
-                              <Tooltip content="Düzenle">
+                              <Tooltip content="Düzenle"
+
+                              >
               <span
-                className="text-lg text-default-400 cursor-pointer active:opacity-50">
+                className="text-lg text-default-400 cursor-pointer active:opacity-50"
+                onClick={() => {
+                  router.push(`/dashboard/posts/edit/${item._id}`);
+                }
+                }
+              >
                 <RiEditFill fontSize={24}/>
               </span>
                               </Tooltip>

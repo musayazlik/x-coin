@@ -6,6 +6,8 @@ export default {
   or: "or",
   freeTools: "Free Tools",
   analysis: "Analysis",
+  education: "Education",
+  feed: "Feed",
 
 
   homepage: {
