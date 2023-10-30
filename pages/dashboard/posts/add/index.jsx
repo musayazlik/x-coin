@@ -6,7 +6,6 @@ import {useRouter} from "next/router";
 
 import {EditorContent, useEditor} from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import Link from '@tiptap/extension-link';
 import {useSession} from "next-auth/react";
 import Link from "next/link";
 import {toast} from "react-toastify";
