@@ -1,11 +1,11 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { MongoDBAdapter } from "@auth/mongodb-adapter";
+import {MongoDBAdapter} from "@auth/mongodb-adapter";
 import clientPromise from "../../../libs/clientPromise";
 import User from "@models/Users";
 import dbConnect from "@/libs/dbConnect";
 import bcryptjs from "bcryptjs";
-import { uid } from "uid";
+import {uid} from "uid";
 
 export const authOptions = {
   adapter: MongoDBAdapter(clientPromise, {
@@ -21,88 +21,65 @@ export const authOptions = {
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        walletAddress: { label: "Wallet Address", type: "text" },
-        isData: { label: "Username or Email", type: "text" },
-        password: { label: "Password", type: "password" },
+        isData: {label: "Username or Email", type: "text"},
+        password: {label: "Password", type: "password"},
       },
       authorize: async (credentials) => {
         await dbConnect();
 
         const newUserUsernNameId = uid(10);
 
-        if (credentials.walletAddress) {
+
+        const isMail = credentials.isData.includes("@");
+
+        if (isMail) {
           const user = await User.findOne({
-            walletAddress: credentials.walletAddress,
+            email: credentials.isData,
           });
 
-          if (user) {
-            if (user.isActive === false || user.isDeleted === true) {
-              return Promise.reject(
-                new Error(
-                  "Your account is not active or has been deleted. Please contact the administrator."
-                )
-              );
-            }
+          if (!user) {
+            return Promise.reject(
+              new Error("Your username or password is incorrect.")
+            );
+          }
+
+          if (user.isActive === false || user.isDeleted === true) {
+            return Promise.reject(
+              new Error("Your account is not active or has been deleted.")
+            );
+          }
+          const isPassword = await bcryptjs.compare(
+            credentials.password,
+            user.password
+          );
+
+          if (isPassword) {
             return Promise.resolve(user);
-          } else {
-            const newUser = await User.create({
-              walletAddress: credentials.walletAddress,
-              username: `user${newUserUsernNameId}`,
-              email: `user${newUserUsernNameId}@gmail.com`,
-            });
-            return Promise.resolve(newUser);
           }
         } else {
-          const isMail = credentials.isData.includes("@");
+          const user = await User.findOne({
+            username: credentials.isData,
+          });
 
-          if (isMail) {
-            const user = await User.findOne({
-              email: credentials.isData,
-            });
-
-            if (!user) {
-              return Promise.reject(
-                new Error("Your username or password is incorrect.")
-              );
-            }
-
-            if (user.isActive === false || user.isDeleted === true) {
-              return Promise.reject(
-                new Error("Your account is not active or has been deleted.")
-              );
-            }
-            const isPassword = await bcryptjs.compare(
-              credentials.password,
-              user.password
+          if (!user) {
+            return Promise.reject(
+              new Error("Your username or password is incorrect.")
             );
-
-            if (isPassword) {
-              return Promise.resolve(user);
-            }
-          } else {
-            const user = await User.findOne({
-              username: credentials.isData,
-            });
-
-            if (!user) {
-              return Promise.reject(
-                new Error("Your username or password is incorrect.")
-              );
-            }
-
-            if (user.isActive === false || user.isDeleted === true) {
-              return Promise.reject(
-                new Error("Your username or password is incorrect.")
-              );
-            }
-            const isPassword = await bcryptjs.compare(
-              credentials.password,
-              user.password
-            );
-            if (isPassword) {
-              return Promise.resolve(user);
-            }
           }
+
+          if (user.isActive === false || user.isDeleted === true) {
+            return Promise.reject(
+              new Error("Your username or password is incorrect.")
+            );
+          }
+          const isPassword = await bcryptjs.compare(
+            credentials.password,
+            user.password
+          );
+          if (isPassword) {
+            return Promise.resolve(user);
+          }
+
 
           return Promise.reject(
             new Error("Your username or password is incorrect.")
@@ -130,10 +107,7 @@ export const authOptions = {
   secret: process.env.SECRET,
 
   callbacks: {
-    async redirect({ url, baseUrl }) {
-      return baseUrl;
-    },
-    async jwt({ token, account, user }) {
+    async jwt({token, account, user}) {
       if (user) {
         token.name = user.name;
         token.surname = user.surname;
@@ -147,7 +121,7 @@ export const authOptions = {
 
       return token;
     },
-    async session({ session, token, user }) {
+    async session({session, token, user}) {
       session.user.name = token.name;
       session.user.surname = token.surname;
       session.user.username = token.username;

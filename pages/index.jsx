@@ -3,9 +3,13 @@ import {Button} from "@nextui-org/react";
 import {RiArrowRightDoubleFill} from "react-icons/ri";
 import Image from "next/image";
 import {useRouter} from "next/router";
+import {lang} from "@/lang/langT";
+
 
 const Home = () => {
-  const {push} = useRouter();
+  const {push, locale} = useRouter();
+
+  const t = lang(locale);
 
   return (
     <>
@@ -16,13 +20,27 @@ const Home = () => {
           <div className=" py-20 lg:py-0 flex flex-col lg:flex-row gap-6 ">
             <div className={" lg:py-40 flex flex-col gap-4 w-full" +
               " lg:w-1/2"}>
-              <h2 className={"mb-4"}>
-                <div
-                  className=" text-center lg:text-start font-extrabold  text-4xl xl:text-5xl">
-                  Welcome to {' '}
-                  <span className="text-yellow-600">Trader Edit</span> ' e
-                </div>
-              </h2>
+              {
+                locale === "tr" ? (
+                  <h2 className={"mb-4"}>
+                    <div
+                      className=" text-center lg:text-start font-extrabold  text-4xl xl:text-5xl">
+                      <span className="text-yellow-600">Trader Edit</span> '
+                      e {' '}
+                      Hoşgeldiniz...
+                    </div>
+                  </h2>
+                ) : (
+                  <h2 className={"mb-4"}>
+                    <div
+                      className=" text-center lg:text-start font-extrabold  text-4xl xl:text-5xl">
+                      Welcome to {' '}
+                      <span className="text-yellow-600">Trader Edit...</span>
+                    </div>
+                  </h2>
+                )
+              }
+
 
               <p className={" text-lg mb-8 text-center lg:text-start" +
                 " text-zinc-400"}>

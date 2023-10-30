@@ -65,7 +65,7 @@ const Menu = () => {
         <LangDropdown/>
         {status === "authenticated" ? (
           <>
-            <Dropdown placement="bottom-start">
+            <Dropdown placement="bottom-start" className={"mt-6"}>
               <DropdownTrigger>
                 <div className={"relative flex flex-shrink-0"}>
                   <User
@@ -109,7 +109,8 @@ const Menu = () => {
 
 
               </DropdownTrigger>
-              <DropdownMenu aria-label="User Actions" variant="flat">
+              <DropdownMenu aria-label="User Actions" variant="flat"
+              >
                 <DropdownItem key="profile" className="h-14 gap-2">
                   <p className="font-bold">
                     {session.user.name + " " + session.user.surname}
@@ -159,7 +160,7 @@ const Menu = () => {
           <>
 
 
-            <Dropdown backdrop="blur">
+            <Dropdown className={"mt-6"}>
               <DropdownTrigger>
 
 

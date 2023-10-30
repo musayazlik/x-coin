@@ -1,13 +1,11 @@
-import React, { useEffect } from "react";
-import Image from "next/image";
-import { signIn } from "next-auth/react";
+import React, {useEffect} from "react";
+import {getSession, signIn} from "next-auth/react";
 import Link from "next/link";
-import { FiUser, FiLock } from "react-icons/fi";
-import { useRouter } from "next/router";
-import { lang } from "@/lang/langT";
+import {FiLock, FiUser} from "react-icons/fi";
+import {useRouter} from "next/router";
+import {lang} from "@/lang/langT";
 import LangDropdown from "@/components/langDropdown";
-import { getSession } from "next-auth/react";
-import { toast } from "react-toastify";
+import {toast} from "react-toastify";
 
 /**
  * Styles
@@ -16,7 +14,7 @@ import styles from "./authStyles.module.scss";
 
 const Login = () => {
   const router = useRouter();
-  const { locale } = router;
+  const {locale} = router;
   const t = lang(locale);
 
   const handleEmailLogin = async (e) => {
@@ -28,6 +26,17 @@ const Login = () => {
       isData: emailandusername,
       password: password,
       callbackUrl: "/feed/",
+    }).then((res) => {
+      router.push("/feed/");
+    }).catch((err) => {
+      toast.error(err.message, {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        theme: "colored",
+      });
     });
   };
 
@@ -45,7 +54,8 @@ const Login = () => {
   }, []);
 
   return (
-    <div className="min-w-full relative min-h-screen loginBackground text-white flex justify-center items-center">
+    <div
+      className="min-w-full relative min-h-screen loginBackground text-white flex justify-center items-center">
       <div className={styles.wrapper}>
         <div className="mailLogin w-full sm:px-10">
           <form
@@ -54,7 +64,7 @@ const Login = () => {
           >
             <div className="input-group flex  items-center relative">
               <span className="input-group-addon absolute left-4">
-                <FiUser fontSize={20} className=" text-zinc-500" />
+                <FiUser fontSize={20} className=" text-zinc-500"/>
               </span>
               <input
                 type="text"
@@ -67,7 +77,7 @@ const Login = () => {
 
             <div className="input-group flex  items-center relative">
               <span className="input-group-addon absolute left-4">
-                <FiLock fontSize={20} className=" text-zinc-500" />
+                <FiLock fontSize={20} className=" text-zinc-500"/>
               </span>
               <input
                 type="password"
@@ -87,7 +97,8 @@ const Login = () => {
         </div>
 
         <div className="signIn text-xs sm:text-sm mt-6">
-          <p className="flex sm:flex-row flex-col justify-center items-center gap-2">
+          <p
+            className="flex sm:flex-row flex-col justify-center items-center gap-2">
             {t.loginPage.dontHaveAccount}
             <Link
               href={"/auth/register"}
@@ -111,7 +122,8 @@ const Login = () => {
           <span className="w-1 h-1 bg-zinc-900 block rounded-full"></span>
           <span className="w-1 h-1 bg-zinc-900 block rounded-full"></span>
         </div>
-        <div className=" flex-col items-center  text-2xl font-bold text-zinc-900 hidden sm:flex">
+        <div
+          className=" flex-col items-center  text-2xl font-bold text-zinc-900 hidden sm:flex">
           <span>E</span>
           <span>D</span>
           <span>I</span>
@@ -120,7 +132,7 @@ const Login = () => {
       </div>
 
       <div className="langDropdown fixed top-4 right-4 z-50 ">
-        <LangDropdown />
+        <LangDropdown/>
       </div>
     </div>
   );
