@@ -1,5 +1,5 @@
-import Post from '@/models/Post'
-import dbConnect from '@/utils/dbConnect'
+import Post from '@/models/Posts'
+import dbConnect from '@/libs/dbConnect'
 
 const getPosts = async (req, res) => {
   try {
