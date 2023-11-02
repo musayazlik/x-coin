@@ -194,7 +194,7 @@ const PostAdd = () => {
                 <option value="short-term">
                   Short Term (Kısa Vadeli)
                 </option>
-                <option value="subcoin-mix">
+                <option value="long-term">
                   Long Term (Uzun Vadeli)
                 </option>
                 <option value="support-resistance">

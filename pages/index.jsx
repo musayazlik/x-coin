@@ -4,6 +4,10 @@ import {RiArrowRightDoubleFill} from "react-icons/ri";
 import Image from "next/image";
 import {useRouter} from "next/router";
 import {lang} from "@/lang/langT";
+import Link from "next/link";
+import {BiBitcoin} from "react-icons/bi";
+import {BsFillBookmarkCheckFill} from "react-icons/bs";
+import {FiChevronRight} from "react-icons/fi";
 
 
 const Home = () => {
@@ -16,7 +20,7 @@ const Home = () => {
       <Menu/>
 
       <section>
-        <div className="xl:container px-6">
+        <div className="xl:container px-6 py-6">
           <div className=" py-20 lg:py-0 flex flex-col lg:flex-row gap-6 ">
             <div className={" lg:py-40 flex flex-col gap-4 w-full" +
               " lg:w-1/2"}>
@@ -67,6 +71,73 @@ const Home = () => {
               " lg:w-1/2"}>
               <Image src={"/Home.png"} alt={"animation"} fill
                      className={"object-contain"}/>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={"bg-black py-16"}>
+        <div className="xl:container px-6">
+          <div className="flex items-start gap-16">
+            <div className="w-4/12 relative min-h-[420px] object-cover">
+              <Image src={"/homImage1.jpg"} alt={"image"} fill
+                     className={"object-cover rounded-3xl"}/>
+            </div>
+            <div className="w-8/12 flex flex-col justify-center pt-8">
+              <h3 className={"font-bold text-4xl mb-4 flex items-center"}>
+                <BiBitcoin
+                  className={"inline-block mr-1 text-yellow-500 animate-bounce"}
+                  fontSize={48}/>
+                Borsa ve kripto paralar
+              </h3>
+              <p className={"text-base leading-6 font-light text-zinc-300" +
+                " mb-8"}>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Aperiam, autem consectetur delectus eaque et eum eveniet iure
+                iusto minus nostrum perspiciatis provident.
+              </p>
+
+              <ul className={"flex gap-6 mb-12"}>
+
+                <div className={"space-y-8"}>
+                  <li className={"flex gap-2"}>
+                    <BsFillBookmarkCheckFill color={"#F59E0B"} fontSize={24}/>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  </li>
+                  <li className={"flex gap-2"}>
+                    <BsFillBookmarkCheckFill color={"#F59E0B"} fontSize={24}/>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  </li>
+                  <li className={"flex gap-2"}>
+                    <BsFillBookmarkCheckFill color={"#F59E0B"} fontSize={24}/>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  </li>
+                </div>
+
+                <div className={"space-y-8"}>
+                  <li className={"flex gap-2"}>
+                    <BsFillBookmarkCheckFill color={"#F59E0B"} fontSize={24}/>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  </li>
+                  <li className={"flex gap-2"}>
+                    <BsFillBookmarkCheckFill color={"#F59E0B"} fontSize={24}/>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  </li>
+                  <li className={"flex gap-2"}>
+                    <BsFillBookmarkCheckFill color={"#F59E0B"} fontSize={24}/>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  </li>
+                </div>
+              </ul>
+
+              <Link href="/analysis/blockchain/total-market-cap"
+                    className={"flex items-center text-blue-600 duration-300" +
+                      " hover:text-blue-500"}>
+
+                Daha fazla bilgi için tıklayınız
+                <FiChevronRight fontSize={20} className={"inline-block ml-1"}/>
+              </Link>
+
             </div>
           </div>
         </div>

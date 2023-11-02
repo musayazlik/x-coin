@@ -6,8 +6,21 @@ const getPosts = async (req, res) => {
     if (req.query.id) {
       const post = await Post.findById(req.query.id)
       res.status(200).json({success: true, data: post})
-    } else if (req.query.category) {
-      const post = await Post.find({category: req.query.category})
+    } else if (req.query.category && req.query.page) {
+      const post = await Post.find({
+        category: req.query.category
+      }).populate('user', 'name email image role').select('-__v').limit(16).skip((req.query.page - 1) * 16)
+
+      res.status(200).json({success: true, data: post})
+    } else if (
+      req.query.slug
+    ) {
+      const post = await Post.findOne({
+        slug: req.query.slug
+      }).populate('user', 'name email image role').select('-__v')
+
+      console.log(post)
+
       res.status(200).json({success: true, data: post})
     } else {
       const posts = await Post.find({})

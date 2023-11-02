@@ -31,6 +31,14 @@ const Menu = () => {
         <p className="font-bold text-inherit">TraderEdit</p>
       </NavbarBrand>
       <NavbarContent className="hidden lg:flex gap-4 md:gap-8" justify="center">
+        <NavbarItem isActive>
+          <Link href="/">
+            {
+              t.homepage.menu.home
+            }
+          </Link>
+        </NavbarItem>
+
         <NavbarItem>
           <Link color="foreground" href="/feed/">
             {
@@ -38,8 +46,8 @@ const Menu = () => {
             }
           </Link>
         </NavbarItem>
-        <NavbarItem isActive>
-          <Link href="#" aria-current="page">
+        <NavbarItem>
+          <Link color="foreground" href="#" aria-current="page">
             {
               t.homepage.menu.aboutus
             }

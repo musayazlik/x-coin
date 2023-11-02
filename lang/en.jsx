@@ -8,6 +8,18 @@ export default {
   analysis: "Analysis",
   education: "Education",
   feed: "Feed",
+  readmore: "Read More",
+  newpost: "New Post",
+  nopost: "No post found",
+
+  analytics: {
+    title: "Analysis",
+    totalMc: "Total MC",
+    subCoinMix: "Subcoin Mix",
+    subIndices: "Sub Indices",
+    onChain: "On Chain",
+    breakAndIncom: "Breakdowns and Incompatibilities",
+  },
 
 
   homepage: {
@@ -15,6 +27,7 @@ export default {
     description: "Trader Haber is a platform that allows users to learn about all stock market data using world market data.",
     keywords: "Trader Haber, Stock Market, Crypto, Forex, All Markets",
     menu: {
+      home: "Home",
       feed: "Feed",
       aboutus: "About Us",
       pricing: "Pricing",

@@ -8,12 +8,26 @@ export default {
   analysis: "Analiz",
   education: "Eğitim",
   feed: "Akış",
+  readmore: "Devamını Oku",
+  newpost: "Yeni İçerik",
+  nopost: "İçerik bulunamadı",
+
+  analytics: {
+    title: "Analiz",
+    totalMc: "Toplam MC",
+    subCoinMix: "Altcoin Mix",
+    subIndices: "Alt Endeksler",
+    onChain: "On Chain",
+    breakAndIncom: "Kırılımlar ve Uyumsuzluklar",
+  },
+
 
   homepage: {
     title: "Trader Haber",
     description: "Trader Haber, dünya piyasa verilerini kullanarak, kullanıcıların tüm borsa verileri hakkında bilgi edinmelerini sağlayan bir platformdur.",
     keywords: "Trader Haber, Borsa, Kripto, Forex, Tüm Piyasalar",
     menu: {
+      home: "Anasayfa",
       feed: "Akış",
       aboutus: "Hakkımızda",
       pricing: "Fiyatlandırma",

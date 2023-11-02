@@ -12,7 +12,7 @@ export const config = {
   },
 };
 
-// Function to update user's password
+// Update posts
 const updatePosts = async (req, res, fields, files) => {
   const {
     title,
@@ -31,7 +31,7 @@ const updatePosts = async (req, res, fields, files) => {
     content: content?.[0],
     category: category?.[0],
     subCategory: subCategory?.[0],
-    status: status?.[0] === "true" ? true : false,
+    status: status?.[0] === "true",
     user: user?.[0],
   };
 
@@ -71,7 +71,7 @@ const updatePosts = async (req, res, fields, files) => {
         description: description[0],
         slug: slug[0].trim().toLowerCase().replace(/ /g, "-"),
         content: content[0],
-        status: status[0] === "true" ? true : false,
+        status: status[0] === "true",
         user: user[0],
       };
 
@@ -92,48 +92,6 @@ const updatePosts = async (req, res, fields, files) => {
   }
 };
 
-// Function to update user's profile information
-/*const PostsAdd = async (req, res, fields) => {
-  try {
-    const {username, walletAddress, email} = fields;
-
-    // Check if username, email, and walletAddress are already taken
-    const isUsernameTaken = await User.exists({
-      username: username,
-      _id: {$ne: req.query.id},
-    });
-    const isEmailTaken = await User.exists({
-      email: email,
-      _id: {$ne: req.query.id},
-    });
-    const isWalletAddressTaken = await User.exists({
-      walletAddress: walletAddress,
-      _id: {$ne: req.query.id},
-    });
-
-    if (isUsernameTaken) {
-      sendErrorResponse(res, 400, "Bu kullanıcı adı daha önce alınmış.");
-    } else if (isEmailTaken) {
-      sendErrorResponse(res, 400, "Bu e-posta adresi daha önce alınmış.");
-    } else if (isWalletAddressTaken) {
-      sendErrorResponse(res, 400, "Bu cüzdan adresi daha önce alınmış.");
-    } else {
-      const updatedUser = await User.findOneAndUpdate(
-        {_id: req.query.id},
-        {$set: fields},
-        {new: true}
-      );
-
-      if (!updatedUser) {
-        sendErrorResponse(res, 404, "User not found");
-      } else {
-        sendSuccessResponse(res, updatedUser);
-      }
-    }
-  } catch (error) {
-    sendErrorResponse(res, 400, error.message);
-  }
-};*/
 
 export default async function handler(req, res) {
   await notAdmin(req, res);
@@ -153,7 +111,7 @@ export default async function handler(req, res) {
     api_secret: process.env.CLOUDINARY_API_SECRET,
   });
 
-  form.parse(req, async (err, fields, files) => {
+  await form.parse(req, async (err, fields, files) => {
     if (err) {
       sendErrorResponse(res, 400, err.message);
     }
@@ -169,8 +127,6 @@ export default async function handler(req, res) {
             console.log(Posts.populate("user", "name"))
             sendSuccessResponse(res, breakAndIncomData);
           } else if (req.query.id) {
-
-            console.log("fgfdifgldfkggfjkldgjkl")
 
             const breakAndIncomData = await Posts.findById(req.query.id).populate("user", "-password -walletAddress -email ")
             sendSuccessResponse(res, breakAndIncomData);
@@ -214,7 +170,7 @@ export default async function handler(req, res) {
             description: description[0],
             slug: slug[0].trim().toLowerCase().replace(/ /g, "-"),
             content: content[0],
-            status: status[0] === "true" ? true : false,
+            status: status[0] === "true",
             user: user[0],
             category: category[0],
             subCategory: subCategory[0],
@@ -229,7 +185,7 @@ export default async function handler(req, res) {
         break;
 
       case "PATCH":
-        updatePosts(req, res, fields, files);
+        await updatePosts(req, res, fields, files);
         break;
 
       case "DELETE":
