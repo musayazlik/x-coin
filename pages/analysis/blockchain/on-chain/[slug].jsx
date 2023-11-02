@@ -73,7 +73,7 @@ export default OnChainContext;
 
 export async function getServerSideProps(context) {
   const res = await axios
-    .get(`http://localhost:3000/api/onchain?slug=${context.query.slug}`)
+    .get(`/api/onchain?slug=${context.query.slug}`)
     .then((res) => res)
     .catch((err) => err.response);
 
