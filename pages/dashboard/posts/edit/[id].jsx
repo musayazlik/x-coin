@@ -277,7 +277,7 @@ export default PostEdit;
 export async function getServerSideProps(context) {
   const cookie = context.req.headers.cookie;
 
-  const {data} = await axios.get(`/api/dashboard/posts?id=${context.params.id}`, {
+  const {data} = await axios.get(`${process.env.APP_URL}/api/dashboard/posts?id=${context.params.id}`, {
     headers: {
       cookie: cookie,
     },
