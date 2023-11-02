@@ -1,23 +1,22 @@
 import React from "react";
 import DashboardLayout from "@/layouts/dashboardLayout";
-import { useRouter } from "next/router";
-import DateDayMonthYear from "@helpers/datedaymonthyear";
+import {useRouter} from "next/router";
 import axios from "axios";
-import { toast } from "react-toastify";
+import {toast} from "react-toastify";
 import Swal from "sweetalert2";
-import { useSession } from "next-auth/react";
+import {useSession} from "next-auth/react";
 import {
   Table,
-  TableHeader,
-  TableColumn,
   TableBody,
-  TableRow,
   TableCell,
+  TableColumn,
+  TableHeader,
+  TableRow,
 } from "@nextui-org/react";
 
-const Users = ({ data }) => {
+const Users = ({data}) => {
   const router = useRouter();
-  const { data: session } = useSession();
+  const {data: session} = useSession();
 
   const userDelete = async (id) => {
     const cookie = document.cookie;
@@ -93,7 +92,8 @@ const Users = ({ data }) => {
 
   return (
     <DashboardLayout>
-      <div className="bg-zinc-800 shadow-md shadow-zinc-900/20 px-2 py-8 border-t-2 border-rose-600">
+      <div
+        className="bg-zinc-800 shadow-md shadow-zinc-900/20 px-2 py-8 border-t-2 border-rose-600">
         <div className="flex justify-between items-center px-4">
           <div className="flex flex-col justify-center">
             <h1 className="text-lg sm:text-2xl font-bold text-white">
@@ -320,8 +320,8 @@ export default Users;
 
 export async function getServerSideProps(context) {
   const cookie = context.req.headers.cookie;
-  const { data } = await axios.get(
-    `${process.env.APP_URL}/api/dashboard/users`,
+  const {data} = await axios.get(
+    `/api/dashboard/users`,
     {
       headers: {
         cookie: cookie,

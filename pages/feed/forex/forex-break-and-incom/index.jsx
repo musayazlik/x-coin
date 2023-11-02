@@ -1,13 +1,12 @@
 import React from "react";
 import Layout from "@/layouts/homeLayout";
-import { useSession } from "next-auth/react";
-import { FiArrowRight } from "react-icons/fi";
+import {FiArrowRight} from "react-icons/fi";
 import Link from "next/link";
 import axios from "axios";
 import Image from "next/image";
 import Head from "next/head";
 
-const BreakAndIncom = ({ data }) => {
+const BreakAndIncom = ({data}) => {
   return (
     <>
       <Head>
@@ -51,11 +50,13 @@ const BreakAndIncom = ({ data }) => {
                   <div className="flex items-center w-full">
                     <div className="flex flex-col  mt-4 w-full">
                       <Link href={`/break-and-incom/${data[0].slug}`}>
-                        <h2 className="text-xl font-semibold hover:text-rose-600 duration-300 cursor-pointer text-zinc-400 leading-tight">
+                        <h2
+                          className="text-xl font-semibold hover:text-rose-600 duration-300 cursor-pointer text-zinc-400 leading-tight">
                           {data[0].title}
                         </h2>
                       </Link>
-                      <p className="text-base mt-2 mb-4 text-gray-600 leading-normal">
+                      <p
+                        className="text-base mt-2 mb-4 text-gray-600 leading-normal">
                         {data[0].description}
                       </p>
 
@@ -69,7 +70,8 @@ const BreakAndIncom = ({ data }) => {
                             className="w-8 h-8 max-h-8 flex-shrink rounded-full object-cover border-2 border-zinc-400"
                           />
                           <div className="flex flex-col justify-center ">
-                            <h4 className="text-md font-semibold text-zinc-400 leading-tight">
+                            <h4
+                              className="text-md font-semibold text-zinc-400 leading-tight">
                               {data[0].user.name ||
                                 "Anonim" + " " + data[0].user.surname ||
                                 ""}
@@ -85,7 +87,7 @@ const BreakAndIncom = ({ data }) => {
                             className="border-2 border-rose-600 hover:bg-rose-600 hover:text-rose-50 hover:outline-2 hover:outline-dotted hover:outline-offset-4 outline-offset-0 outline-rose-700 outline-2  px-4 py-2 rounded-lg text-rose-600 duration-300 flex items-center gap-2 hover:shadow-lg hover:shadow-rose-600/50"
                           >
                             <span>Devamını Oku</span>
-                            <FiArrowRight className="inline-block" />
+                            <FiArrowRight className="inline-block"/>
                           </Link>
                         </div>
                       </div>
@@ -102,7 +104,8 @@ const BreakAndIncom = ({ data }) => {
                 className="card w-full flex flex-col lg:flex-row gap-4 bg-zinc-900 px-4  rounded-xl py-4"
                 key={index}
               >
-                <div className="cardHeader h-[250px] lg:h-auto lg:max-h-[160px] lg:max-w-[250px] lg:min-h-[160px] min-w-[220px] rounded-lg">
+                <div
+                  className="cardHeader h-[250px] lg:h-auto lg:max-h-[160px] lg:max-w-[250px] lg:min-h-[160px] min-w-[220px] rounded-lg">
                   <img
                     src={item.thumbnail}
                     alt=""
@@ -113,11 +116,13 @@ const BreakAndIncom = ({ data }) => {
                   <div className="flex flex-col justify-between h-full">
                     <div className="">
                       <Link href={`/break-and-incom/${item.slug}`}>
-                        <h2 className="text-lg sm:text-xl font-semibold hover:text-rose-600 duration-300 cursor-pointer text-zinc-400 leading-tight">
+                        <h2
+                          className="text-lg sm:text-xl font-semibold hover:text-rose-600 duration-300 cursor-pointer text-zinc-400 leading-tight">
                           {item.title}
                         </h2>
                       </Link>
-                      <p className="text-sm sm:text-base mt-2 mb-4 text-gray-600 leading-normal">
+                      <p
+                        className="text-sm sm:text-base mt-2 mb-4 text-gray-600 leading-normal">
                         {item.description}
                       </p>
                     </div>
@@ -130,7 +135,8 @@ const BreakAndIncom = ({ data }) => {
                           className="w-8 h-8 max-h-8 flex-shrink rounded-full object-cover border-2 border-zinc-400"
                         />
                         <div className="flex flex-col justify-center ">
-                          <h2 className="text-md font-semibold text-zinc-400 leading-tight">
+                          <h2
+                            className="text-md font-semibold text-zinc-400 leading-tight">
                             {item.user.name ||
                               "Anonim" + " " + item.user.surname ||
                               ""}
@@ -146,7 +152,7 @@ const BreakAndIncom = ({ data }) => {
                           className="border-2 border-rose-600 hover:bg-rose-600 hover:text-rose-50 hover:outline-2 hover:outline-dotted hover:outline-offset-4 outline-offset-0 outline-rose-700 outline-2  px-4 py-2 rounded-lg text-rose-600 duration-300 flex items-center gap-2 hover:shadow-lg hover:shadow-rose-600/50"
                         >
                           <span>Devamını Oku</span>
-                          <FiArrowRight className="inline-block" />
+                          <FiArrowRight className="inline-block"/>
                         </Link>
                       </div>
                     </div>
@@ -157,7 +163,8 @@ const BreakAndIncom = ({ data }) => {
 
           {data.length === 0 && (
             <div>
-              <p className="text-center text-zinc-500 text-xl bg-zinc-700 py-6 font-bold rounded-md">
+              <p
+                className="text-center text-zinc-500 text-xl bg-zinc-700 py-6 font-bold rounded-md">
                 Henüz içerik yüklenmedi. Takipte kalın !
               </p>
             </div>
@@ -172,8 +179,8 @@ export default BreakAndIncom;
 
 export async function getServerSideProps(context) {
   const cookie = context.req.headers.cookie;
-  const { data } = await axios.get(
-    `${process.env.APP_URL}/api/forex-break-and-incom`,
+  const {data} = await axios.get(
+    `/api/forex-break-and-incom`,
     {
       headers: {
         cookie: cookie,

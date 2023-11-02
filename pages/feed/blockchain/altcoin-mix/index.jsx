@@ -3,7 +3,7 @@ import Layout from "@/layouts/homeLayout";
 import axios from "axios";
 import Head from "next/head";
 
-const AltCoinMix = ({ altcoins }) => {
+const AltCoinMix = ({altcoins}) => {
   return (
     <>
       <Head>
@@ -31,104 +31,107 @@ const AltCoinMix = ({ altcoins }) => {
           <div className="container mx-auto py-6 overflow-x-auto">
             <table className="w-full ">
               <thead>
-                <tr className="text-sm ">
-                  <th className="text-start font-medium">İsim</th>
-                  <th className="px-6 text-center py-4 font-medium">Sembol</th>
-                  <th className="px-6 text-center py-4 font-medium">
-                    Piyasa Değeri
-                  </th>
-                  <th className="px-6 text-center py-4 font-medium">
-                    Piyasa Sıralaması
-                  </th>
-                  <th className="px-6 text-center font-medium">
-                    Tamamen Seyreltilmiş Değerleme
-                  </th>
-                  <th className="px-6 text-center py-4 font-medium">
-                    Toplam İşlem Hacmi
-                  </th>
-                  <th className="px-6 text-center py-4 font-medium">
-                    En Yüksek Fiyat (Son 24 saat)
-                  </th>
-                  <th className="px-6 text-center py-4 font-medium">
-                    En Düşük Fiyat (Son 24 saat)
-                  </th>
-                  <th className="px-6 text-center py-4 font-medium">
-                    Fiyat Değişimi(Son 24 saat)
-                  </th>
-                  <th className="px-6 text-center py-4font-medium">
-                    Güncel Fiyat
-                  </th>
-                </tr>
+              <tr className="text-sm ">
+                <th className="text-start font-medium">İsim</th>
+                <th className="px-6 text-center py-4 font-medium">Sembol</th>
+                <th className="px-6 text-center py-4 font-medium">
+                  Piyasa Değeri
+                </th>
+                <th className="px-6 text-center py-4 font-medium">
+                  Piyasa Sıralaması
+                </th>
+                <th className="px-6 text-center font-medium">
+                  Tamamen Seyreltilmiş Değerleme
+                </th>
+                <th className="px-6 text-center py-4 font-medium">
+                  Toplam İşlem Hacmi
+                </th>
+                <th className="px-6 text-center py-4 font-medium">
+                  En Yüksek Fiyat (Son 24 saat)
+                </th>
+                <th className="px-6 text-center py-4 font-medium">
+                  En Düşük Fiyat (Son 24 saat)
+                </th>
+                <th className="px-6 text-center py-4 font-medium">
+                  Fiyat Değişimi(Son 24 saat)
+                </th>
+                <th className="px-6 text-center py-4font-medium">
+                  Güncel Fiyat
+                </th>
+              </tr>
               </thead>
-              <tbody className="space-y-6 text-center divide-zinc-700/50 odd:bg-transparent">
-                {altcoins &&
-                  altcoins?.map((altcoin, index) => {
-                    return (
-                      <tr
-                        className="odd:bg-zinc-900/40 rounded-lg py-2"
-                        key={index}
+              <tbody
+                className="space-y-6 text-center divide-zinc-700/50 odd:bg-transparent">
+              {altcoins &&
+                altcoins?.map((altcoin, index) => {
+                  return (
+                    <tr
+                      className="odd:bg-zinc-900/40 rounded-lg py-2"
+                      key={index}
+                    >
+                      <th
+                        scope="row"
+                        className="text-left flex gap-2 items-center px-2"
                       >
-                        <th
-                          scope="row"
-                          className="text-left flex gap-2 items-center px-2"
-                        >
-                          <img
-                            src={altcoin.image}
-                            alt=""
-                            className="w-8 h-8 rounded-full"
-                          />
-                          <h3 className="py-3 pl-3 pr-6 whitespace-nowrap text-sm font-medium">
-                            {altcoin.name}
-                          </h3>
-                        </th>
-                        <th scope="row" className="text-left">
-                          <p className="py-3 px-8 font-light text-center text-sm">
-                            {altcoin.symbol}
-                          </p>
-                        </th>
-                        <th scope="row" className="text-left">
-                          <p className="py-3 px-8 font-light text-center text-sm">
-                            {altcoin.market_cap}
-                          </p>
-                        </th>
-                        <th scope="row" className="text-left">
-                          <p className="py-3 px-8 font-light text-center text-sm">
-                            {altcoin.market_cap_rank}
-                          </p>
-                        </th>
-                        <th scope="row" className="text-left">
-                          <p className="py-3 px-8 font-light text-center text-sm">
-                            {altcoin.fully_diluted_valuation}
-                          </p>
-                        </th>
-                        <th scope="row" className="text-left">
-                          <p className="py-3 px-8 font-light text-center text-sm">
-                            {altcoin.total_volume}
-                          </p>
-                        </th>
-                        <th scope="row" className="text-left">
-                          <p className="py-3 px-8 font-light text-center text-sm">
-                            {altcoin.high_24h}
-                          </p>
-                        </th>
-                        <th scope="row" className="text-left">
-                          <p className="py-3 px-8 font-light text-center text-sm">
-                            {altcoin.low_24h}
-                          </p>
-                        </th>
-                        <th scope="row" className="text-left">
-                          <p className="py-3 px-8 font-light text-center text-sm">
-                            {altcoin.price_change_24h}
-                          </p>
-                        </th>
-                        <th scope="row" className="text-left">
-                          <p className="py-3 px-8 font-light text-center text-sm whitespace-nowrap">
-                            {altcoin.current_price} $
-                          </p>
-                        </th>
-                      </tr>
-                    );
-                  })}
+                        <img
+                          src={altcoin.image}
+                          alt=""
+                          className="w-8 h-8 rounded-full"
+                        />
+                        <h3
+                          className="py-3 pl-3 pr-6 whitespace-nowrap text-sm font-medium">
+                          {altcoin.name}
+                        </h3>
+                      </th>
+                      <th scope="row" className="text-left">
+                        <p className="py-3 px-8 font-light text-center text-sm">
+                          {altcoin.symbol}
+                        </p>
+                      </th>
+                      <th scope="row" className="text-left">
+                        <p className="py-3 px-8 font-light text-center text-sm">
+                          {altcoin.market_cap}
+                        </p>
+                      </th>
+                      <th scope="row" className="text-left">
+                        <p className="py-3 px-8 font-light text-center text-sm">
+                          {altcoin.market_cap_rank}
+                        </p>
+                      </th>
+                      <th scope="row" className="text-left">
+                        <p className="py-3 px-8 font-light text-center text-sm">
+                          {altcoin.fully_diluted_valuation}
+                        </p>
+                      </th>
+                      <th scope="row" className="text-left">
+                        <p className="py-3 px-8 font-light text-center text-sm">
+                          {altcoin.total_volume}
+                        </p>
+                      </th>
+                      <th scope="row" className="text-left">
+                        <p className="py-3 px-8 font-light text-center text-sm">
+                          {altcoin.high_24h}
+                        </p>
+                      </th>
+                      <th scope="row" className="text-left">
+                        <p className="py-3 px-8 font-light text-center text-sm">
+                          {altcoin.low_24h}
+                        </p>
+                      </th>
+                      <th scope="row" className="text-left">
+                        <p className="py-3 px-8 font-light text-center text-sm">
+                          {altcoin.price_change_24h}
+                        </p>
+                      </th>
+                      <th scope="row" className="text-left">
+                        <p
+                          className="py-3 px-8 font-light text-center text-sm whitespace-nowrap">
+                          {altcoin.current_price} $
+                        </p>
+                      </th>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
@@ -142,7 +145,7 @@ export default AltCoinMix;
 
 export async function getServerSideProps() {
   const response = await axios.get(
-    `${process.env.APP_URL}/api/kripto?value=subcoinmix&page=1`
+    `/api/kripto?value=subcoinmix&page=1`
   );
   const altcoins = response.data.data.subcoinmix;
 

@@ -198,7 +198,7 @@ export default Posts;
 
 export async function getServerSideProps(context) {
   const cookie = context.req.headers.cookie;
-  const {data} = await axios.get(`${process.env.APP_URL}/api/dashboard/posts`, {
+  const {data} = await axios.get(`/api/dashboard/posts`, {
     headers: {
       cookie: cookie,
     },

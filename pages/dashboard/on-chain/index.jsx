@@ -211,7 +211,7 @@ export default OnChain;
 export async function getServerSideProps(context) {
   const cookie = context.req.headers.cookie;
   const {data} = await axios.get(
-    `${process.env.APP_URL}/api/dashboard/onchain`,
+    `/api/dashboard/onchain`,
     {
       headers: {
         cookie: cookie,

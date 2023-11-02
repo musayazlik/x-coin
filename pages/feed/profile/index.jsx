@@ -1,14 +1,12 @@
 import React from "react";
 import Layout from "@/layouts/homeLayout";
-import { FiMessageSquare } from "react-icons/fi";
 import axios from "axios";
-import { useSession, getSession, signOut } from "next-auth/react";
-import { toast } from "react-toastify";
-import Link from "next/link";
+import {getSession, signOut, useSession} from "next-auth/react";
+import {toast} from "react-toastify";
 import Membership from "@/components/icons/membership";
 
 const Profile = () => {
-  const { data: session } = useSession();
+  const {data: session} = useSession();
 
   const handlePassword = async (e) => {
     e.preventDefault();
@@ -198,7 +196,8 @@ const Profile = () => {
             />
 
             {session?.user?.memberShipType === "standard" && (
-              <div className="w-12 h-12 rounded-full flex justify-center items-center absolute -top-1.5  bg-stone-400 -right-1.5 border-2 border-stone-500 shadow-md shadow-stone-700">
+              <div
+                className="w-12 h-12 rounded-full flex justify-center items-center absolute -top-1.5  bg-stone-400 -right-1.5 border-2 border-stone-500 shadow-md shadow-stone-700">
                 <Membership
                   className=" "
                   width="32"
@@ -210,7 +209,8 @@ const Profile = () => {
             )}
 
             {session?.user?.memberShipType === "premium" && (
-              <div className="w-12 h-12 rounded-full flex justify-center items-center absolute -top-1.5  bg-yellow-400 -right-1.5 border-2 border-yellow-600 shadow-md shadow-yellow-700">
+              <div
+                className="w-12 h-12 rounded-full flex justify-center items-center absolute -top-1.5  bg-yellow-400 -right-1.5 border-2 border-yellow-600 shadow-md shadow-yellow-700">
                 <Membership
                   className=" "
                   width="32"
@@ -230,7 +230,8 @@ const Profile = () => {
               </span>
             </h1>
             <div className="">
-              <p className="text-sm sm:text-base text-yellow-800 bg-yellow-500 px-2 sm:px-8 py-1 rounded-sm border-2 border-yellow-700/50 font-medium mb-2 break-all">
+              <p
+                className="text-sm sm:text-base text-yellow-800 bg-yellow-500 px-2 sm:px-8 py-1 rounded-sm border-2 border-yellow-700/50 font-medium mb-2 break-all">
                 {session?.user?.walletAddress || "Cüzdan adresi yok."}
               </p>
             </div>
@@ -243,8 +244,10 @@ const Profile = () => {
 
       <div className="flex justify-center items-center mt-4">
         <form action="" className="w-full" onSubmit={(e) => handleProfile(e)}>
-          <div className="flex flex-col justify-center items-center w-full gap-2">
-            <div className="flex flex-col justify-center items-start w-full max-w-2xl">
+          <div
+            className="flex flex-col justify-center items-center w-full gap-2">
+            <div
+              className="flex flex-col justify-center items-start w-full max-w-2xl">
               <label
                 htmlFor="name"
                 className="text-base text-gray-500 font-medium mb-2"
@@ -260,7 +263,8 @@ const Profile = () => {
                 defaultValue={session?.user?.name}
               />
             </div>
-            <div className="flex flex-col justify-center items-start w-full max-w-2xl">
+            <div
+              className="flex flex-col justify-center items-start w-full max-w-2xl">
               <label
                 htmlFor="surname"
                 className="text-base text-gray-500 font-medium mb-2"
@@ -276,7 +280,8 @@ const Profile = () => {
                 defaultValue={session?.user?.surname}
               />
             </div>
-            <div className="flex flex-col justify-center items-start w-full max-w-2xl">
+            <div
+              className="flex flex-col justify-center items-start w-full max-w-2xl">
               <label
                 htmlFor="surname"
                 className="text-base text-gray-500 font-medium mb-2"
@@ -292,7 +297,8 @@ const Profile = () => {
                 defaultValue={session?.user?.username}
               />
             </div>
-            <div className="flex flex-col justify-center items-start w-full max-w-2xl">
+            <div
+              className="flex flex-col justify-center items-start w-full max-w-2xl">
               <label
                 htmlFor="walletAddress"
                 className="text-base text-gray-500 font-medium mb-2"
@@ -308,7 +314,8 @@ const Profile = () => {
                 defaultValue={session?.user?.walletAddress}
               />
             </div>
-            <div className="flex flex-col justify-center items-start w-full max-w-2xl">
+            <div
+              className="flex flex-col justify-center items-start w-full max-w-2xl">
               <label
                 htmlFor="email"
                 className="text-base text-gray-500 font-medium mb-2"
@@ -325,7 +332,8 @@ const Profile = () => {
               />
             </div>
 
-            <div className="flex flex-col justify-center items-start w-full max-w-2xl">
+            <div
+              className="flex flex-col justify-center items-start w-full max-w-2xl">
               <button
                 type="submit"
                 className="w-full h-12 px-3 mb-2 mt-6 text-base text-white bg-indigo-600 rounded-md duration-200 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
@@ -339,15 +347,19 @@ const Profile = () => {
 
       <div className="flex justify-center items-center mt-4">
         <form action="" className="w-full" onSubmit={(e) => handlePassword(e)}>
-          <div className="flex flex-col justify-center items-center w-full gap-2">
-            <div className="flex flex-col justify-center items-start w-full max-w-2xl">
-              <h3 className="my-4 py-3 px-4 bg-zinc-900/60 w-full border-l-2 border-rose-600">
+          <div
+            className="flex flex-col justify-center items-center w-full gap-2">
+            <div
+              className="flex flex-col justify-center items-start w-full max-w-2xl">
+              <h3
+                className="my-4 py-3 px-4 bg-zinc-900/60 w-full border-l-2 border-rose-600">
                 <span className="text-base text-gray-500 font-medium mb-2">
                   Şifre Değiştir
                 </span>
               </h3>
             </div>
-            <div className="flex flex-col justify-center items-start w-full max-w-2xl">
+            <div
+              className="flex flex-col justify-center items-start w-full max-w-2xl">
               <label
                 htmlFor="password"
                 className="text-base text-gray-500 font-medium mb-2"
@@ -363,7 +375,8 @@ const Profile = () => {
                 placeholder="Şifreyi Giriniz.."
               />
             </div>
-            <div className="flex flex-col justify-center items-start w-full max-w-2xl">
+            <div
+              className="flex flex-col justify-center items-start w-full max-w-2xl">
               <label
                 htmlFor="passwordconfirm"
                 className="text-base text-gray-500 font-medium mb-2"
@@ -380,7 +393,8 @@ const Profile = () => {
               />
             </div>
 
-            <div className="flex flex-col justify-center items-start w-full max-w-2xl">
+            <div
+              className="flex flex-col justify-center items-start w-full max-w-2xl">
               <button
                 type="submit"
                 className="w-full h-12 px-3 mb-2 mt-6 text-base text-white bg-indigo-600 rounded-md duration-200 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
@@ -410,7 +424,7 @@ export async function getServerSideProps(context) {
   }
 
   const res = await fetch(
-    `${process.env.APP_URL}/api/users/userCrud?id=${session.user.id}`,
+    `/api/users/userCrud?id=${session.user.id}`,
     {
       headers: {
         cookie: context.req.headers.cookie,

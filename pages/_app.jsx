@@ -5,11 +5,14 @@ import "react-toastify/dist/ReactToastify.css";
 import {Wrapper} from "@/context";
 import {NextUIProvider} from "@nextui-org/react";
 import {ThemeProvider as NextThemesProvider} from "next-themes";
+import axios from "axios";
 
 export default function App({
                               Component,
                               pageProps: {session, ...pageProps},
                             }) {
+
+  axios.defaults.baseURL = process.env.NEXT_PUBLIC_APP_URL;
 
   return (
     <SessionProvider session={session}>

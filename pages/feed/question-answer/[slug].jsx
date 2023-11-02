@@ -1,16 +1,16 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Layout from "@/layouts/homeLayout";
-import { FiMessageSquare } from "react-icons/fi";
+import {FiMessageSquare} from "react-icons/fi";
 import axios from "axios";
-import { useSession } from "next-auth/react";
-import { toast } from "react-toastify";
-import { useRouter } from "next/router";
+import {useSession} from "next-auth/react";
+import {toast} from "react-toastify";
+import {useRouter} from "next/router";
 
-import { AiOutlineDelete } from "react-icons/ai";
+import {AiOutlineDelete} from "react-icons/ai";
 import Swal from "sweetalert2";
 
-const QuestionAnswer = ({ questionData }) => {
-  const { data: session } = useSession();
+const QuestionAnswer = ({questionData}) => {
+  const {data: session} = useSession();
   const router = useRouter();
 
   const [question, setQuestion] = React.useState(questionData.data);
@@ -73,13 +73,13 @@ const QuestionAnswer = ({ questionData }) => {
   const approveQuestion = async (id) => {
     const isApproval = question.approval === true ? false : true;
 
-    const { data } = await axios.patch(`/api/questions/questionsCrud`, {
+    const {data} = await axios.patch(`/api/questions/questionsCrud`, {
       id: question._id,
       approval: isApproval,
     });
 
     if (data.success) {
-      setQuestion({ ...question, approval: isApproval });
+      setQuestion({...question, approval: isApproval});
       toast.success("Soru başarıyla onay durumu değiştirildi", {
         position: "top-right",
         autoClose: 1500,
@@ -135,7 +135,7 @@ const QuestionAnswer = ({ questionData }) => {
               (answer) => answer._id !== answerId
             );
 
-            setQuestion({ ...question, answers: newAnswers });
+            setQuestion({...question, answers: newAnswers});
             toast.success("Yorum başarıyla silindi.", {
               position: "top-right",
               autoClose: 1500,
@@ -166,7 +166,8 @@ const QuestionAnswer = ({ questionData }) => {
   return (
     <Layout>
       <div className=" sm:px-20 mx-auto mb-8  mt-8 text-center relative z-0">
-        <div className="card bg-stone-900  text-white/70 rounded-lg py-5 px-6 relative mb-8 w-full ">
+        <div
+          className="card bg-stone-900  text-white/70 rounded-lg py-5 px-6 relative mb-8 w-full ">
           <div className="flex gap-4 relative z-10 flex-grow ">
             <div className="flex-shrink-0">
               <img
@@ -175,7 +176,8 @@ const QuestionAnswer = ({ questionData }) => {
                 className="w-12 h-12 rounded-full border-2 border-zinc-500"
               />
             </div>
-            <div className="flex flex-col justify-between items-start flex-1 gap-6 ">
+            <div
+              className="flex flex-col justify-between items-start flex-1 gap-6 ">
               <div className=" w-full relative">
                 {session && session.user.role === "admin" && (
                   <button
@@ -196,14 +198,16 @@ const QuestionAnswer = ({ questionData }) => {
             </div>
           </div>
 
-          <span className="cardShadow bg-zinc-900/30 absolute z-0 rounded-b-lg blur-md -bottom-1.5 h-2 w-full left-0"></span>
+          <span
+            className="cardShadow bg-zinc-900/30 absolute z-0 rounded-b-lg blur-md -bottom-1.5 h-2 w-full left-0"></span>
         </div>
       </div>
 
       <div className="flex justify-center w-full">
         <div className="w-full text-center sm:px-20	">
           <form onSubmit={(e) => addAnswer(e)}>
-            <div className="w-full mb-4 border border-zinc-200 rounded-lg bg-zinc-50 dark:bg-zinc-700 dark:border-zinc-600">
+            <div
+              className="w-full mb-4 border border-zinc-200 rounded-lg bg-zinc-50 dark:bg-zinc-700 dark:border-zinc-600">
               <div className="px-4 py-2 bg-white rounded-t-lg dark:bg-zinc-800">
                 <textarea
                   id="answer"
@@ -215,7 +219,8 @@ const QuestionAnswer = ({ questionData }) => {
                   required
                 ></textarea>
               </div>
-              <div className="flex items-center justify-between px-3 py-2 border-t dark:border-zinc-600">
+              <div
+                className="flex items-center justify-between px-3 py-2 border-t dark:border-zinc-600">
                 <button
                   type="submit"
                   className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-indigo-700 rounded-lg focus:ring-4 focus:ring-indigo-200 dark:focus:ring-indigo-900 hover:bg-indigo-800 border border-indigo-800"
@@ -293,12 +298,15 @@ const QuestionAnswer = ({ questionData }) => {
                   className="w-8 h-8 rounded-full border-2 border-zinc-400/50"
                 />
               </div>
-              <div className="flex flex-col justify-between items-start flex-1 gap-6 ">
+              <div
+                className="flex flex-col justify-between items-start flex-1 gap-6 ">
                 <div className=" w-full relative">
-                  <h2 className="font-semibold tracking-tight text-sm sm:text-lg text-start">
+                  <h2
+                    className="font-semibold tracking-tight text-sm sm:text-lg text-start">
                     {item?.user?.name} {item?.user?.surname}
                   </h2>
-                  <p className="text-start text-sm sm:text-base font-light leading-6">
+                  <p
+                    className="text-start text-sm sm:text-base font-light leading-6">
                     {item?.answer}
                   </p>
 
@@ -326,7 +334,7 @@ const QuestionAnswer = ({ questionData }) => {
         {question?.answers.length === 0 && (
           <div className="flex justify-center items-center w-full h-96">
             <div className="flex flex-col justify-center items-center">
-              <FiMessageSquare className="text-rose-600 text-9xl mb-4" />
+              <FiMessageSquare className="text-rose-600 text-9xl mb-4"/>
               <p className="text-rose-600 text-2xl font-semibold">
                 Henüz bir cevap yok.
               </p>
@@ -342,7 +350,7 @@ export default QuestionAnswer;
 
 export async function getServerSideProps(context) {
   const res = await fetch(
-    `${process.env.APP_URL}/api/questions/questionsCrud?slug=${context.query.slug}`,
+    `/api/questions/questionsCrud?slug=${context.query.slug}`,
     {
       headers: {
         cookie: context.req.headers.cookie,

@@ -5,6 +5,7 @@ import axios from "axios";
 import {toast} from "react-toastify";
 import Swal from "sweetalert2";
 import {useSession} from "next-auth/react";
+import Layout from "@/layouts/dashboardLayout";
 
 const MembershipSales = ({data}) => {
   const router = useRouter();
