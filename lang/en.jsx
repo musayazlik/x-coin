@@ -11,6 +11,8 @@ export default {
   readmore: "Read More",
   newpost: "New Post",
   nopost: "No post found",
+  notFound: "Page not found",
+
 
   analytics: {
     title: "Analysis",

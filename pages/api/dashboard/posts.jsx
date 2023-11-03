@@ -22,7 +22,8 @@ const updatePosts = async (req, res, fields, files) => {
     status,
     user,
     category,
-    subCategory
+    subCategory,
+    iframeText
   } = fields;
   let data = {
     title: title?.[0],
@@ -33,6 +34,7 @@ const updatePosts = async (req, res, fields, files) => {
     subCategory: subCategory?.[0],
     status: status?.[0] === "true",
     user: user?.[0],
+    iframeText: iframeText?.[0],
   };
 
   if (files.image || files.image !== undefined) {
@@ -150,6 +152,7 @@ export default async function handler(req, res) {
             user,
             category,
             subCategory,
+            iframeText,
           } = fields;
 
           const imageName = `${slug[0]}-${Date.now()}`;
@@ -175,6 +178,7 @@ export default async function handler(req, res) {
             category: category[0],
             subCategory: subCategory[0],
             image: imageUrl.secure_url,
+            iframeText: iframeText[0],
           };
 
           const newPosts = await Posts.create(data);

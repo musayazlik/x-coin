@@ -33,19 +33,10 @@ const PostAdd = () => {
     const category = e.target.category.value;
     const subCategory = e.target.subCategory.value;
     const image = e.target.image.files[0];
+    const iframeText = e.target.iframeText.value;
     const status = e.target.status.value;
     const content = editor.getHTML();
 
-    console.log({
-      title,
-      description,
-      slug,
-      image,
-      content,
-      status,
-      category,
-      subCategory,
-    })
 
     if (!title || !description || !slug || !image || !content || !category || !subCategory || !status) {
       toast.error("Lütfen tüm alanları doldurunuz!", {
@@ -62,10 +53,11 @@ const PostAdd = () => {
       slug,
       image,
       content,
-      status: status === "true" ? true : false,
+      status: status === "true",
       user: session.user.id,
       category,
       subCategory,
+      iframeText
     };
 
     axios({
@@ -221,6 +213,19 @@ const PostAdd = () => {
               <label className="text-white font-semibold">İçerik Metni</label>
               <EditorContent editor={editor}/>
             </div>
+
+
+            <div className="flex flex-col">
+              <label className="text-white font-semibold">İframe Text</label>
+              <textarea
+                rows={20}
+                name={"iframeText"}
+                className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
+                placeholder={"İframe içeriğini buraya yapıştırınız..."}
+
+              ></textarea>
+            </div>
+
 
             <div className="flex flex-col">
               <label className="text-white font-semibold">Durum</label>

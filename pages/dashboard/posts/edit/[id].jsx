@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Layout from "../../../../layouts/dashboardLayout";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -33,20 +33,9 @@ const PostEdit = ({resData}) => {
     const category = e.target.category.value;
     const subCategory = e.target.subCategory.value;
     const image = e.target.image.files[0];
+    const iframeText = e.target.iframeText.value;
     const status = e.target.status.value;
     const content = editor.getHTML();
-
-    console.log({
-      title,
-      description,
-      slug,
-      image,
-      content,
-      status,
-      category,
-      subCategory,
-    })
-
 
     const data = {
       id: resData._id,
@@ -59,6 +48,7 @@ const PostEdit = ({resData}) => {
       user: session.user.id,
       category,
       subCategory,
+      iframeText
     };
 
     console.log(data)
@@ -91,6 +81,10 @@ const PostEdit = ({resData}) => {
         });
       });
   };
+
+  useEffect(() => {
+    editor?.commands.setContent(resData.content);
+  }, [editor]);
 
   return (
     <Layout>
@@ -214,7 +208,8 @@ const PostEdit = ({resData}) => {
               } width={50} height={50}
                      className={
                        "border-4" +
-                       " border-gray-600 rounded-lg"
+                       " border-gray-600 rounded-lg object-cover min-w-[50px]" +
+                       " min-h-[50px]"
                      }
 
 
@@ -230,6 +225,18 @@ const PostEdit = ({resData}) => {
             <div className="flex flex-col">
               <label className="text-white font-semibold">İçerik Metni</label>
               <EditorContent editor={editor}/>
+            </div>
+
+            <div className="flex flex-col">
+              <label className="text-white font-semibold">İframe Text</label>
+              <textarea
+                rows={20}
+                name={"iframeText"}
+                defaultValue={resData.iframeText}
+                className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
+                placeholder={"İframe içeriğini buraya yapıştırınız..."}
+
+              ></textarea>
             </div>
 
             <div className="flex flex-col">

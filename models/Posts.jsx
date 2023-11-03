@@ -34,6 +34,11 @@ const postSchema = mongoose.Schema({
     type: String,
     default: "",
   },
+  iframeText: {
+    type: String,
+    default: "",
+  },
+  
   status: {
     type: Boolean,
     default: false,

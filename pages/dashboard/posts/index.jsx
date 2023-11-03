@@ -112,7 +112,8 @@ const Posts = ({data}) => {
                             <Image src={item.image} alt={"Post Image"}
                                    width={50}
                                    height={50} className={"border-4" +
-                              " border-gray-600 rounded-lg"}/>
+                              " border-gray-600 rounded-lg min-w-[50px]" +
+                              " min-h-[50px] object-cover"}/>
                           </TableCell>
                           <TableCell>
                             {item.title}

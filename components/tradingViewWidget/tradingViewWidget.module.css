@@ -1,0 +1,4 @@
+.tradingviewWidgetContainer iframe {
+    min-height: 400px;
+    height: 80vw;
+}

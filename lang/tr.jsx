@@ -11,6 +11,7 @@ export default {
   readmore: "Devamını Oku",
   newpost: "Yeni İçerik",
   nopost: "İçerik bulunamadı",
+  notFound: "Sayfa bulunamadı",
 
   analytics: {
     title: "Analiz",

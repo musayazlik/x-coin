@@ -28,7 +28,7 @@ const Home = () => {
                 locale === "tr" ? (
                   <h2 className={"mb-4"}>
                     <div
-                      className=" text-center lg:text-start font-extrabold  text-4xl xl:text-5xl">
+                      className=" text-center lg:text-start font-extrabold text-2xl sm:text-4xl xl:text-5xl">
                       <span className="text-yellow-600">Trader Edit</span> '
                       e {' '}
                       Hoşgeldiniz...
@@ -37,7 +37,7 @@ const Home = () => {
                 ) : (
                   <h2 className={"mb-4"}>
                     <div
-                      className=" text-center lg:text-start font-extrabold  text-4xl xl:text-5xl">
+                      className=" text-center lg:text-start font-extrabold  text-2xl sm:text-4xl xl:text-5xl">
                       Welcome to {' '}
                       <span className="text-yellow-600">Trader Edit...</span>
                     </div>
@@ -46,7 +46,8 @@ const Home = () => {
               }
 
 
-              <p className={" text-lg mb-8 text-center lg:text-start" +
+              <p className={" text-sm sm:text-lg mb-8 text-center" +
+                " lg:text-start" +
                 " text-zinc-400"}>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Aperiam, autem consectetur delectus eaque et eum eveniet iure
@@ -54,8 +55,8 @@ const Home = () => {
               </p>
 
               <div className="flex gap-4 justify-center lg:justify-start">
-                <Button color={"warning"} variant={"bordered"} size={"lg"}
-                        className={" text-xl rounded pr-8 py-7"}
+                <Button color={"warning"} variant={"bordered"}
+                        className={" text-base sm:text-xl rounded pr-8 py-7"}
                         onClick={() => {
                           push("/auth/register")
                         }}
@@ -67,63 +68,68 @@ const Home = () => {
               </div>
             </div>
             <div className={"flex justify-center items-center relative" +
-              " w-full min-h-[600px]" +
+              " w-full min-h-[400px] sm:min-h-[600px]" +
               " lg:w-1/2"}>
               <Image src={"/Home.png"} alt={"animation"} fill
-                     className={"object-contain"}/>
+                     className={" object-cover sm:object-contain"}/>
             </div>
           </div>
         </div>
       </section>
 
-      <section className={"bg-black py-16"}>
+      <section className={"bg-black pt-4 pb-16 lg:py-16"}>
         <div className="xl:container px-6">
-          <div className="flex items-start gap-16">
-            <div className="w-4/12 relative min-h-[420px] object-cover">
+          <div className="flex flex-col lg:flex-row items-start gap-16">
+            <div
+              className=" w-full lg:w-4/12 relative max-w-lg mx-auto min-h-[60vw] sm:min-h-[420px] object-cover">
               <Image src={"/homImage1.jpg"} alt={"image"} fill
                      className={"object-cover rounded-3xl"}/>
             </div>
-            <div className="w-8/12 flex flex-col justify-center pt-8">
-              <h3 className={"font-bold text-4xl mb-4 flex items-center"}>
+            <div
+              className=" w-full lg:w-8/12 flex flex-col justify-center pt-8">
+              <h3 className={"font-bold text-2xl md:text-4xl mb-4 flex" +
+                " items-center"}>
                 <BiBitcoin
                   className={"inline-block mr-1 text-yellow-500 animate-bounce"}
                   fontSize={48}/>
                 Borsa ve kripto paralar
               </h3>
-              <p className={"text-base leading-6 font-light text-zinc-300" +
-                " mb-8"}>
+              <p
+                className={"text-sm sm:text-base leading-5 sm:leading-6 font-light" +
+                  " text-zinc-300" +
+                  " mb-8"}>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Aperiam, autem consectetur delectus eaque et eum eveniet iure
                 iusto minus nostrum perspiciatis provident.
               </p>
 
-              <ul className={"flex gap-6 mb-12"}>
+              <ul className={"flex flex-col sm:flex-row gap-6 mb-12"}>
 
-                <div className={"space-y-8"}>
-                  <li className={"flex gap-2"}>
+                <div className={"space-y-4 sm:space-y-8 "}>
+                  <li className={"flex gap-2 text-xs sm:text-base"}>
                     <BsFillBookmarkCheckFill color={"#F59E0B"} fontSize={24}/>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   </li>
-                  <li className={"flex gap-2"}>
+                  <li className={"flex gap-2 text-xs sm:text-base"}>
                     <BsFillBookmarkCheckFill color={"#F59E0B"} fontSize={24}/>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   </li>
-                  <li className={"flex gap-2"}>
+                  <li className={"flex gap-2 text-xs sm:text-base"}>
                     <BsFillBookmarkCheckFill color={"#F59E0B"} fontSize={24}/>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   </li>
                 </div>
 
-                <div className={"space-y-8"}>
-                  <li className={"flex gap-2"}>
+                <div className={"space-y-4 sm:space-y-8"}>
+                  <li className={"flex gap-2 text-xs sm:text-base"}>
                     <BsFillBookmarkCheckFill color={"#F59E0B"} fontSize={24}/>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   </li>
-                  <li className={"flex gap-2"}>
+                  <li className={"flex gap-2 text-xs sm:text-base"}>
                     <BsFillBookmarkCheckFill color={"#F59E0B"} fontSize={24}/>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   </li>
-                  <li className={"flex gap-2"}>
+                  <li className={"flex gap-2 text-xs sm:text-base"}>
                     <BsFillBookmarkCheckFill color={"#F59E0B"} fontSize={24}/>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   </li>
@@ -131,7 +137,8 @@ const Home = () => {
               </ul>
 
               <Link href="/analysis/blockchain/total-market-cap"
-                    className={"flex items-center text-blue-600 duration-300" +
+                    className={"flex text-sm sm:text-base items-center" +
+                      " text-blue-600 duration-300" +
                       " hover:text-blue-500"}>
 
                 Daha fazla bilgi için tıklayınız
