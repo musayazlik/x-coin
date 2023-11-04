@@ -9,7 +9,7 @@ const getPosts = async (req, res) => {
     } else if (req.query.category && req.query.page) {
       const post = await Post.find({
         category: req.query.category
-      }).populate('user', 'name email image role').select('-__v').limit(16).skip((req.query.page - 1) * 16)
+      }).populate('user', 'name email image role').select('-__v').limit(16).skip((req.query.page - 1) * 16).sort({createdAt: -1})
 
       res.status(200).json({success: true, data: post})
     } else if (

@@ -86,14 +86,17 @@ const TotalMarketCap = ({
             className="flex flex-wrap gap-4 justify-center flex-col items-center">
 
             <Tabs size="lg" color={"warning"}
-                  variant={"bordered"} aria-label="Dynamic tabs" items={tabs}>
+                  variant={"bordered"} aria-label="Dynamic tabs" items={tabs}
+                  className={"w-full overflow-auto flex justify-center"}>
               {(item) => (
                 <Tab key={item.id} title={item.label.replace("-", " ")}
                      className={"capitalize"}>
                   <div className=" grid grid-cols-12 gap-4">
                     {
                       item.content.map((item, index) => (
-                        <div className={"relative w-full col-span-3  "}>
+                        <div
+                          className={"relative w-full col-span-12" +
+                            " md:col-span-6 lg:col-span-4 2xl:col-span-3  "}>
 
                           {
                             index === 0 && (
@@ -114,42 +117,50 @@ const TotalMarketCap = ({
 
 
                           <Card
-                            className={`py-4 col-span-12 sm:col-span-6 xl:col-span-3 relative z-0 `}
+                            className={`py-2 relative z-0 h-full `}
 
                           >
 
                             <CardHeader
-                              className="pb-0 pt-2 mb-2 px-4 flex-col items-start ">
+                              className=" mb-2 px-4 flex-col items-start  ">
+                              <div
+                                className="min-h-[180px] w-full relative box-content">
+                                <Image
+                                  alt="Card background"
+                                  className="object-cover rounded-xl "
+                                  src={item.image}
+                                  fill
+                                  quality={50}
 
-                              <Image
-                                alt="Card background"
-                                className="object-cover rounded-xl min-h-[180px] max-h-[180px]"
-                                src={item.image}
-                                width={270}
-                                height={180}
-                                quality={50}
+                                />
+                              </div>
 
-                              />
 
                             </CardHeader>
                             <CardBody
-                              className="overflow-visible py-2">
-                              <small
-                                className={"font-medium flex items-center" +
-                                  " text-xs mb-2" +
-                                  " text-zinc-600"}>
-                                <RiTimeLine className={"inline-block mr-1"}
-                                            fontSize={14}/>
-                                {item.createdAt.split("T")[0]}
-                              </small>
-                              <h2
-                                className="text-tiny uppercase font-bold mb-3">
-                                {item.title}
-                              </h2>
-                              <p
-                                className="text-tiny leading-4 text-zinc-600 mb-6">
-                                {item.description}
-                              </p>
+                              className="overflow-visible py-2 flex flex-col justify-between">
+                              <div className="flex flex-col">
+                                <small
+                                  className={"font-medium flex items-center" +
+                                    " text-xs mb-2" +
+                                    " text-zinc-600"}>
+                                  <RiTimeLine className={"inline-block mr-1"}
+                                              fontSize={14}/>
+                                  {item.createdAt.split("T")[0]}
+                                </small>
+                                <Link href={
+                                  `/analysis/blockchain/total-market-cap/${item.slug}`
+                                }>
+                                  <h2
+                                    className="text-tiny uppercase font-bold mb-3 hover:text-yellow-500 hover:duration-300 hover:cursor-pointer">
+                                    {item.title.length > 50 ? item.title.slice(0, 50) + "..." : item.title}
+                                  </h2>
+                                </Link>
+                                <p
+                                  className="text-tiny leading-4 text-zinc-600 mb-6">
+                                  {item.description.length > 100 ? item.description.slice(0, 100) + "..." : item.description}
+                                </p>
+                              </div>
                               <div
                                 className=" flex justify-between items-center">
                                 <div class="avatar">

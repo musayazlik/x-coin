@@ -3,69 +3,69 @@
 @tailwind utilities;
 
 * {
-  box-sizing: border-box;
-  font-family: "Rubik", sans-serif;
-  font-variant-ligatures: none;
+    box-sizing: border-box;
+    font-family: "Rubik", sans-serif;
+    font-variant-ligatures: none;
 }
 
 .loginBackground {
-  background-color: #131318;
-  opacity: 1;
-  background-image: repeating-radial-gradient(
-      circle at 0 0,
-      transparent 0,
-      #09090b 10px
+    background-color: #131318;
+    opacity: 1;
+    background-image: repeating-radial-gradient(
+            circle at 0 0,
+            transparent 0,
+            #09090b 10px
     ),
-    repeating-linear-gradient(#13131555, #18181b);
+    repeating-linear-gradient(#13131555, #000);
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-  background: #282828;
+    width: 8px;
+    height: 8px;
+    background: #282828;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px rgba(57, 57, 57, 0.45);
-  border-radius: 1px;
+    box-shadow: inset 0 0 5px rgba(57, 57, 57, 0.45);
+    border-radius: 1px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  @apply bg-zinc-950;
-  border-radius: 2px;
+    @apply bg-zinc-950;
+    border-radius: 2px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-yellow-500;
+    @apply bg-yellow-500;
 }
 
 .tradingview-widget-container {
-  width: 100% !important;
+    width: 100% !important;
 }
 
 iframe {
-  width: 100% !important;
+    width: 100% !important;
 }
 
 iframe #mediumwidgetembed {
-  width: 100% !important;
+    width: 100% !important;
 }
 
-.tv-widget-chart__copyrightingContainer{
-  display: none !important;
-  color: red;
+.tv-widget-chart__copyrightingContainer {
+    display: none !important;
+    color: red;
 }
 
 
 .html body, html.theme-dark body {
-  background-color: #09090b;
+    background-color: #09090b;
 }
 
 html.theme-dark .tv-widget-chart--with-border {
-  border: none !important;
+    border: none !important;
 }
 
 
