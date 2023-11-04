@@ -21,7 +21,7 @@ const AnalysisMenu = () => {
         subMenuList={[
           "/analysis/blockchain/",
           "/analysis/blockchain/total-market-cap",
-          "/analysis/blockchain/altcoin-mix",
+          "/analysis/blockchain/subcoin-mix",
           "/analysis/blockchain/sub-indices",
           "/analysis/blockchain/on-chain",
           "/feed/blockchain/break-and-incom",
@@ -33,7 +33,7 @@ const AnalysisMenu = () => {
         />
         <SubMenuItem
           text={t.cryptoPage.subCoinMix}
-          url={"/analysis/blockchain/altcoin-mix"}
+          url={"/analysis/blockchain/subcoin-mix"}
         />
         <SubMenuItem
           text={t.cryptoPage.subIndices}

@@ -10,7 +10,7 @@ import {useRouter} from "next/router";
 import TradingViewWidget from "@components/tradingViewWidget/tradingViewWidget";
 
 
-const OnChainDetail = () => {
+const SubIndicesDetail = () => {
   const [data, setData] = useState(null);
   const {query, push} = useRouter();
 
@@ -92,4 +92,4 @@ const OnChainDetail = () => {
   );
 };
 
-export default OnChainDetail;
+export default SubIndicesDetail;

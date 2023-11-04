@@ -21,7 +21,7 @@ const EducationMenu = () => {
         subMenuList={[
           "/education/blockchain/",
           "/education/blockchain/total-market-cap",
-          "/education/blockchain/altcoin-mix",
+          "/education/blockchain/subcoin-mix",
           "/education/blockchain/sub-indices",
           "/education/blockchain/on-chain",
           "/feed/blockchain/break-and-incom",
@@ -33,7 +33,7 @@ const EducationMenu = () => {
         />
         <SubMenuItem
           text={t.cryptoPage.subCoinMix}
-          url={"/education/blockchain/altcoin-mix"}
+          url={"/education/blockchain/subcoin-mix"}
         />
         <SubMenuItem
           text={t.cryptoPage.subIndices}

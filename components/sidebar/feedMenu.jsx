@@ -34,7 +34,7 @@ const FeedMenu = () => {
         subMenuList={[
           "/feed/blockchain/",
           "/feed/blockchain/total-market-cap",
-          "/feed/blockchain/altcoin-mix",
+          "/feed/blockchain/subcoin-mix",
           "/feed/blockchain/sub-indices",
           "/feed/blockchain/on-chain",
           "/feed/blockchain/break-and-incom",
@@ -46,7 +46,7 @@ const FeedMenu = () => {
         />
         <SubMenuItem
           text={t.cryptoPage.subCoinMix}
-          url={"/feed/blockchain/altcoin-mix"}
+          url={"/feed/blockchain/subcoin-mix"}
         />
         <SubMenuItem
           text={t.cryptoPage.subIndices}
