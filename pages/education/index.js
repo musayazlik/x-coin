@@ -26,7 +26,7 @@ const Education = () => {
           <p className="text-lg max-w-2xl text-zinc-400 text-center">
             Traderedit dünyasına hoşgeldin. Borsalar ilgili eğitimlere buradan
             ulaşabilirsin. Sana en güncel eğitim bilgileerini
-            sunmak için elimizden geleni <yapacağız class="."></yapacağız>
+            sunmak için elimizden geleni yapıyoruz.
 
           </p>
 
