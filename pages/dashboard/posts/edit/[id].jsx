@@ -9,10 +9,15 @@ import StarterKit from "@tiptap/starter-kit";
 import {useSession} from "next-auth/react";
 import Link from "next/link";
 import Image from "next/image";
+import {lang} from "@lang/langT";
+import {Tooltip} from "@nextui-org/react";
+import IframeContent from "@components/IframeContent";
+import {RiInformationFill} from "react-icons/ri";
 
 const PostEdit = ({resData}) => {
   const router = useRouter();
   const {data: session} = useSession();
+  const t = lang(router.locale);
 
   const editor = useEditor({
     extensions: [StarterKit],
@@ -30,6 +35,7 @@ const PostEdit = ({resData}) => {
     const title = e.target.title.value;
     const description = e.target.description.value;
     const slug = e.target.slug.value;
+    const homeCategory = e.target.homeCategory.value;
     const category = e.target.category.value;
     const subCategory = e.target.subCategory.value;
     const image = e.target.image.files[0];
@@ -142,6 +148,21 @@ const PostEdit = ({resData}) => {
             </div>
 
             <div className="flex flex-col">
+              <label className="text-white font-semibold">Ana Kategori</label>
+              <select
+                name="homeCategory"
+                id="homeCategory"
+                className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
+              >
+                <option selected={true} disabled>
+                  İçerik Ana kategorisini seçiniz...
+                </option>
+                <option value="analysis">{t.analysis}</option>
+                <option value="education">{t.education}</option>
+              </select>
+            </div>
+
+            <div className="flex flex-col">
               <label className="text-white font-semibold">Kategori</label>
               <select
                 name="category"
@@ -174,7 +195,7 @@ const PostEdit = ({resData}) => {
             </div>
 
             <div className="flex flex-col">
-              <label className="text-white font-semibold">Kategori</label>
+              <label className="text-white font-semibold">Alt Kategori</label>
               <select
                 name="subCategory"
                 id="subCategory"
@@ -228,11 +249,20 @@ const PostEdit = ({resData}) => {
             </div>
 
             <div className="flex flex-col">
-              <label className="text-white font-semibold">İframe Text</label>
+              <label
+                className="text-white font-semibold flex gap-2 items-center">
+                <span>İframe Text</span>
+                <Tooltip content={<IframeContent/>}>
+                  <div>
+                    <RiInformationFill className={"text-yellow-500/50"}
+                                       fontSize={18}/>
+                  </div>
+                </Tooltip>
+
+              </label>
               <textarea
                 rows={20}
                 name={"iframeText"}
-                defaultValue={resData.iframeText}
                 className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
                 placeholder={"İframe içeriğini buraya yapıştırınız..."}
 

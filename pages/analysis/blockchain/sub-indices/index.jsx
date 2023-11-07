@@ -233,15 +233,13 @@ export default SubIndices;
 export async function getServerSideProps(context) {
   const cookie = context.req.headers.cookie;
   const {data} = await axios.get(
-    `/api/posts?category=sub-indices&limit=16&page=1`,
+    `/api/posts?homeCategory=analysis&category=sub-indices&limit=16&page=1`,
     {
       headers: {
         cookie: cookie,
       },
     }
   );
-
-  console.log(data.data)
 
   return {
     props: {

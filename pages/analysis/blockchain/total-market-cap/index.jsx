@@ -233,15 +233,13 @@ export default TotalMarketCap;
 export async function getServerSideProps(context) {
   const cookie = context.req.headers.cookie;
   const {data} = await axios.get(
-    `/api/posts?category=total-mc&limit=16&page=1`,
+    `/api/posts?homeCategory=analysis&category=total-mc&limit=16&page=1`,
     {
       headers: {
         cookie: cookie,
       },
     }
   );
-
-  console.log(data.data)
 
   return {
     props: {

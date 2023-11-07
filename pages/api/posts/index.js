@@ -6,9 +6,10 @@ const getPosts = async (req, res) => {
     if (req.query.id) {
       const post = await Post.findById(req.query.id)
       res.status(200).json({success: true, data: post})
-    } else if (req.query.category && req.query.page) {
+    } else if (req.query.homeCategory && req.query.category && req.query.page) {
       const post = await Post.find({
-        category: req.query.category
+        category: req.query.category,
+        homeCategory: req.query.homeCategory
       }).populate('user', 'name email image role').select('-__v').limit(16).skip((req.query.page - 1) * 16).sort({createdAt: -1})
 
       res.status(200).json({success: true, data: post})

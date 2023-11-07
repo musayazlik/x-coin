@@ -12,6 +12,10 @@ export default {
   newpost: "New Post",
   nopost: "No post found",
   notFound: "Page not found",
+  packages: "Packages",
+  gold: "Gold",
+  silver: "Silver",
+  oil: "Oil",
 
 
   analytics: {

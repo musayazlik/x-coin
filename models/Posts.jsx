@@ -14,6 +14,10 @@ const postSchema = mongoose.Schema({
     type: String,
     default: "",
   },
+  homeCategory: {
+    type: String,
+    default: "analysis",
+  },
   category: {
     type: String,
     default: "",
@@ -38,7 +42,7 @@ const postSchema = mongoose.Schema({
     type: String,
     default: "",
   },
-  
+
   status: {
     type: Boolean,
     default: false,

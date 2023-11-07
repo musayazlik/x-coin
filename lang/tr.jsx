@@ -12,6 +12,11 @@ export default {
   newpost: "Yeni İçerik",
   nopost: "İçerik bulunamadı",
   notFound: "Sayfa bulunamadı",
+  packages: "Paketler",
+  gold: "Altın",
+  silver: "Gümüş",
+  oil: "Petrol",
+  
 
   analytics: {
     title: "Analiz",

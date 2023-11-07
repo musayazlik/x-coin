@@ -20,6 +20,8 @@ import {
   RiSettings2Line,
 } from "react-icons/ri";
 import {lang} from "@lang/langT";
+import {IoMdPricetags} from "react-icons/io";
+import Link from "next/link";
 
 const Header = () => {
   const {setIsOpenSidebar} = useAppContext();
@@ -199,6 +201,15 @@ const Header = () => {
 
 
         <div className="right flex gap-4 items-center flex-shrink-0">
+          <Link className="" href={"/feed/pricing"}>
+            <Button size={"md"} color={"warning"} variant={"bordered"}
+                    className={"rounded  pl-2.5 font-medium hidden sm:flex" +
+                      " pr-3"}>
+              <IoMdPricetags fontSize={20}
+                             className={"text-yellow-500"}/>
+              {t.packages}
+            </Button>
+          </Link>
           <div className="flag">
             <LangDropdown/>
           </div>
