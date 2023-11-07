@@ -5,7 +5,7 @@ import Image from "next/image";
 import {Button} from "@nextui-org/react";
 import {PiGraduationCapDuotone} from "react-icons/pi";
 
-const Feed = () => {
+const Education = () => {
   const {data: session, status} = useSession();
   return (
     <Layout>
@@ -37,4 +37,4 @@ const Feed = () => {
   );
 };
 
-export default Feed;
+export default Education;
