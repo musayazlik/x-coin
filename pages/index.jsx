@@ -8,6 +8,9 @@ import Link from "next/link";
 import {BiBitcoin} from "react-icons/bi";
 import {BsFillBookmarkCheckFill} from "react-icons/bs";
 import {FiChevronRight} from "react-icons/fi";
+import Pricing from "@components/homeSections/Pricing";
+import Stats from "@components/homeSections/stats";
+import Teams from "@components/homeSections/Teams";
 
 
 const Home = () => {
@@ -19,8 +22,8 @@ const Home = () => {
     <>
       <Menu/>
 
-      <section>
-        <div className="xl:container px-6 py-6">
+      <section className={"py-16 min-h-screen"}>
+        <div className="xl:container">
           <div className=" py-20 lg:py-0 flex flex-col lg:flex-row gap-6 ">
             <div className={" lg:py-40 flex flex-col gap-4 w-full" +
               " lg:w-1/2"}>
@@ -77,7 +80,9 @@ const Home = () => {
         </div>
       </section>
 
-      <section className={"bg-black pt-4 pb-16 lg:py-16"}>
+      <Stats/>
+
+      <section className={"bg-black py-24 "}>
         <div className="xl:container px-6">
           <div className="flex flex-col lg:flex-row items-start gap-16">
             <div
@@ -150,7 +155,9 @@ const Home = () => {
         </div>
       </section>
 
+      <Pricing/>
 
+      <Teams/>
       <footer className="bg-black border-t-2 border-zinc-800  shadow  ">
         <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
           <div className="sm:flex sm:items-center sm:justify-between">
