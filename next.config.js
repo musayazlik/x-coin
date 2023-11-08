@@ -11,6 +11,15 @@ const nextConfig = {
     includePaths: [path.join(__dirname, "styles")],
   },
 
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'https://traderedit.com/:path*',
+      }
+    ]
+  },
+
   images: {
     domains: ["res.cloudinary.com"],
   },
