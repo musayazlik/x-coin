@@ -1,29 +1,40 @@
 import dbConnect from "@/libs/dbConnect";
 import User from "@/models/Users";
-import { hash } from "bcryptjs";
+import {hash} from "bcryptjs";
 
 export default async function handler(req, res) {
-  const { name, surname, username, email, password, walletAddress } = req.body;
+  const {name, surname, username, email, password, walletAddress} = req.body;
 
   await dbConnect();
 
-  const { method } = req;
+  const {method} = req;
 
   switch (method) {
     case "POST":
       try {
         if (!name || !surname || !username || !email || !password) {
+          const emptyFields = [];
+          if (!name) emptyFields.push("name");
+          if (!surname) emptyFields.push("surname");
+          if (!username) emptyFields.push("username");
+          if (!email) emptyFields.push("email");
+          if (!password) emptyFields.push("password");
+
           return res
             .status(400)
-            .json({ success: false, msg: "Please provide all fields..." });
+            .json({
+              success: false,
+              msg: "Please provide all fields...",
+              emptyFields: emptyFields
+            });
         }
 
-        const isEmail = await User.findOne({ email: email });
+        const isEmail = await User.findOne({email: email});
 
         if (isEmail) {
           return res
             .status(400)
-            .json({ success: false, msg: "Email already exists..." });
+            .json({success: false, msg: "Email already exists..."});
         }
 
         const hashedPassword = await hash(password, 12);
@@ -37,13 +48,13 @@ export default async function handler(req, res) {
           walletAddress,
         });
 
-        res.status(200).json({ success: true, data: user });
+        res.status(200).json({success: true, data: user});
       } catch (error) {
-        res.status(400).json({ success: false, msg: error.message });
+        res.status(400).json({success: false, msg: error.message});
       }
       break;
     default:
-      res.status(400).json({ success: false, msg: "Method not allowed" });
+      res.status(400).json({success: false, msg: "Method not allowed"});
       break;
   }
 }
