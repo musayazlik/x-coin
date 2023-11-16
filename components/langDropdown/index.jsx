@@ -7,8 +7,7 @@ const LangDropdown = () => {
 	const [isOpen, setIsOpen] = React.useState(false);
 
 	const router = useRouter();
-	const { locale, asPath } = router;
-
+	const { locale } = router;
 	const t = lang(locale);
 
 	const [langStatus, setLangStatus] = React.useState(locale);
@@ -16,8 +15,12 @@ const LangDropdown = () => {
 	const handleLang = (langS) => {
 		setLangStatus(langS);
 		setIsOpen(false);
-		const currentPath = asPath;
-		router.push(currentPath, undefined, { locale: langS });
+
+		if (router.pathname === "/auth/login") {
+			router.push("/auth/login", undefined, { locale: langS });
+		} else {
+			router.push("/", undefined, { locale: langS });
+		}
 	};
 
 	return (
