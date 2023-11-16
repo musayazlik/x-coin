@@ -38,22 +38,44 @@ export default async (req, res) => {
 
     case "PATCH":
       try {
-        if (req.body.status === "isActive") {
+
+        if (req.query.status === "isActive") {
           const user = await User.findByIdAndUpdate(
-            req.body.id,
-            {isActive: req.body.isActive},
+            req.query.id,
+            {isActive: req.query.isActive},
             {
               new: true,
               runValidators: true,
             }
-          );
+          )
           if (!user) {
-            return res.status(400).json({success: false});
+            return res.status(400).json({
+              success: false,
+              message: "Kullanıcı bulunamadı"
+            });
+          }
+          res.status(200).json({success: true, data: user});
+        }
+
+        if (req.query.status === "isAdmin") {
+          const user = await User.findByIdAndUpdate(
+            req.query.id,
+            {role: req.query.role},
+            {
+              new: true,
+              runValidators: true,
+            }
+          )
+          if (!user) {
+            return res.status(400).json({
+              success: false,
+              message: "Kullanıcı bulunamadı"
+            });
           }
           res.status(200).json({success: true, data: user});
         }
       } catch (error) {
-        res.status(400).json({success: false});
+        res.status(400).json({success: false, message: error});
       }
       break;
 
