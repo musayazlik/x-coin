@@ -10,7 +10,7 @@ import {useRouter} from "next/router";
 import TradingViewWidget from "@components/tradingViewWidget/tradingViewWidget";
 
 
-const TotalMarketCapDetail = () => {
+const BitcoinDetail = () => {
   const [data, setData] = useState(null);
   const {query, push} = useRouter();
 
@@ -19,7 +19,7 @@ const TotalMarketCapDetail = () => {
     if (query.slug) {
       axios({
         method: "get",
-        url: `/api/posts?homeCategory=education&slug=${query.slug}`,
+        url: `/api/posts?slug=${query.slug}`,
       })
         .then((response) => {
           setData(response.data.data);
@@ -92,4 +92,4 @@ const TotalMarketCapDetail = () => {
   );
 };
 
-export default TotalMarketCapDetail;
+export default BitcoinDetail;

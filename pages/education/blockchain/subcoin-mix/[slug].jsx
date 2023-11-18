@@ -67,7 +67,7 @@ export default SubCoinMixDetail;
 export async function getServerSideProps(context) {
   const cookie = context.req.headers.cookie;
   const {data} = await axios.get(
-    `/api/posts?homeCategory=education&slug=${context.params.slug} `,
+    `/api/posts?slug=${context.params.slug} `,
     {
       headers: {
         cookie: cookie,

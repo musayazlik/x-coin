@@ -20,9 +20,10 @@ export default {
 
   analytics: {
     title: "Analysis",
-    totalMc: "Total MC",
-    subCoinMix: "Subcoin Mix",
-    subIndices: "Sub Indices",
+    bitcoin: "Bitcoin",
+    ethereum: "Ethereum",
+    cryptoIndices: "Crypto Indices",
+    subCoins: "Subcoins",
     onChain: "On Chain",
     breakAndIncom: "Breakdowns and Incompatibilities",
   },
@@ -79,9 +80,10 @@ export default {
 
   cryptoPage: {
     crypto: "Crypto",
-    totalMc: "Total MC",
-    subCoinMix: "Subcoin Mix",
-    subIndices: "Sub Indices",
+    bitcoin: "Bitcoin",
+    ethereum: "Ethereum",
+    cryptoIndices: "Crypto Indices",
+    subCoins: "Subcoins",
     onChain: "On Chain",
     breakAndIncom: "Breakdowns and Incompatibilities",
   },

@@ -6,6 +6,7 @@ import {Wrapper} from "@/context";
 import {NextUIProvider} from "@nextui-org/react";
 import {ThemeProvider as NextThemesProvider} from "next-themes";
 import axios from "axios";
+import 'swiper/css';
 
 export default function App({
                               Component,

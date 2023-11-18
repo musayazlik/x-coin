@@ -231,7 +231,7 @@ export default Nasdaq;
 export async function getServerSideProps(context) {
   const cookie = context.req.headers.cookie;
   const {data} = await axios.get(
-    `/api/posts?homeCategory=education&category=nasdaq&limit=16&page=1`,
+    `/api/posts?category=nasdaq&limit=16&page=1`,
     {
       headers: {
         cookie: cookie,

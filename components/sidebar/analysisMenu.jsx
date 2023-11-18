@@ -20,24 +20,30 @@ const AnalysisMenu = () => {
         defaultOpen={true}
         subMenuList={[
           "/analysis/blockchain/",
-          "/analysis/blockchain/total-market-cap",
-          "/analysis/blockchain/subcoin-mix",
-          "/analysis/blockchain/sub-indices",
+          "/analysis/blockchain/bitcoin",
+          "/analysis/blockchain/ethereum",
+          "/analysis/blockchain/crypto-indices",
+          "/analysis/blockchain/sub-coins",
           "/analysis/blockchain/on-chain",
           "/feed/blockchain/break-and-incom",
         ]}
       >
         <SubMenuItem
-          text={t.cryptoPage.totalMc}
-          url={"/analysis/blockchain/total-market-cap"}
+          text={t.cryptoPage.bitcoin}
+          url={"/analysis/blockchain/bitcoin"}
         />
         <SubMenuItem
-          text={t.cryptoPage.subCoinMix}
-          url={"/analysis/blockchain/subcoin-mix"}
+          text={t.cryptoPage.ethereum}
+          url={"/analysis/blockchain/ethereum"}
         />
         <SubMenuItem
-          text={t.cryptoPage.subIndices}
-          url={"/analysis/blockchain/sub-indices"}
+          text={t.cryptoPage.cryptoIndices}
+          url={"/analysis/blockchain/crypto-indices"}
+        />
+
+        <SubMenuItem
+          text={t.cryptoPage.subCoins}
+          url={"/analysis/blockchain/sub-coins"}
         />
         <SubMenuItem
           text={t.cryptoPage.onChain}

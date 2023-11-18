@@ -16,13 +16,14 @@ export default {
   gold: "Altın",
   silver: "Gümüş",
   oil: "Petrol",
-  
+
 
   analytics: {
     title: "Analiz",
-    totalMc: "Toplam MC",
-    subCoinMix: "Altcoin Mix",
-    subIndices: "Alt Endeksler",
+    bitcoin: "Bitcoin",
+    ethereum: "Ethereum",
+    cryptoIndices: "Kripto Endeksler",
+    subCoins: "Altcoinler",
     onChain: "On Chain",
     breakAndIncom: "Kırılımlar ve Uyumsuzluklar",
   },
@@ -80,9 +81,10 @@ export default {
 
   cryptoPage: {
     crypto: "Kripto",
-    totalMc: "Toplam MC",
-    subCoinMix: "Altcoin Mix",
-    subIndices: "Alt Endeksler",
+    bitcoin: "Bitcoin",
+    ethereum: "Ethereum",
+    cryptoIndices: "Kripto Endeksler",
+    subCoins: "Altcoinler",
     onChain: "On Chain",
     breakAndIncom: "Kırılımlar ve Uyumsuzluklar",
   },

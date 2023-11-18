@@ -19,7 +19,7 @@ const GoldDetail = () => {
     if (query.slug) {
       axios({
         method: "get",
-        url: `/api/posts?homeCategory=education&slug=${query.slug}`,
+        url: `/api/posts?slug=${query.slug}`,
       })
         .then((response) => {
           setData(response.data.data);

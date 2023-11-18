@@ -70,7 +70,7 @@ const TotalMarketCap = ({
             } </span>
             <span
               className={"text-3xl text-yellow-500 font-bold "}>{
-              t.education
+              t.analytics.title
             }</span>
           </h1>
           <p className="text-base text-gray-200 font-normal">
@@ -149,7 +149,7 @@ const TotalMarketCap = ({
                                   {item.createdAt.split("T")[0]}
                                 </small>
                                 <Link href={
-                                  `/analysis/education/total-market-cap/${item.slug}`
+                                  `/analysis/blockchain/total-market-cap/${item.slug}`
                                 }>
                                   <h2
                                     className="text-tiny uppercase font-bold mb-3 hover:text-yellow-500 hover:duration-300 hover:cursor-pointer">
@@ -186,7 +186,7 @@ const TotalMarketCap = ({
 
                                 </div>
                                 <Link
-                                  href={`/analysis/education/total-market-cap/${item.slug}`}
+                                  href={`/analysis/blockchain/total-market-cap/${item.slug}`}
                                   className="text-[10px]  uppercase font-bold text-zinc-500 hover:text-yellow-500 duration-300">
                                   {t.readmore}
                                 </Link>
@@ -233,15 +233,13 @@ export default TotalMarketCap;
 export async function getServerSideProps(context) {
   const cookie = context.req.headers.cookie;
   const {data} = await axios.get(
-    `/api/posts?homeCategory=education&category=total-mc&limit=16&page=1`,
+    `/api/posts?category=total-mc&limit=16&page=1`,
     {
       headers: {
         cookie: cookie,
       },
     }
   );
-
-  console.log(data.data)
 
   return {
     props: {

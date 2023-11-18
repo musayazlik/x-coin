@@ -90,7 +90,7 @@ const Posts = ({data}) => {
                     <TableColumn>Image</TableColumn>
                     <TableColumn>Title</TableColumn>
                     <TableColumn>Description</TableColumn>
-                    <TableColumn>Ana Kategori</TableColumn>
+                 
                     <TableColumn>Kategori</TableColumn>
                     <TableColumn>Alt Kategori</TableColumn>
                     <TableColumn>Status</TableColumn>
@@ -124,9 +124,7 @@ const Posts = ({data}) => {
                               item.description.length > 160 ? item.description.splice(0, 160) + "..." : item.description || "-"
                             }
                           </TableCell>
-                          <TableCell className={"whitespace-nowrap capitalize"}>
-                            {item?.homeCategory.replace(/-/g, " ") || "-"}
-                          </TableCell>
+
                           <TableCell className={"whitespace-nowrap capitalize"}>
                             {item.category.replace(/-/g, " ") || "-"}
                           </TableCell>

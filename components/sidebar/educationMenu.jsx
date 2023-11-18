@@ -20,24 +20,30 @@ const EducationMenu = () => {
         defaultOpen={true}
         subMenuList={[
           "/education/blockchain/",
-          "/education/blockchain/total-market-cap",
-          "/education/blockchain/subcoin-mix",
-          "/education/blockchain/sub-indices",
+          "/education/blockchain/bitcoin",
+          "/education/blockchain/ethereum",
+          "/education/blockchain/crypto-indices",
+          "/education/blockchain/sub-coins",
           "/education/blockchain/on-chain",
           "/feed/blockchain/break-and-incom",
         ]}
       >
         <SubMenuItem
-          text={t.cryptoPage.totalMc}
-          url={"/education/blockchain/total-market-cap"}
+          text={t.cryptoPage.bitcoin}
+          url={"/education/blockchain/bitcoin"}
         />
         <SubMenuItem
-          text={t.cryptoPage.subCoinMix}
-          url={"/education/blockchain/subcoin-mix"}
+          text={t.cryptoPage.ethereum}
+          url={"/education/blockchain/ethereum"}
         />
         <SubMenuItem
-          text={t.cryptoPage.subIndices}
-          url={"/education/blockchain/sub-indices"}
+          text={t.cryptoPage.cryptoIndices}
+          url={"/education/blockchain/crypto-indices"}
+        />
+
+        <SubMenuItem
+          text={t.cryptoPage.subCoins}
+          url={"/education/blockchain/sub-coins"}
         />
         <SubMenuItem
           text={t.cryptoPage.onChain}

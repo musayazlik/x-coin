@@ -2,23 +2,23 @@ import React from "react";
 import Header from "@/components/header";
 import Sidebar from "@/components/sidebar";
 import IsProfile from "@/components/isProfile";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
+import {useSession} from "next-auth/react";
+import {useRouter} from "next/router";
 
-const Layout = ({ children }) => {
-  const { data: session } = useSession();
-  const { pathname } = useRouter();
+const Layout = ({children}) => {
+  const {data: session} = useSession();
+  const {pathname} = useRouter();
 
   return (
     <div className=" bg-zinc-950  flex gap-4 min-h-screen">
-      <Sidebar />
+      <Sidebar/>
       <div
-        className={` flex flex-col justify-stretch w-full lg:w-[calc(100%_-_296px)]  `}
+        className={` flex flex-col justify-stretch w-full lg:w-[calc(100%_-_296px)] max-w-[calc(100%_-_296px)] `}
       >
-        <Header />
+        <Header/>
         <main className={` h-full duration-300  bg-zinc-800 px-4`}>
           {(session?.user?.name === "" || session?.user?.surname === "") && (
-            <IsProfile />
+            <IsProfile/>
           )}
           {children}
         </main>

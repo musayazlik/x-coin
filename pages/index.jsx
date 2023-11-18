@@ -141,7 +141,7 @@ const Home = () => {
                 </div>
               </ul>
 
-              <Link href="/analysis/blockchain/total-market-cap"
+              <Link href="/analysis/blockchain/bitcoin"
                     className={"flex text-sm sm:text-base items-center" +
                       " text-blue-600 duration-300" +
                       " hover:text-blue-500"}>

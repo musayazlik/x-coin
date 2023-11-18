@@ -36,7 +36,6 @@ const PostAdd = () => {
     const title = e.target.title.value;
     const description = e.target.description.value;
     const slug = e.target.slug.value;
-    const homeCategory = e.target.homeCategory.value;
     const category = e.target.category.value;
     const subCategory = e.target.subCategory.value;
     const image = e.target.image.files[0];
@@ -45,7 +44,7 @@ const PostAdd = () => {
     const content = editor.getHTML();
 
 
-    if (!title || !description || !slug || !image || !content || !category || !subCategory || !status || !homeCategory) {
+    if (!title || !description || !slug || !image || !content || !category || !subCategory || !status) {
       toast.error("Lütfen tüm alanları doldurunuz!", {
         position: "top-center",
         autoClose: 1500,
@@ -62,7 +61,6 @@ const PostAdd = () => {
       content,
       status: status === "true",
       user: session.user.id,
-      homeCategory,
       category,
       subCategory,
       iframeText
@@ -150,21 +148,6 @@ const PostAdd = () => {
             </div>
 
             <div className="flex flex-col">
-              <label className="text-white font-semibold">Ana Kategori</label>
-              <select
-                name="homeCategory"
-                id="homeCategory"
-                className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
-              >
-                <option selected={true} disabled>
-                  İçerik Ana kategorisini seçiniz...
-                </option>
-                <option value="analysis">{t.analysis}</option>
-                <option value="education">{t.education}</option>
-              </select>
-            </div>
-
-            <div className="flex flex-col">
               <label className="text-white font-semibold">Kategori</label>
               <select
                 name="category"
@@ -174,9 +157,10 @@ const PostAdd = () => {
                 <option selected={true} disabled>
                   İçerik kategorisini seçiniz...
                 </option>
-                <option value="total-mc">Total MC</option>
-                <option value="subcoin-mix">Subcoin Mix</option>
-                <option value="sub-indices">Sub Indices</option>
+                <option value="bitcion">Bitcoin</option>
+                <option value="ethereum">Ethereum</option>
+                <option value="crypto-indices">Crypto Indices</option>
+                <option value="sub-coin">Alt Coin</option>
                 <option value="on-chain">On Chain</option>
                 <option value="sp500">Sp500</option>
                 <option value="nasdaq">Nasdaq</option>
@@ -187,7 +171,6 @@ const PostAdd = () => {
                 <option value="gold">Gold</option>
                 <option value="silver">Silver</option>
                 <option value="oil">Oil</option>
-                <option value="natqas">Natqas</option>
                 <option value="stock-market">Stock Market</option>
                 <option value="parities">Parities</option>
                 <option value="enerqy-market">Energy Market</option>

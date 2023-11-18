@@ -11,6 +11,7 @@ import {
   RiShoppingBasketLine,
   RiUser3Line
 } from "react-icons/ri";
+import {HiOutlineAcademicCap} from "react-icons/hi2";
 
 const Sidebar = () => {
   return (
@@ -34,6 +35,12 @@ const Sidebar = () => {
         url={"/dashboard/posts"}
         Icon={RiDraftLine}
         text={"Yazılar"}
+      />
+
+      <MenuItem
+        url={"/dashboard/educations"}
+        Icon={HiOutlineAcademicCap}
+        text={"Eğitimler"}
       />
 
       <DropdownMenu

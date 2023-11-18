@@ -19,9 +19,9 @@ import {RiCloseCircleLine, RiLineChartLine, RiTimeLine} from "react-icons/ri";
 import {useRouter} from "next/router";
 import {lang} from "@lang/langT";
 
-const TotalMarketCap = ({
-                          data
-                        }) => {
+const Bitcoin = ({
+                   data
+                 }) => {
   const {isServiceLoading, setIsServiceLoading} = useAppContext();
   const {locale} = useRouter();
   const t = lang(locale);
@@ -66,7 +66,7 @@ const TotalMarketCap = ({
             <span
               className={"text-white mb-1 text-2xl md:text-3xl lg:text-5xl" +
                 " font-bold"}>{
-              t.analytics.totalMc
+              t.analytics.bitcoin
             } </span>
             <span
               className={"text-3xl text-yellow-500 font-bold "}>{
@@ -228,12 +228,12 @@ const TotalMarketCap = ({
   );
 };
 
-export default TotalMarketCap;
+export default Bitcoin;
 
 export async function getServerSideProps(context) {
   const cookie = context.req.headers.cookie;
   const {data} = await axios.get(
-    `/api/posts?homeCategory=analysis&category=total-mc&limit=16&page=1`,
+    `/api/posts?category=bitcoin&limit=16&page=1`,
     {
       headers: {
         cookie: cookie,

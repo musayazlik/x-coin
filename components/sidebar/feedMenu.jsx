@@ -1,7 +1,7 @@
 import {useRouter} from "next/router";
 import {lang} from "@lang/langT";
 import MenuItem from "@components/sidebar/menuItem";
-import {RiGlobalLine, RiLayout2Fill} from "react-icons/ri";
+import {RiLayout2Fill} from "react-icons/ri";
 import DropdownMenu from "@components/sidebar/dropdownMenu";
 import {MdCurrencyBitcoin} from "react-icons/md";
 import SubMenuItem from "@components/sidebar/subMenuItem";
@@ -33,7 +33,7 @@ const FeedMenu = () => {
         Icon={MdCurrencyBitcoin}
         subMenuList={[
           "/feed/blockchain/",
-          "/feed/blockchain/total-market-cap",
+          "/feed/blockchain/bitcoin",
           "/feed/blockchain/subcoin-mix",
           "/feed/blockchain/sub-indices",
           "/feed/blockchain/on-chain",
@@ -42,7 +42,7 @@ const FeedMenu = () => {
       >
         <SubMenuItem
           text={t.cryptoPage.totalMc}
-          url={"/feed/blockchain/total-market-cap"}
+          url={"/feed/blockchain/bitcoin"}
         />
         <SubMenuItem
           text={t.cryptoPage.subCoinMix}
@@ -75,7 +75,6 @@ const FeedMenu = () => {
           "/feed/forex/gold",
           "/feed/forex/silver",
           "/feed/forex/oil",
-          "/feed/forex/natqas",
           "/feed/forex/forex-break-and-incom",
         ]}
       >
@@ -88,45 +87,12 @@ const FeedMenu = () => {
         <SubMenuItem text={t.forexPage.gold} url={"/feed/forex/gold"}/>
         <SubMenuItem text={t.forexPage.silver} url={"/feed/forex/silver"}/>
         <SubMenuItem text={t.forexPage.oil} url={"/feed/forex/oil"}/>
-        <SubMenuItem text={"Natqas"} url={"/feed/forex/natqas"}/>
         <SubMenuItem
           text={t.forexPage.breakAndIncom}
           url={"/feed/forex/forex-break-and-incom"}
         />
       </DropdownMenu>
-      <DropdownMenu
-        text={t.allMarketsPage.allMarkets}
-        dropMenuStatus={true}
-        Icon={RiGlobalLine}
-        subMenuList={[
-          "/feed/all-markets/stock-markets",
-          "/feed/all-markets/parities",
-          "/feed/all-markets/energy-market",
-          "/feed/all-markets/metal-market",
-          "/feed/all-markets/commodities",
-        ]}
-      >
-        <SubMenuItem
-          text={t.allMarketsPage.stockMarkets}
-          url={"/feed/all-markets/stock-markets"}
-        />
-        <SubMenuItem
-          text={t.allMarketsPage.parities}
-          url={"/feed/all-markets/parities"}
-        />
-        <SubMenuItem
-          text={t.allMarketsPage.energyMarket}
-          url={"/feed/all-markets/energy-market"}
-        />
-        <SubMenuItem
-          text={t.allMarketsPage.metalMarket}
-          url={"/feed/all-markets/metal-market"}
-        />
-        <SubMenuItem
-          text={t.allMarketsPage.commodities}
-          url={"/feed/all-markets/commodities"}
-        />
-      </DropdownMenu>
+
       <MenuItem
         url={"/feed/question-answer"}
         Icon={BsQuestionLg}

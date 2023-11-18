@@ -35,7 +35,7 @@ const PostEdit = ({resData}) => {
     const title = e.target.title.value;
     const description = e.target.description.value;
     const slug = e.target.slug.value;
-    const homeCategory = e.target.homeCategory.value;
+
     const category = e.target.category.value;
     const subCategory = e.target.subCategory.value;
     const image = e.target.image.files[0];
@@ -146,21 +146,7 @@ const PostEdit = ({resData}) => {
                 className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
               />
             </div>
-
-            <div className="flex flex-col">
-              <label className="text-white font-semibold">Ana Kategori</label>
-              <select
-                name="homeCategory"
-                id="homeCategory"
-                className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
-              >
-                <option selected={true} disabled>
-                  İçerik Ana kategorisini seçiniz...
-                </option>
-                <option value="analysis">{t.analysis}</option>
-                <option value="education">{t.education}</option>
-              </select>
-            </div>
+            
 
             <div className="flex flex-col">
               <label className="text-white font-semibold">Kategori</label>
