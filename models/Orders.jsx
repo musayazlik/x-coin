@@ -5,28 +5,35 @@ const OrderSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
+
+  education: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Education",
+  },
   amount: {
     type: Number,
     default: 0,
   },
-  memberShipDate: {
+  startDate: {
     type: Date,
     default: Date.now,
   },
-  memberShipEndDate: {
+  endDate: {
     type: Date,
     default: Date.now,
   },
   paymentMethod: {
     type: String,
   },
-  memberShipPriod: {
+  status: {
     type: String,
-  },
-  memberShipType: {
-    type: String,
+    default: "pending",
   },
   createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  updatedAt: {
     type: Date,
     default: Date.now,
   },

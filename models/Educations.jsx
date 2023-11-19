@@ -3,49 +3,60 @@ import mongoose from 'mongoose';
 const EducationSchema = new mongoose.Schema({
   title: {
     type: String,
-  },
-  type: {
-    type: String,
-    enum: ['free-trainings', 'paid-trainings', 'live-trainings'],
-    default: 'free-trainings',
+    default: '',
   },
   instructor: {
     type: String,
+    default: 'TraderEdit',
   },
   description: {
     type: String,
+    default: '',
   },
   content: {
     type: String,
+    default: '',
   },
   slug: {
     type: String,
     unique: true,
+
   },
   price: {
     type: Number,
+    default: 0,
   },
   image: {
     type: String,
+    default: '',
   },
   video: {
     type: String,
+    default: '',
   },
   duration: {
     type: String,
-  },
-  rating: {
-    type: Number,
+    default: '',
   },
   category: {
     type: String,
   },
   subCategory: {
     type: String,
+    enum: ['free-trainings', 'paid-trainings', 'live-trainings'],
+    default: 'free-trainings',
   },
   status: {
     type: Boolean,
     default: false,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now,
   },
 
 });

@@ -38,6 +38,7 @@ const PostEdit = ({resData}) => {
     const image = e.target.image.files[0];
     const video = e.target.video.files[0];
     const status = e.target.status.value;
+    const instructor = e.target.instructor.value;
     const content = editor.getHTML();
 
     const data = {
@@ -45,6 +46,7 @@ const PostEdit = ({resData}) => {
       title,
       description,
       slug,
+      instructor,
       price,
       image,
       video,
@@ -69,7 +71,7 @@ const PostEdit = ({resData}) => {
         Swal.fire({
           icon: "success",
           title: "Başarılı",
-          text: "İçerik başarıyla eklendi!",
+          text: "İçerik başarıyla güncellendi.",
           showConfirmButton: false,
           timer: 1500,
         }).then(() => {
@@ -121,13 +123,26 @@ const PostEdit = ({resData}) => {
             </div>
 
             <div className="flex flex-col">
+              <label className="text-white font-semibold">Eğitmen</label>
+              <input
+                type="text"
+                name="instructor"
+                id="instructor"
+                defaultValue={resData?.instructor}
+                maxLength={60}
+                placeholder="İçeriğin eğitmenini giriniz... (Max: 60 karakter)"
+                className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
+              />
+            </div>
+
+            <div className="flex flex-col">
               <label className="text-white font-semibold">Kısa Metin</label>
               <input
                 type="text"
                 name="description"
                 id="description"
                 maxLength={160}
-                defaultValue={resData.description}
+                defaultValue={resData?.description}
                 placeholder="İçerik için kısa metin giriniz... (Max: 160 karakter) "
                 className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
               />
@@ -139,7 +154,7 @@ const PostEdit = ({resData}) => {
                 type="text"
                 name="slug"
                 id="slug"
-                defaultValue={resData.slug}
+                defaultValue={resData?.slug}
                 placeholder="İçerik için kısa url giriniz..."
                 className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
               />
@@ -151,7 +166,7 @@ const PostEdit = ({resData}) => {
                 type="number"
                 name="price"
                 id="price"
-                defaultValue={resData.price}
+                defaultValue={resData?.price}
                 placeholder="İçerik için fiyat giriniz. (Ücretsiz olacak ise 0 giriniz...)"
                 className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
               />
@@ -168,8 +183,8 @@ const PostEdit = ({resData}) => {
                 <option selected={true} disabled>
                   İçerik kategorisini seçiniz...
                 </option>
-                <option value="bitcion"
-                        selected={resData.category === "bitcion"}>Bitcoin
+                <option value="bitcoin"
+                        selected={resData.category === "bitcoin"}>Bitcoin
                 </option>
                 <option value="ethereum"
                         selected={resData.category === "ethereum"}>Ethereum
@@ -182,7 +197,7 @@ const PostEdit = ({resData}) => {
                         selected={resData.category === "sub-coin"}>Alt Coin
                 </option>
                 <option value="on-chain"
-                        selected={resData.category === "bitcion"}>On Chain
+                        selected={resData.category === "bitcoin"}>On Chain
                 </option>
                 <option value="sp500"
                         selected={resData.category === "sp500"}>Sp500
@@ -237,24 +252,23 @@ const PostEdit = ({resData}) => {
                 className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
               >
                 <option selected={true} disabled>
-                  İçerik kategorisini seçiniz...
+                  İçerik alt kategorisini seçiniz...
                 </option>
-                <option value="short-term"
-                        selected={resData.subCategory === "short-term"}>
-                  Short Term (Kısa Vadeli)
+                <option value="free-trainings"
+                        selected={resData.subCategory === "free-trainings"}>
+                  Free Trainings (Ücretsiz Eğitimler)
                 </option>
-                <option value="subcoin-mix"
-                        selected={resData.subCategory === "subcoin-mix"}>
-                  Long Term (Uzun Vadeli)
+
+                <option value="paid-trainings"
+                        selected={resData.subCategory === "paid-trainings"}>
+                  Paid Trainings (Ücretli Eğitimler)
                 </option>
-                <option value="support-resistance"
-                        selected={resData.subCategory === "support-resistance"}>
-                  Support - Resistance (Destek - Direnç)
+
+                <option value="live-trainings"
+                        selected={resData.subCategory === "live-trainings"}>
+                  Live Trainings (Canlı Eğitimler)
                 </option>
-                <option value="major-factors"
-                        selected={resData.subCategory === "major-factors"}>
-                  Major Factors (Ana Faktörler)
-                </option>
+
               </select>
             </div>
 
@@ -262,7 +276,7 @@ const PostEdit = ({resData}) => {
             <div className="flex flex-col">
               <label className="text-white font-semibold">Küçük Resmi</label>
               <Image src={
-                resData.image
+                resData?.image
               } alt={
                 "Post Image"
               } width={50} height={50}

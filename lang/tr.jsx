@@ -16,6 +16,7 @@ export default {
   gold: "Altın",
   silver: "Gümüş",
   oil: "Petrol",
+  notData: "Henüz içerik oluşturulmamıştır. Takipte kalın.",
 
 
   analytics: {

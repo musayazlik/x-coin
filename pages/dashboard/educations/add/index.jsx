@@ -39,10 +39,11 @@ const EducationAdd = () => {
     const video = e.target.video.files[0];
     const status = e.target.status.value;
     const price = e.target.price.value;
+    const instructor = e.target.instructor.value;
     const content = editor.getHTML();
 
 
-    if (!title || !description || !slug || !image || !content || !category || !subCategory || !status || !video || !price) {
+    if (!title || !description || !slug || !image || !content || !category || !subCategory || !status || !video || !price || !instructor) {
       toast.error("Lütfen tüm alanları doldurunuz!", {
         position: "top-center",
         autoClose: 1500,
@@ -54,6 +55,7 @@ const EducationAdd = () => {
     const data = {
       title,
       description,
+      instructor,
       slug,
       price,
       image,
@@ -164,7 +166,7 @@ const EducationAdd = () => {
                 type="number"
                 name="price"
                 id="price"
-               
+
                 placeholder="İçerik için fiyat giriniz. (Ücretsiz olacak ise 0 giriniz...)"
                 className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
               />
@@ -180,7 +182,7 @@ const EducationAdd = () => {
                 <option selected={true} disabled>
                   İçerik kategorisini seçiniz...
                 </option>
-                <option value="bitcion">Bitcoin</option>
+                <option value="bitcoin">Bitcoin</option>
                 <option value="ethereum">Ethereum</option>
                 <option value="crypto-indices">Crypto Indices</option>
                 <option value="sub-coin">Alt Coin</option>
@@ -210,20 +212,23 @@ const EducationAdd = () => {
                 className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
               >
                 <option selected={true} disabled>
-                  İçerik kategorisini seçiniz...
+                  İçerik alt kategorisini seçiniz...
                 </option>
-                <option value="short-term">
-                  Short Term (Kısa Vadeli)
+                <option value="free-trainings"
+                >
+                  Free Trainings (Ücretsiz Eğitimler)
                 </option>
-                <option value="long-term">
-                  Long Term (Uzun Vadeli)
+
+                <option value="paid-trainings"
+                >
+                  Paid Trainings (Ücretli Eğitimler)
                 </option>
-                <option value="support-resistance">
-                  Support - Resistance (Destek - Direnç)
+
+                <option value="live-trainings"
+                >
+                  Live Trainings (Canlı Eğitimler)
                 </option>
-                <option value="major-factors">
-                  Major Factors (Ana Faktörler)
-                </option>
+
               </select>
             </div>
 

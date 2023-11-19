@@ -157,7 +157,7 @@ const PostAdd = () => {
                 <option selected={true} disabled>
                   İçerik kategorisini seçiniz...
                 </option>
-                <option value="bitcion">Bitcoin</option>
+                <option value="bitcoin">Bitcoin</option>
                 <option value="ethereum">Ethereum</option>
                 <option value="crypto-indices">Crypto Indices</option>
                 <option value="sub-coin">Alt Coin</option>

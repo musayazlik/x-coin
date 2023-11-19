@@ -16,6 +16,7 @@ export default {
   gold: "Gold",
   silver: "Silver",
   oil: "Oil",
+  notData: "No data yet. Stay tuned.",
 
 
   analytics: {
