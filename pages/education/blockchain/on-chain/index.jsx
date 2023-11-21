@@ -18,8 +18,6 @@ const OnChain = ({
   const {locale} = useRouter();
   const t = lang(locale);
 
-  console.log(data)
-
 
   return (
     <Layout>
@@ -128,8 +126,6 @@ export async function getServerSideProps(context) {
       },
     }
   );
-
-  console.log(data.data)
 
   return {
     props: {

@@ -57,7 +57,6 @@ const PostEdit = ({resData}) => {
       iframeText
     };
 
-    console.log(data)
 
     axios({
       method: "PATCH",
@@ -146,7 +145,7 @@ const PostEdit = ({resData}) => {
                 className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
               />
             </div>
-            
+
 
             <div className="flex flex-col">
               <label className="text-white font-semibold">Kategori</label>

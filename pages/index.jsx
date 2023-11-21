@@ -19,8 +19,6 @@ const Home = ({data}) => {
 
   const t = lang(locale);
 
-  console.log(data)
-
 
   return (
     <>

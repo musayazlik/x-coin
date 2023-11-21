@@ -127,7 +127,6 @@ export default async function handler(req, res) {
               category: req.query.category,
             }).populate("user").select("-password -walletAddress -email")
 
-            console.log(Posts.populate("user", "name"))
             sendSuccessResponse(res, breakAndIncomData);
           } else if (req.query.id) {
 
@@ -159,7 +158,7 @@ export default async function handler(req, res) {
 
           const imageName = `${slug[0]}-${Date.now()}`;
 
-          console.log(files)
+
           const imagePath = files.image[0].filepath;
 
 
