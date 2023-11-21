@@ -224,14 +224,14 @@ export default Home;
 
 
 export async function getServerSideProps(context) {
-  const {data} = await axios.get(
-    `/api/popularEducation`,
-  );
+
+  const {data} = await axios.get(`${process.env.APP_URL}/api/popularEducation`);
 
   return {
     props: {
-      data: data.data,
-    },
-  };
+      data: data.data
+    }
+  }
 }
+
 
