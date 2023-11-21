@@ -28,11 +28,11 @@ const PopularEducations = ({data}) => {
         </div>
 
         <section
-          className=" mb-8 sm:px-4 px-2">
+          className=" mb-8">
 
           <div className={"mb-4 "}>
             <h2 className={"text-white text-base md:text-2xl font-bold mb-4" +
-              " border-l-4" +
+              " border-l-4 hover:border-l-[16px] duration-300" +
               " border-rose-700 px-6 bg-zinc-950 py-6 rounded"}>
               {t.freeTrainings}
             </h2>
@@ -49,11 +49,11 @@ const PopularEducations = ({data}) => {
         </section>
 
         <section
-          className=" mb-8 sm:px-4 px-2">
+          className=" mb-8 ">
 
           <div className={"mb-4 "}>
             <h2 className={"text-white text-base md:text-2xl font-bold mb-4" +
-              " border-l-4" +
+              " border-l-4 hover:border-l-[16px] duration-300" +
               " border-rose-700 px-6 bg-zinc-950 py-6  rounded"}>
               {t.paidTrainings}
             </h2>
@@ -70,11 +70,11 @@ const PopularEducations = ({data}) => {
         </section>
 
         <section
-          className="  mb-8 sm:px-4 px-2 ">
+          className="  mb-8 ">
 
           <div className={"mb-4 "}>
             <h2 className={"text-white text-base md:text-2xl font-bold mb-4" +
-              " border-l-4" +
+              " border-l-4 hover:border-l-[16px] duration-300" +
               " border-rose-700 px-6 bg-zinc-950 py-6  rounded"}>
               {t.liveTrainings}
             </h2>

@@ -1,12 +1,12 @@
 const Stats = () => {
   return (
-    <section className={"bg-zinc-950 py-28"}>
+    <section className={"bg-zinc-950 py-10 lg:py-28"}>
       <div>
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <dl
             className="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
             <div className="mx-auto flex max-w-xs flex-col gap-y-4">
-              <dt className="text-base leading-7 text-gray-400">Transactions
+              <dt className="text-base leading-7 text-gray-300">Transactions
                 every
                 24 hours
               </dt>
@@ -16,7 +16,7 @@ const Stats = () => {
               </dd>
             </div>
             <div className="mx-auto flex max-w-xs flex-col gap-y-4">
-              <dt className="text-base leading-7 text-gray-400">Assets under
+              <dt className="text-base leading-7 text-gray-300">Assets under
                 holding
               </dt>
               <dd
@@ -25,7 +25,7 @@ const Stats = () => {
               </dd>
             </div>
             <div className="mx-auto flex max-w-xs flex-col gap-y-4">
-              <dt className="text-base leading-7 text-gray-400">New users
+              <dt className="text-base leading-7 text-gray-300">New users
                 annually
               </dt>
               <dd

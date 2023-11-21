@@ -1,10 +1,16 @@
+import Image from "next/image";
+
 const Team = ({imageSrc, name, profession}) => {
   return (
     <>
       <div className="w-full px-4 md:w-1/2 xl:w-1/4">
         <div className="mx-auto mb-10 w-full max-w-[370px]">
           <div className="relative overflow-hidden rounded-lg">
-            <img src={imageSrc} alt="" className="w-full"/>
+            <div className="w-full h-[420px] relative">
+              <Image src={imageSrc} alt=""
+                     fill quality={50} priority={true}
+                     className={"object-cover"}/>
+            </div>
             <div className="absolute bottom-5 left-0 w-full text-center">
               <div
                 className="relative mx-5 overflow-hidden rounded-lg bg-zinc-950/50 backdrop-blur py-4">

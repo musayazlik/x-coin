@@ -56,7 +56,7 @@ const Swippers = ({
                   <small
                     className={"font-bold flex items-center" +
                       " text-xs " +
-                      " text-zinc-600"}>
+                      " text-yellow-500"}>
                     <RiTimeLine className={"inline-block mr-1"}
                                 fontSize={14}/>
                     {item.createdAt.split("T")[0]}
@@ -65,12 +65,12 @@ const Swippers = ({
                     `${path}${item.slug}`
                   }>
                     <h2
-                      className="text-tiny uppercase font-bold hover:text-yellow-500 hover:duration-300 hover:cursor-pointer line-clamp-2">
+                      className="text-base leading-5 uppercase font-bold hover:text-yellow-500 hover:duration-300 hover:cursor-pointer line-clamp-2">
                       {item.title}
                     </h2>
                   </Link>
                   <p
-                    className="text-tiny leading-4 text-zinc-600 line-clamp-2  ">
+                    className="text-tiny leading-4 text-zinc-300 line-clamp-2  ">
                     {item.description}
                   </p>
                 </div>
@@ -110,7 +110,7 @@ const Swippers = ({
                 </div>
                 <Link
                   href={`${path}${item.slug}`}
-                  className="text-[10px]  uppercase font-bold flex flex-col gap-2 items-center text-zinc-500 hover:text-yellow-500 duration-300 flex-shrink-0">
+                  className="text-[10px]  uppercase font-bold flex flex-col gap-2 items-center text-zinc-400 hover:text-yellow-500 duration-300 flex-shrink-0">
                   <PiArrowCircleRightDuotone fontSize={20}
                                              className={"inline-block"}
 
