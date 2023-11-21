@@ -8,10 +8,21 @@ const getEducations = async (session, res, req) => {
   try {
 
     if (req?.query?.category) {
-      const educations = await Educations.find({category: req?.query?.category}).sort({createdAt: -1}).where({
+      const educations = await Educations.find({
+        category: req?.query?.category,
         status: true,
-      })
-      res.status(200).json({success: true, data: educations});
+      }).sort({createdAt: -1})
+
+      const filterBySubCategory = subCategory => educations.filter(education => education.subCategory === subCategory);
+
+      const data = {
+        freeTrainings: filterBySubCategory('free-trainings'),
+        paidTrainings: filterBySubCategory('paid-trainings'),
+        liveTrainings: filterBySubCategory('live-trainings'),
+      };
+
+
+      res.status(200).json({success: true, data: data});
 
     } else if (req?.query?.slug) {
       const education = await Educations.findOne({slug: req?.query?.slug}).where({

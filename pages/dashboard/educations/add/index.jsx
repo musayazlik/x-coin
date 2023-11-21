@@ -10,9 +10,11 @@ import {useSession} from "next-auth/react";
 import Link from "next/link";
 import {toast} from "react-toastify";
 import {lang} from "@lang/langT";
+import {useAppContext} from "@/context";
 
 
 const EducationAdd = () => {
+  const {loading, setLoading} = useAppContext();
   const router = useRouter();
   const {data: session} = useSession();
   const t = lang(router.locale);
@@ -29,6 +31,7 @@ const EducationAdd = () => {
   });
 
   const educationAdd = (e) => {
+    setLoading(true);
     e.preventDefault();
     const title = e.target.title.value;
     const description = e.target.description.value;
@@ -40,10 +43,12 @@ const EducationAdd = () => {
     const status = e.target.status.value;
     const price = e.target.price.value;
     const instructor = e.target.instructor.value;
+    const instructorImage = e.target.instructorImage.files[0];
     const content = editor.getHTML();
 
 
-    if (!title || !description || !slug || !image || !content || !category || !subCategory || !status || !video || !price || !instructor) {
+    if (!title || !description || !slug || !image || !content || !category || !subCategory || !status || !video || !price || !instructor || !instructorImage) {
+      setLoading(false);
       toast.error("Lütfen tüm alanları doldurunuz!", {
         position: "top-center",
         autoClose: 1500,
@@ -56,6 +61,7 @@ const EducationAdd = () => {
       title,
       description,
       instructor,
+      instructorImage,
       slug,
       price,
       image,
@@ -76,6 +82,7 @@ const EducationAdd = () => {
       data,
     })
       .then((res) => {
+        setLoading(false);
         Swal.fire({
           icon: "success",
           title: "Başarılı",
@@ -87,6 +94,7 @@ const EducationAdd = () => {
         });
       })
       .catch((err) => {
+        setLoading(false);
         Swal.fire({
           icon: "error",
           title: "Oops...",
@@ -99,7 +107,7 @@ const EducationAdd = () => {
   return (
     <Layout>
       <div
-        className="bg-zinc-800 shadow-md shadow-zinc-900/20 px-2 py-8 border-t-2 border-custom_pink">
+        className="bg-zinc-800 shadow-md shadow-zinc-900/20 px-2 py-8 border-t-2 border-rose-800">
         <h1 className=" px-2 text-3xl font-bold text-white">İçerik Ekle</h1>
         <p className=" px-2 text-base font-normal mt-2 text-white">
           Bu sayfadan eğitimler içeriklerini ekleyebilirsiniz.
@@ -112,7 +120,7 @@ const EducationAdd = () => {
             educationAdd(e);
           }}
         >
-          <div className="flex flex-col w-full md:w-1/2 mt-6">
+          <div className="flex flex-col w-full lg:w-9/12 2xl:w-7/12 mt-6">
             <div className="flex flex-col">
               <label className="text-white font-semibold">Başlık</label>
               <input
@@ -136,6 +144,17 @@ const EducationAdd = () => {
                 className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
               />
             </div>
+
+            <div className="flex flex-col">
+              <label className="text-white font-semibold">Eğitmen Resmi</label>
+              <input
+                type="file"
+                name="instructorImage"
+                id="instructorImage"
+                className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
+              />
+            </div>
+
 
             <div className="flex flex-col">
               <label className="text-white font-semibold">Kısa Metin</label>
@@ -179,7 +198,7 @@ const EducationAdd = () => {
                 id="category"
                 className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
               >
-                <option selected={true} disabled>
+                <option disabled>
                   İçerik kategorisini seçiniz...
                 </option>
                 <option value="bitcoin">Bitcoin</option>
@@ -211,7 +230,7 @@ const EducationAdd = () => {
                 id="subCategory"
                 className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
               >
-                <option selected={true} disabled>
+                <option disabled>
                   İçerik alt kategorisini seçiniz...
                 </option>
                 <option value="free-trainings"

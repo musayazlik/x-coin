@@ -1,14 +1,16 @@
 import React from "react";
 import Header from "@/components/header";
 import DashboardSidebar from "@/components/sidebar/dashboardSidebar";
+import {useAppContext} from "@/context";
+import Loading from "@/components/loading";
 
 const Layout = ({children}) => {
+  const {loading} = useAppContext();
   return (
     <div className=" bg-zinc-950  flex gap-4 min-h-screen h-full">
       <DashboardSidebar/>
       <div
         className={` flex flex-col justify-stretch w-full`}
-        style={{maxWidth: "calc(100% - 296px)"}}
       >
         <Header/>
         <main className={` h-full duration-300  bg-zinc-800 px-4`}>
@@ -23,6 +25,8 @@ const Layout = ({children}) => {
           </p>
         </footer>
       </div>
+
+      {loading && <Loading/>}
     </div>
   );
 };

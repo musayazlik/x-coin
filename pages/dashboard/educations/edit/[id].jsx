@@ -39,6 +39,7 @@ const PostEdit = ({resData}) => {
     const video = e.target.video.files[0];
     const status = e.target.status.value;
     const instructor = e.target.instructor.value;
+    const instructorImage = e.target.instructorImage.files[0];
     const content = editor.getHTML();
 
     const data = {
@@ -47,6 +48,7 @@ const PostEdit = ({resData}) => {
       description,
       slug,
       instructor,
+      instructorImage,
       price,
       image,
       video,
@@ -56,8 +58,6 @@ const PostEdit = ({resData}) => {
       category,
       subCategory,
     };
-
-    console.log(data)
 
     axios({
       method: "PATCH",
@@ -136,6 +136,17 @@ const PostEdit = ({resData}) => {
             </div>
 
             <div className="flex flex-col">
+              <label className="text-white font-semibold">Eğitmen Resmi</label>
+              <input
+                type="file"
+                name="instructorImage"
+                id="instructorImage"
+                className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
+              />
+            </div>
+
+
+            <div className="flex flex-col">
               <label className="text-white font-semibold">Kısa Metin</label>
               <input
                 type="text"
@@ -180,7 +191,7 @@ const PostEdit = ({resData}) => {
                 id="category"
                 className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
               >
-                <option selected={true} disabled>
+                <option disabled>
                   İçerik kategorisini seçiniz...
                 </option>
                 <option value="bitcoin"
@@ -251,7 +262,7 @@ const PostEdit = ({resData}) => {
                 id="subCategory"
                 className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
               >
-                <option selected={true} disabled>
+                <option disabled>
                   İçerik alt kategorisini seçiniz...
                 </option>
                 <option value="free-trainings"

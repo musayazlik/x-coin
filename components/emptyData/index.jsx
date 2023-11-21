@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {PiMaskSadDuotone} from "react-icons/pi";
 import {useRouter} from "next/router";
 import {lang} from "@lang/langT";
@@ -19,4 +19,4 @@ const EmptyData = () => {
   );
 };
 
-export default EmptyData;
+export default memo(EmptyData);

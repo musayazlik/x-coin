@@ -51,6 +51,29 @@ const updateEducations = async (req, res, fields, files) => {
     url: ""
   }
 
+  let instructorImageData = {
+    name: "",
+    path: "",
+    url: ""
+  }
+
+  if (files.instructorImage || files.instructorImage !== undefined) {
+    instructorImageData.name = `${fields.slug}-${Date.now()}`;
+    instructorImageData.path = files.instructorImage?.[0].filepath;
+    instructorImageData.url = await cloudinary.v2.uploader.upload(instructorImageData.path, {
+      folder: "posts",
+      public_id: instructorImageData.name,
+      resource_type: "image",
+      quality_analysis: true,
+      quality: "auto:low",
+    });
+
+    data = {
+      ...data,
+      instructorImage: instructorImageData.url.secure_url,
+    }
+  }
+
 
   if (files.image || files.image !== undefined) {
     imageData.name = `${fields.slug}-${Date.now()}`;
@@ -83,10 +106,9 @@ const updateEducations = async (req, res, fields, files) => {
     data = {
       ...data,
       video: videoData.url.secure_url,
-
-
     }
   }
+
 
   try {
     const educationsUpdated = await Educations.findOneAndUpdate(
@@ -167,11 +189,13 @@ export default async function handler(req, res) {
 
           const imageName = `${slug[0]}-${Date.now()}`;
           const videoName = `${slug[0]}-${Date.now()}`;
+          const instructorImageName = `${slug[0]}-${Date.now()}`;
 
 
           const imagePath = files.image[0].filepath;
           const videoPath = files.video[0].filepath;
           const videoDuration = files.video[0].duration;
+          const instructorImagePath = files.instructorImage[0].filepath;
 
 
           const imageUrl = await cloudinary.v2.uploader.upload(
@@ -191,6 +215,16 @@ export default async function handler(req, res) {
               resource_type: "video",
             }
           );
+
+          const instructorImageUrl = await cloudinary.v2.uploader.upload(
+            instructorImagePath,
+            {
+              folder: "educations",
+              public_id: instructorImageName,
+              resource_type: "image",
+            }
+          );
+
           const data = {
             title: title[0],
             description: description[0],
@@ -204,6 +238,7 @@ export default async function handler(req, res) {
             subCategory: subCategory[0],
             image: imageUrl.secure_url,
             video: videoUrl.secure_url,
+            instructorImage: instructorImageUrl.secure_url,
             price: price[0],
           };
 

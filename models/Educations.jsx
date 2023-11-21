@@ -9,6 +9,12 @@ const EducationSchema = new mongoose.Schema({
     type: String,
     default: 'TraderEdit',
   },
+
+  instructorImage: {
+    type: String,
+    default: '',
+  },
+
   description: {
     type: String,
     default: '',
@@ -20,7 +26,6 @@ const EducationSchema = new mongoose.Schema({
   slug: {
     type: String,
     unique: true,
-
   },
   price: {
     type: Number,

@@ -8,15 +8,19 @@ import Link from "next/link";
 import {BiBitcoin} from "react-icons/bi";
 import {BsFillBookmarkCheckFill} from "react-icons/bs";
 import {FiChevronRight} from "react-icons/fi";
-import Pricing from "@components/homeSections/Pricing";
-import Stats from "@components/homeSections/stats";
+import Stats from "components/homeSections/Stats";
 import Teams from "@components/homeSections/Teams";
+import PopularEducations from "@components/homeSections/PopularEducations";
+import axios from "axios";
 
 
-const Home = () => {
+const Home = ({data}) => {
   const {push, locale} = useRouter();
 
   const t = lang(locale);
+
+  console.log(data)
+
 
   return (
     <>
@@ -155,9 +159,11 @@ const Home = () => {
         </div>
       </section>
 
-      <Pricing/>
+      <PopularEducations data={data}/>
 
       <Teams/>
+
+
       <footer className="bg-black border-t-2 border-zinc-800  shadow  ">
         <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
           <div className="sm:flex sm:items-center sm:justify-between">
@@ -190,16 +196,44 @@ const Home = () => {
           </div>
           <hr
             className="my-6 border-zinc-200 sm:mx-auto dark:border-zinc-700 lg:my-8"/>
-          <span
-            className="block text-sm text-zinc-500 sm:text-center dark:text-zinc-400">© 2023 <a
-            href="#"
-            className="hover:underline">TraderEdit™</a>. All Rights Reserved.</span>
+          <div className="flex justify-between">
+            <span
+              className="block text-sm text-zinc-500 sm:text-center dark:text-zinc-400">© 2023 <a
+              href="#"
+              className="hover:underline hover:text-blue-500">TraderEdit™</a>. All Rights Reserved.</span>
+
+            <div className="flex gap-4">
+              <Image src={"/visa.svg"} alt={"visa card logo"} width={38}
+                     height={38}/>
+              <Image src={"/mastercard.svg"} alt={"master card logo"} width={30}
+                     height={30}/>
+              <Image src={"/ae.svg"} alt={"ae card logo"} width={30}
+                     height={30}/>
+              <Image src={"/troy.svg"} alt={"paypal card logo"} width={38}
+                     height={38}/>
+            </div>
+
+
+          </div>
         </div>
       </footer>
-
 
     </>
   );
 };
 
 export default Home;
+
+
+export async function getServerSideProps(context) {
+  const {data} = await axios.get(
+    `/api/popularEducation`,
+  );
+
+  return {
+    props: {
+      data: data.data,
+    },
+  };
+}
+

@@ -1,15 +1,18 @@
-import { createContext, useContext, useState } from "react";
+import {createContext, useContext, useState} from "react";
 
 const AppContext = createContext();
 
-export function Wrapper({ children }) {
+export function Wrapper({children}) {
   const [isOpenSidebar, setIsOpenSidebar] = useState(true);
   const [isServiceLoading, setIsServiceLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const sharedState = {
     isOpenSidebar,
     setIsOpenSidebar,
     isServiceLoading,
     setIsServiceLoading,
+    loading,
+    setLoading,
   };
 
   return (

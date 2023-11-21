@@ -8,6 +8,7 @@ import {ThemeProvider as NextThemesProvider} from "next-themes";
 import axios from "axios";
 import 'swiper/css';
 
+
 export default function App({
                               Component,
                               pageProps: {session, ...pageProps},
@@ -21,6 +22,7 @@ export default function App({
         <NextUIProvider>
           <NextThemesProvider attribute="class" defaultTheme="dark">
             <Component {...pageProps} />
+
           </NextThemesProvider>
         </NextUIProvider>
         <ToastContainer/>

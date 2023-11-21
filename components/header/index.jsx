@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import AvatarDropdown from "../avatarDropdown";
 import LangDropdown from "../langDropdown";
 import NotificationDropdown from "../notificationDropdown";
@@ -22,6 +22,7 @@ import {
 import {lang} from "@lang/langT";
 import {IoMdPricetags} from "react-icons/io";
 import Link from "next/link";
+
 
 const Header = () => {
   const {setIsOpenSidebar} = useAppContext();
@@ -225,4 +226,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default memo(Header);

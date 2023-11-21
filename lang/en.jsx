@@ -17,6 +17,13 @@ export default {
   silver: "Silver",
   oil: "Oil",
   notData: "No data yet. Stay tuned.",
+  freeTrainings: "Free Trainings",
+  paidTrainings: "Paid Trainings",
+  liveTrainings: "Live Trainings",
+  educationText: "Analysis of the total value of the cryptocurrency market. Here The analyzes contained are not investment advice. just education It is purposeful. Make your investment decisions based on your own research. Please give. It is not investment advice.",
+  popular: "Popular",
+  educations: "Educations",
+  popularEducationsText: "Some of our popular trainings are listed below. You can visit our education page for more education.",
 
 
   analytics: {

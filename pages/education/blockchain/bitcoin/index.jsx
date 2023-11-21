@@ -8,7 +8,7 @@ import {lang} from "@lang/langT";
 import {PiGraduationCapDuotone} from "react-icons/pi";
 
 import Swippers from "@components/swipper";
-import EmptyData from "@components/EmptyData";
+import EmptyData from "components/emptyData";
 
 
 const Bitcoin = ({
@@ -17,6 +17,8 @@ const Bitcoin = ({
   const {isServiceLoading, setIsServiceLoading} = useAppContext();
   const {locale} = useRouter();
   const t = lang(locale);
+
+  console.log(data)
 
 
   return (
@@ -43,10 +45,7 @@ const Bitcoin = ({
           </h1>
           <p
             className=" text-sm sm:text-base text-gray-200 font-normal max-w-4xl mx-auto">
-            Kripto para piyasasının toplam değeri ile ilgili analizler. Burada
-            yer alan analizler yatırım tavsiyesi değildir. Sadece eğitim
-            amaçlıdır. Yatırım kararlarınızı kendi araştırmalarınız sonucunda
-            veriniz. Yatırım tavsiyesi değildir.
+            {t.educationText}
           </p>
         </div>
 
@@ -57,12 +56,13 @@ const Bitcoin = ({
             <h2 className={"text-white text-base md:text-2xl font-bold mb-4" +
               " border-l-4" +
               " border-rose-700 px-4 bg-zinc-900 py-3 rounded"}>
-              Ücretsiz Eğitimler
+              {t.freeTrainings}
             </h2>
           </div>
 
-          {data.length > 0 ? (
-            <Swippers data={data} path={"/education/blockchain/bitcoin/"}/>
+          {data.freeTrainings.length > 0 ? (
+            <Swippers data={data.freeTrainings}
+                      path={"/education/blockchain/bitcoin/"}/>
           ) : (
             <EmptyData/>
           )}
@@ -77,12 +77,13 @@ const Bitcoin = ({
             <h2 className={"text-white text-base md:text-2xl font-bold mb-4" +
               " border-l-4" +
               " border-rose-700 px-4 bg-zinc-900 py-3 rounded"}>
-              Ücretli Eğitimler
+              {t.paidTrainings}
             </h2>
           </div>
 
-          {data.length > 0 ? (
-            <Swippers data={data} path={"/education/blockchain/bitcoin/"}/>
+          {data.paidTrainings.length > 0 ? (
+            <Swippers data={data.paidTrainings}
+                      path={"/education/blockchain/bitcoin/"}/>
           ) : (
             <EmptyData/>
           )}
@@ -97,12 +98,13 @@ const Bitcoin = ({
             <h2 className={"text-white text-base md:text-2xl font-bold mb-4" +
               " border-l-4" +
               " border-rose-700 px-4 bg-zinc-900 py-3 rounded"}>
-              Bire Bir Canlı Eğitimler
+              {t.liveTrainings}
             </h2>
           </div>
 
-          {data.length > 0 ? (
-            <Swippers data={data} path={"/education/blockchain/bitcoin/"}/>
+          {data.liveTrainings.length > 0 ? (
+            <Swippers data={data.liveTrainings}
+                      path={"/education/blockchain/bitcoin/"}/>
           ) : (
             <EmptyData/>
           )}

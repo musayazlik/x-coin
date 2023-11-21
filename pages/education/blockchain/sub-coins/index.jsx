@@ -11,12 +11,15 @@ import Swippers from "@components/swipper";
 import EmptyData from "components/emptyData";
 
 
-const UsdJpy = ({
-                  data
-                }) => {
+const SubCoins = ({
+                    data
+                  }) => {
   const {isServiceLoading, setIsServiceLoading} = useAppContext();
   const {locale} = useRouter();
   const t = lang(locale);
+
+  console.log(data)
+
 
   return (
     <Layout>
@@ -32,7 +35,9 @@ const UsdJpy = ({
             </div>
             <span
               className={"text-white mb-1 text-2xl md:text-3xl lg:text-5xl" +
-                " font-bold"}>Usd/Jpy</span>
+                " font-bold"}>{
+              t.analytics.subCoins
+            } </span>
             <span
               className={"text-3xl text-yellow-500 font-bold "}>{
               t.education
@@ -111,12 +116,12 @@ const UsdJpy = ({
   );
 };
 
-export default UsdJpy;
+export default SubCoins;
 
 export async function getServerSideProps(context) {
   const cookie = context.req.headers.cookie;
   const {data} = await axios.get(
-    `/api/education?category=usd-jpy&limit=16&page=1`,
+    `/api/education?category=sub-coins&limit=16&page=1`,
     {
       headers: {
         cookie: cookie,

@@ -1,6 +1,6 @@
 import {Swiper, SwiperSlide} from "swiper/react";
 import {swiperEducationConfig} from "@/config/swiperConfig";
-import {Card, CardBody, CardHeader} from "@nextui-org/react";
+import {Avatar, Card, CardBody, CardHeader} from "@nextui-org/react";
 import Image from "next/image";
 import {RiTimeLine} from "react-icons/ri";
 import Link from "next/link";
@@ -88,10 +88,22 @@ const Swippers = ({
                               <PiUserCircleGearDuotone fontSize={20}/>
 
                               Eğitmen</span>
-                      <h3
-                        class="text-sm font-medium leading-4">
-                        {item.instructor}
-                      </h3>
+
+
+                      <div class="inline-flex items-center gap-3">
+                        <Avatar
+                          isBordered={true}
+                          alt="Card background"
+                          className="object-cover rounded-full min-w-[30px] max-h-[30px] "
+                          src={item.instructorImage}
+                          quality={50}
+
+                        />
+                        <h3
+                          className="text-sm font-medium leading-4">
+                          {item.instructor}
+                        </h3>
+                      </div>
                     </div>
                   </div>
 

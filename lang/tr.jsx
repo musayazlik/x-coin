@@ -17,6 +17,13 @@ export default {
   silver: "Gümüş",
   oil: "Petrol",
   notData: "Henüz içerik oluşturulmamıştır. Takipte kalın.",
+  freeTrainings: "Ücretsiz Eğitimler",
+  paidTrainings: "Ücretli Eğitimler",
+  liveTrainings: "Canlı Eğitimler",
+  educationText: "Kripto para piyasasının toplam değerinin analizi. Burada yer alan analizler yatırım tavsiyesi değildir. Sadece eğitim amaçlıdır. Yatırım kararlarınızı kendi araştırmalarınız sonucunda veriniz. Lütfen dikkate almayınız. Yatırım tavsiyesi değildir.",
+  popular: "Popüler",
+  educations: "Eğitimler",
+  popularEducationsText: "Popüler eğitimlerimizden bazıları aşağıda yer almaktadır. Daha fazla eğitim için eğitim sayfamızı ziyaret edebilirsiniz.",
 
 
   analytics: {
