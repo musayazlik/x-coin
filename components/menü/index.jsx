@@ -16,9 +16,10 @@ import {
 import {signOut, useSession} from "next-auth/react";
 import {useRouter} from "next/router";
 import LangDropdown from "@components/langDropdown";
-import Membership from "@components/icons/membership";
 import {lang} from "@/lang/langT";
-import {RiUser6Fill, RiUserAddLine, RiUserFill} from "react-icons/ri";
+import {RiUserAddLine, RiUserFill} from "react-icons/ri";
+import Basket from "@components/basket";
+import {PiUserDuotone} from "react-icons/pi";
 
 const Menu = () => {
   const {locale, push} = useRouter();
@@ -47,7 +48,7 @@ const Menu = () => {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="#" aria-current="page">
+          <Link color="foreground" href="/about-us" aria-current="page">
             {
               t.homepage.menu.aboutus
             }
@@ -68,12 +69,15 @@ const Menu = () => {
           </Link>
         </NavbarItem>
       </NavbarContent>
-      <NavbarContent justify="end">
+      <NavbarContent justify="end" className={"gap-2"}>
+
+        <Basket/>
 
         <LangDropdown/>
         {status === "authenticated" ? (
           <>
-            <Dropdown placement="bottom-start" className={"mt-6"}>
+            <Dropdown backdrop={"blur"} placement="bottom-start"
+                      className={"mt-6"}>
               <DropdownTrigger>
                 <div className={"relative flex flex-shrink-0"}>
                   <User
@@ -86,32 +90,6 @@ const Menu = () => {
                     description={`@${session.user.username}`}
                     name={`${session.user.name + " " + session.user.surname}`}
                   />
-
-                  {session?.user?.memberShipType === "standard" && (
-                    <div
-                      className="w-5 h-5 rounded-full flex justify-center items-center absolute -top-1.5  bg-stone-400 left-5 z-20 border-2 border-stone-500 shadow-md shadow-stone-700">
-                      <Membership
-                        className=" "
-                        width="16"
-                        height="16"
-                        color="#3f3f46"
-                        stroke="#3f3f46"
-                      />
-                    </div>
-                  )}
-
-                  {session?.user?.memberShipType === "premium" && (
-                    <div
-                      className="w-5 h-5 rounded-full flex justify-center items-center absolute -top-1.5  bg-yellow-400 left-5 z-20 border-2 border-yellow-600 shadow-md shadow-yellow-700">
-                      <Membership
-                        className=" "
-                        width="16"
-                        height="16"
-                        color="#ca8a04"
-                        stroke="#ca8a04"
-                      />
-                    </div>
-                  )}
 
                 </div>
 
@@ -168,7 +146,7 @@ const Menu = () => {
           <>
 
 
-            <Dropdown className={"mt-6"}>
+            <Dropdown backdrop={"blur"} className={"mt-6"}>
               <DropdownTrigger>
 
 
@@ -176,9 +154,8 @@ const Menu = () => {
 
                         className={"w-10 h-10 p-1 flex " +
                           " justify-center" +
-                          " items-center" +
-                          " rounded-full"}>
-                  <RiUser6Fill fontSize={20} className={"text-gray-500"}/>
+                          " items-center"}>
+                  <PiUserDuotone fontSize={22} className={"text-white"}/>
                 </Button>
 
               </DropdownTrigger>

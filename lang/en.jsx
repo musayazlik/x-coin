@@ -140,4 +140,31 @@ export default {
     support: "Support",
     signout: "Sign Out",
   },
+
+  footer: {
+    privacyPolicy: "Privacy Policy",
+    cookiePreferences: "Cookie",
+    termsOfUse: "Terms of Use",
+    contact: "Contact",
+    allRightsReserved: "All Rights Reserved.",
+  },
+
+  aboutUsPage: {
+    title: "About Us",
+    description: "Trader Haber is a platform that allows users to learn about all stock market data using world market data.",
+    keywords: "Trader Haber, Stock Market, Crypto, Forex, All Markets",
+    contentText: "Trader Haber is a platform that allows users to learn about all stock market data using world market data.",
+    contactUs: "Contact Us",
+    contactUsText: "You can contact us by filling out the form below.",
+    button: "Send Message",
+  },
+
+  termsOfUse: {
+    title: "Terms of Use",
+    description: "Welcome! Please carefully read the Terms of Use for TraderEdit. These terms define the rules and conditions you must adhere to while using our website.",
+    keywords: "Trader Haber, Stock Market, Crypto, Forex, All Markets",
+    contentText: "Welcome! Please carefully read the Terms of Use for TraderEdit. These terms define the rules and conditions you must adhere to while using our website.",
+  },
+
+
 };

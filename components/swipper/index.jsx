@@ -52,7 +52,7 @@ const Swippers = ({
             <CardBody
               className="overflow-visible pt-2 pb-4 flex gap-4 flex-col justify-between">
               <div className="flex flex-col">
-                <div class="flex flex-col gap-2">
+                <div className="flex flex-col gap-2">
                   <small
                     className={"font-bold flex items-center" +
                       " text-xs " +
@@ -77,10 +77,10 @@ const Swippers = ({
               </div>
               <div
                 className=" flex justify-between items-center gap-4">
-                <div class="avatar">
+                <div className="avatar">
                   <div
-                    class="rounded-full flex gap-3 items-center ">
-                    <div class="flex flex-col justify-center ">
+                    className="rounded-full flex gap-3 items-center ">
+                    <div className="flex flex-col justify-center ">
                             <span
                               className={"text-sm font-bold flex" +
                                 " text-rose-600" +
@@ -90,7 +90,7 @@ const Swippers = ({
                               Eğitmen</span>
 
 
-                      <div class="inline-flex items-center gap-3">
+                      <div className="inline-flex items-center gap-3">
                         <Avatar
                           isBordered={true}
                           alt="Card background"

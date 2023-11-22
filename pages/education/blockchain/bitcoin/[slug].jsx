@@ -55,7 +55,7 @@ const BitcoinDetail = () => {
               className="rounded-full flex gap-3 items-center ">
               <div className="flex justify-center gap-4 items-center">
                 <PiUserCircleGearDuotone fontSize={48}/>
-                <div class="flex flex-col ">
+                <div className="flex flex-col ">
                   <span
                     className={"text-sm font-bold flex" +
                       " text-rose-600" +
@@ -89,7 +89,7 @@ const BitcoinDetail = () => {
             </p>
           </div>
 
-          <div class="video mt-6">
+          <div className="video mt-6">
             {data.video === "" ? (
               <div className="aspect-w-16 aspect-h-9">
                 <iframe

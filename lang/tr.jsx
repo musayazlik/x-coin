@@ -141,4 +141,30 @@ export default {
     support: "Destek",
     signout: "Çıkış Yap",
   },
+
+
+  footer: {
+    privacyPolicy: "Gizlilik Politikası",
+    cookiePreferences: "Çerezler",
+    termsOfUse: "Kullanım Şartları",
+    contact: "İletişim",
+    allRightsReserved: "Tüm Hakları Saklıdır.",
+  },
+
+  aboutUsPage: {
+    title: "Hakkımızda",
+    description: "Trader Haber, dünya piyasa verilerini kullanarak, kullanıcıların tüm borsa verileri hakkında bilgi edinmelerini sağlayan bir platformdur.",
+    keywords: "Trader Haber, Borsa, Kripto, Forex, Tüm Piyasalar",
+    contentText: "Trader Haber, dünya piyasa verilerini kullanarak," +
+      " kullanıcıların tüm borsa verileri hakkında bilgi edinmelerini sağlayan bir platformdur.",
+    contactUs: "İletişime Geçin",
+    contactUsText: "Sorularınız ve daha detaylı bilgi için bizimle iletişime geçin.",
+    button: "Mesaj Gönder",
+  },
+
+  termsOfUse: {
+    title: "Kullanım Şartları",
+    description: "Hoş geldin! Lütfen TraderEdit Kullanım Koşullarını dikkatlice okuyun. Bu şartlar, web sitemizi kullanırken uymanız gereken kural ve koşulları tanımlar.",
+    keywords: "Trader Edit, Borsa, Kripto, Forex, Tüm Piyasalar",
+  },
 };

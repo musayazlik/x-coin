@@ -6,6 +6,7 @@ export function Wrapper({children}) {
   const [isOpenSidebar, setIsOpenSidebar] = useState(true);
   const [isServiceLoading, setIsServiceLoading] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [basket, setBasket] = useState([]);
   const sharedState = {
     isOpenSidebar,
     setIsOpenSidebar,
@@ -13,6 +14,8 @@ export function Wrapper({children}) {
     setIsServiceLoading,
     loading,
     setLoading,
+    basket,
+    setBasket,
   };
 
   return (

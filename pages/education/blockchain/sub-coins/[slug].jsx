@@ -19,26 +19,26 @@ const SubCoinMixDetail = ({
               " w-full rounded-lg shadow-2xl"}/>
           </div>
           <div className={"flex justify-between items-center py-4 px-4"}>
-            <div class="flex justify-between items-center gap-4">
+            <div className="flex justify-between items-center gap-4">
               <Avatar isBordered radius="md" src={data.user.image}
                       color={"warning"}/>
 
-              <div class="flex flex-col justify-center ">
+              <div className="flex flex-col justify-center ">
                 <h3
-                  class="text-sm font-semibold leading-4">
+                  className="text-sm font-semibold leading-4">
                   {data.user.name}
                 </h3>
                 <p
-                  class="text-tiny text-gray-500 leading-4">
+                  className="text-tiny text-gray-500 leading-4">
                   {data.user.role}
                 </p>
               </div>
 
             </div>
 
-            <div class="date">
+            <div className="date">
               <p
-                class="text-sm text-gray-500 font-bold leading-4 flex items-center">
+                className="text-sm text-gray-500 font-bold leading-4 flex items-center">
                 <RiTimeFill className={"inline-block mr-1"} fontSize={18}/>
                 {data.createdAt.split("T")[0].replace("-", "/").replace("-", "/")}
               </p>

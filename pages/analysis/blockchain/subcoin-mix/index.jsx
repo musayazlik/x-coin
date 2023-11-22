@@ -163,22 +163,23 @@ const AltCoinMix = ({
                               </div>
                               <div
                                 className=" flex justify-between items-center">
-                                <div class="avatar">
+                                <div className="avatar">
                                   <div
-                                    class="rounded-full flex gap-3 items-center ">
+                                    className="rounded-full flex gap-3 items-center ">
 
                                     <Avatar isBordered radius="md"
                                             color="warning" size={"sm"}
                                             src={item.user.image}
 
                                     />
-                                    <div class="flex flex-col justify-center ">
+                                    <div
+                                      className="flex flex-col justify-center ">
                                       <h3
-                                        class="text-xs font-semibold leading-4">
+                                        className="text-xs font-semibold leading-4">
                                         {item.user.name}
                                       </h3>
                                       <p
-                                        class="text-tiny text-gray-500 leading-4">
+                                        className="text-tiny text-gray-500 leading-4">
                                         {item.user.role}
                                       </p>
                                     </div>

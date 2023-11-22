@@ -13,6 +13,7 @@ import Teams from "@components/homeSections/Teams";
 import PopularEducations from "@components/homeSections/PopularEducations";
 import axios from "axios";
 import Head from "next/head";
+import Footer from "@components/footer";
 
 
 const Home = ({data}) => {
@@ -178,61 +179,8 @@ const Home = ({data}) => {
 
       <Teams/>
 
+      <Footer/>
 
-      <footer className="bg-black border-t-2 border-zinc-800  shadow  ">
-        <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
-          <div className="sm:flex sm:items-center sm:justify-between">
-            <a href="#"
-               className="flex items-center mb-4 sm:mb-0">
-
-                <span
-                  className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                  Trader Edit
-                </span>
-            </a>
-            <ul
-              className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-300 sm:mb-0">
-              <li>
-                <a href="#"
-                   className="mr-4 hover:underline md:mr-6 ">About</a>
-              </li>
-              <li>
-                <a href="#" className="mr-4 hover:underline md:mr-6">Privacy
-                  Policy</a>
-              </li>
-              <li>
-                <a href="#"
-                   className="mr-4 hover:underline md:mr-6 ">Licensing</a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">Contact</a>
-              </li>
-            </ul>
-          </div>
-          <hr
-            className="my-6 border-zinc-200 sm:mx-auto dark:border-zinc-700 lg:my-8"/>
-          <div
-            className="flex flex-col gap-8 items-center sm:flex-row justify-between">
-            <span
-              className="block text-sm text-zinc-500 sm:text-center dark:text-zinc-300">© 2023 <a
-              href="#"
-              className="hover:underline hover:text-blue-500">TraderEdit™</a>. All Rights Reserved.</span>
-
-            <div className="flex gap-4">
-              <Image src={"/visa.svg"} alt={"visa card logo"} width={38}
-                     height={38}/>
-              <Image src={"/mastercard.svg"} alt={"master card logo"} width={30}
-                     height={30}/>
-              <Image src={"/ae.svg"} alt={"ae card logo"} width={30}
-                     height={30}/>
-              <Image src={"/troy.svg"} alt={"paypal card logo"} width={38}
-                     height={38}/>
-            </div>
-
-
-          </div>
-        </div>
-      </footer>
 
     </>
   );
