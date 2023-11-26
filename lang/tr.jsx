@@ -24,7 +24,7 @@ export default {
   popular: "Popüler",
   educations: "Eğitimler",
   popularEducationsText: "Popüler eğitimlerimizden bazıları aşağıda yer almaktadır. Daha fazla eğitim için eğitim sayfamızı ziyaret edebilirsiniz.",
-
+  free: "Ücretsiz",
 
   analytics: {
     title: "Analiz",
@@ -167,4 +167,21 @@ export default {
     description: "Hoş geldin! Lütfen TraderEdit Kullanım Koşullarını dikkatlice okuyun. Bu şartlar, web sitemizi kullanırken uymanız gereken kural ve koşulları tanımlar.",
     keywords: "Trader Edit, Borsa, Kripto, Forex, Tüm Piyasalar",
   },
+
+  basket: {
+    basketName: "Sepet",
+    basketAdd: "Sepete Ekle",
+    basketRemove: "Sepetten Çıkar",
+    addedToBasket: "Sepete Eklendi",
+    removedFromBasket: "Sepetten Çıkarıldı",
+    basketEmpty: "Sepetiniz Boş",
+    basketEmptyText: "Sepetinizde henüz ürün bulunmamaktadır.",
+    basketEmptyButtonText: "Ürünleri Keşfet",
+    basketTotal: "Toplam",
+    basketCheckout: "Ödeme Yap",
+    taxIncluded: "Kdv Dahil",
+    cardCheckout: "Cart ile Ödeme Yap",
+    coinPaymentscheckout: "CoinPayments İle Öde",
+
+  }
 };

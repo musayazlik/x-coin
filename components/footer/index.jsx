@@ -65,7 +65,7 @@ const Footer = () => {
             </div>
           </div>
           <ul
-            className="flex flex-wrap gap-3 items-center mb-6 text-sm font-medium text-gray-300 sm:mb-0">
+            className="flex flex-wrap gap-2 sm:gap-3 text-xs justify-center md:mt-0 mt-6 items-center mb-6 sm:text-sm font-medium text-gray-300 sm:mb-0">
 
             <li>
               <Link href={"privacy-policy"}
@@ -90,19 +90,23 @@ const Footer = () => {
         <div
           className="flex flex-col gap-8 items-center sm:flex-row justify-between">
             <span
-              className="block text-sm text-zinc-500 sm:text-center dark:text-zinc-300">© 2023 <a
+              className="block text-xs sm:text-sm text-zinc-500 sm:text-center dark:text-zinc-300">© 2023 <a
               href="#"
               className="hover:underline hover:text-blue-500"> - TraderEdit™ - </a>{t.footer.allRightsReserved}</span>
 
-          <div className="flex gap-4">
-            <Image src={"/visa.svg"} alt={"visa card logo"} width={38}
-                   height={38}/>
-            <Image src={"/mastercard.svg"} alt={"master card logo"} width={30}
-                   height={30}/>
-            <Image src={"/ae.svg"} alt={"ae card logo"} width={30}
-                   height={30}/>
-            <Image src={"/troy.svg"} alt={"paypal card logo"} width={38}
-                   height={38}/>
+          <div className="flex gap-2">
+            <Image src={"/visa.svg"} alt={"visa card logo"} width={28}
+                   height={28}/>
+            <Image src={"/mastercard.svg"} alt={"master card logo"} width={24}
+                   height={24}/>
+            <Image src={"/ae.svg"} alt={"ae card logo"} width={24}
+                   height={24}/>
+            <Image src={"/troy.svg"} alt={"troy card logo"} width={32}
+                   height={32}/>
+            <Image src={"/coinpayments-wallet.svg"}
+                   alt={"coinpayments card logo"}
+                   width={48}
+                   height={48}/>
           </div>
         </div>
       </div>

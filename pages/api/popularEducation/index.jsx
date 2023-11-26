@@ -10,7 +10,7 @@ export default async function handler(req, res) {
   switch (method) {
     case 'GET':
       try {
-        const educations = await Educations.find({}).sort({createdAt: -1}).select('-__v -updatedAt -_id -status -video ');
+        const educations = await Educations.find({}).sort({createdAt: -1}).select('-__v -updatedAt -status -video ');
 
         const filterAndSlice = (subCategory) => educations
           .filter(education => education.subCategory === subCategory)

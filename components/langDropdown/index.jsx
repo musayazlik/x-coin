@@ -66,7 +66,7 @@ const LangDropdown = () => {
         </DropdownTrigger>
         <DropdownMenu variant="faded"
                       aria-label="Dropdown menu with description">
-          <DropdownSection>
+          <DropdownSection className={"mb-0"}>
             <DropdownItem
               key="Turkish"
               className={"flex gap-6 items-center"}

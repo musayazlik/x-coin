@@ -41,10 +41,10 @@ const getEducations = async (session, res, req) => {
       } else {
         res.status(200).json({
           success: false, data: {
+            id: education?._id,
             name: education?.name,
             slug: education?.slug,
             instructor: education?.instructor,
-
             description: education?.description,
             category: education?.category,
             price: education?.price,

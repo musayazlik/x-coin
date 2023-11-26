@@ -24,6 +24,7 @@ export default {
   popular: "Popular",
   educations: "Educations",
   popularEducationsText: "Some of our popular trainings are listed below. You can visit our education page for more education.",
+  free: "Free",
 
 
   analytics: {
@@ -165,6 +166,22 @@ export default {
     keywords: "Trader Haber, Stock Market, Crypto, Forex, All Markets",
     contentText: "Welcome! Please carefully read the Terms of Use for TraderEdit. These terms define the rules and conditions you must adhere to while using our website.",
   },
+
+  basket: {
+    basketName: "Basket",
+    basketAdd: "Add to Basket",
+    basketRemove: "Remove from Basket",
+    addedToBasket: "Added to Basket",
+    removedFromBasket: "Removed from Basket",
+    basketEmpty: "Basket is empty",
+    basketEmptyText: "You can add products to your basket by clicking the add to basket button on the product page.",
+    basketEmptyButtonText: "Explore Products",
+    basketTotal: "Total",
+    basketCheckout: "Checkout",
+    taxIncluded: "Tax Included",
+    cardCheckout: "Checkout with Cart",
+    coinPaymentscheckout: "Checkout with CoinPayments",
+  }
 
 
 };

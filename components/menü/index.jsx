@@ -29,7 +29,9 @@ const Menu = () => {
     <Navbar maxWidth="2xl" position="sticky" isBordered isBlurred
             className={"py-2"}>
       <NavbarBrand>
-        <p className="font-bold text-inherit">TraderEdit</p>
+        <Link href="/">
+          <h1 className="font-bold text-inherit">TraderEdit</h1>
+        </Link>
       </NavbarBrand>
       <NavbarContent className="hidden lg:flex gap-4 md:gap-8" justify="center">
         <NavbarItem isActive>
@@ -69,14 +71,15 @@ const Menu = () => {
           </Link>
         </NavbarItem>
       </NavbarContent>
-      <NavbarContent justify="end" className={"gap-2"}>
+      <NavbarContent justify="end" className={"gap-1"}>
 
         <Basket/>
 
         <LangDropdown/>
         {status === "authenticated" ? (
           <>
-            <Dropdown backdrop={"blur"} placement="bottom-start"
+            <Dropdown backdrop={"blur"} variant="faded" showArrow
+                      placement="bottom-start"
                       className={"mt-6"}>
               <DropdownTrigger>
                 <div className={"relative flex flex-shrink-0"}>
@@ -95,7 +98,7 @@ const Menu = () => {
 
 
               </DropdownTrigger>
-              <DropdownMenu aria-label="User Actions" variant="flat"
+              <DropdownMenu aria-label="User Actions" variant="faded"
               >
                 <DropdownItem key="profile" className="h-14 gap-2">
                   <p className="font-bold">
@@ -146,11 +149,12 @@ const Menu = () => {
           <>
 
 
-            <Dropdown backdrop={"blur"} className={"mt-6"}>
+            <Dropdown backdrop={"blur"} showArrow variant="faded"
+            >
               <DropdownTrigger>
 
 
-                <Button isIconOnly={true} variant={"faded"}
+                <Button isIconOnly={true} variant={"light"}
 
                         className={"w-10 h-10 p-1 flex " +
                           " justify-center" +
@@ -159,7 +163,7 @@ const Menu = () => {
                 </Button>
 
               </DropdownTrigger>
-              <DropdownMenu variant="flat" aria-label="Static Actions">
+              <DropdownMenu variant="faded" aria-label="Static Actions">
                 <DropdownItem className={"duration-300"}
                               onClick={() => push("/auth/login")}>
                   <div className={"flex items-center gap-3 py-2 px-2 "}
