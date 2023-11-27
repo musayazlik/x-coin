@@ -12,6 +12,7 @@ import {
   RiUser3Line
 } from "react-icons/ri";
 import {HiOutlineAcademicCap} from "react-icons/hi2";
+import {HiMail} from "react-icons/hi";
 
 const Sidebar = () => {
   return (
@@ -67,6 +68,12 @@ const Sidebar = () => {
           url={"/dashboard/forex-break-and-incom"}
         />
       </DropdownMenu>
+
+      <MenuItem
+        url={"/dashboard/messages"}
+        Icon={HiMail}
+        text={"Mesajlar"}
+      />
     </SidebarLayout>
   );
 };
