@@ -45,7 +45,7 @@ export default {
       home: "Anasayfa",
       feed: "Akış",
       aboutus: "Hakkımızda",
-      pricing: "Fiyatlandırma",
+      education: "Eğitimler",
       contact: "İletişim",
 
     },

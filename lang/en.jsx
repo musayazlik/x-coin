@@ -46,7 +46,7 @@ export default {
       home: "Home",
       feed: "Feed",
       aboutus: "About Us",
-      pricing: "Pricing",
+      education: "Educations",
       contact: "Contact",
 
     },

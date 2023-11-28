@@ -35,6 +35,7 @@ const FeedMenu = () => {
           "/feed/blockchain/",
           "/feed/blockchain/bitcoin",
           "/feed/blockchain/ethereum",
+          "/feed/blockchain/crypto-indices",
           "/feed/blockchain/sub-coins",
           "/feed/blockchain/sub-indices",
           "/feed/blockchain/on-chain",
@@ -97,6 +98,150 @@ const FeedMenu = () => {
           url={"/feed/forex/forex-break-and-incom"}
         />
       </DropdownMenu>
+
+      <DropdownMenu
+        text={"All Markets"}
+        dropMenuStatus={true}
+        Icon={BiDollarCircle}
+        subMenuList={[
+          "/feed/all-markets/commodities/coffee",
+          "/feed/all-markets/commodities/cotton",
+          "/feed/all-markets/commodities/live-cattle",
+          "/feed/all-markets/commodities/orange-juice",
+          "/feed/all-markets/commodities/soybean",
+          "/feed/all-markets/commodities/sugar",
+          "/feed/all-markets/commodities/wheat",
+          "/feed/all-markets/enegry-market/energy-etf",
+          "/feed/all-markets/enegry-market/natgas",
+          "/feed/all-markets/metal-market/copper",
+          "/feed/all-markets/metal-market/aluminum",
+          "/feed/all-markets/metal-market/nickel",
+          "/feed/all-markets/metal-market/paladium",
+          "/feed/all-markets/metal-market/platinum",
+          "/feed/all-markets/parities/aud-usd",
+          "/feed/all-markets/parities/gbp-usd",
+          "/feed/all-markets/parities/nzd-usd",
+          "/feed/all-markets/parities/usd-cad",
+          "/feed/all-markets/parities/usd-chf",
+          "/feed/all-markets/stock-market/asia",
+          "/feed/all-markets/stock-market/europe",
+          "/feed/all-markets/stock-market/usa",
+        ]}
+      >
+        <span
+          className="text-gray-200 text-xs font-semibold uppercase mb-2 px-4 bg-zinc-800 py-2 border-b-2 border-rose-700  inline-block"
+
+        >Commodities</span>
+        <SubMenuItem
+          text={"Coffee"}
+          url={"/feed/all-markets/commodities/coffee"}
+        />
+        <SubMenuItem
+          text={"Cotton"}
+          url={"/feed/all-markets/commodities/cotton"}
+        />
+        <SubMenuItem
+          text={"Live Cattle"}
+          url={"/feed/all-markets/commodities/live-cattle"}
+        />
+        <SubMenuItem
+          text={"Orange Juice"}
+          url={"/feed/all-markets/commodities/orange-juice"}
+        />
+        <SubMenuItem
+          text={"Soybean"}
+          url={"/feed/all-markets/commodities/soybean"}
+        />
+        <SubMenuItem
+          text={"Sugar"}
+          url={"/feed/all-markets/commodities/sugar"}
+        />
+        <SubMenuItem
+          text={"Wheat"}
+          url={"/feed/all-markets/commodities/wheat"}
+        />
+        <span
+          className="text-gray-200 text-xs font-semibold uppercase mb-2 px-4 bg-zinc-800 py-2 border-b-2 border-rose-700  inline-block"
+
+        >Enegry Market</span>
+        <SubMenuItem
+          text={"Energy ETF"}
+          url={"/feed/all-markets/enegry-market/energy-etf"}
+        />
+        <SubMenuItem
+          text={"Natgas"}
+          url={"/feed/all-markets/enegry-market/natgas"}
+        />
+        <span
+          className="text-gray-200 text-xs font-semibold uppercase mb-2 px-4 bg-zinc-800 py-2 border-b-2 border-rose-700  inline-block"
+
+        >Metal Market</span>
+        <SubMenuItem
+          text={"Copper"}
+          url={"/feed/all-markets/metal-market/copper"}
+        />
+        <SubMenuItem
+          text={"Aluminum"}
+          url={"/feed/all-markets/metal-market/aluminum"}
+        />
+        <SubMenuItem
+          text={"Nickel"}
+          url={"/feed/all-markets/metal-market/nickel"}
+        />
+        <SubMenuItem
+          text={"Paladium"}
+          url={"/feed/all-markets/metal-market/paladium"}
+        />
+
+        <SubMenuItem
+          text={"Platinum"}
+          url={"/feed/all-markets/metal-market/platinum"}
+        />
+
+        <span
+          className="text-gray-200 text-xs font-semibold uppercase mb-2 px-4 bg-zinc-800 py-2 border-b-2 border-rose-700  inline-block"
+
+        >Parities</span>
+        <SubMenuItem
+          text={"Aud/Usd"}
+          url={"/feed/all-markets/parities/aud-usd"}
+        />
+        <SubMenuItem
+          text={"Gbp/Usd"}
+          url={"/feed/all-markets/parities/gbp-usd"}
+        />
+        <SubMenuItem
+          text={"Nzd/Usd"}
+          url={"/feed/all-markets/parities/nzd-usd"}
+        />
+        <SubMenuItem
+          text={"Usd/Cad"}
+          url={"/feed/all-markets/parities/usd-cad"}
+        />
+        <SubMenuItem
+          text={"Usd/Chf"}
+          url={"/feed/all-markets/parities/usd-chf"}
+        />
+        <span
+          className="text-gray-200 text-xs font-semibold uppercase mb-2 px-4 bg-zinc-800 py-2 border-b-2 border-rose-700  inline-block"
+
+        >Stock Market</span>
+        <SubMenuItem
+          text={"Asia"}
+          url={"/feed/all-markets/stock-market/asia"}
+        />
+        <SubMenuItem
+          text={"Europe"}
+          url={"/feed/all-markets/stock-market/europe"}
+        />
+        <SubMenuItem
+          text={"Usa"}
+          url={"/feed/all-markets/stock-market/usa"}
+        />
+
+
+      </DropdownMenu>
+
 
       <MenuItem
         url={"/feed/question-answer"}

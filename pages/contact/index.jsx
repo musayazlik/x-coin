@@ -9,6 +9,7 @@ import {toast} from "react-toastify";
 import {
   RiLiveLine,
   RiMailLine,
+  RiMailUnreadLine,
   RiMapPinLine,
   RiPhoneLine
 } from "react-icons/ri";
@@ -80,11 +81,20 @@ const AboutUs = () => {
       <Menu/>
 
       <section className="bg-zinc-900 py-20">
-        <div className="container px-6 py-12 mx-auto">
+        <div className="container px-6 pt-8 pb-12 mx-auto">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4">
               <div className="mx-auto mb-[60px] max-w-[510px] text-center">
-              <span className="mb-2 block text-4xl font-semibold text-primary">
+                <div className="flex justify-center">
+                  <RiMailUnreadLine
+                    className={" text-blue-600  mb-12 text-5xl" +
+                      " border-2 border-zinc-800 p-4 box-content rounded-xl shadow-lg" +
+                      " shadow-black/50" +
+                      " md:text-7xl"}
+                  />
+                </div>
+                <span
+                  className="mb-2 block text-4xl font-semibold text-primary">
                Contact us
               </span>
                 <h2

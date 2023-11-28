@@ -22,9 +22,17 @@ import Basket from "@components/basket";
 import {PiUserDuotone} from "react-icons/pi";
 
 const Menu = () => {
-  const {locale, push} = useRouter();
+  const {locale, push, pathname} = useRouter();
   const {data: session, status} = useSession();
   const t = lang(locale);
+
+  const menuItems = [
+    {path: '/', label: 'home'},
+    {path: '/feed', label: 'feed'},
+    {path: '/about-us', label: 'aboutus'},
+    {path: '/education', label: 'education'},
+    {path: '/contact', label: 'contact'},
+  ];
   return (
     <Navbar maxWidth="2xl" position="sticky" isBordered isBlurred
             className={"py-2"}>
@@ -34,42 +42,14 @@ const Menu = () => {
         </Link>
       </NavbarBrand>
       <NavbarContent className="hidden lg:flex gap-4 md:gap-8" justify="center">
-        <NavbarItem isActive>
-          <Link href="/">
-            {
-              t.homepage.menu.home
-            }
-          </Link>
-        </NavbarItem>
+        {menuItems.map(({path, label}) => (
+          <NavbarItem key={path} isActive={pathname === path} path={path}>
+            <Link color={pathname !== path ? "foreground" : ""} href={path}>
+              {t.homepage.menu[label]}
+            </Link>
+          </NavbarItem>
+        ))}
 
-        <NavbarItem>
-          <Link color="foreground" href="/feed/">
-            {
-              t.homepage.menu.feed
-            }
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="/about-us" aria-current="page">
-            {
-              t.homepage.menu.aboutus
-            }
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            {
-              t.homepage.menu.pricing
-            }
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            {
-              t.homepage.menu.contact
-            }
-          </Link>
-        </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end" className={"gap-1"}>
 

@@ -44,6 +44,7 @@
 
 .tradingview-widget-container {
     width: 100% !important;
+    margin-bottom: 40px;
 }
 
 iframe {
@@ -57,6 +58,10 @@ iframe #mediumwidgetembed {
 .tv-widget-chart__copyrightingContainer {
     display: none !important;
     color: red;
+}
+
+.tradingview-widget-container iframe:last-child {
+    display: none !important;
 }
 
 

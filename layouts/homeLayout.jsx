@@ -17,7 +17,7 @@ const Layout = ({children}) => {
         className={` flex flex-col justify-stretch flex-grow overflow-hidden`}
       >
         <Header/>
-        <main className={` h-full duration-300  bg-zinc-800 px-4`}>
+        <main className={` h-full duration-300  bg-zinc-800 px-4 `}>
           {(session?.user?.name === "" || session?.user?.surname === "") && (
             <IsProfile/>
           )}
