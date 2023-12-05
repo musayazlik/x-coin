@@ -1,15 +1,16 @@
-import {useRouter} from "next/router";
-import {lang} from "@lang/langT";
+import { useRouter } from "next/router";
+import { lang } from "@lang/langT";
 import MenuItem from "@components/sidebar/menuItem";
-import {RiLayout2Fill} from "react-icons/ri";
+import { RiLayout2Fill } from "react-icons/ri";
 import DropdownMenu from "@components/sidebar/dropdownMenu";
-import {MdCurrencyBitcoin} from "react-icons/md";
+import { MdCurrencyBitcoin } from "react-icons/md";
 import SubMenuItem from "@components/sidebar/subMenuItem";
-import {BiDollarCircle} from "react-icons/bi";
-import {BsQuestionLg} from "react-icons/bs";
+import { BiDollarCircle } from "react-icons/bi";
+import { BsQuestionLg } from "react-icons/bs";
+import { RiGlobalLine } from "react-icons/ri";
 
 const FeedMenu = () => {
-  const {locale} = useRouter();
+  const { locale } = useRouter();
   const t = lang(locale);
   return (
     <>
@@ -21,11 +22,7 @@ const FeedMenu = () => {
       </Accordion>
 */}
 
-      <MenuItem
-        url={"/feed"}
-        Icon={RiLayout2Fill}
-        text={t.home.menuName}
-      />
+      <MenuItem url={"/feed"} Icon={RiLayout2Fill} text={t.home.menuName} />
 
       <DropdownMenu
         text={t.cryptoPage.crypto}
@@ -84,15 +81,15 @@ const FeedMenu = () => {
           "/feed/forex/forex-break-and-incom",
         ]}
       >
-        <SubMenuItem text={"Sp500"} url={"/feed/forex/sp500"}/>
-        <SubMenuItem text={"Nasdaq"} url={"/feed/forex/nasdaq"}/>
-        <SubMenuItem text={"Dax"} url={"/feed/forex/dax"}/>
-        <SubMenuItem text={"Dxy"} url={"/feed/forex/dxy"}/>
-        <SubMenuItem text={"Eur/Usd"} url={"/feed/forex/eur-usd"}/>
-        <SubMenuItem text={"Usd/Jpy"} url={"/feed/forex/usd-jpy"}/>
-        <SubMenuItem text={t.forexPage.gold} url={"/feed/forex/gold"}/>
-        <SubMenuItem text={t.forexPage.silver} url={"/feed/forex/silver"}/>
-        <SubMenuItem text={t.forexPage.oil} url={"/feed/forex/oil"}/>
+        <SubMenuItem text={"Sp500"} url={"/feed/forex/sp500"} />
+        <SubMenuItem text={"Nasdaq"} url={"/feed/forex/nasdaq"} />
+        <SubMenuItem text={"Dax"} url={"/feed/forex/dax"} />
+        <SubMenuItem text={"Dxy"} url={"/feed/forex/dxy"} />
+        <SubMenuItem text={"Eur/Usd"} url={"/feed/forex/eur-usd"} />
+        <SubMenuItem text={"Usd/Jpy"} url={"/feed/forex/usd-jpy"} />
+        <SubMenuItem text={t.forexPage.gold} url={"/feed/forex/gold"} />
+        <SubMenuItem text={t.forexPage.silver} url={"/feed/forex/silver"} />
+        <SubMenuItem text={t.forexPage.oil} url={"/feed/forex/oil"} />
         <SubMenuItem
           text={t.forexPage.breakAndIncom}
           url={"/feed/forex/forex-break-and-incom"}
@@ -102,7 +99,7 @@ const FeedMenu = () => {
       <DropdownMenu
         text={"All Markets"}
         dropMenuStatus={true}
-        Icon={BiDollarCircle}
+        Icon={RiGlobalLine}
         subMenuList={[
           "/feed/all-markets/commodities/coffee",
           "/feed/all-markets/commodities/cotton",
@@ -111,27 +108,26 @@ const FeedMenu = () => {
           "/feed/all-markets/commodities/soybean",
           "/feed/all-markets/commodities/sugar",
           "/feed/all-markets/commodities/wheat",
-          "/feed/all-markets/enegry-market/energy-etf",
-          "/feed/all-markets/enegry-market/natgas",
+          "/feed/all-markets/energy-market/energy-etf",
+          "/feed/all-markets/energy-market/natgas",
           "/feed/all-markets/metal-market/copper",
           "/feed/all-markets/metal-market/aluminum",
           "/feed/all-markets/metal-market/nickel",
           "/feed/all-markets/metal-market/paladium",
-          "/feed/all-markets/metal-market/platinum",
+          "/feed/all-markets/metal-market/platinium",
           "/feed/all-markets/parities/aud-usd",
           "/feed/all-markets/parities/gbp-usd",
           "/feed/all-markets/parities/nzd-usd",
           "/feed/all-markets/parities/usd-cad",
           "/feed/all-markets/parities/usd-chf",
-          "/feed/all-markets/stock-market/asia",
-          "/feed/all-markets/stock-market/europe",
-          "/feed/all-markets/stock-market/usa",
+          "/feed/all-markets/stock-markets/asia",
+          "/feed/all-markets/stock-markets/europa",
+          "/feed/all-markets/stock-markets/usa",
         ]}
       >
-        <span
-          className="text-gray-200 text-xs font-semibold uppercase mb-2 px-4 bg-zinc-800 py-2 border-b-2 border-rose-700  inline-block"
-
-        >Commodities</span>
+        <span className="text-gray-200 text-xs font-semibold uppercase mb-2 px-4 bg-zinc-800 py-2 border-b-2 border-rose-700  inline-block">
+          Commodities
+        </span>
         <SubMenuItem
           text={"Coffee"}
           url={"/feed/all-markets/commodities/coffee"}
@@ -160,22 +156,20 @@ const FeedMenu = () => {
           text={"Wheat"}
           url={"/feed/all-markets/commodities/wheat"}
         />
-        <span
-          className="text-gray-200 text-xs font-semibold uppercase mb-2 px-4 bg-zinc-800 py-2 border-b-2 border-rose-700  inline-block"
-
-        >Enegry Market</span>
+        <span className="text-gray-200 text-xs font-semibold uppercase mb-2 px-4 bg-zinc-800 py-2 border-b-2 border-rose-700  inline-block">
+          Energy Market
+        </span>
         <SubMenuItem
           text={"Energy ETF"}
-          url={"/feed/all-markets/enegry-market/energy-etf"}
+          url={"/feed/all-markets/energy-market/energy-etf"}
         />
         <SubMenuItem
           text={"Natgas"}
-          url={"/feed/all-markets/enegry-market/natgas"}
+          url={"/feed/all-markets/energy-market/natgas"}
         />
-        <span
-          className="text-gray-200 text-xs font-semibold uppercase mb-2 px-4 bg-zinc-800 py-2 border-b-2 border-rose-700  inline-block"
-
-        >Metal Market</span>
+        <span className="text-gray-200 text-xs font-semibold uppercase mb-2 px-4 bg-zinc-800 py-2 border-b-2 border-rose-700  inline-block">
+          Metal Market
+        </span>
         <SubMenuItem
           text={"Copper"}
           url={"/feed/all-markets/metal-market/copper"}
@@ -194,14 +188,13 @@ const FeedMenu = () => {
         />
 
         <SubMenuItem
-          text={"Platinum"}
-          url={"/feed/all-markets/metal-market/platinum"}
+          text={"Platinium"}
+          url={"/feed/all-markets/metal-market/platinium"}
         />
 
-        <span
-          className="text-gray-200 text-xs font-semibold uppercase mb-2 px-4 bg-zinc-800 py-2 border-b-2 border-rose-700  inline-block"
-
-        >Parities</span>
+        <span className="text-gray-200 text-xs font-semibold uppercase mb-2 px-4 bg-zinc-800 py-2 border-b-2 border-rose-700  inline-block">
+          Parities
+        </span>
         <SubMenuItem
           text={"Aud/Usd"}
           url={"/feed/all-markets/parities/aud-usd"}
@@ -222,26 +215,19 @@ const FeedMenu = () => {
           text={"Usd/Chf"}
           url={"/feed/all-markets/parities/usd-chf"}
         />
-        <span
-          className="text-gray-200 text-xs font-semibold uppercase mb-2 px-4 bg-zinc-800 py-2 border-b-2 border-rose-700  inline-block"
-
-        >Stock Market</span>
+        <span className="text-gray-200 text-xs font-semibold uppercase mb-2 px-4 bg-zinc-800 py-2 border-b-2 border-rose-700  inline-block">
+          Stock Market
+        </span>
         <SubMenuItem
           text={"Asia"}
-          url={"/feed/all-markets/stock-market/asia"}
+          url={"/feed/all-markets/stock-markets/asia"}
         />
         <SubMenuItem
-          text={"Europe"}
-          url={"/feed/all-markets/stock-market/europe"}
+          text={"Europa"}
+          url={"/feed/all-markets/stock-markets/europa"}
         />
-        <SubMenuItem
-          text={"Usa"}
-          url={"/feed/all-markets/stock-market/usa"}
-        />
-
-
+        <SubMenuItem text={"Usa"} url={"/feed/all-markets/stock-markets/usa"} />
       </DropdownMenu>
-
 
       <MenuItem
         url={"/feed/question-answer"}

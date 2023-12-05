@@ -2,21 +2,21 @@ import React from "react";
 import Layout from "../../../../layouts/dashboardLayout";
 import axios from "axios";
 import Swal from "sweetalert2";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 
-import {EditorContent, useEditor} from "@tiptap/react";
+import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import {useSession} from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
-import {toast} from "react-toastify";
-import {lang} from "@lang/langT";
-import {useAppContext} from "@/context";
-
+import { toast } from "react-toastify";
+import { lang } from "@lang/langT";
+import { useAppContext } from "@/context";
+import categoriesList from "@/libs/catagoriesList";
 
 const EducationAdd = () => {
-  const {loading, setLoading} = useAppContext();
+  const { loading, setLoading } = useAppContext();
   const router = useRouter();
-  const {data: session} = useSession();
+  const { data: session } = useSession();
   const t = lang(router.locale);
 
   const editor = useEditor({
@@ -46,8 +46,20 @@ const EducationAdd = () => {
     const instructorImage = e.target.instructorImage.files[0];
     const content = editor.getHTML();
 
-
-    if (!title || !description || !slug || !image || !content || !category || !subCategory || !status || !video || !price || !instructor || !instructorImage) {
+    if (
+      !title ||
+      !description ||
+      !slug ||
+      !image ||
+      !content ||
+      !category ||
+      !subCategory ||
+      !status ||
+      !video ||
+      !price ||
+      !instructor ||
+      !instructorImage
+    ) {
       setLoading(false);
       toast.error("Lütfen tüm alanları doldurunuz!", {
         position: "top-center",
@@ -106,8 +118,7 @@ const EducationAdd = () => {
 
   return (
     <Layout>
-      <div
-        className="bg-zinc-800 shadow-md shadow-zinc-900/20 px-2 py-8 border-t-2 border-rose-800">
+      <div className="bg-zinc-800 shadow-md shadow-zinc-900/20 px-2 py-8 border-t-2 border-rose-800">
         <h1 className=" px-2 text-3xl font-bold text-white">İçerik Ekle</h1>
         <p className=" px-2 text-base font-normal mt-2 text-white">
           Bu sayfadan eğitimler içeriklerini ekleyebilirsiniz.
@@ -155,7 +166,6 @@ const EducationAdd = () => {
               />
             </div>
 
-
             <div className="flex flex-col">
               <label className="text-white font-semibold">Kısa Metin</label>
               <input
@@ -185,7 +195,6 @@ const EducationAdd = () => {
                 type="number"
                 name="price"
                 id="price"
-
                 placeholder="İçerik için fiyat giriniz. (Ücretsiz olacak ise 0 giriniz...)"
                 className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
               />
@@ -198,28 +207,12 @@ const EducationAdd = () => {
                 id="category"
                 className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
               >
-                <option disabled>
-                  İçerik kategorisini seçiniz...
-                </option>
-                <option value="bitcoin">Bitcoin</option>
-                <option value="ethereum">Ethereum</option>
-                <option value="crypto-indices">Crypto Indices</option>
-                <option value="sub-coin">Alt Coin</option>
-                <option value="on-chain">On Chain</option>
-                <option value="sp500">Sp500</option>
-                <option value="nasdaq">Nasdaq</option>
-                <option value="Dax">Dax</option>
-                <option value="dxy">Dxy</option>
-                <option value="eur-usd">Eur/Usd</option>
-                <option value="usd-jpy">Usd/Jpy</option>
-                <option value="gold">Gold</option>
-                <option value="silver">Silver</option>
-                <option value="oil">Oil</option>
-                <option value="stock-market">Stock Market</option>
-                <option value="parities">Parities</option>
-                <option value="enerqy-market">Energy Market</option>
-                <option value="metal-market">Metal Market</option>
-                <option value="commodities">Commodities</option>
+                <option disabled>İçerik kategorisini seçiniz...</option>
+                {categoriesList.map((item) => (
+                  <option key={item.value} value={item.value}>
+                    {item.label}
+                  </option>
+                ))}
               </select>
             </div>
 
@@ -230,27 +223,20 @@ const EducationAdd = () => {
                 id="subCategory"
                 className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
               >
-                <option disabled>
-                  İçerik alt kategorisini seçiniz...
-                </option>
-                <option value="free-trainings"
-                >
+                <option disabled>İçerik alt kategorisini seçiniz...</option>
+                <option value="free-trainings">
                   Free Trainings (Ücretsiz Eğitimler)
                 </option>
 
-                <option value="paid-trainings"
-                >
+                <option value="paid-trainings">
                   Paid Trainings (Ücretli Eğitimler)
                 </option>
 
-                <option value="live-trainings"
-                >
+                <option value="live-trainings">
                   Live Trainings (Canlı Eğitimler)
                 </option>
-
               </select>
             </div>
-
 
             <div className="flex flex-col">
               <label className="text-white font-semibold">Küçük Resmi</label>
@@ -274,9 +260,8 @@ const EducationAdd = () => {
 
             <div className="flex flex-col">
               <label className="text-white font-semibold">İçerik Metni</label>
-              <EditorContent editor={editor}/>
+              <EditorContent editor={editor} />
             </div>
-
 
             <div className="flex flex-col">
               <label className="text-white font-semibold">Durum</label>

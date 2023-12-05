@@ -1,15 +1,15 @@
-import {useRouter} from "next/router";
-import {lang} from "@lang/langT";
+import { useRouter } from "next/router";
+import { lang } from "@lang/langT";
 import DropdownMenu from "@components/sidebar/dropdownMenu";
-import {MdCurrencyBitcoin} from "react-icons/md";
+import { MdCurrencyBitcoin } from "react-icons/md";
 import SubMenuItem from "@components/sidebar/subMenuItem";
-import {BiDollarCircle} from "react-icons/bi";
-import {RiGlobalLine} from "react-icons/ri";
+import { BiDollarCircle } from "react-icons/bi";
+import { RiGlobalLine } from "react-icons/ri";
 import MenuItem from "@components/sidebar/menuItem";
-import {BsQuestionLg} from "react-icons/bs";
+import { BsQuestionLg } from "react-icons/bs";
 
 const EducationMenu = () => {
-  const {locale} = useRouter();
+  const { locale } = useRouter();
   const t = lang(locale);
   return (
     <>
@@ -73,55 +73,162 @@ const EducationMenu = () => {
           "/feed/forex/forex-break-and-incom",
         ]}
       >
-        <SubMenuItem text={"Sp500"} url={"/education/forex/sp500"}/>
-        <SubMenuItem text={"Nasdaq"} url={"/education/forex/nasdaq"}/>
-        <SubMenuItem text={"Dax"} url={"/education/forex/dax"}/>
-        <SubMenuItem text={"Dxy"} url={"/education/forex/dxy"}/>
-        <SubMenuItem text={"Eur/Usd"} url={"/education/forex/eur-usd"}/>
-        <SubMenuItem text={"Usd/Jpy"} url={"/education/forex/usd-jpy"}/>
-        <SubMenuItem text={t.forexPage.gold} url={"/education/forex/gold"}/>
-        <SubMenuItem text={t.forexPage.silver} url={"/education/forex/silver"}/>
-        <SubMenuItem text={t.forexPage.oil} url={"/education/forex/oil"}/>
-        <SubMenuItem text={"Natqas"} url={"/education/forex/natqas"}/>
+        <SubMenuItem text={"Sp500"} url={"/education/forex/sp500"} />
+        <SubMenuItem text={"Nasdaq"} url={"/education/forex/nasdaq"} />
+        <SubMenuItem text={"Dax"} url={"/education/forex/dax"} />
+        <SubMenuItem text={"Dxy"} url={"/education/forex/dxy"} />
+        <SubMenuItem text={"Eur/Usd"} url={"/education/forex/eur-usd"} />
+        <SubMenuItem text={"Usd/Jpy"} url={"/education/forex/usd-jpy"} />
+        <SubMenuItem text={t.forexPage.gold} url={"/education/forex/gold"} />
+        <SubMenuItem
+          text={t.forexPage.silver}
+          url={"/education/forex/silver"}
+        />
+        <SubMenuItem text={t.forexPage.oil} url={"/education/forex/oil"} />
+        <SubMenuItem text={"Natqas"} url={"/education/forex/natqas"} />
         <SubMenuItem
           text={t.forexPage.breakAndIncom}
           url={"/feed/forex/forex-break-and-incom"}
         />
       </DropdownMenu>
+
       <DropdownMenu
-        text={t.allMarketsPage.allMarkets}
+        text={"All Markets"}
         dropMenuStatus={true}
         defaultOpen={true}
         Icon={RiGlobalLine}
         subMenuList={[
-          "/education/all-markets/stock-markets",
-          "/education/all-markets/parities",
-          "/education/all-markets/energy-market",
-          "/education/all-markets/metal-market",
-          "/education/all-markets/commodities",
+          "/education/all-markets/commodities/coffee",
+          "/education/all-markets/commodities/cotton",
+          "/education/all-markets/commodities/live-cattle",
+          "/education/all-markets/commodities/orange-juice",
+          "/education/all-markets/commodities/soybean",
+          "/education/all-markets/commodities/sugar",
+          "/education/all-markets/commodities/wheat",
+          "/education/all-markets/energy-market/energy-etf",
+          "/education/all-markets/energy-market/natgas",
+          "/education/all-markets/metal-market/copper",
+          "/education/all-markets/metal-market/aluminum",
+          "/education/all-markets/metal-market/nickel",
+          "/education/all-markets/metal-market/paladium",
+          "/education/all-markets/metal-market/platinium",
+          "/education/all-markets/parities/aud-usd",
+          "/education/all-markets/parities/gbp-usd",
+          "/education/all-markets/parities/nzd-usd",
+          "/education/all-markets/parities/usd-cad",
+          "/education/all-markets/parities/usd-chf",
+          "/education/all-markets/stock-markets/asia",
+          "/education/all-markets/stock-markets/europa",
+          "/education/all-markets/stock-markets/usa",
         ]}
       >
+        <span className="text-gray-200 text-xs font-semibold uppercase mb-2 px-4 bg-zinc-800 py-2 border-b-2 border-rose-700  inline-block">
+          Commodities
+        </span>
         <SubMenuItem
-          text={t.allMarketsPage.stockMarkets}
-          url={"/education/all-markets/stock-markets"}
+          text={"Coffee"}
+          url={"/education/all-markets/commodities/coffee"}
         />
         <SubMenuItem
-          text={t.allMarketsPage.parities}
-          url={"/education/all-markets/parities"}
+          text={"Cotton"}
+          url={"/education/all-markets/commodities/cotton"}
         />
         <SubMenuItem
-          text={t.allMarketsPage.energyMarket}
-          url={"/education/all-markets/energy-market"}
+          text={"Live Cattle"}
+          url={"/education/all-markets/commodities/live-cattle"}
         />
         <SubMenuItem
-          text={t.allMarketsPage.metalMarket}
-          url={"/education/all-markets/metal-market"}
+          text={"Orange Juice"}
+          url={"/education/all-markets/commodities/orange-juice"}
         />
         <SubMenuItem
-          text={t.allMarketsPage.commodities}
-          url={"/education/all-markets/commodities"}
+          text={"Soybean"}
+          url={"/education/all-markets/commodities/soybean"}
+        />
+        <SubMenuItem
+          text={"Sugar"}
+          url={"/education/all-markets/commodities/sugar"}
+        />
+        <SubMenuItem
+          text={"Wheat"}
+          url={"/education/all-markets/commodities/wheat"}
+        />
+        <span className="text-gray-200 text-xs font-semibold uppercase mb-2 px-4 bg-zinc-800 py-2 border-b-2 border-rose-700  inline-block">
+          Energy Market
+        </span>
+        <SubMenuItem
+          text={"Energy ETF"}
+          url={"/education/all-markets/energy-market/energy-etf"}
+        />
+        <SubMenuItem
+          text={"Natgas"}
+          url={"/education/all-markets/energy-market/natgas"}
+        />
+        <span className="text-gray-200 text-xs font-semibold uppercase mb-2 px-4 bg-zinc-800 py-2 border-b-2 border-rose-700  inline-block">
+          Metal Market
+        </span>
+        <SubMenuItem
+          text={"Copper"}
+          url={"/education/all-markets/metal-market/copper"}
+        />
+        <SubMenuItem
+          text={"Aluminum"}
+          url={"/education/all-markets/metal-market/aluminum"}
+        />
+        <SubMenuItem
+          text={"Nickel"}
+          url={"/education/all-markets/metal-market/nickel"}
+        />
+        <SubMenuItem
+          text={"Paladium"}
+          url={"/education/all-markets/metal-market/paladium"}
+        />
+
+        <SubMenuItem
+          text={"Platinium"}
+          url={"/education/all-markets/metal-market/platinium"}
+        />
+
+        <span className="text-gray-200 text-xs font-semibold uppercase mb-2 px-4 bg-zinc-800 py-2 border-b-2 border-rose-700  inline-block">
+          Parities
+        </span>
+        <SubMenuItem
+          text={"Aud/Usd"}
+          url={"/education/all-markets/parities/aud-usd"}
+        />
+        <SubMenuItem
+          text={"Gbp/Usd"}
+          url={"/education/all-markets/parities/gbp-usd"}
+        />
+        <SubMenuItem
+          text={"Nzd/Usd"}
+          url={"/education/all-markets/parities/nzd-usd"}
+        />
+        <SubMenuItem
+          text={"Usd/Cad"}
+          url={"/education/all-markets/parities/usd-cad"}
+        />
+        <SubMenuItem
+          text={"Usd/Chf"}
+          url={"/education/all-markets/parities/usd-chf"}
+        />
+        <span className="text-gray-200 text-xs font-semibold uppercase mb-2 px-4 bg-zinc-800 py-2 border-b-2 border-rose-700  inline-block">
+          Stock Market
+        </span>
+        <SubMenuItem
+          text={"Asia"}
+          url={"/education/all-markets/stock-markets/asia"}
+        />
+        <SubMenuItem
+          text={"Europa"}
+          url={"/education/all-markets/stock-markets/europa"}
+        />
+        <SubMenuItem
+          text={"Usa"}
+          url={"/education/all-markets/stock-markets/usa"}
         />
       </DropdownMenu>
+
       <MenuItem
         url={"/feed/question-answer"}
         Icon={BsQuestionLg}

@@ -2,22 +2,22 @@ import React from "react";
 import Layout from "../../../../layouts/dashboardLayout";
 import axios from "axios";
 import Swal from "sweetalert2";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 
-import {EditorContent, useEditor} from "@tiptap/react";
+import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import {useSession} from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
-import {toast} from "react-toastify";
-import {lang} from "@lang/langT";
-import {Tooltip} from "@nextui-org/react";
-import {RiInformationFill} from "react-icons/ri";
+import { toast } from "react-toastify";
+import { lang } from "@lang/langT";
+import { Tooltip } from "@nextui-org/react";
+import { RiInformationFill } from "react-icons/ri";
 import IframeContent from "@/components/IframeContent";
-
+import categoriesList from "@/libs/catagoriesList";
 
 const PostAdd = () => {
   const router = useRouter();
-  const {data: session} = useSession();
+  const { data: session } = useSession();
   const t = lang(router.locale);
 
   const editor = useEditor({
@@ -43,8 +43,16 @@ const PostAdd = () => {
     const status = e.target.status.value;
     const content = editor.getHTML();
 
-
-    if (!title || !description || !slug || !image || !content || !category || !subCategory || !status) {
+    if (
+      !title ||
+      !description ||
+      !slug ||
+      !image ||
+      !content ||
+      !category ||
+      !subCategory ||
+      !status
+    ) {
       toast.error("Lütfen tüm alanları doldurunuz!", {
         position: "top-center",
         autoClose: 1500,
@@ -63,7 +71,7 @@ const PostAdd = () => {
       user: session.user.id,
       category,
       subCategory,
-      iframeText
+      iframeText,
     };
 
     axios({
@@ -97,8 +105,7 @@ const PostAdd = () => {
 
   return (
     <Layout>
-      <div
-        className="bg-zinc-800 shadow-md shadow-zinc-900/20 px-2 py-8 border-t-2 border-custom_pink">
+      <div className="bg-zinc-800 shadow-md shadow-zinc-900/20 px-2 py-8 border-t-2 border-custom_pink">
         <h1 className=" px-2 text-3xl font-bold text-white">İçerik Ekle</h1>
         <p className=" px-2 text-base font-normal mt-2 text-white">
           Bu sayfa kırılımlar ve uyumsuzluklar için içerik ekleme sayfasıdır.
@@ -157,25 +164,11 @@ const PostAdd = () => {
                 <option selected={true} disabled>
                   İçerik kategorisini seçiniz...
                 </option>
-                <option value="bitcoin">Bitcoin</option>
-                <option value="ethereum">Ethereum</option>
-                <option value="crypto-indices">Crypto Indices</option>
-                <option value="sub-coin">Alt Coin</option>
-                <option value="on-chain">On Chain</option>
-                <option value="sp500">Sp500</option>
-                <option value="nasdaq">Nasdaq</option>
-                <option value="Dax">Dax</option>
-                <option value="dxy">Dxy</option>
-                <option value="eur-usd">Eur/Usd</option>
-                <option value="usd-jpy">Usd/Jpy</option>
-                <option value="gold">Gold</option>
-                <option value="silver">Silver</option>
-                <option value="oil">Oil</option>
-                <option value="stock-market">Stock Market</option>
-                <option value="parities">Parities</option>
-                <option value="enerqy-market">Energy Market</option>
-                <option value="metal-market">Metal Market</option>
-                <option value="commodities">Commodities</option>
+                {categoriesList.map((item) => (
+                  <option key={item.value} value={item.value}>
+                    {item.label}
+                  </option>
+                ))}
               </select>
             </div>
 
@@ -189,12 +182,8 @@ const PostAdd = () => {
                 <option selected={true} disabled>
                   İçerik kategorisini seçiniz...
                 </option>
-                <option value="short-term">
-                  Short Term (Kısa Vadeli)
-                </option>
-                <option value="long-term">
-                  Long Term (Uzun Vadeli)
-                </option>
+                <option value="short-term">Short Term (Kısa Vadeli)</option>
+                <option value="long-term">Long Term (Uzun Vadeli)</option>
                 <option value="support-resistance">
                   Support - Resistance (Destek - Direnç)
                 </option>
@@ -203,7 +192,6 @@ const PostAdd = () => {
                 </option>
               </select>
             </div>
-
 
             <div className="flex flex-col">
               <label className="text-white font-semibold">Küçük Resmi</label>
@@ -217,31 +205,28 @@ const PostAdd = () => {
 
             <div className="flex flex-col">
               <label className="text-white font-semibold">İçerik Metni</label>
-              <EditorContent editor={editor}/>
+              <EditorContent editor={editor} />
             </div>
 
-
             <div className="flex flex-col">
-              <label
-                className="text-white font-semibold flex gap-2 items-center">
+              <label className="text-white font-semibold flex gap-2 items-center">
                 <span>İframe Text</span>
-                <Tooltip content={<IframeContent/>}>
+                <Tooltip content={<IframeContent />}>
                   <div>
-                    <RiInformationFill className={"text-yellow-500/50"}
-                                       fontSize={18}/>
+                    <RiInformationFill
+                      className={"text-yellow-500/50"}
+                      fontSize={18}
+                    />
                   </div>
                 </Tooltip>
-
               </label>
               <textarea
                 rows={20}
                 name={"iframeText"}
                 className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
                 placeholder={"İframe içeriğini buraya yapıştırınız..."}
-
               ></textarea>
             </div>
-
 
             <div className="flex flex-col">
               <label className="text-white font-semibold">Durum</label>
