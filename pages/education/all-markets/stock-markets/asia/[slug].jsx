@@ -98,4 +98,4 @@ const AsiaDetail = () => {
   );
 };
 
-export default DaxDetail;
+export default AsiaDetail;
