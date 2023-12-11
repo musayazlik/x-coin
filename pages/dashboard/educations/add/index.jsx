@@ -36,7 +36,6 @@ const EducationAdd = () => {
     const description = e.target.description.value;
     const slug = e.target.slug.value;
     const category = e.target.category.value;
-    const subCategory = e.target.subCategory.value;
     const image = e.target.image.files[0];
     const video = e.target.video.files[0];
     const status = e.target.status.value;
