@@ -45,9 +45,6 @@ const EducationSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-  },
-  subCategory: {
-    type: String,
     enum: ['free-trainings', 'paid-trainings', 'live-trainings'],
     default: 'free-trainings',
   },

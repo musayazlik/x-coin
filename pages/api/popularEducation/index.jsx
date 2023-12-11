@@ -3,17 +3,14 @@ import dbConnect from '@/libs/dbConnect';
 
 export default async function handler(req, res) {
   await dbConnect();
-
-
   const {method} = req;
-
   switch (method) {
     case 'GET':
       try {
         const educations = await Educations.find({}).sort({createdAt: -1}).select('-__v -updatedAt -status -video ');
 
-        const filterAndSlice = (subCategory) => educations
-          .filter(education => education.subCategory === subCategory)
+        const filterAndSlice = (category) => educations
+          .filter(education => education.category === category)
           .slice(-6)
 
         const data = {

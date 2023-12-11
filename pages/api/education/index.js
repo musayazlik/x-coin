@@ -3,7 +3,6 @@ import dbConnect from '@/libs/dbConnect'
 import isAuth from "@helpers/isAuth";
 import Orders from "@models/Orders";
 
-
 const getEducations = async (session, res, req) => {
   try {
 
@@ -13,17 +12,14 @@ const getEducations = async (session, res, req) => {
         status: true,
       }).sort({createdAt: -1})
 
-      const filterBySubCategory = subCategory => educations.filter(education => education.subCategory === subCategory);
+      const filterByCategory = category => educations.filter(education => education.category === category);
 
       const data = {
-        freeTrainings: filterBySubCategory('free-trainings'),
-        paidTrainings: filterBySubCategory('paid-trainings'),
-        liveTrainings: filterBySubCategory('live-trainings'),
+        freeTrainings: filterByCategory('free-trainings'),
+        paidTrainings: filterByCategory('paid-trainings'),
+        liveTrainings: filterByCategory('live-trainings'),
       };
-
-
       res.status(200).json({success: true, data: data});
-
     } else if (req?.query?.slug) {
       const education = await Educations.findOne({slug: req?.query?.slug}).where({
         status: true,
@@ -53,7 +49,6 @@ const getEducations = async (session, res, req) => {
             updatedAt: education?.updatedAt,
             image: education?.image,
             video: education?.video,
-
           }
         });
       }

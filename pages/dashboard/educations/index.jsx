@@ -92,7 +92,6 @@ const Posts = ({data}) => {
                     <TableColumn>Description</TableColumn>
 
                     <TableColumn>Kategori</TableColumn>
-                    <TableColumn>Alt Kategori</TableColumn>
                     <TableColumn>Status</TableColumn>
                     <TableColumn
                       className={"w-2/12 "}>
@@ -128,11 +127,6 @@ const Posts = ({data}) => {
                           <TableCell className={"whitespace-nowrap capitalize"}>
                             {item.category.replace(/-/g, " ") || "-"}
                           </TableCell>
-                          <TableCell className={"whitespace-nowrap capitalize"}>
-                            {item.subCategory.replace(/-/g, " ") || "-"}
-                          </TableCell>
-
-
                           <TableCell>
                             <Chip className="capitalize"
                                   color={
@@ -165,14 +159,14 @@ const Posts = ({data}) => {
               </span>
                               </Tooltip>
                               <Tooltip color="danger" content="Sil">
-              <span
-                className="text-lg text-danger cursor-pointer active:opacity-50">
-                <RiDeleteBinFill fontSize={24} onClick={
-                  (e) => {
-                    postDelete(e, item._id);
-                  }
-                }/>
-              </span>
+                                <span
+                                  className="text-lg text-danger cursor-pointer active:opacity-50">
+                                  <RiDeleteBinFill fontSize={24} onClick={
+                                    (e) => {
+                                      postDelete(e, item._id);
+                                    }
+                                  }/>
+                                </span>
                               </Tooltip>
                             </div>
                           </TableCell>
@@ -206,7 +200,7 @@ export async function getServerSideProps(context) {
       cookie: cookie,
     },
   });
-  
+
 
   return {
     props: {

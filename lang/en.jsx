@@ -25,6 +25,7 @@ export default {
   educations: "Educations",
   popularEducationsText: "Some of our popular trainings are listed below. You can visit our education page for more education.",
   free: "Free",
+  alarms: "Alarms",
 
 
   analytics: {

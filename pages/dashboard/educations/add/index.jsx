@@ -2,21 +2,20 @@ import React from "react";
 import Layout from "../../../../layouts/dashboardLayout";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { useRouter } from "next/router";
+import {useRouter} from "next/router";
 
-import { EditorContent, useEditor } from "@tiptap/react";
+import {EditorContent, useEditor} from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { useSession } from "next-auth/react";
+import {useSession} from "next-auth/react";
 import Link from "next/link";
-import { toast } from "react-toastify";
-import { lang } from "@lang/langT";
-import { useAppContext } from "@/context";
-import categoriesList from "@/libs/catagoriesList";
+import {toast} from "react-toastify";
+import {lang} from "@lang/langT";
+import {useAppContext} from "@/context";
 
 const EducationAdd = () => {
-  const { loading, setLoading } = useAppContext();
+  const {loading, setLoading} = useAppContext();
   const router = useRouter();
-  const { data: session } = useSession();
+  const {data: session} = useSession();
   const t = lang(router.locale);
 
   const editor = useEditor({
@@ -53,7 +52,6 @@ const EducationAdd = () => {
       !image ||
       !content ||
       !category ||
-      !subCategory ||
       !status ||
       !video ||
       !price ||
@@ -82,7 +80,6 @@ const EducationAdd = () => {
       status: status === "true",
       user: session.user.id,
       category,
-      subCategory,
     };
 
     axios({
@@ -118,7 +115,8 @@ const EducationAdd = () => {
 
   return (
     <Layout>
-      <div className="bg-zinc-800 shadow-md shadow-zinc-900/20 px-2 py-8 border-t-2 border-rose-800">
+      <div
+        className="bg-zinc-800 shadow-md shadow-zinc-900/20 px-2 py-8 border-t-2 border-rose-800">
         <h1 className=" px-2 text-3xl font-bold text-white">İçerik Ekle</h1>
         <p className=" px-2 text-base font-normal mt-2 text-white">
           Bu sayfadan eğitimler içeriklerini ekleyebilirsiniz.
@@ -208,22 +206,6 @@ const EducationAdd = () => {
                 className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
               >
                 <option disabled>İçerik kategorisini seçiniz...</option>
-                {categoriesList.map((item) => (
-                  <option key={item.value} value={item.value}>
-                    {item.label}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div className="flex flex-col">
-              <label className="text-white font-semibold">Alt Kategori</label>
-              <select
-                name="subCategory"
-                id="subCategory"
-                className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
-              >
-                <option disabled>İçerik alt kategorisini seçiniz...</option>
                 <option value="free-trainings">
                   Free Trainings (Ücretsiz Eğitimler)
                 </option>
@@ -260,7 +242,7 @@ const EducationAdd = () => {
 
             <div className="flex flex-col">
               <label className="text-white font-semibold">İçerik Metni</label>
-              <EditorContent editor={editor} />
+              <EditorContent editor={editor}/>
             </div>
 
             <div className="flex flex-col">

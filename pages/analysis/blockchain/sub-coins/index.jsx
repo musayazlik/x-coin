@@ -19,9 +19,9 @@ import {RiCloseCircleLine, RiLineChartLine, RiTimeLine} from "react-icons/ri";
 import {useRouter} from "next/router";
 import {lang} from "@lang/langT";
 
-const SubIndices = ({
-                      data
-                    }) => {
+const SubCoins = ({
+                    data
+                  }) => {
   const {isServiceLoading, setIsServiceLoading} = useAppContext();
   const {locale} = useRouter();
   const t = lang(locale);
@@ -66,7 +66,7 @@ const SubIndices = ({
             <span
               className={"text-white mb-1 text-2xl md:text-3xl lg:text-5xl" +
                 " font-bold"}>{
-              t.analytics.subIndices
+              t.analytics.subCoins
             } </span>
             <span
               className={"text-3xl text-yellow-500 font-bold "}>{
@@ -149,7 +149,7 @@ const SubIndices = ({
                                   {item.createdAt.split("T")[0]}
                                 </small>
                                 <Link href={
-                                  `/analysis/blockchain/sub-indices/${item.slug}`
+                                  `/analysis/blockchain/subcoin-mix/${item.slug}`
                                 }>
                                   <h2
                                     className="text-tiny uppercase font-bold mb-3 hover:text-yellow-500 hover:duration-300 hover:cursor-pointer">
@@ -187,7 +187,7 @@ const SubIndices = ({
 
                                 </div>
                                 <Link
-                                  href={`/analysis/blockchain/sub-indices/${item.slug}`}
+                                  href={`/analysis/blockchain/subcoin-mix/${item.slug}`}
                                   className="text-[10px]  uppercase font-bold text-zinc-500 hover:text-yellow-500 duration-300">
                                   {t.readmore}
                                 </Link>
@@ -229,12 +229,12 @@ const SubIndices = ({
   );
 };
 
-export default SubIndices;
+export default SubCoins;
 
 export async function getServerSideProps(context) {
   const cookie = context.req.headers.cookie;
   const {data} = await axios.get(
-    `/api/posts?category=sub-indices&limit=16&page=1`,
+    `/api/posts?category=subcoin-mix&limit=16&page=1`,
     {
       headers: {
         cookie: cookie,

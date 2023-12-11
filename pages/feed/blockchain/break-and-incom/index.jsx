@@ -10,7 +10,7 @@ const BreakAndIncom = ({data}) => {
   return (
     <>
       <Head>
-        <title>Kırılımlar ve Uyumsuzluklar | Trader Haber</title>
+        <title>Alarmlar | Trader Haber</title>
         <meta
           name="description"
           content="Kırılımlar ve Uyumsuzluklar, kullanıcıların düşüncelerini ve fikirlerini dünyayla paylaşmalarını sağlayan merkezi olmayan bir sosyal medya platformudur. Kullanıcıların düşünce ve fikirlerini dünya ile paylaşabilecekleri bir platformdur."
@@ -24,7 +24,7 @@ const BreakAndIncom = ({data}) => {
       <Layout>
         <div className=" mx-auto mb-8 mt-8 text-center relative z-0 max-w-3xl">
           <h1 className="text-4xl font-semibold mb-6 lg:text-5xl text-rose-600">
-            <span className="text-indigo-600">Kırılımlar ve Uyumsuzluklar</span>
+            <span className="text-indigo-600">Alarmlar</span>
           </h1>
           <p className="text-base text-gray-500 font-light mb-2">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam

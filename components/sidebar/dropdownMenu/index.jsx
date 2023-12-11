@@ -21,7 +21,7 @@ const DropdownMenu = ({
   const [isOpen, setIsOpen] = useState(defaultOpen ? !defaultOpen : !isItem);
 
   return (
-    <li className="mx-2 ">
+    <li className="mx-2 overflow-hidden ">
       <div className=" relative">
         <div
           onClick={() => setIsOpen(!isOpen)}
@@ -36,7 +36,7 @@ const DropdownMenu = ({
 
             ${
             isOpen && dropMenuStatus
-              ? "bg-zinc-900 border-2 border-transparent"
+              ? "bg-zinc-900 border-2 border-zinc-900"
               : "border-2 border-b-yellow-500 border-zinc-950"
           }
 						 `}
@@ -56,13 +56,13 @@ const DropdownMenu = ({
         </div>
 
         <ul
-          className={`duration-500 bg-zinc-900/50 rounded-md border-2 border-zinc-950/80   flex-col gap-1 ${
+          className={`duration-500 overflow-hidden bg-zinc-900/50 rounded-md border-2 border-zinc-950/80 flex-col ${
             dropMenuStatus ? "" : "hidden"
           }  ${S.menuSubItemText} 
           ${
             isOpen
               ? "h-0 invisible opacity-0 overflow-hidden"
-              : " mt-2 h-fit visible py-2  opacity-100 "
+              : " mt-2 h-fit visible  opacity-100 "
           }
 
           

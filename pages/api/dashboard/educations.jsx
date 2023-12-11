@@ -24,7 +24,7 @@ const updateEducations = async (req, res, fields, files) => {
     user,
     price,
     category,
-    subCategory,
+
   } = fields;
   let data = {
     title: title?.[0],
@@ -34,7 +34,6 @@ const updateEducations = async (req, res, fields, files) => {
     price: price?.[0],
     category: category?.[0],
     instructor: instructor?.[0],
-    subCategory: subCategory?.[0],
     status: status?.[0] === "true",
     user: user?.[0],
   };
@@ -183,7 +182,7 @@ export default async function handler(req, res) {
             user,
             price,
             category,
-            subCategory,
+
 
           } = fields;
 
@@ -235,7 +234,6 @@ export default async function handler(req, res) {
             duration: videoDuration,
             category: category[0],
             instructor: instructor[0],
-            subCategory: subCategory[0],
             image: imageUrl.secure_url,
             video: videoUrl.secure_url,
             instructorImage: instructorImageUrl.secure_url,

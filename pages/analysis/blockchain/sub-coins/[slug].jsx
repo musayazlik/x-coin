@@ -6,9 +6,9 @@ import {Avatar} from "@nextui-org/react";
 import {RiTimeFill} from "react-icons/ri";
 
 
-const SubCoinMixDetail = ({
-                            data
-                          }) => {
+const SubCoinsDetail = ({
+                          data
+                        }) => {
   return (
     <Layout>
       <div className=" ">
@@ -62,7 +62,7 @@ const SubCoinMixDetail = ({
   );
 }
 
-export default SubCoinMixDetail;
+export default SubCoinsDetail;
 
 export async function getServerSideProps(context) {
   const cookie = context.req.headers.cookie;

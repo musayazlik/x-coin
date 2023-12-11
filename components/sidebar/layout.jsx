@@ -13,7 +13,7 @@ const SidebarLayout = ({children}) => {
       <aside
         className={`${
           S.asideWrapper
-        } h-min-screen h-screen md:h-auto min-w-[280px] max-w-[280px] -left-[280px] md:left-0 relative duration-300 z-30 overflow-auto px-2 py-4 ${
+        } min-h-screen max-h-screen md:h-auto min-w-[280px] max-w-[280px] -left-[280px] md:left-0  duration-300 z-30 overflow-auto px-2 py-4 ${
           isOpenSidebar ? "" : "!left-0"
         } `}
       >

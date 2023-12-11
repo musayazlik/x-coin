@@ -10,7 +10,7 @@ const BreakAndIncom = ({data}) => {
   return (
     <>
       <Head>
-        <title>Forex Kırılımlar ve Uyumsuzluklar | X-Coin</title>
+        <title>Forex Alarmlar | X-Coin</title>
         <meta
           name="description"
           content="Kırılımlar ve Uyumsuzluklar, kullanıcıların düşüncelerini ve fikirlerini dünyayla paylaşmalarını sağlayan merkezi olmayan bir sosyal medya platformudur. Kullanıcıların düşünce ve fikirlerini dünya ile paylaşabilecekleri bir platformdur."
@@ -27,10 +27,10 @@ const BreakAndIncom = ({data}) => {
             <div className=" border-b-4 inline-block border-rose-600">
               Forex
             </div>
-            <div className="text-indigo-600">Kırılımlar ve Uyumsuzluklar</div>
+            <div className="text-indigo-600">Alarmlar</div>
           </h1>
           <p className="text-base text-gray-500 font-light mb-2">
-            Bu sayfada forex piyasası olan Kırılımlar ve Uyumsuzluklar ile
+            Bu sayfada forex piyasası olan Alarmlar ile
             ilgili içerikleri sizler ile paylaşıyoruz...
           </p>
         </div>

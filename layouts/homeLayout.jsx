@@ -11,7 +11,7 @@ const Layout = ({children}) => {
 
   return (
     <div
-      className=" bg-zinc-950 flex  gap-4 min-h-screen">
+      className=" bg-zinc-950 flex relative  gap-4 min-h-screen">
       <Sidebar/>
       <div
         className={` flex flex-col justify-stretch flex-grow overflow-hidden`}

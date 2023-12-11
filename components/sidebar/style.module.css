@@ -1,10 +1,10 @@
 .asideWrapper {
-  @apply border-r-4 border-zinc-700/20 bg-zinc-800  fixed md:relative top-0  flex flex-col pb-4;
+    @apply border-r-4 border-zinc-700/20 bg-zinc-800  fixed md:sticky top-0  flex flex-col pb-4;
 }
 
 .menuItem {
-  @apply duration-300  bg-zinc-900/50  text-zinc-400  flex items-center justify-between px-3 py-2.5 
-  relative;
+    @apply duration-300  bg-zinc-900/50  text-zinc-400  flex items-center justify-between px-3 py-2.5
+    relative;
 }
 
 /* .menuActive {
@@ -12,17 +12,17 @@
 } */
 
 .menuOnOffIcon {
-  @apply absolute -right-6 top-8 w-10 h-10 bg-zinc-900 text-zinc-400  duration-300 border-zinc-700 shadow-lg shadow-zinc-900  rounded-full border-2 sm:flex justify-center items-center;
+    @apply absolute -right-6 top-8 w-10 h-10 bg-zinc-900 text-zinc-400  duration-300 border-zinc-700 shadow-lg shadow-zinc-900  rounded-full border-2 sm:flex justify-center items-center;
 }
 
 .menuItemText {
-  @apply font-medium whitespace-nowrap;
+    @apply font-medium whitespace-nowrap;
 }
 
 .menuSubItemText {
-  @apply font-medium flex  text-[14px] text-zinc-500;
+    @apply font-medium flex  text-[14px] text-zinc-500;
 }
 
 .menuSubItemText li:hover {
-  @apply font-medium flex text-yellow-500 duration-200;
+    @apply font-medium flex text-yellow-500 duration-200;
 }

@@ -25,6 +25,7 @@ export default {
   educations: "Eğitimler",
   popularEducationsText: "Popüler eğitimlerimizden bazıları aşağıda yer almaktadır. Daha fazla eğitim için eğitim sayfamızı ziyaret edebilirsiniz.",
   free: "Ücretsiz",
+  alarms: "Alarmlar",
 
   analytics: {
     title: "Analiz",

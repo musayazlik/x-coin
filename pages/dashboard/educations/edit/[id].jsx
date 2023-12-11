@@ -1,20 +1,19 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import Layout from "../../../../layouts/dashboardLayout";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { useRouter } from "next/router";
+import {useRouter} from "next/router";
 
-import { EditorContent, useEditor } from "@tiptap/react";
+import {EditorContent, useEditor} from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { useSession } from "next-auth/react";
+import {useSession} from "next-auth/react";
 import Link from "next/link";
 import Image from "next/image";
-import { lang } from "@lang/langT";
-import categoriesList from "@/libs/catagoriesList";
+import {lang} from "@lang/langT";
 
-const PostEdit = ({ resData }) => {
+const PostEdit = ({resData}) => {
   const router = useRouter();
-  const { data: session } = useSession();
+  const {data: session} = useSession();
   const t = lang(router.locale);
 
   const editor = useEditor({
@@ -35,7 +34,6 @@ const PostEdit = ({ resData }) => {
     const slug = e.target.slug.value;
     const price = e.target.price.value;
     const category = e.target.category.value;
-    const subCategory = e.target.subCategory.value;
     const image = e.target.image.files[0];
     const video = e.target.video.files[0];
     const status = e.target.status.value;
@@ -95,7 +93,8 @@ const PostEdit = ({ resData }) => {
 
   return (
     <Layout>
-      <div className="bg-zinc-800 shadow-md shadow-zinc-900/20 px-2 py-8 border-t-2 border-custom_pink">
+      <div
+        className="bg-zinc-800 shadow-md shadow-zinc-900/20 px-2 py-8 border-t-2 border-custom_pink">
         <h1 className=" px-2 text-3xl font-bold text-white">İçerik Ekle</h1>
         <p className=" px-2 text-base font-normal mt-2 text-white">
           Bu sayfa kırılımlar ve uyumsuzluklar için içerik ekleme sayfasıdır.
@@ -182,6 +181,7 @@ const PostEdit = ({ resData }) => {
               />
             </div>
 
+
             <div className="flex flex-col">
               <label className="text-white font-semibold">Kategori</label>
               <select
@@ -190,39 +190,23 @@ const PostEdit = ({ resData }) => {
                 className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
               >
                 <option disabled>İçerik kategorisini seçiniz...</option>
-                {categoriesList.map((item) => (
-                  <option key={item.value} value={item.value}>
-                    {item.label}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div className="flex flex-col">
-              <label className="text-white font-semibold">Alt Kategori</label>
-              <select
-                name="subCategory"
-                id="subCategory"
-                className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
-              >
-                <option disabled>İçerik alt kategorisini seçiniz...</option>
                 <option
                   value="free-trainings"
-                  selected={resData.subCategory === "free-trainings"}
+                  selected={resData.category === "free-trainings"}
                 >
                   Free Trainings (Ücretsiz Eğitimler)
                 </option>
 
                 <option
                   value="paid-trainings"
-                  selected={resData.subCategory === "paid-trainings"}
+                  selected={resData.category === "paid-trainings"}
                 >
                   Paid Trainings (Ücretli Eğitimler)
                 </option>
 
                 <option
                   value="live-trainings"
-                  selected={resData.subCategory === "live-trainings"}
+                  selected={resData.category === "live-trainings"}
                 >
                   Live Trainings (Canlı Eğitimler)
                 </option>
@@ -271,7 +255,7 @@ const PostEdit = ({ resData }) => {
 
             <div className="flex flex-col">
               <label className="text-white font-semibold">İçerik Metni</label>
-              <EditorContent editor={editor} />
+              <EditorContent editor={editor}/>
             </div>
 
             <div className="flex flex-col">
@@ -315,7 +299,7 @@ export default PostEdit;
 export async function getServerSideProps(context) {
   const cookie = context.req.headers.cookie;
 
-  const { data } = await axios.get(
+  const {data} = await axios.get(
     `/api/dashboard/educations?id=${context.params.id}`,
     {
       headers: {

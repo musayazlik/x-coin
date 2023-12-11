@@ -20,14 +20,15 @@ const SubMenuItem = ({text, url, Icon, children}) => {
         }}
         className={`${pathname === url ? "!text-yellow-500" : ""} ${
           S.menuSubItemText
-        } py-1 pl-2 pr-4 `}
+        } py-1  pr-4 `}
       >
-        <div className=" flex flex-col gap-1">
+        <div className=" flex flex-col">
           <div className="flex">
+
             <BsDot className="inline-block mr-1" fontSize={20}/>
-            <p className="inline-block">{text}</p>
+            <p className="inline-block capitalize text-zinc-300">{text}</p>
           </div>
-          <div className="">
+          <div className="ml-3">
             {children}
           </div>
         </div>

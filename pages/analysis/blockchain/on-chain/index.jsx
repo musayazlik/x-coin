@@ -66,7 +66,7 @@ const OnChain = ({
             <span
               className={"text-white mb-1 text-2xl md:text-3xl lg:text-5xl" +
                 " font-bold"}>{
-              t.analytics.subCoinMix
+              t.analytics.onChain
             } </span>
             <span
               className={"text-3xl text-yellow-500 font-bold "}>{
