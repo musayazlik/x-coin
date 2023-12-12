@@ -18,9 +18,7 @@ import Footer from "@components/footer";
 
 const Home = ({data}) => {
   const {push, locale} = useRouter();
-
   const t = lang(locale);
-
 
   return (
     <>

@@ -118,7 +118,7 @@ const Swippers = ({
                                 " items-center gap-2 mb-2 "}>
                               <PiUserCircleGearDuotone fontSize={20}/>
 
-                              Eğitmen</span>
+                              {t.instructor}</span>
 
 
                       <div className="inline-flex items-center gap-3">

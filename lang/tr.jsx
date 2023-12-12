@@ -26,6 +26,9 @@ export default {
   popularEducationsText: "Popüler eğitimlerimizden bazıları aşağıda yer almaktadır. Daha fazla eğitim için eğitim sayfamızı ziyaret edebilirsiniz.",
   free: "Ücretsiz",
   alarms: "Alarmlar",
+  instructor: "Eğitmen",
+  popularEducations: "Popüler Eğitimler",
+
 
   analytics: {
     title: "Analiz",
@@ -170,6 +173,7 @@ export default {
   },
 
   basket: {
+    price: "Fiyat",
     basketName: "Sepet",
     basketAdd: "Sepete Ekle",
     basketRemove: "Sepetten Çıkar",
@@ -183,6 +187,7 @@ export default {
     taxIncluded: "Kdv Dahil",
     cardCheckout: "Cart ile Ödeme Yap",
     coinPaymentscheckout: "CoinPayments İle Öde",
+    alreadyExist: "Eğitim zaten sepete eklenmiş...",
 
   }
 };

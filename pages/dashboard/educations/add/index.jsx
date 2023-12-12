@@ -44,6 +44,7 @@ const EducationAdd = () => {
     const instructorImage = e.target.instructorImage.files[0];
     const content = editor.getHTML();
 
+
     if (
       !title ||
       !description ||

@@ -9,6 +9,11 @@ export default async function handler(req, res) {
       try {
         const educations = await Educations.find({}).sort({createdAt: -1}).select('-__v -updatedAt -status -video ');
 
+        if (req.query.limit) {
+          const limit = parseInt(req.query.limit);
+          const data = educations.slice(0, limit);
+          return res.status(200).json({success: true, data});
+        }
         const filterAndSlice = (category) => educations
           .filter(education => education.category === category)
           .slice(-6)

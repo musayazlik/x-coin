@@ -34,7 +34,7 @@ const Dax = ({
 
           {data.freeTrainings.length > 0 ? (
             <Swippers data={data.freeTrainings}
-                      path={"/education/blockchain/bitcoin/"}/>
+                      path={"/education/"}/>
           ) : (
             <EmptyData/>
           )}
@@ -93,7 +93,7 @@ export default Dax;
 export async function getServerSideProps(context) {
   const cookie = context.req.headers.cookie;
   const {data} = await axios.get(
-    `/api/education?category=dax&limit=16&page=1`,
+    `/api/education`,
     {
       headers: {
         cookie: cookie,

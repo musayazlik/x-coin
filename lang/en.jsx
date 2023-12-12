@@ -26,6 +26,8 @@ export default {
   popularEducationsText: "Some of our popular trainings are listed below. You can visit our education page for more education.",
   free: "Free",
   alarms: "Alarms",
+  instructor: "Instructor",
+  popularEducations: "Popular Educations",
 
 
   analytics: {
@@ -169,6 +171,7 @@ export default {
   },
 
   basket: {
+    price: "Price",
     basketName: "Basket",
     basketAdd: "Add to Basket",
     basketRemove: "Remove from Basket",
@@ -182,6 +185,7 @@ export default {
     taxIncluded: "Tax Included",
     cardCheckout: "Checkout with Cart",
     coinPaymentscheckout: "Checkout with CoinPayments",
+    alreadyExist: "Training already added to cart...",
   }
 
 

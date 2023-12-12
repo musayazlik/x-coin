@@ -5,6 +5,7 @@ import sendErrorResponse from "@/helpers/sendErrorResponse";
 import sendSuccessResponse from "@/helpers/sendSuccessResponse";
 import notAdmin from "@/helpers/notAdmin";
 import Educations from "@models/Educations";
+import getVideoDuration from 'get-video-duration';
 
 export const config = {
   api: {
@@ -182,8 +183,6 @@ export default async function handler(req, res) {
             user,
             price,
             category,
-
-
           } = fields;
 
           const imageName = `${slug[0]}-${Date.now()}`;
@@ -193,14 +192,20 @@ export default async function handler(req, res) {
 
           const imagePath = files.image[0].filepath;
           const videoPath = files.video[0].filepath;
-          const videoDuration = files.video[0].duration;
+          const videoDuration = Math.round(await getVideoDuration(videoPath));
           const instructorImagePath = files.instructorImage[0].filepath;
+
+
+          console.log("imagePath", imagePath)
+          console.log("videoPath", videoPath)
+          console.log("videoDuration", videoDuration)
+          console.log("instructorImagePath", instructorImagePath)
 
 
           const imageUrl = await cloudinary.v2.uploader.upload(
             imagePath,
             {
-              folder: "educations",
+              folder: "educationsImage",
               public_id: imageName,
               resource_type: "image",
             }
@@ -209,7 +214,7 @@ export default async function handler(req, res) {
           const videoUrl = await cloudinary.v2.uploader.upload(
             videoPath,
             {
-              folder: "educations",
+              folder: "educationsVideo",
               public_id: videoName,
               resource_type: "video",
             }
@@ -218,7 +223,7 @@ export default async function handler(req, res) {
           const instructorImageUrl = await cloudinary.v2.uploader.upload(
             instructorImagePath,
             {
-              folder: "educations",
+              folder: "educationsInstructorImage",
               public_id: instructorImageName,
               resource_type: "image",
             }
@@ -239,6 +244,8 @@ export default async function handler(req, res) {
             instructorImage: instructorImageUrl.secure_url,
             price: price[0],
           };
+
+          console.log("data", data)
 
           const newEducations = await Educations.create(data);
           sendSuccessResponse(res, newEducations);
