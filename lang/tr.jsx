@@ -42,9 +42,9 @@ export default {
 
 
   homepage: {
-    title: "Trader Haber",
-    description: "Trader Haber, dünya piyasa verilerini kullanarak, kullanıcıların tüm borsa verileri hakkında bilgi edinmelerini sağlayan bir platformdur.",
-    keywords: "Trader Haber, Borsa, Kripto, Forex, Tüm Piyasalar",
+    title: "TraderEdit™",
+    description: "TraderEdit™, dünya piyasa verilerini kullanarak, kullanıcıların tüm borsa verileri hakkında bilgi edinmelerini sağlayan bir platformdur.",
+    keywords: "TraderEdit™, Borsa, Kripto, Forex, Tüm Piyasalar",
     menu: {
       home: "Anasayfa",
       feed: "Akış",
@@ -129,12 +129,12 @@ export default {
     menuName: "Anasayfa",
     welcome: ` <h2 className=" text-center text-2xl lg:text-4xl font-bold text-zinc-500">
     <div className="text-center font-extrabold text-4xl">
-      <span className="text-yellow-600">Trader Haber</span> ' e
+      <span className="text-yellow-600">TraderEdit™</span> ' e
     </div>
     Hoşgeldiniz
   </h2>`,
     subText:
-      " Trader Haber, dünya piyasa verilerini kullanarak, kullanıcıların tüm borsa verileri hakkında bilgi edinmelerini sağlayan bir platformdur.",
+      " TraderEdit™, dünya piyasa verilerini kullanarak, kullanıcıların tüm borsa verileri hakkında bilgi edinmelerini sağlayan bir platformdur.",
   },
 
   profileDropdown: {
@@ -157,9 +157,9 @@ export default {
 
   aboutUsPage: {
     title: "Hakkımızda",
-    description: "Trader Haber, dünya piyasa verilerini kullanarak, kullanıcıların tüm borsa verileri hakkında bilgi edinmelerini sağlayan bir platformdur.",
-    keywords: "Trader Haber, Borsa, Kripto, Forex, Tüm Piyasalar",
-    contentText: "Trader Haber, dünya piyasa verilerini kullanarak," +
+    description: "TraderEdit™, dünya piyasa verilerini kullanarak, kullanıcıların tüm borsa verileri hakkında bilgi edinmelerini sağlayan bir platformdur.",
+    keywords: "TraderEdit™, Borsa, Kripto, Forex, Tüm Piyasalar",
+    contentText: "TraderEdit™, dünya piyasa verilerini kullanarak," +
       " kullanıcıların tüm borsa verileri hakkında bilgi edinmelerini sağlayan bir platformdur.",
     contactUs: "İletişime Geçin",
     contactUsText: "Sorularınız ve daha detaylı bilgi için bizimle iletişime geçin.",

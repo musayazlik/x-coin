@@ -34,7 +34,19 @@ const Swippers = ({
   const addToBasket = (item) => {
     console.log(item)
     const isExist = basket.find((i) => i._id === item._id)
-    if (isExist) return
+    if (isExist) {
+      toast.warning(`${item.title} ${t.basket.alreadyExist}`, {
+        position: "bottom-right",
+        autoClose: 2000,
+        theme: "dark",
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+
+      });
+      return
+    }
     setBasket([...basket, item])
 
     toast.success(`${item.title} ${t.basket.addedToBasket}`, {

@@ -1,7 +1,6 @@
 import React, {memo} from "react";
 import AvatarDropdown from "../avatarDropdown";
 import LangDropdown from "../langDropdown";
-import NotificationDropdown from "../notificationDropdown";
 import {useAppContext} from "@/context";
 import {
   Button,
@@ -207,9 +206,9 @@ const Header = () => {
           <div className="flag">
             <LangDropdown/>
           </div>
-          <div className="flag">
+          {/*<div className="flag">
             <NotificationDropdown/>
-          </div>
+          </div>*/}
           <div className="avatar">
             <AvatarDropdown/>
           </div>

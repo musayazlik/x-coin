@@ -28,7 +28,7 @@ const Layout = ({children}) => {
           className={`m-0 py-2 px-4 duration-300 bg-zinc-900 text-zinc-400 text-center md:text-start  flex flex-col sm:flex-row justify-between items-center`}
         >
           <p className="font-normal text-sm m-0">
-            2023 © Trader Haber - All rights reserved.
+            2023 © TraderEdit™ - All rights reserved.
           </p>
           {/*  <p className="font-normal text-sm">
             Made with{" "}

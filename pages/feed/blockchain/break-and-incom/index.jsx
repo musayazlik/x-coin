@@ -10,7 +10,7 @@ const BreakAndIncom = ({data}) => {
   return (
     <>
       <Head>
-        <title>Alarmlar | Trader Haber</title>
+        <title>Alarmlar | TraderEdit™</title>
         <meta
           name="description"
           content="Kırılımlar ve Uyumsuzluklar, kullanıcıların düşüncelerini ve fikirlerini dünyayla paylaşmalarını sağlayan merkezi olmayan bir sosyal medya platformudur. Kullanıcıların düşünce ve fikirlerini dünya ile paylaşabilecekleri bir platformdur."

@@ -42,9 +42,9 @@ export default {
 
 
   homepage: {
-    title: "Trader Haber",
-    description: "Trader Haber is a platform that allows users to learn about all stock market data using world market data.",
-    keywords: "Trader Haber, Stock Market, Crypto, Forex, All Markets",
+    title: "TraderEdit™",
+    description: "TraderEdit™ is a platform that allows users to learn about all stock market data using world market data.",
+    keywords: "TraderEdit™, Stock Market, Crypto, Forex, All Markets",
     menu: {
       home: "Home",
       feed: "Feed",
@@ -128,12 +128,12 @@ export default {
     welcome: ` <h2 className=" text-center text-2xl lg:text-4xl font-bold text-zinc-500">
     <div className="text-center font-extrabold text-4xl">
     Welcome to 
-      <span className="text-yellow-600">Trader Haber</span> ' e
+      <span className="text-yellow-600">TraderEdit™</span> ' e
     </div>
   </h2>`,
 
     subText:
-      "Trader Haber is a platform that allows users to learn about all stock market data using world market data.",
+      "TraderEdit™ is a platform that allows users to learn about all stock market data using world market data.",
   },
 
   profileDropdown: {
@@ -155,9 +155,9 @@ export default {
 
   aboutUsPage: {
     title: "About Us",
-    description: "Trader Haber is a platform that allows users to learn about all stock market data using world market data.",
-    keywords: "Trader Haber, Stock Market, Crypto, Forex, All Markets",
-    contentText: "Trader Haber is a platform that allows users to learn about all stock market data using world market data.",
+    description: "TraderEdit™ is a platform that allows users to learn about all stock market data using world market data.",
+    keywords: "TraderEdit™, Stock Market, Crypto, Forex, All Markets",
+    contentText: "TraderEdit™ is a platform that allows users to learn about all stock market data using world market data.",
     contactUs: "Contact Us",
     contactUsText: "You can contact us by filling out the form below.",
     button: "Send Message",
@@ -166,7 +166,7 @@ export default {
   termsOfUse: {
     title: "Terms of Use",
     description: "Welcome! Please carefully read the Terms of Use for TraderEdit. These terms define the rules and conditions you must adhere to while using our website.",
-    keywords: "Trader Haber, Stock Market, Crypto, Forex, All Markets",
+    keywords: "TraderEdit™, Stock Market, Crypto, Forex, All Markets",
     contentText: "Welcome! Please carefully read the Terms of Use for TraderEdit. These terms define the rules and conditions you must adhere to while using our website.",
   },
 
