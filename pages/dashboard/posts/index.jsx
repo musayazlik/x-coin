@@ -61,7 +61,7 @@ const Posts = ({data}) => {
             Yazılar İçerik Yönetimi
           </h1>
           <p className="sm:text-sm text-gray-400">
-            Bu sayfada yazılarınızı yönetebilirsiniz.
+            Bu sayfada analiz yazılarınızı yönetebilirsiniz.
           </p>
         </div>
 
@@ -90,7 +90,7 @@ const Posts = ({data}) => {
                     <TableColumn>Image</TableColumn>
                     <TableColumn>Title</TableColumn>
                     <TableColumn>Description</TableColumn>
-                 
+
                     <TableColumn>Kategori</TableColumn>
                     <TableColumn>Alt Kategori</TableColumn>
                     <TableColumn>Status</TableColumn>

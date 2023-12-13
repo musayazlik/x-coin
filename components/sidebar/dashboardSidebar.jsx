@@ -35,7 +35,7 @@ const Sidebar = () => {
       <MenuItem
         url={"/dashboard/posts"}
         Icon={RiDraftLine}
-        text={"Yazılar"}
+        text={"Analizler"}
       />
 
       <MenuItem

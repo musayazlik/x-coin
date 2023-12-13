@@ -5,6 +5,7 @@ import {useRouter} from "next/router";
 import DateDayMonthYear from "@helpers/datedaymonthyear";
 import axios from "axios";
 import Swal from "sweetalert2";
+import Layout from "@/layouts/dashboardLayout";
 
 const ForexBreakAndIncomPage = ({data}) => {
   const router = useRouter();
