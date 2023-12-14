@@ -164,7 +164,7 @@ const Dax = ({data}) => {
                                 {item.createdAt.split("T")[0]}
                               </small>
                               <Link
-                                href={`/analysis/all-markets/stock-markets/europa/${item.slug}`}
+                                href={`/analysis/all-markets/stock-markets/europa/dax/${item.slug}`}
                               >
                                 <h2
                                   className="text-tiny uppercase font-bold mb-3 hover:text-yellow-500 hover:duration-300 hover:cursor-pointer">
@@ -203,7 +203,7 @@ const Dax = ({data}) => {
                                 </div>
                               </div>
                               <Link
-                                href={`/analysis/all-markets/stock-markets/europa/${item.slug}`}
+                                href={`/analysis/all-markets/stock-markets/europa/dax/${item.slug}`}
                                 className="text-[10px]  uppercase font-bold text-zinc-500 hover:text-yellow-500 duration-300"
                               >
                                 {t.readmore}
@@ -244,7 +244,7 @@ export default Dax;
 export async function getServerSideProps(context) {
   const cookie = context.req.headers.cookie;
   const {data} = await axios.get(
-    `/api/posts?category=europa&limit=16&page=1`,
+    `/api/posts?category=dax&limit=16&page=1`,
     {
       headers: {
         cookie: cookie,

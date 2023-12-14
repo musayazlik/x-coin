@@ -17,7 +17,7 @@ function EuropaPage() {
         {
           "symbols": [
             [
-              "TVC:CAC40"
+              "INDEX:CAC40"
             ]
           ],
           "chartOnly": false,

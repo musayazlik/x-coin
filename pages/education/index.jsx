@@ -7,6 +7,7 @@ import {lang} from "@lang/langT";
 
 import Swippers from "@components/swipper";
 import EmptyData from "components/emptyData";
+import Head from "next/head";
 
 
 const Dax = ({
@@ -18,73 +19,84 @@ const Dax = ({
 
 
   return (
-    <Layout>
-      <div className=" mt-12">
-
-        <section
-          className=" mb-8 sm:px-4 px-2">
-
-          <div className={"mb-4 "}>
-            <h2 className={"text-white text-base md:text-2xl font-bold mb-4" +
-              " border-l-4" +
-              " border-rose-700 px-4 bg-zinc-900 py-3 rounded"}>
-              {t.freeTrainings}
-            </h2>
-          </div>
-
-          {data.freeTrainings.length > 0 ? (
-            <Swippers data={data.freeTrainings}
-                      path={"/education/"}/>
-          ) : (
-            <EmptyData/>
-          )}
+    <>
 
 
-        </section>
+      <Head>
+        <title>TraderEdit | {t.educations}</title>
+        <meta name="description" content="TraderEdit Eğitim"/>
+        <meta name="keywords" content="TraderEdit Eğitim"/>
+        <meta name="author" content="TraderEdit"/>
+      </Head>
+      <Layout>
+        <div className=" mt-12">
 
-        <section
-          className=" mb-8 sm:px-4 px-2">
+          <section
+            className=" mb-8 sm:px-4 px-2">
 
-          <div className={"mb-4 "}>
-            <h2 className={"text-white text-base md:text-2xl font-bold mb-4" +
-              " border-l-4" +
-              " border-rose-700 px-4 bg-zinc-900 py-3 rounded"}>
-              {t.paidTrainings}
-            </h2>
-          </div>
+            <div className={"mb-4 "}>
+              <h2 className={"text-white text-base md:text-2xl font-bold mb-4" +
+                " border-l-4" +
+                " border-rose-700 px-4 bg-zinc-900 py-3 rounded"}>
+                {t.freeTrainings}
+              </h2>
+            </div>
 
-          {data.paidTrainings.length > 0 ? (
-            <Swippers data={data.paidTrainings}
-                      path={"/education/blockchain/bitcoin/"}/>
-          ) : (
-            <EmptyData/>
-          )}
-
-
-        </section>
-
-        <section
-          className="  mb-8 sm:px-4 px-2 ">
-
-          <div className={"mb-4 "}>
-            <h2 className={"text-white text-base md:text-2xl font-bold mb-4" +
-              " border-l-4" +
-              " border-rose-700 px-4 bg-zinc-900 py-3 rounded"}>
-              {t.liveTrainings}
-            </h2>
-          </div>
-
-          {data.liveTrainings.length > 0 ? (
-            <Swippers data={data.liveTrainings}
-                      path={"/education/blockchain/bitcoin/"}/>
-          ) : (
-            <EmptyData/>
-          )}
+            {data.freeTrainings.length > 0 ? (
+              <Swippers data={data.freeTrainings}
+                        path={"/education/"}/>
+            ) : (
+              <EmptyData/>
+            )}
 
 
-        </section>
-      </div>
-    </Layout>
+          </section>
+
+          <section
+            className=" mb-8 sm:px-4 px-2">
+
+            <div className={"mb-4 "}>
+              <h2 className={"text-white text-base md:text-2xl font-bold mb-4" +
+                " border-l-4" +
+                " border-rose-700 px-4 bg-zinc-900 py-3 rounded"}>
+                {t.paidTrainings}
+              </h2>
+            </div>
+
+            {data.paidTrainings.length > 0 ? (
+              <Swippers data={data.paidTrainings}
+                        path={"/education/blockchain/bitcoin/"}/>
+            ) : (
+              <EmptyData/>
+            )}
+
+
+          </section>
+
+          <section
+            className="  mb-8 sm:px-4 px-2 ">
+
+            <div className={"mb-4 "}>
+              <h2 className={"text-white text-base md:text-2xl font-bold mb-4" +
+                " border-l-4" +
+                " border-rose-700 px-4 bg-zinc-900 py-3 rounded"}>
+                {t.liveTrainings}
+              </h2>
+            </div>
+
+            {data.liveTrainings.length > 0 ? (
+              <Swippers data={data.liveTrainings}
+                        path={"/education/blockchain/bitcoin/"}/>
+            ) : (
+              <EmptyData/>
+            )}
+
+
+          </section>
+        </div>
+      </Layout>
+
+    </>
   );
 };
 

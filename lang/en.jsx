@@ -28,6 +28,7 @@ export default {
   alarms: "Alarms",
   instructor: "Instructor",
   popularEducations: "Popular Educations",
+  privacy_policy: "Privacy Policy",
 
 
   analytics: {
@@ -88,6 +89,9 @@ export default {
     register: "Register",
     login: "Login",
     alreadyHaveAccount: "Already have an account?",
+    title: "Register",
+    description: "Register",
+    keywords: "Register",
   },
 
   cryptoPage: {
@@ -163,11 +167,21 @@ export default {
     button: "Send Message",
   },
 
+  contactPage: {
+    title: "Contact",
+    description: "TraderEdit™ is a platform that allows users to learn about all stock market data using world market data.",
+    keywords: "TraderEdit™, Stock Market, Crypto, Forex, All Markets",
+    contactUs: "Contact Us",
+    contactUsText: "You can contact us by filling out the form below.",
+    button: "Send Message",
+  },
+
   termsOfUse: {
     title: "Terms of Use",
     description: "Welcome! Please carefully read the Terms of Use for TraderEdit. These terms define the rules and conditions you must adhere to while using our website.",
     keywords: "TraderEdit™, Stock Market, Crypto, Forex, All Markets",
     contentText: "Welcome! Please carefully read the Terms of Use for TraderEdit. These terms define the rules and conditions you must adhere to while using our website.",
+    ourTeams: "Our friendly team is here to help."
   },
 
   basket: {

@@ -67,7 +67,7 @@ const Basket = () => {
                             className={"py-4 px-2 w-full "}>
                 <div className="inline-flex gap-4 justify-between w-full">
                   <div className="flex gap-4 items-center">
-                    <img src={item.image} alt={item.title}
+                    <img src={item?.image || "/noImage.jpg"} alt={item.title}
                          className={"w-12 h-12 rounded-lg border-2" +
                            " border-gray-600" +
                            " "}/>

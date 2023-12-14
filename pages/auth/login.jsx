@@ -11,6 +11,7 @@ import {toast} from "react-toastify";
  * Styles
  */
 import styles from "./authStyles.module.scss";
+import Head from "next/head";
 
 const Login = () => {
   const router = useRouter();
@@ -54,87 +55,99 @@ const Login = () => {
   }, []);
 
   return (
-    <div
-      className="min-w-full relative min-h-screen loginBackground text-white flex justify-center items-center">
-      <div className={styles.wrapper}>
-        <div className="mailLogin w-full sm:px-10">
-          <form
-            className="flex flex-col gap-4 mt-4"
-            onSubmit={handleEmailLogin}
-          >
-            <div className="input-group flex  items-center relative">
+    <>
+
+      <Head>
+        <title>Trader Edit | {t.loginPage.title}</title>
+        <meta name="description" content={t.loginPage.description}/>
+        <meta name="keywords" content={t.loginPage.keywords}/>
+        <meta name="author" content="Trader Edit"/>
+
+      </Head>
+
+      <div
+        className="min-w-full relative min-h-screen loginBackground text-white flex justify-center items-center">
+        <div className={styles.wrapper}>
+          <div className="mailLogin w-full sm:px-10">
+            <form
+              className="flex flex-col gap-4 mt-4"
+              onSubmit={handleEmailLogin}
+            >
+              <div className="input-group flex  items-center relative">
               <span className="input-group-addon absolute left-4">
                 <FiUser fontSize={20} className=" text-zinc-500"/>
               </span>
-              <input
-                type="text"
-                name="emailandusername"
-                id="emailandusername"
-                placeholder={t.loginPage.emailorusername}
-                className="border-2 border-zinc-700 rounded-md px-12 pr-4 py-3 bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
-              />
-            </div>
+                <input
+                  type="text"
+                  name="emailandusername"
+                  id="emailandusername"
+                  placeholder={t.loginPage.emailorusername}
+                  className="border-2 border-zinc-700 rounded-md px-12 pr-4 py-3 bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
+                />
+              </div>
 
-            <div className="input-group flex  items-center relative">
+              <div className="input-group flex  items-center relative">
               <span className="input-group-addon absolute left-4">
                 <FiLock fontSize={20} className=" text-zinc-500"/>
               </span>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                placeholder={t.loginPage.password}
-                className="border-2 border-zinc-700 rounded-md px-12 pr-4 py-3 bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
-              />
-            </div>
-            <button
-              type="submit"
-              className="border-zinc-700 border-2 hover:border-blue-900 text-white font-semibold rounded-md px-4 py-3 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-600/50 duration-300"
-            >
-              {t.loginPage.login}
-            </button>
-          </form>
-        </div>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder={t.loginPage.password}
+                  className="border-2 border-zinc-700 rounded-md px-12 pr-4 py-3 bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
+                />
+              </div>
+              <button
+                type="submit"
+                className="border-zinc-700 border-2 hover:border-blue-900 text-white font-semibold rounded-md px-4 py-3 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-600/50 duration-300"
+              >
+                {t.loginPage.login}
+              </button>
+            </form>
+          </div>
 
-        <div className="signIn text-xs sm:text-sm mt-6">
-          <p
-            className="flex sm:flex-row flex-col justify-center items-center gap-2">
-            {t.loginPage.dontHaveAccount}
-            <Link
-              href={"/auth/register"}
-              className="font-extrabold  cursor-pointer hover:text-yellow-400"
-            >
-              {t.loginPage.signUpFree}
-            </Link>
-          </p>
+          <div className="signIn text-xs sm:text-sm mt-6">
+            <p
+              className="flex sm:flex-row flex-col justify-center items-center gap-2">
+              {t.loginPage.dontHaveAccount}
+              <Link
+                href={"/auth/register"}
+                className="font-extrabold  cursor-pointer hover:text-yellow-400"
+              >
+                {t.loginPage.signUpFree}
+              </Link>
+            </p>
+          </div>
         </div>
-      </div>
-      <div
-        className="fixedLeft absolute
+        <div
+          className="fixedLeft absolute
        h-full bg-yellow-400/80 left-0 py-4 flex items-center  flex-col gap-4 min-w-[80px]"
-      >
+        >
         <span className="font-bold text-5xl px-4 text-zinc-800 hidden sm:flex ">
           T
         </span>
-        <div className=" flex-col gap-2 hidden sm:flex ">
-          <span className="w-1 h-4 bg-zinc-900 block rounded-full"></span>
-          <span className="w-1 h-1 bg-zinc-900 block rounded-full"></span>
-          <span className="w-1 h-1 bg-zinc-900 block rounded-full"></span>
-          <span className="w-1 h-1 bg-zinc-900 block rounded-full"></span>
+          <div className=" flex-col gap-2 hidden sm:flex ">
+            <span className="w-1 h-4 bg-zinc-900 block rounded-full"></span>
+            <span className="w-1 h-1 bg-zinc-900 block rounded-full"></span>
+            <span className="w-1 h-1 bg-zinc-900 block rounded-full"></span>
+            <span className="w-1 h-1 bg-zinc-900 block rounded-full"></span>
+          </div>
+          <div
+            className=" flex-col items-center  text-2xl font-bold text-zinc-900 hidden sm:flex">
+            <span>E</span>
+            <span>D</span>
+            <span>I</span>
+            <span>T</span>
+          </div>
         </div>
-        <div
-          className=" flex-col items-center  text-2xl font-bold text-zinc-900 hidden sm:flex">
-          <span>E</span>
-          <span>D</span>
-          <span>I</span>
-          <span>T</span>
+
+        <div className="langDropdown fixed top-4 right-4 z-50 ">
+          <LangDropdown/>
         </div>
       </div>
 
-      <div className="langDropdown fixed top-4 right-4 z-50 ">
-        <LangDropdown/>
-      </div>
-    </div>
+    </>
   );
 };
 

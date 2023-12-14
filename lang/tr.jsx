@@ -28,6 +28,7 @@ export default {
   alarms: "Alarmlar",
   instructor: "Eğitmen",
   popularEducations: "Popüler Eğitimler",
+  privacy_policy: "Gizlilik Politikası",
 
 
   analytics: {
@@ -89,6 +90,9 @@ export default {
     register: "Kayıt Ol",
     login: "Giriş Yap",
     alreadyHaveAccount: "Zaten bir hesabınız var mı?",
+    title: "Kayıt Ol",
+    description: "Kayıt Ol",
+    keywords: "Kayıt Ol",
   },
 
   cryptoPage: {
@@ -165,6 +169,17 @@ export default {
     contactUsText: "Sorularınız ve daha detaylı bilgi için bizimle iletişime geçin.",
     button: "Mesaj Gönder",
   },
+
+  contactPage: {
+    title: "İletişim",
+    description: "TraderEdit™, dünya piyasa verilerini kullanarak, kullanıcıların tüm borsa verileri hakkında bilgi edinmelerini sağlayan bir platformdur.",
+    keywords: "TraderEdit™, Borsa, Kripto, Forex, Tüm Piyasalar",
+    contactUs: "İletişime Geçin",
+    contactUsText: "Sorularınız ve daha detaylı bilgi için bizimle iletişime geçin.",
+    button: "Mesaj Gönder",
+    ourTeams: "Dost canlısı ekibimiz yardıma hazır."
+  },
+
 
   termsOfUse: {
     title: "Kullanım Şartları",

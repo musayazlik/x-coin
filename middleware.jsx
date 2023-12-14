@@ -29,7 +29,7 @@ export const config = {
     "/feed/:path*",
     "/account/:path*",
     "/education/:path*",
-    "/analytics/:path*",
+    "/analysis/:path*",
     "/tools/:path*",
     "/pricing/:path*",
     "/profile",

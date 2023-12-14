@@ -68,10 +68,10 @@ const AboutUs = () => {
 
     <>
       <Head>
-        <title>Trader Edit | {t.aboutUsPage.title}</title>
-        <meta name="description" content={t.aboutUsPage.description}/>
+        <title>Trader Edit | {t.contactPage.title}</title>
+        <meta name="description" content={t.contactPage.description}/>
         <meta name="keywords"
-              content={t.aboutUsPage.keywords}/>
+              content={t.contactPage.keywords}/>
         <meta name="author" content="Trader Edit"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta name="theme-color" content="#000000"/>
@@ -95,15 +95,14 @@ const AboutUs = () => {
                 </div>
                 <span
                   className="mb-2 block text-4xl font-semibold text-primary">
-               Contact us
+               {t.contactPage.contactUs}
               </span>
                 <h2
                   className="mb-3 text-3xl font-bold leading-[1.2] text-dark dark:text-white sm:text-4xl md:text-[40px]">
                   Get in touch
                 </h2>
                 <p className="text-base text-body-color dark:text-dark-6">
-                  We are here to help and answer any question you might have.
-                  We look forward to hearing from you.
+                  {t.contactPage.description}
                 </p>
               </div>
             </div>
@@ -122,10 +121,10 @@ const AboutUs = () => {
                   Email
                 </h2>
                 <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                  Our friendly team is here to help.
+                  {t.contactPage.ourTeams}
                 </p>
                 <p className="mt-2 text-sm text-blue-500 dark:text-blue-400">
-                  hello@merakiui.com
+                  info@traderedit.com
                 </p>
               </div>
               <div>
@@ -138,10 +137,10 @@ const AboutUs = () => {
                   Live chat
                 </h2>
                 <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-                  Our friendly team is here to help.
+                  {t.contactPage.ourTeams}
                 </p>
                 <p className="mt-2 text-sm text-blue-500 dark:text-blue-400">
-                  Start new chat
+                  Live chat
                 </p>
               </div>
               <div>
@@ -232,7 +231,7 @@ const AboutUs = () => {
                 </div>
                 <button
                   className="w-full px-6 py-3 mt-4 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
-                  Send message
+                  {t.aboutUsPage.button}
                 </button>
               </form>
             </div>

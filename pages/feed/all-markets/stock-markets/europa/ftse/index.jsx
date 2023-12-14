@@ -17,7 +17,7 @@ function EuropaPage() {
         {
           "symbols": [
             [
-              "EURONEXT:FTSE"
+              "SPREADEX:FTSE"
             ]
           ],
           "chartOnly": false,

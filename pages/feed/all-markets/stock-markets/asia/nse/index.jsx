@@ -17,7 +17,7 @@ function AsiaPage() {
         {
           "symbols": [
             [
-              "EURONEXT:NSE"
+              "FWB:NSE"
             ]
           ],
           "chartOnly": false,

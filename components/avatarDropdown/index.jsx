@@ -4,7 +4,6 @@ import Link from "next/link";
 import {BsCurrencyDollar} from "react-icons/bs";
 import {FiSettings, FiUser} from "react-icons/fi";
 import {BiExit, BiHelpCircle} from "react-icons/bi";
-import Membership from "../icons/membership";
 import {useRouter} from "next/router";
 import {lang} from "@/lang/langT";
 
@@ -24,35 +23,9 @@ const AvatarDropdown = () => {
         >
           <img
             className="w-8 h-8 p-1 rounded-full ring-2 hover:shadow-lg shadow-yellow-400/60 hover:ring-yellow-400 duration-300 ring-zinc-500 cursor-pointer object-cover"
-            src={session?.user?.image || "/robot.gif"}
+            src={session?.user?.image || "/avatars/avatar7.png"}
             alt="Bordered avatar"
           />
-
-          {session?.user?.memberShipType === "standard" && (
-            <div
-              className="w-5 h-5 rounded-full flex justify-center items-center absolute -top-1.5  bg-stone-400 -right-1.5 border-2 border-stone-500 shadow-md shadow-stone-700">
-              <Membership
-                className=" "
-                width="16"
-                height="16"
-                color="#3f3f46"
-                stroke="#3f3f46"
-              />
-            </div>
-          )}
-
-          {session?.user?.memberShipType === "premium" && (
-            <div
-              className="w-5 h-5 rounded-full flex justify-center items-center absolute -top-1.5  bg-yellow-400 -right-1.5 border-2 border-yellow-600 shadow-md shadow-yellow-700">
-              <Membership
-                className=" "
-                width="16"
-                height="16"
-                color="#ca8a04"
-                stroke="#ca8a04"
-              />
-            </div>
-          )}
         </div>
 
         <div

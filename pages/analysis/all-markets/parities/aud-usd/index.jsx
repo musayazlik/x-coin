@@ -141,7 +141,7 @@ const AudUsd = ({data}) => {
                               <Image
                                 alt="Card background"
                                 className="object-cover rounded-xl "
-                                src={item.image}
+                                src={item?.image || "/noImage.jpg"}
                                 fill
                                 quality={50}
                               />
@@ -189,7 +189,7 @@ const AudUsd = ({data}) => {
                                     radius="md"
                                     color="warning"
                                     size={"sm"}
-                                    src={item.user.image}
+                                    src={item?.user?.image || "/avatars/avatar7.png"}
                                   />
                                   <div class="flex flex-col justify-center ">
                                     <h3 class="text-xs font-semibold leading-4">

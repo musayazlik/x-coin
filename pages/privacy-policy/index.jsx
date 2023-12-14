@@ -13,10 +13,14 @@ const AboutUs = () => {
 
     <>
       <Head>
-        <title>Trader Edit | {t.aboutUsPage.title}</title>
-        <meta name="description" content={t.aboutUsPage.description}/>
+        <title>Trader Edit | {t.privacy_policy}</title>
+        <meta name="description" content={
+          "Trader Edit Privacy Policy, Trader Edit Gizlilik Politikası"
+        }/>
         <meta name="keywords"
-              content={t.aboutUsPage.keywords}/>
+              content={
+                "Trader Edit, Trader Edit Privacy Policy, Trader Edit Gizlilik Politikası"
+              }/>
         <meta name="author" content="Trader Edit"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta name="theme-color" content="#000000"/>

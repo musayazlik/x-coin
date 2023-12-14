@@ -164,7 +164,7 @@ const DownJones = ({data}) => {
                                 {item.createdAt.split("T")[0]}
                               </small>
                               <Link
-                                href={`/analysis/all-markets/stock-markets/usa/${item.slug}`}
+                                href={`/analysis/all-markets/stock-markets/usa/down-jones/${item.slug}`}
                               >
                                 <h2
                                   className="text-tiny uppercase font-bold mb-3 hover:text-yellow-500 hover:duration-300 hover:cursor-pointer">
@@ -203,7 +203,7 @@ const DownJones = ({data}) => {
                                 </div>
                               </div>
                               <Link
-                                href={`/analysis/all-markets/stock-markets/usa/${item.slug}`}
+                                href={`/analysis/all-markets/stock-markets/usa/down-jones/${item.slug}`}
                                 className="text-[10px]  uppercase font-bold text-zinc-500 hover:text-yellow-500 duration-300"
                               >
                                 {t.readmore}
@@ -243,7 +243,7 @@ export default DownJones;
 
 export async function getServerSideProps(context) {
   const cookie = context.req.headers.cookie;
-  const {data} = await axios.get(`/api/posts?category=usa&limit=16&page=1`, {
+  const {data} = await axios.get(`/api/posts?category=down-jones&limit=16&page=1`, {
     headers: {
       cookie: cookie,
     },

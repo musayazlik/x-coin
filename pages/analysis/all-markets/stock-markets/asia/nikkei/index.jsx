@@ -164,7 +164,7 @@ const Nikkei = ({data}) => {
                                 {item.createdAt.split("T")[0]}
                               </small>
                               <Link
-                                href={`/analysis/all-markets/stock-markets/asia/${item.slug}`}
+                                href={`/analysis/all-markets/stock-markets/asia/nikkei/${item.slug}`}
                               >
                                 <h2
                                   className="text-tiny uppercase font-bold mb-3 hover:text-yellow-500 hover:duration-300 hover:cursor-pointer">
@@ -203,7 +203,7 @@ const Nikkei = ({data}) => {
                                 </div>
                               </div>
                               <Link
-                                href={`/analysis/all-markets/stock-markets/asia/${item.slug}`}
+                                href={`/analysis/all-markets/stock-markets/asia/nikkei/${item.slug}`}
                                 className="text-[10px]  uppercase font-bold text-zinc-500 hover:text-yellow-500 duration-300"
                               >
                                 {t.readmore}
@@ -243,7 +243,7 @@ export default Nikkei;
 
 export async function getServerSideProps(context) {
   const cookie = context.req.headers.cookie;
-  const {data} = await axios.get(`/api/posts?category=asia&limit=16&page=1`, {
+  const {data} = await axios.get(`/api/posts?category=nikkei&limit=16&page=1`, {
     headers: {
       cookie: cookie,
     },
