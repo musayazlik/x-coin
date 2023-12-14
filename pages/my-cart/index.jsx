@@ -13,6 +13,7 @@ import {lang} from "@lang/langT";
 import {toast} from "react-toastify";
 import Image from "next/image";
 import Footer from "@components/footer";
+import Coinpayments from 'coinpayments';
 
 const MyCart = () => {
   const {locale} = useRouter()
@@ -20,6 +21,12 @@ const MyCart = () => {
   const {basket, setBasket} = useAppContext()
   let discountTotal = 0
   const couponRef = useRef(null)
+
+  const client = new Coinpayments({
+    key: 'dc5cd306ce735c3ddd369ad6ed972d893333c031cd46088f4e88b3aba1e53b5e',
+    secret: 'd0DCEEF8b1792e5b7199BA7f727C9504e2d8E5c330e18a7Bfe8BA9cafBe7aD36',
+  })
+
 
   const subTotal = (locale) => {
     let total = 0
@@ -55,6 +62,62 @@ const MyCart = () => {
         theme: "dark",
       })
     }
+  }
+
+  const createTransactionAsync = (params) => {
+    return new Promise((resolve, reject) => {
+      client.createTransaction(params, (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  };
+
+  const coinPaymentsCheckout = () => {
+
+
+    const transactionParams = {
+      'currency1': 'DOGE',
+      'currency2': 'POT',
+      'amount': 10,
+      'buyer_email': '',
+      'buyer_name': '',
+      'item_name': 'test item',
+      'item_number': 'test_item_1',
+      'invoice': '1234',
+      'custom': 'custom value',
+      'ipn_url': 'https://example.com',
+      'cancel_url': 'https://example.com',
+      'success_url': 'https://example.com',
+      'first_name': 'John',
+      'last_name': 'Doe',
+      'address1': 'street address',
+      'address2': 'apt #',
+      'city': 'city',
+      'state': 'state/province',
+      'zip': 'zip/postal code',
+      'country': 'country',
+      'amountf': '15.00000000',
+      'quantity': 1,
+      'allow_currencies': 'DOGE,BTC,LTC,ETH',
+      'want_shipping': 1,
+      'allow_shipping_methods': 'flat',
+      'allow_extra_fields': 1,
+      'allow_buyer_note': 1,
+      'allow_tax': 1,
+
+    };
+
+    createTransactionAsync(transactionParams)
+      .then(result => {
+        console.log(result);
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
 
 
@@ -179,7 +242,12 @@ const MyCart = () => {
               {t.basket.cardCheckout}
             </button>
             <button
-              className="mt-4 w-full text-sm rounded-md bg-blue-600 py-3 px-2 font-medium text-white hover:bg-blue-800 duration-300 flex justify-center items-center gap-2">
+              className="mt-4 w-full text-sm rounded-md bg-blue-600 py-3 px-2 font-medium text-white hover:bg-blue-800 duration-300 flex justify-center items-center gap-2"
+              onClick={() => {
+                coinPaymentsCheckout()
+              }}
+
+            >
               <Image src={"/coinPayments.svg"} width={20} height={20}
                      className={"bg-white rounded"}/>
               {t.basket.coinPaymentscheckout}
