@@ -3,7 +3,7 @@ import React, {memo, useEffect, useRef} from "react";
 import Layout from "@/layouts/homeLayout";
 import {useRouter} from "next/router";
 
-function EuropaPage() {
+function UsaPage() {
   const container = useRef();
   const {locale} = useRouter();
 
@@ -17,7 +17,7 @@ function EuropaPage() {
         {
           "symbols": [
             [
-              "LSE:EUZ"
+              "BINANCE:BTCDOWNUSDT"
             ]
           ],
           "chartOnly": false,
@@ -68,10 +68,10 @@ function EuropaPage() {
       <div className="max-w-xl mx-auto mb-14  mt-8 text-center relative z-0">
         <h1
           className=" text-3xl sm:text-4xl font-semibold mb-6 lg:text-5xl text-rose-600">
-          <span className="text-indigo-600">Europa</span>
+          <span className="text-indigo-600">Usa</span>
         </h1>
         <p className="text-base sm:text-lg text-gray-500 font-normal mb-2">
-          Bu sayfada Europa ile ilgili bilgiler alabilirsiniz..
+          Bu sayfada Usa ile ilgili bilgiler alabilirsiniz..
         </p>
       </div>
 
@@ -82,4 +82,4 @@ function EuropaPage() {
   );
 }
 
-export default memo(EuropaPage);
+export default memo(UsaPage);

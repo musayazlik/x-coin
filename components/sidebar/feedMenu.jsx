@@ -120,9 +120,20 @@ const FeedMenu = () => {
           "/feed/all-markets/parities/nzd-usd",
           "/feed/all-markets/parities/usd-cad",
           "/feed/all-markets/parities/usd-chf",
-          "/feed/all-markets/stock-markets/asia",
-          "/feed/all-markets/stock-markets/europa",
-          "/feed/all-markets/stock-markets/usa",
+          "/feed/all-markets/stock-markets/asia/china50",
+          "/feed/all-markets/stock-markets/asia/hangseng50",
+          "/feed/all-markets/stock-markets/asia/nse",
+          "/feed/all-markets/stock-markets/asia/nikkei",
+          "/feed/all-markets/stock-markets/europa/cac40",
+          "/feed/all-markets/stock-markets/europa/dax",
+          "/feed/all-markets/stock-markets/europa/stoxx50",
+          "/feed/all-markets/stock-markets/europa/ftse",
+          "/feed/all-markets/stock-markets/europa/smi",
+          "/feed/all-markets/stock-markets/usa/down-jones",
+          "/feed/all-markets/stock-markets/usa/nasdaq",
+          "/feed/all-markets/stock-markets/usa/russell2000",
+          "/feed/all-markets/stock-markets/usa/sp500",
+
         ]}
       >
 
@@ -231,20 +242,20 @@ const FeedMenu = () => {
           <div className="px-1">
             <SubMenuItem
               text={"China50"}
-              url={"/feed/all-markets/stock-markets/china50"}
+              url={"/feed/all-markets/stock-markets/asia/china50"}
             >
             </SubMenuItem>
             <SubMenuItem
               text={"Hangseng50 (HongKong)"}
-              url={"/feed/all-markets/stock-markets/hangseng50"}
+              url={"/feed/all-markets/stock-markets/asia/hangseng50"}
             />
             <SubMenuItem
               text={"Nse (India)"}
-              url={"/feed/all-markets/stock-markets/nse"}
+              url={"/feed/all-markets/stock-markets/asia/nse"}
             />
             <SubMenuItem
               text={"Nikkei (Japan)"}
-              url={"/feed/all-markets/stock-markets/nikkei"}
+              url={"/feed/all-markets/stock-markets/asia/nikkei"}
             />
           </div>
 
@@ -259,25 +270,25 @@ const FeedMenu = () => {
           <div className="px-1">
             <SubMenuItem
               text={"Cac40 (France)"}
-              url={"/feed/all-markets/stock-markets/cac40"}
+              url={"/feed/all-markets/stock-markets/europa/cac40"}
             >
             </SubMenuItem>
             <SubMenuItem
               text={"Dax (Germany)"}
-              url={"/feed/all-markets/stock-markets/dax"}
+              url={"/feed/all-markets/stock-markets/europa/dax"}
             />
             <SubMenuItem
               text={"Stoxx50 (Euro)"}
-              url={"/feed/all-markets/stock-markets/stoxx50"}
+              url={"/feed/all-markets/stock-markets/europa/stoxx50"}
             />
             <SubMenuItem
               text={"Ftse (London)"}
-              url={"/feed/all-markets/stock-markets/ftse"}
+              url={"/feed/all-markets/stock-markets/europa/ftse"}
             />
 
             <SubMenuItem
               text={"Smi (Swiss)"}
-              url={"/feed/all-markets/stock-markets/smi"}
+              url={"/feed/all-markets/stock-markets/europa/smi"}
             />
           </div>
 
@@ -290,26 +301,23 @@ const FeedMenu = () => {
 
           <div className="px-1">
             <SubMenuItem
-              text={"Dow Jones"}
-              url={"/feed/all-markets/stock-markets/dow-jones"}
+              text={"Down Jones"}
+              url={"/feed/all-markets/stock-markets/usa/down-jones"}
             >
             </SubMenuItem>
             <SubMenuItem
               text={"Nasdaq"}
-              url={"/feed/all-markets/stock-markets/nasdaq"}
+              url={"/feed/all-markets/stock-markets/usa/nasdaq"}
             />
             <SubMenuItem
               text={"Russell2000"}
-              url={"/feed/all-markets/stock-markets/russell2000"}
+              url={"/feed/all-markets/stock-markets/usa/russell2000"}
             />
             <SubMenuItem
               text={"Sp500"}
-              url={"/feed/all-markets/stock-markets/sp500"}
+              url={"/feed/all-markets/stock-markets/usa/sp500"}
             />
-
-
           </div>
-
 
         </SubDropdownMenu>
       </DropdownMenu>

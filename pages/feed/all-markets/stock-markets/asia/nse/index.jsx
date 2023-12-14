@@ -17,7 +17,7 @@ function AsiaPage() {
         {
           "symbols": [
             [
-              "AMEX:ASIA"
+              "EURONEXT:NSE"
             ]
           ],
           "chartOnly": false,

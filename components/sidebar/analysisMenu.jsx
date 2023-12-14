@@ -123,7 +123,7 @@ const AnalysisMenu = () => {
           "/analysis/all-markets/stock-markets/europa/stoxx50",
           "/analysis/all-markets/stock-markets/europa/ftse",
           "/analysis/all-markets/stock-markets/europa/smi",
-          "/analysis/all-markets/stock-markets/usa/dow-jones",
+          "/analysis/all-markets/stock-markets/usa/down-jones",
           "/analysis/all-markets/stock-markets/usa/nasdaq",
           "/analysis/all-markets/stock-markets/usa/russell2000",
           "/analysis/all-markets/stock-markets/usa/sp500",
@@ -315,7 +315,7 @@ const AnalysisMenu = () => {
 
           <div className="px-1">
             <SubMenuItem
-              text={"Dow Jones"}
+              text={"Down Jones"}
               url={"/analysis/all-markets/stock-markets/usa/down-jones"}
             >
             </SubMenuItem>
