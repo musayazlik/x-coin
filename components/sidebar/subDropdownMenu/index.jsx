@@ -3,9 +3,6 @@ import {usePathname} from "next/navigation";
 
 const SubDropdownMenu = ({children, title, label}) => {
   const pathname = usePathname()
-
-  console.log("Key Değeri : ", label)
-
   return (
     <>
       <div className="overflow-hidden">
