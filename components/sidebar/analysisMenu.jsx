@@ -114,13 +114,24 @@ const AnalysisMenu = () => {
           "/analysis/all-markets/parities/nzd-usd",
           "/analysis/all-markets/parities/usd-cad",
           "/analysis/all-markets/parities/usd-chf",
-          "/analysis/all-markets/stock-markets/asia",
-          "/analysis/all-markets/stock-markets/europa",
-          "/analysis/all-markets/stock-markets/usa",
+          "/analysis/all-markets/stock-markets/asia/china50",
+          "/analysis/all-markets/stock-markets/asia/hangseng50",
+          "/analysis/all-markets/stock-markets/asia/nse",
+          "/analysis/all-markets/stock-markets/asia/nikkei",
+          "/analysis/all-markets/stock-markets/europa/cac40",
+          "/analysis/all-markets/stock-markets/europa/dax",
+          "/analysis/all-markets/stock-markets/europa/stoxx50",
+          "/analysis/all-markets/stock-markets/europa/ftse",
+          "/analysis/all-markets/stock-markets/europa/smi",
+          "/analysis/all-markets/stock-markets/usa/dow-jones",
+          "/analysis/all-markets/stock-markets/usa/nasdaq",
+          "/analysis/all-markets/stock-markets/usa/russell2000",
+          "/analysis/all-markets/stock-markets/usa/sp500",
         ]}
       >
 
-        <SubDropdownMenu key={1} title={"Commodities"} label={"Commodities"}>
+        <SubDropdownMenu key={"Commodities"} title={"Commodities"}
+                         label={"Commodities"} primaryKey={"Commodities"}>
 
           <SubMenuItem
             text={"Coffee"}
@@ -153,7 +164,7 @@ const AnalysisMenu = () => {
 
         </SubDropdownMenu>
 
-        <SubDropdownMenu key={2} label={"Energy Market"}
+        <SubDropdownMenu key={"Energy Market"} label={"Energy Market"}
                          title={"Energy Market"}>
           <SubMenuItem
             text={"Energy ETF"}
@@ -164,7 +175,8 @@ const AnalysisMenu = () => {
             url={"/analysis/all-markets/energy-market/natgas"}
           />
         </SubDropdownMenu>
-        <SubDropdownMenu key={3} label={"Metal Market"} title={"Metal Market"}>
+        <SubDropdownMenu key={"Metal Market"} label={"Metal Market"}
+                         title={"Metal Market"}>
           <SubMenuItem
             text={"Copper"}
             url={"/analysis/all-markets/metal-market/copper"}
@@ -188,7 +200,7 @@ const AnalysisMenu = () => {
           />
 
         </SubDropdownMenu>
-        <SubDropdownMenu key={4} label={"Parities"} title={"Parities"}>
+        <SubDropdownMenu key={"Parities"} label={"Parities"} title={"Parities"}>
           <SubMenuItem
             text={"Aud/Usd"}
             url={"/analysis/all-markets/parities/aud-usd"}
@@ -212,7 +224,26 @@ const AnalysisMenu = () => {
         </SubDropdownMenu>
 
 
-        <SubDropdownMenu key={5} label={"Stock Market"} title={"Stock Market"}>
+        <SubDropdownMenu
+          key={"Stock Market"}
+          label={"Stock Market"}
+          title={"Stock Market"}
+          menuList={[
+            "china50",
+            "hangseng50",
+            "nse",
+            "nikkei",
+            "cac40",
+            "dax",
+            "stoxx50",
+            "ftse",
+            "smi",
+            "dow-jones",
+            "nasdaq",
+            "russell2000",
+            "sp500",
+          ]}
+        >
 
 
           <div
@@ -225,20 +256,20 @@ const AnalysisMenu = () => {
           <div className="px-1">
             <SubMenuItem
               text={"China50"}
-              url={"/analysis/all-markets/stock-markets/china50"}
+              url={"/analysis/all-markets/stock-markets/asia/china50"}
             >
             </SubMenuItem>
             <SubMenuItem
               text={"Hangseng50 (HongKong)"}
-              url={"/analysis/all-markets/stock-markets/hangseng50"}
+              url={"/analysis/all-markets/stock-markets/asia/hangseng50"}
             />
             <SubMenuItem
               text={"Nse (India)"}
-              url={"/analysis/all-markets/stock-markets/nse"}
+              url={"/analysis/all-markets/stock-markets/asia/nse"}
             />
             <SubMenuItem
               text={"Nikkei (Japan)"}
-              url={"/analysis/all-markets/stock-markets/nikkei"}
+              url={"/analysis/all-markets/stock-markets/asia/nikkei"}
             />
           </div>
 
@@ -253,25 +284,25 @@ const AnalysisMenu = () => {
           <div className="px-1">
             <SubMenuItem
               text={"Cac40 (France)"}
-              url={"/analysis/all-markets/stock-markets/cac40"}
+              url={"/analysis/all-markets/stock-markets/europa/cac40"}
             >
             </SubMenuItem>
             <SubMenuItem
               text={"Dax (Germany)"}
-              url={"/analysis/all-markets/stock-markets/dax"}
+              url={"/analysis/all-markets/stock-markets/europa/dax"}
             />
             <SubMenuItem
               text={"Stoxx50 (Euro)"}
-              url={"/analysis/all-markets/stock-markets/stoxx50"}
+              url={"/analysis/all-markets/stock-markets/europa/stoxx50"}
             />
             <SubMenuItem
               text={"Ftse (London)"}
-              url={"/analysis/all-markets/stock-markets/ftse"}
+              url={"/analysis/all-markets/stock-markets/europa/ftse"}
             />
 
             <SubMenuItem
               text={"Smi (Swiss)"}
-              url={"/analysis/all-markets/stock-markets/smi"}
+              url={"/analysis/all-markets/stock-markets/europa/smi"}
             />
           </div>
 
@@ -285,20 +316,20 @@ const AnalysisMenu = () => {
           <div className="px-1">
             <SubMenuItem
               text={"Dow Jones"}
-              url={"/analysis/all-markets/stock-markets/dow-jones"}
+              url={"/analysis/all-markets/stock-markets/usa/down-jones"}
             >
             </SubMenuItem>
             <SubMenuItem
               text={"Nasdaq"}
-              url={"/analysis/all-markets/stock-markets/nasdaq"}
+              url={"/analysis/all-markets/stock-markets/usa/nasdaq"}
             />
             <SubMenuItem
               text={"Russell2000"}
-              url={"/analysis/all-markets/stock-markets/russell2000"}
+              url={"/analysis/all-markets/stock-markets/usa/russell2000"}
             />
             <SubMenuItem
               text={"Sp500"}
-              url={"/analysis/all-markets/stock-markets/sp500"}
+              url={"/analysis/all-markets/stock-markets/usa/sp500"}
             />
 
 
