@@ -120,9 +120,9 @@ const AboutUs = () => {
             </div>
             <div className="w-full px-4 mb-10 lg:w-1/2 lg:mb-0">
               <img
-                src="https://i.postimg.cc/9MW8G96J/pexels-the-coach-space-2977565.jpg"
-                alt=""
-                className="relative z-40 object-cover w-full h-full rounded"
+                src="/about_us.svg"
+                alt="about us "
+                className="relative z-40 object-contain  w-full h-full rounded"
               />
             </div>
           </div>

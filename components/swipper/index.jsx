@@ -137,7 +137,7 @@ const Swippers = ({
                         <Avatar
                           isBordered={true}
                           alt="Card background"
-                          className="object-cover rounded-full min-w-[30px] max-h-[30px] "
+                          className="object-cover rounded-full min-w-[30px] min-h-[30px] max-h-[30px] max-h-[30px] "
                           src={item.instructorImage}
                           quality={50}
 

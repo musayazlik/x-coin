@@ -25,24 +25,24 @@ const Teams = () => {
 
         <div className="-mx-4 flex flex-wrap justify-center">
           <Team
-            name="Coriss Ambady"
-            profession="Web Developer"
-            imageSrc="https://i.ibb.co/T1J9LD4/image-03-2.jpg"
+            name="George Stowe"
+            profession="Frontend Developer"
+            imageSrc="/teams/team1.avif"
           />
           <Team
-            name="Coriss Ambady"
-            profession="Web Developer"
-            imageSrc="https://i.ibb.co/8P6cvVy/image-01-1.jpg"
+            name="Donald Curtin"
+            profession="Backend Developer"
+            imageSrc="/teams/team2.avif"
           />
           <Team
-            name="Coriss Ambady"
-            profession="Web Developer"
-            imageSrc="https://i.ibb.co/30tGtjP/image-04.jpg"
+            name="Whitney Currie"
+            profession="UI Designer"
+            imageSrc="/teams/team3.avif"
           />
           <Team
-            name="Coriss Ambady"
-            profession="Web Developer"
-            imageSrc="https://i.ibb.co/yVVT0Dp/image-02-2.jpg"
+            name="Heather Solomon"
+            profession="UX Designer"
+            imageSrc="/teams/team4.avif"
           />
         </div>
       </div>
