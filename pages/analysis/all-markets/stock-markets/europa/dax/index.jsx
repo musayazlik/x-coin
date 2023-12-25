@@ -1,6 +1,6 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Layout from "@/layouts/homeLayout";
-import {useAppContext} from "@/context";
+import { useAppContext } from "@/context";
 import {
   Avatar,
   Button,
@@ -14,14 +14,14 @@ import {
 import Image from "next/image";
 import axios from "axios";
 import Link from "next/link";
-import {RiCloseCircleLine, RiLineChartLine, RiTimeLine} from "react-icons/ri";
+import { RiCloseCircleLine, RiLineChartLine, RiTimeLine } from "react-icons/ri";
 
-import {useRouter} from "next/router";
-import {lang} from "@lang/langT";
+import { useRouter } from "next/router";
+import { lang } from "@lang/langT";
 
-const Dax = ({data}) => {
-  const {isServiceLoading, setIsServiceLoading} = useAppContext();
-  const {locale} = useRouter();
+const Dax = ({ data }) => {
+  const { isServiceLoading, setIsServiceLoading } = useAppContext();
+  const { locale } = useRouter();
   const t = lang(locale);
 
   const [tabs, setTabs] = useState([
@@ -68,7 +68,7 @@ const Dax = ({data}) => {
                 aria-label="sdfdf"
                 className={"p-1 w-16 mb-4 h-16"}
               >
-                <RiLineChartLine fontSize={120}/>
+                <RiLineChartLine fontSize={120} />
               </Button>
             </div>
             <span
@@ -92,8 +92,7 @@ const Dax = ({data}) => {
         </div>
 
         <section className="dark:bg-zinc-800 dark:text-gray-100">
-          <div
-            className="flex flex-wrap gap-4 justify-center flex-col items-center">
+          <div className="flex flex-wrap gap-4 justify-center flex-col items-center">
             <Tabs
               size="lg"
               color={"warning"}
@@ -134,10 +133,8 @@ const Dax = ({data}) => {
                         )}
 
                         <Card className={`py-2 relative z-0 h-full `}>
-                          <CardHeader
-                            className=" mb-2 px-4 flex-col items-start  ">
-                            <div
-                              className="min-h-[180px] w-full relative box-content">
+                          <CardHeader className=" mb-2 px-4 flex-col items-start  ">
+                            <div className="min-h-[180px] w-full relative box-content">
                               <Image
                                 alt="Card background"
                                 className="object-cover rounded-xl "
@@ -147,8 +144,7 @@ const Dax = ({data}) => {
                               />
                             </div>
                           </CardHeader>
-                          <CardBody
-                            className="overflow-visible py-2 flex flex-col justify-between">
+                          <CardBody className="overflow-visible py-2 flex flex-col justify-between">
                             <div className="flex flex-col">
                               <small
                                 className={
@@ -166,15 +162,13 @@ const Dax = ({data}) => {
                               <Link
                                 href={`/analysis/all-markets/stock-markets/europa/dax/${item.slug}`}
                               >
-                                <h2
-                                  className="text-tiny uppercase font-bold mb-3 hover:text-yellow-500 hover:duration-300 hover:cursor-pointer">
+                                <h2 className="text-tiny uppercase font-bold mb-3 hover:text-yellow-500 hover:duration-300 hover:cursor-pointer">
                                   {item.title.length > 50
                                     ? item.title.slice(0, 50) + "..."
                                     : item.title}
                                 </h2>
                               </Link>
-                              <p
-                                className="text-tiny leading-4 text-zinc-600 mb-6">
+                              <p className="text-tiny leading-4 text-zinc-600 mb-6">
                                 {item.description.length > 100
                                   ? item.description.slice(0, 100) + "..."
                                   : item.description}
@@ -182,8 +176,7 @@ const Dax = ({data}) => {
                             </div>
                             <div className=" flex justify-between items-center">
                               <div class="avatar">
-                                <div
-                                  class="rounded-full flex gap-3 items-center ">
+                                <div class="rounded-full flex gap-3 items-center ">
                                   <Avatar
                                     isBordered
                                     radius="md"
@@ -195,8 +188,7 @@ const Dax = ({data}) => {
                                     <h3 class="text-xs font-semibold leading-4">
                                       {item.user.name}
                                     </h3>
-                                    <p
-                                      class="text-tiny text-gray-500 leading-4">
+                                    <p class="text-tiny text-gray-500 leading-4">
                                       {item.user.role}
                                     </p>
                                   </div>
@@ -216,8 +208,7 @@ const Dax = ({data}) => {
 
                     {item.content.length === 0 && (
                       <div className={"col-span-12"}>
-                        <div
-                          className="flex justify-center flex-col gap-8 items-center h-96">
+                        <div className="flex justify-center flex-col gap-8 items-center h-96">
                           <RiCloseCircleLine
                             fontSize={120}
                             className={"text-gray-500"}
@@ -243,8 +234,8 @@ export default Dax;
 
 export async function getServerSideProps(context) {
   const cookie = context.req.headers.cookie;
-  const {data} = await axios.get(
-    `/api/posts?category=dax&limit=16&page=1`,
+  const { data } = await axios.get(
+    `/api/posts?category=europa-dax&limit=16&page=1`,
     {
       headers: {
         cookie: cookie,
