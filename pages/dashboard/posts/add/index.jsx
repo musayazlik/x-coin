@@ -110,6 +110,9 @@ const PostAdd = () => {
         <p className=" px-2 text-base font-normal mt-2 text-white">
           Bu sayfa kırılımlar ve uyumsuzluklar için içerik ekleme sayfasıdır.
         </p>
+        <p className="px-2 text-base font-normal mt-2 text-white bg-yellow-600 inline-block rounded-sm">
+          Bilgi için sarı renkli bilgi ikonuna tıklayınız.
+        </p>
 
         <form
           className="contentArea px-2"
@@ -144,12 +147,31 @@ const PostAdd = () => {
             </div>
 
             <div className="flex flex-col">
-              <label className="text-white font-semibold">Kısa Url</label>
+              <label className="text-white font-semibold flex gap-2">
+                <span>Kısa Url</span>
+                <Tooltip
+                  content={
+                    <div>
+                      <p className="text-white font-semibold">
+                        Örnek: blog-adi-1 (Büyük harf ve boşluk kullanmayınız.
+                        Boşluk yerine "-" kullanınız.)
+                      </p>
+                    </div>
+                  }
+                >
+                  <div>
+                    <RiInformationFill
+                      className={"text-yellow-500"}
+                      fontSize={18}
+                    />
+                  </div>
+                </Tooltip>
+              </label>
               <input
                 type="text"
                 name="slug"
                 id="slug"
-                placeholder="İçerik için kısa url giriniz..."
+                placeholder="İçerik için kısa url giriniz... Ör: blog-adi-1"
                 className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
               />
             </div>
@@ -214,7 +236,7 @@ const PostAdd = () => {
                 <Tooltip content={<IframeContent />}>
                   <div>
                     <RiInformationFill
-                      className={"text-yellow-500/50"}
+                      className={"text-yellow-500"}
                       fontSize={18}
                     />
                   </div>

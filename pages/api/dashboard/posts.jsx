@@ -21,10 +21,9 @@ const updatePosts = async (req, res, fields, files) => {
     content,
     status,
     user,
-
     category,
     subCategory,
-    iframeText
+    iframeText,
   } = fields;
   let data = {
     title: title?.[0],
@@ -53,9 +52,9 @@ const updatePosts = async (req, res, fields, files) => {
 
     try {
       const postsUpdated = await Posts.findOneAndUpdate(
-        {_id: fields.id[0]},
-        {$set: data},
-        {new: true}
+        { _id: fields.id[0] },
+        { $set: data },
+        { new: true }
       );
 
       if (!postsUpdated) {
@@ -68,20 +67,31 @@ const updatePosts = async (req, res, fields, files) => {
     }
   } else {
     try {
-      const {title, description, slug, content, status, user} = fields;
+      const {
+        title,
+        description,
+        slug,
+        content,
+        status,
+        category,
+        subCategory,
+        user,
+      } = fields;
       const data = {
         title: title[0],
         description: description[0],
         slug: slug[0].trim().toLowerCase().replace(/ /g, "-"),
         content: content[0],
+        category: category[0],
+        subCategory: subCategory[0],
         status: status[0] === "true",
         user: user[0],
       };
 
       const postsUpdated = await Posts.findOneAndUpdate(
-        {_id: fields.id[0]},
-        {$set: data},
-        {new: true}
+        { _id: fields.id[0] },
+        { $set: data },
+        { new: true }
       );
 
       if (!postsUpdated) {
@@ -94,7 +104,6 @@ const updatePosts = async (req, res, fields, files) => {
     }
   }
 };
-
 
 export default async function handler(req, res) {
   await notAdmin(req, res);
@@ -125,15 +134,21 @@ export default async function handler(req, res) {
           if (req.query.category) {
             const breakAndIncomData = await Posts.find({
               category: req.query.category,
-            }).populate("user").select("-password -walletAddress -email")
+            })
+              .populate("user")
+              .select("-password -walletAddress -email");
 
             sendSuccessResponse(res, breakAndIncomData);
           } else if (req.query.id) {
-
-            const breakAndIncomData = await Posts.findById(req.query.id).populate("user", "-password -walletAddress -email ")
+            const breakAndIncomData = await Posts.findById(
+              req.query.id
+            ).populate("user", "-password -walletAddress -email ");
             sendSuccessResponse(res, breakAndIncomData);
           } else {
-            const breakAndIncomData = await Posts.find({}).populate("user", "-password -walletAddress -email ")
+            const breakAndIncomData = await Posts.find({}).populate(
+              "user",
+              "-password -walletAddress -email "
+            );
             sendSuccessResponse(res, breakAndIncomData);
           }
         } catch (error) {
@@ -158,17 +173,12 @@ export default async function handler(req, res) {
 
           const imageName = `${slug[0]}-${Date.now()}`;
 
-
           const imagePath = files.image[0].filepath;
 
-
-          const imageUrl = await cloudinary.v2.uploader.upload(
-            imagePath,
-            {
-              folder: "posts",
-              public_id: imageName,
-            }
-          );
+          const imageUrl = await cloudinary.v2.uploader.upload(imagePath, {
+            folder: "posts",
+            public_id: imageName,
+          });
           const data = {
             title: title[0],
             description: description[0],

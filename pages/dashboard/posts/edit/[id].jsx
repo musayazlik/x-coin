@@ -36,7 +36,6 @@ const PostEdit = ({ resData }) => {
     const title = e.target.title.value;
     const description = e.target.description.value;
     const slug = e.target.slug.value;
-
     const category = e.target.category.value;
     const subCategory = e.target.subCategory.value;
     const image = e.target.image.files[0];
@@ -156,7 +155,11 @@ const PostEdit = ({ resData }) => {
                   İçerik kategorisini seçiniz...
                 </option>
                 {categoriesList.map((item) => (
-                  <option key={item.value} value={item.value}>
+                  <option
+                    key={item.value}
+                    value={item.value}
+                    selected={resData.category === item.value}
+                  >
                     {item.label}
                   </option>
                 ))}
@@ -173,12 +176,28 @@ const PostEdit = ({ resData }) => {
                 <option selected={true} disabled>
                   İçerik kategorisini seçiniz...
                 </option>
-                <option value="short-term">Short Term (Kısa Vadeli)</option>
-                <option value="subcoin-mix">Long Term (Uzun Vadeli)</option>
-                <option value="support-resistance">
+                <option
+                  value="short-term"
+                  selected={resData.subCategory === "short-term"}
+                >
+                  Short Term (Kısa Vadeli)
+                </option>
+                <option
+                  value="subcoin-mix"
+                  selected={resData.subCategory === "subcoin-mix"}
+                >
+                  Long Term (Uzun Vadeli)
+                </option>
+                <option
+                  value="support-resistance"
+                  selected={resData.subCategory === "support-resistance"}
+                >
                   Support - Resistance (Destek - Direnç)
                 </option>
-                <option value="major-factors">
+                <option
+                  value="major-factors"
+                  selected={resData.subCategory === "major-factors"}
+                >
                   Major Factors (Ana Faktörler)
                 </option>
               </select>
@@ -225,6 +244,7 @@ const PostEdit = ({ resData }) => {
               <textarea
                 rows={20}
                 name={"iframeText"}
+                defaultValue={resData.iframeText}
                 className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
                 placeholder={"İframe içeriğini buraya yapıştırınız..."}
               ></textarea>
