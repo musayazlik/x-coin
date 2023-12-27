@@ -20,16 +20,17 @@ export default {
   freeTrainings: "Free Trainings",
   paidTrainings: "Paid Trainings",
   liveTrainings: "Live Trainings",
-  educationText: "Analysis of the total value of the cryptocurrency market. Here The analyzes contained are not investment advice. just education It is purposeful. Make your investment decisions based on your own research. Please give. It is not investment advice.",
+  educationText:
+    "Analysis of the total value of the cryptocurrency market. Here The analyzes contained are not investment advice. just education It is purposeful. Make your investment decisions based on your own research. Please give. It is not investment advice.",
   popular: "Popular",
   educations: "Educations",
-  popularEducationsText: "Some of our popular trainings are listed below. You can visit our education page for more education.",
+  popularEducationsText:
+    "Some of our popular trainings are listed below. You can visit our education page for more education.",
   free: "Free",
   alarms: "Alarms",
   instructor: "Instructor",
   popularEducations: "Popular Educations",
   privacy_policy: "Privacy Policy",
-
 
   analytics: {
     title: "Analysis",
@@ -41,10 +42,10 @@ export default {
     breakAndIncom: "Breakdowns and Incompatibilities",
   },
 
-
   homepage: {
     title: "TraderEdit™",
-    description: "TraderEdit™ is a platform that allows users to learn about all stock market data using world market data.",
+    description:
+      "TraderEdit™ is a platform that allows users to learn about all stock market data using world market data.",
     keywords: "TraderEdit™, Stock Market, Crypto, Forex, All Markets",
     menu: {
       home: "Home",
@@ -52,7 +53,6 @@ export default {
       aboutus: "About Us",
       education: "Educations",
       contact: "Contact",
-
     },
     avatarDropdown: {
       hello: "Hello",
@@ -64,7 +64,8 @@ export default {
       signout: "Sign Out",
       login: "Sign In",
       register: "Sign Up",
-    }
+      analysis: "Analysis",
+    },
   },
 
   loginPage: {
@@ -159,9 +160,11 @@ export default {
 
   aboutUsPage: {
     title: "About Us",
-    description: "TraderEdit™ is a platform that allows users to learn about all stock market data using world market data.",
+    description:
+      "TraderEdit™ is a platform that allows users to learn about all stock market data using world market data.",
     keywords: "TraderEdit™, Stock Market, Crypto, Forex, All Markets",
-    contentText: "TraderEdit™ is a platform that allows users to learn about all stock market data using world market data.",
+    contentText:
+      "TraderEdit™ is a platform that allows users to learn about all stock market data using world market data.",
     contactUs: "Contact Us",
     contactUsText: "You can contact us by filling out the form below.",
     button: "Send Message",
@@ -169,7 +172,8 @@ export default {
 
   contactPage: {
     title: "Contact",
-    description: "TraderEdit™ is a platform that allows users to learn about all stock market data using world market data.",
+    description:
+      "TraderEdit™ is a platform that allows users to learn about all stock market data using world market data.",
     keywords: "TraderEdit™, Stock Market, Crypto, Forex, All Markets",
     contactUs: "Contact Us",
     contactUsText: "You can contact us by filling out the form below.",
@@ -178,10 +182,12 @@ export default {
 
   termsOfUse: {
     title: "Terms of Use",
-    description: "Welcome! Please carefully read the Terms of Use for TraderEdit. These terms define the rules and conditions you must adhere to while using our website.",
+    description:
+      "Welcome! Please carefully read the Terms of Use for TraderEdit. These terms define the rules and conditions you must adhere to while using our website.",
     keywords: "TraderEdit™, Stock Market, Crypto, Forex, All Markets",
-    contentText: "Welcome! Please carefully read the Terms of Use for TraderEdit. These terms define the rules and conditions you must adhere to while using our website.",
-    ourTeams: "Our friendly team is here to help."
+    contentText:
+      "Welcome! Please carefully read the Terms of Use for TraderEdit. These terms define the rules and conditions you must adhere to while using our website.",
+    ourTeams: "Our friendly team is here to help.",
   },
 
   basket: {
@@ -192,7 +198,8 @@ export default {
     addedToBasket: "Added to Basket",
     removedFromBasket: "Removed from Basket",
     basketEmpty: "Basket is empty",
-    basketEmptyText: "You can add products to your basket by clicking the add to basket button on the product page.",
+    basketEmptyText:
+      "You can add products to your basket by clicking the add to basket button on the product page.",
     basketEmptyButtonText: "Explore Products",
     basketTotal: "Total",
     basketCheckout: "Checkout",
@@ -200,7 +207,5 @@ export default {
     cardCheckout: "Checkout with Cart",
     coinPaymentscheckout: "Checkout with CoinPayments",
     alreadyExist: "Training already added to cart...",
-  }
-
-
+  },
 };

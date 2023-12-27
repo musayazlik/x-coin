@@ -1,5 +1,5 @@
-import {useRouter} from "next/router";
-import {lang} from "@/lang/langT";
+import { useRouter } from "next/router";
+import { lang } from "@/lang/langT";
 
 import SidebarLayout from "./layout";
 
@@ -8,24 +8,18 @@ import AnalysisMenu from "@components/sidebar/analysisMenu";
 import FeedMenu from "@components/sidebar/feedMenu";
 
 const Sidebar = () => {
-  const {locale, pathname} = useRouter();
+  const { locale, pathname } = useRouter();
   const t = lang(locale);
   return (
-
     <>
-      {
-        pathname.includes("/education") ? null : (
-          <SidebarLayout>
-            {pathname.includes("/feed") && <FeedMenu/>}
-            {pathname.includes("/analysis") && <AnalysisMenu/>}
-            {/* {pathname.includes("/education") && <EducationMenu/>}*/}
-          </SidebarLayout>
-        )
-      }
-
-
+      {pathname.includes("/education") ? null : (
+        <SidebarLayout>
+          {/* {pathname.includes("/feed") && <FeedMenu/>} */}
+          {pathname.includes("/analysis") && <AnalysisMenu />}
+          {/* {pathname.includes("/education") && <EducationMenu/>}*/}
+        </SidebarLayout>
+      )}
     </>
-
   );
 };
 

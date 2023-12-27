@@ -3,22 +3,25 @@ import SidebarLayout from "./layout";
 import MenuItem from "./menuItem/index";
 import DropdownMenu from "./dropdownMenu";
 import SubMenuItem from "./subMenuItem/index";
-import {MdCurrencyBitcoin} from "react-icons/md";
-import {AiOutlineDollarCircle} from "react-icons/ai";
+import { MdCurrencyBitcoin } from "react-icons/md";
+import { AiOutlineDollarCircle } from "react-icons/ai";
 import {
   RiDraftLine,
   RiLayout2Line,
   RiShoppingBasketLine,
-  RiUser3Line
+  RiUser3Line,
 } from "react-icons/ri";
-import {HiOutlineAcademicCap} from "react-icons/hi2";
-import {HiMail} from "react-icons/hi";
+import { HiOutlineAcademicCap } from "react-icons/hi2";
+import { HiMail } from "react-icons/hi";
 
 const Sidebar = () => {
   return (
     <SidebarLayout>
-      <MenuItem url={"/dashboard"} Icon={RiLayout2Line}
-                text={"Kontrol Paneli"}/>
+      <MenuItem
+        url={"/dashboard"}
+        Icon={RiLayout2Line}
+        text={"Kontrol Paneli"}
+      />
 
       <MenuItem
         url={"/dashboard/users"}
@@ -48,32 +51,21 @@ const Sidebar = () => {
         text={"Kripto Ayarları"}
         dropMenuStatus={true}
         Icon={MdCurrencyBitcoin}
-        subMenuList={["/dashboard/on-chain", "/dashboard/break-and-incom"]}
+        subMenuList={["/dashboard/on-chain", "/dashboard/alarms"]}
       >
-        <SubMenuItem text={"On Chain"} url={"/dashboard/on-chain"}/>
-        <SubMenuItem
-          text={"Kırılım ve Uyumsuzluklar"}
-          url={"/dashboard/break-and-incom"}
-        />
+        <SubMenuItem text={"Alarmlar"} url={"/dashboard/alarms"} />
       </DropdownMenu>
 
       <DropdownMenu
         text={"Forex Ayarları"}
         dropMenuStatus={true}
         Icon={AiOutlineDollarCircle}
-        subMenuList={["/dashboard/forex-break-and-incom"]}
+        subMenuList={["/dashboard/forex-alarms"]}
       >
-        <SubMenuItem
-          text={"Forex Kırılım ve Uyumsuzluklar"}
-          url={"/dashboard/forex-break-and-incom"}
-        />
+        <SubMenuItem text={"Forex Alarmlar"} url={"/dashboard/forex-alarms"} />
       </DropdownMenu>
 
-      <MenuItem
-        url={"/dashboard/messages"}
-        Icon={HiMail}
-        text={"Mesajlar"}
-      />
+      <MenuItem url={"/dashboard/messages"} Icon={HiMail} text={"Mesajlar"} />
     </SidebarLayout>
   );
 };

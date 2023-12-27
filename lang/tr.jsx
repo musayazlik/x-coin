@@ -20,16 +20,17 @@ export default {
   freeTrainings: "Ücretsiz Eğitimler",
   paidTrainings: "Ücretli Eğitimler",
   liveTrainings: "Canlı Eğitimler",
-  educationText: "Kripto para piyasasının toplam değerinin analizi. Burada yer alan analizler yatırım tavsiyesi değildir. Sadece eğitim amaçlıdır. Yatırım kararlarınızı kendi araştırmalarınız sonucunda veriniz. Lütfen dikkate almayınız. Yatırım tavsiyesi değildir.",
+  educationText:
+    "Kripto para piyasasının toplam değerinin analizi. Burada yer alan analizler yatırım tavsiyesi değildir. Sadece eğitim amaçlıdır. Yatırım kararlarınızı kendi araştırmalarınız sonucunda veriniz. Lütfen dikkate almayınız. Yatırım tavsiyesi değildir.",
   popular: "Popüler",
   educations: "Eğitimler",
-  popularEducationsText: "Popüler eğitimlerimizden bazıları aşağıda yer almaktadır. Daha fazla eğitim için eğitim sayfamızı ziyaret edebilirsiniz.",
+  popularEducationsText:
+    "Popüler eğitimlerimizden bazıları aşağıda yer almaktadır. Daha fazla eğitim için eğitim sayfamızı ziyaret edebilirsiniz.",
   free: "Ücretsiz",
   alarms: "Alarmlar",
   instructor: "Eğitmen",
   popularEducations: "Popüler Eğitimler",
   privacy_policy: "Gizlilik Politikası",
-
 
   analytics: {
     title: "Analiz",
@@ -41,10 +42,10 @@ export default {
     breakAndIncom: "Kırılımlar ve Uyumsuzluklar",
   },
 
-
   homepage: {
     title: "TraderEdit™",
-    description: "TraderEdit™, dünya piyasa verilerini kullanarak, kullanıcıların tüm borsa verileri hakkında bilgi edinmelerini sağlayan bir platformdur.",
+    description:
+      "TraderEdit™, dünya piyasa verilerini kullanarak, kullanıcıların tüm borsa verileri hakkında bilgi edinmelerini sağlayan bir platformdur.",
     keywords: "TraderEdit™, Borsa, Kripto, Forex, Tüm Piyasalar",
     menu: {
       home: "Anasayfa",
@@ -52,10 +53,8 @@ export default {
       aboutus: "Hakkımızda",
       education: "Eğitimler",
       contact: "İletişim",
-
     },
     avatarDropdown: {
-
       hello: "Merhaba",
       dashboard: "Yönetim Paneli",
       feed: "Akış",
@@ -65,7 +64,8 @@ export default {
       signout: "Çıkış Yap",
       login: "Giriş Yap",
       register: "Kayıt Ol",
-    }
+      analysis: "Analiz",
+    },
   },
 
   loginPage: {
@@ -150,7 +150,6 @@ export default {
     signout: "Çıkış Yap",
   },
 
-
   footer: {
     privacyPolicy: "Gizlilik Politikası",
     cookiePreferences: "Çerezler",
@@ -161,29 +160,34 @@ export default {
 
   aboutUsPage: {
     title: "Hakkımızda",
-    description: "TraderEdit™, dünya piyasa verilerini kullanarak, kullanıcıların tüm borsa verileri hakkında bilgi edinmelerini sağlayan bir platformdur.",
+    description:
+      "TraderEdit™, dünya piyasa verilerini kullanarak, kullanıcıların tüm borsa verileri hakkında bilgi edinmelerini sağlayan bir platformdur.",
     keywords: "TraderEdit™, Borsa, Kripto, Forex, Tüm Piyasalar",
-    contentText: "TraderEdit™, dünya piyasa verilerini kullanarak," +
+    contentText:
+      "TraderEdit™, dünya piyasa verilerini kullanarak," +
       " kullanıcıların tüm borsa verileri hakkında bilgi edinmelerini sağlayan bir platformdur.",
     contactUs: "İletişime Geçin",
-    contactUsText: "Sorularınız ve daha detaylı bilgi için bizimle iletişime geçin.",
+    contactUsText:
+      "Sorularınız ve daha detaylı bilgi için bizimle iletişime geçin.",
     button: "Mesaj Gönder",
   },
 
   contactPage: {
     title: "İletişim",
-    description: "TraderEdit™, dünya piyasa verilerini kullanarak, kullanıcıların tüm borsa verileri hakkında bilgi edinmelerini sağlayan bir platformdur.",
+    description:
+      "TraderEdit™, dünya piyasa verilerini kullanarak, kullanıcıların tüm borsa verileri hakkında bilgi edinmelerini sağlayan bir platformdur.",
     keywords: "TraderEdit™, Borsa, Kripto, Forex, Tüm Piyasalar",
     contactUs: "İletişime Geçin",
-    contactUsText: "Sorularınız ve daha detaylı bilgi için bizimle iletişime geçin.",
+    contactUsText:
+      "Sorularınız ve daha detaylı bilgi için bizimle iletişime geçin.",
     button: "Mesaj Gönder",
-    ourTeams: "Dost canlısı ekibimiz yardıma hazır."
+    ourTeams: "Dost canlısı ekibimiz yardıma hazır.",
   },
-
 
   termsOfUse: {
     title: "Kullanım Şartları",
-    description: "Hoş geldin! Lütfen TraderEdit Kullanım Koşullarını dikkatlice okuyun. Bu şartlar, web sitemizi kullanırken uymanız gereken kural ve koşulları tanımlar.",
+    description:
+      "Hoş geldin! Lütfen TraderEdit Kullanım Koşullarını dikkatlice okuyun. Bu şartlar, web sitemizi kullanırken uymanız gereken kural ve koşulları tanımlar.",
     keywords: "Trader Edit, Borsa, Kripto, Forex, Tüm Piyasalar",
   },
 
@@ -203,6 +207,5 @@ export default {
     cardCheckout: "Cart ile Ödeme Yap",
     coinPaymentscheckout: "CoinPayments İle Öde",
     alreadyExist: "Eğitim zaten sepete eklenmiş...",
-
-  }
+  },
 };

@@ -1,16 +1,16 @@
-import {useRouter} from "next/router";
-import {lang} from "@lang/langT";
+import { useRouter } from "next/router";
+import { lang } from "@lang/langT";
 import DropdownMenu from "@components/sidebar/dropdownMenu";
-import {MdCurrencyBitcoin} from "react-icons/md";
+import { MdCurrencyBitcoin } from "react-icons/md";
 import SubMenuItem from "@components/sidebar/subMenuItem";
-import {BiDollarCircle} from "react-icons/bi";
-import {RiGlobalLine} from "react-icons/ri";
+import { BiDollarCircle } from "react-icons/bi";
+import { RiGlobalLine } from "react-icons/ri";
 import MenuItem from "@components/sidebar/menuItem";
-import {BsQuestionLg} from "react-icons/bs";
+import { BsQuestionLg } from "react-icons/bs";
 import SubDropdownMenu from "@components/sidebar/subDropdownMenu";
 
 const AnalysisMenu = () => {
-  const {locale} = useRouter();
+  const { locale } = useRouter();
   const t = lang(locale);
   return (
     <>
@@ -26,7 +26,7 @@ const AnalysisMenu = () => {
           "/analysis/blockchain/crypto-indices",
           "/analysis/blockchain/sub-coins",
           "/analysis/blockchain/on-chain",
-          "/feed/blockchain/break-and-incom",
+          "/analysis/blockchain/alarms",
         ]}
       >
         <SubMenuItem
@@ -50,10 +50,7 @@ const AnalysisMenu = () => {
           text={t.cryptoPage.onChain}
           url={"/analysis/blockchain/on-chain"}
         />
-        <SubMenuItem
-          text={t.alarms}
-          url={"/feed/blockchain/break-and-incom"}
-        />
+        <SubMenuItem text={t.alarms} url={"/analysis/blockchain/alarms"} />
       </DropdownMenu>
       <DropdownMenu
         text={"Forex"}
@@ -71,23 +68,20 @@ const AnalysisMenu = () => {
           "/analysis/forex/silver",
           "/analysis/forex/oil",
           "/analysis/forex/natqas",
-          "/feed/forex/forex-break-and-incom",
+          "/analysis/forex/forex-alarms",
         ]}
       >
-        <SubMenuItem text={"Sp500"} url={"/analysis/forex/sp500"}/>
-        <SubMenuItem text={"Nasdaq"} url={"/analysis/forex/nasdaq"}/>
-        <SubMenuItem text={"Dax"} url={"/analysis/forex/dax"}/>
-        <SubMenuItem text={"Dxy"} url={"/analysis/forex/dxy"}/>
-        <SubMenuItem text={"Eur/Usd"} url={"/analysis/forex/eur-usd"}/>
-        <SubMenuItem text={"Usd/Jpy"} url={"/analysis/forex/usd-jpy"}/>
-        <SubMenuItem text={t.forexPage.gold} url={"/analysis/forex/gold"}/>
-        <SubMenuItem text={t.forexPage.silver} url={"/analysis/forex/silver"}/>
-        <SubMenuItem text={t.forexPage.oil} url={"/analysis/forex/oil"}/>
-        <SubMenuItem text={"Natqas"} url={"/analysis/forex/natqas"}/>
-        <SubMenuItem
-          text={t.alarms}
-          url={"/feed/forex/forex-break-and-incom"}
-        />
+        <SubMenuItem text={"Sp500"} url={"/analysis/forex/sp500"} />
+        <SubMenuItem text={"Nasdaq"} url={"/analysis/forex/nasdaq"} />
+        <SubMenuItem text={"Dax"} url={"/analysis/forex/dax"} />
+        <SubMenuItem text={"Dxy"} url={"/analysis/forex/dxy"} />
+        <SubMenuItem text={"Eur/Usd"} url={"/analysis/forex/eur-usd"} />
+        <SubMenuItem text={"Usd/Jpy"} url={"/analysis/forex/usd-jpy"} />
+        <SubMenuItem text={t.forexPage.gold} url={"/analysis/forex/gold"} />
+        <SubMenuItem text={t.forexPage.silver} url={"/analysis/forex/silver"} />
+        <SubMenuItem text={t.forexPage.oil} url={"/analysis/forex/oil"} />
+        <SubMenuItem text={"Natqas"} url={"/analysis/forex/natqas"} />
+        <SubMenuItem text={t.alarms} url={"/analysis/forex/forex-alarms"} />
       </DropdownMenu>
       <DropdownMenu
         text={"All Markets"}
@@ -129,10 +123,12 @@ const AnalysisMenu = () => {
           "/analysis/all-markets/stock-markets/usa/sp500",
         ]}
       >
-
-        <SubDropdownMenu key={"Commodities"} title={"Commodities"}
-                         label={"Commodities"} primaryKey={"Commodities"}>
-
+        <SubDropdownMenu
+          key={"Commodities"}
+          title={"Commodities"}
+          label={"Commodities"}
+          primaryKey={"Commodities"}
+        >
           <SubMenuItem
             text={"Coffee"}
             url={"/analysis/all-markets/commodities/coffee"}
@@ -161,11 +157,13 @@ const AnalysisMenu = () => {
             text={"Wheat"}
             url={"/analysis/all-markets/commodities/wheat"}
           />
-
         </SubDropdownMenu>
 
-        <SubDropdownMenu key={"Energy Market"} label={"Energy Market"}
-                         title={"Energy Market"}>
+        <SubDropdownMenu
+          key={"Energy Market"}
+          label={"Energy Market"}
+          title={"Energy Market"}
+        >
           <SubMenuItem
             text={"Energy ETF"}
             url={"/analysis/all-markets/energy-market/energy-etf"}
@@ -175,8 +173,11 @@ const AnalysisMenu = () => {
             url={"/analysis/all-markets/energy-market/natgas"}
           />
         </SubDropdownMenu>
-        <SubDropdownMenu key={"Metal Market"} label={"Metal Market"}
-                         title={"Metal Market"}>
+        <SubDropdownMenu
+          key={"Metal Market"}
+          label={"Metal Market"}
+          title={"Metal Market"}
+        >
           <SubMenuItem
             text={"Copper"}
             url={"/analysis/all-markets/metal-market/copper"}
@@ -198,7 +199,6 @@ const AnalysisMenu = () => {
             text={"Platinium"}
             url={"/analysis/all-markets/metal-market/platinium"}
           />
-
         </SubDropdownMenu>
         <SubDropdownMenu key={"Parities"} label={"Parities"} title={"Parities"}>
           <SubMenuItem
@@ -223,7 +223,6 @@ const AnalysisMenu = () => {
           />
         </SubDropdownMenu>
 
-
         <SubDropdownMenu
           key={"Stock Market"}
           label={"Stock Market"}
@@ -244,11 +243,7 @@ const AnalysisMenu = () => {
             "sp500",
           ]}
         >
-
-
-          <div
-            className="text-gray-200 flex items-center w-full  gap-2 text-xs font-semibold uppercase mb-2 px-1 "
-          >
+          <div className="text-gray-200 flex items-center w-full  gap-2 text-xs font-semibold uppercase mb-2 px-1 ">
             <span className={"w-3 h-0.5 bg-yellow-500 rounded-full "}></span>
             Asia
           </div>
@@ -257,8 +252,7 @@ const AnalysisMenu = () => {
             <SubMenuItem
               text={"China50"}
               url={"/analysis/all-markets/stock-markets/asia/china50"}
-            >
-            </SubMenuItem>
+            ></SubMenuItem>
             <SubMenuItem
               text={"Hangseng50 (HongKong)"}
               url={"/analysis/all-markets/stock-markets/asia/hangseng50"}
@@ -273,10 +267,7 @@ const AnalysisMenu = () => {
             />
           </div>
 
-
-          <div
-            className="text-gray-200 flex items-center w-full  gap-2 text-xs font-semibold uppercase mb-2 px-1 mt-3 "
-          >
+          <div className="text-gray-200 flex items-center w-full  gap-2 text-xs font-semibold uppercase mb-2 px-1 mt-3 ">
             <span className={"w-3 h-0.5 bg-yellow-500 rounded-full "}></span>
             Europa
           </div>
@@ -285,8 +276,7 @@ const AnalysisMenu = () => {
             <SubMenuItem
               text={"Cac40 (France)"}
               url={"/analysis/all-markets/stock-markets/europa/cac40"}
-            >
-            </SubMenuItem>
+            ></SubMenuItem>
             <SubMenuItem
               text={"Dax (Germany)"}
               url={"/analysis/all-markets/stock-markets/europa/dax"}
@@ -306,9 +296,7 @@ const AnalysisMenu = () => {
             />
           </div>
 
-          <div
-            className="text-gray-200 flex items-center w-full  gap-2 text-xs font-semibold uppercase mb-2 px-1 mt-3 "
-          >
+          <div className="text-gray-200 flex items-center w-full  gap-2 text-xs font-semibold uppercase mb-2 px-1 mt-3 ">
             <span className={"w-3 h-0.5 bg-yellow-500 rounded-full "}></span>
             Usa
           </div>
@@ -317,8 +305,7 @@ const AnalysisMenu = () => {
             <SubMenuItem
               text={"Down Jones"}
               url={"/analysis/all-markets/stock-markets/usa/down-jones"}
-            >
-            </SubMenuItem>
+            ></SubMenuItem>
             <SubMenuItem
               text={"Nasdaq"}
               url={"/analysis/all-markets/stock-markets/usa/nasdaq"}
@@ -331,15 +318,11 @@ const AnalysisMenu = () => {
               text={"Sp500"}
               url={"/analysis/all-markets/stock-markets/usa/sp500"}
             />
-
-
           </div>
-
-
         </SubDropdownMenu>
       </DropdownMenu>
       <MenuItem
-        url={"/feed/question-answer"}
+        url={"/analysis/question-answer"}
         Icon={BsQuestionLg}
         text={t.questionAnswerPage.questionAnswer}
       />

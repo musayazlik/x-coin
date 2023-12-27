@@ -25,7 +25,7 @@ const EducationMenu = () => {
           "/education/blockchain/crypto-indices",
           "/education/blockchain/sub-coins",
           "/education/blockchain/on-chain",
-          "/feed/blockchain/break-and-incom",
+          "/analysis/blockchain/alarms",
         ]}
       >
         <SubMenuItem
@@ -51,7 +51,7 @@ const EducationMenu = () => {
         />
         <SubMenuItem
           text={t.cryptoPage.breakAndIncom}
-          url={"/feed/blockchain/break-and-incom"}
+          url={"/analysis/blockchain/alarms"}
         />
       </DropdownMenu>
       <DropdownMenu
@@ -70,7 +70,7 @@ const EducationMenu = () => {
           "/education/forex/silver",
           "/education/forex/oil",
           "/education/forex/natqas",
-          "/feed/forex/forex-break-and-incom",
+          "/analysis/forex/forex-alarms",
         ]}
       >
         <SubMenuItem text={"Sp500"} url={"/education/forex/sp500"} />
@@ -88,7 +88,7 @@ const EducationMenu = () => {
         <SubMenuItem text={"Natqas"} url={"/education/forex/natqas"} />
         <SubMenuItem
           text={t.forexPage.breakAndIncom}
-          url={"/feed/forex/forex-break-and-incom"}
+          url={"/analysis/forex/forex-alarms"}
         />
       </DropdownMenu>
 
@@ -230,7 +230,7 @@ const EducationMenu = () => {
       </DropdownMenu>
 
       <MenuItem
-        url={"/feed/question-answer"}
+        url={"/analysis/question-answer"}
         Icon={BsQuestionLg}
         text={t.questionAnswerPage.questionAnswer}
       />

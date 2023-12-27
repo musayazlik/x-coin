@@ -13,54 +13,61 @@ import {
   Spinner,
   User,
 } from "@nextui-org/react";
-import {signOut, useSession} from "next-auth/react";
-import {useRouter} from "next/router";
+import { signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 import LangDropdown from "@components/langDropdown";
-import {lang} from "@/lang/langT";
-import {RiUserAddLine, RiUserFill} from "react-icons/ri";
+import { lang } from "@/lang/langT";
+import { RiUserAddLine, RiUserFill } from "react-icons/ri";
 import Basket from "@components/basket";
-import {PiUserDuotone} from "react-icons/pi";
+import { PiUserDuotone } from "react-icons/pi";
 
 const Menu = () => {
-  const {locale, push, pathname} = useRouter();
-  const {data: session, status} = useSession();
+  const { locale, push, pathname } = useRouter();
+  const { data: session, status } = useSession();
   const t = lang(locale);
 
   const menuItems = [
-    {path: '/', label: 'home'},
-    {path: '/feed', label: 'feed'},
-    {path: '/about-us', label: 'aboutus'},
-    {path: '/education', label: 'education'},
-    {path: '/contact', label: 'contact'},
+    { path: "/", label: "home" },
+    { path: "/analysis", label: "analysis" },
+    { path: "/about-us", label: "aboutus" },
+    { path: "/education", label: "education" },
+    { path: "/contact", label: "contact" },
   ];
   return (
-    <Navbar maxWidth="2xl" position="sticky" isBordered isBlurred
-            className={"py-2"}>
+    <Navbar
+      maxWidth="2xl"
+      position="sticky"
+      isBordered
+      isBlurred
+      className={"py-2"}
+    >
       <NavbarBrand>
         <Link href="/">
           <h1 className="font-bold text-inherit">TraderEdit</h1>
         </Link>
       </NavbarBrand>
       <NavbarContent className="hidden lg:flex gap-4 md:gap-8" justify="center">
-        {menuItems.map(({path, label}) => (
+        {menuItems.map(({ path, label }) => (
           <NavbarItem key={path} isActive={pathname === path} path={path}>
             <Link color={pathname !== path ? "foreground" : ""} href={path}>
               {t.homepage.menu[label]}
             </Link>
           </NavbarItem>
         ))}
-
       </NavbarContent>
       <NavbarContent justify="end" className={"gap-1"}>
+        <Basket />
 
-        <Basket/>
-
-        <LangDropdown/>
+        <LangDropdown />
         {status === "authenticated" ? (
           <>
-            <Dropdown backdrop={"blur"} variant="faded" showArrow
-                      placement="bottom-start"
-                      className={"mt-6"}>
+            <Dropdown
+              backdrop={"blur"}
+              variant="faded"
+              showArrow
+              placement="bottom-start"
+              className={"mt-6"}
+            >
               <DropdownTrigger>
                 <div className={"relative flex flex-shrink-0"}>
                   <User
@@ -73,13 +80,9 @@ const Menu = () => {
                     description={`@${session.user.username}`}
                     name={`${session.user.name + " " + session.user.surname}`}
                   />
-
                 </div>
-
-
               </DropdownTrigger>
-              <DropdownMenu aria-label="User Actions" variant="faded"
-              >
+              <DropdownMenu aria-label="User Actions" variant="faded">
                 <DropdownItem key="profile" className="h-14 gap-2">
                   <p className="font-bold">
                     {session.user.name + " " + session.user.surname}
@@ -88,91 +91,71 @@ const Menu = () => {
                 </DropdownItem>
 
                 {session?.user?.role === "admin" && (
-                  <DropdownItem key="Dashboard"
-                                onClick={() => push("/dashboard")}>
-                    {
-                      t.homepage.avatarDropdown.dashboard
-                    }
+                  <DropdownItem
+                    key="Dashboard"
+                    onClick={() => push("/dashboard")}
+                  >
+                    {t.homepage.avatarDropdown.dashboard}
                   </DropdownItem>
-                )
-                }
-                <DropdownItem key="Feed" onClick={() => push("/feed")}>
-                  {
-                    t.homepage.avatarDropdown.feed
-                  }
+                )}
+                <DropdownItem key="Analysis" onClick={() => push("/analysis")}>
+                  {t.homepage.avatarDropdown.analysis}
                 </DropdownItem>
                 <DropdownItem key="Profile">
-                  {
-                    t.homepage.avatarDropdown.profile
-                  }
+                  {t.homepage.avatarDropdown.profile}
                 </DropdownItem>
                 <DropdownItem key="help_and_feedback">
-                  {
-                    t.homepage.avatarDropdown.support
-                  }
+                  {t.homepage.avatarDropdown.support}
                 </DropdownItem>
                 <DropdownItem
                   key="logout"
                   color="danger"
                   onClick={() => signOut()}
                 >
-                  {
-                    t.homepage.avatarDropdown.signout
-                  }
+                  {t.homepage.avatarDropdown.signout}
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown>
           </>
         ) : status === "loading" ? (
-          <Spinner/>
+          <Spinner />
         ) : (
           <>
-
-
-            <Dropdown backdrop={"blur"} showArrow variant="faded"
-            >
+            <Dropdown backdrop={"blur"} showArrow variant="faded">
               <DropdownTrigger>
-
-
-                <Button isIconOnly={true} variant={"light"}
-
-                        className={"w-10 h-10 p-1 flex " +
-                          " justify-center" +
-                          " items-center"}>
-                  <PiUserDuotone fontSize={22} className={"text-white"}/>
+                <Button
+                  isIconOnly={true}
+                  variant={"light"}
+                  className={
+                    "w-10 h-10 p-1 flex " + " justify-center" + " items-center"
+                  }
+                >
+                  <PiUserDuotone fontSize={22} className={"text-white"} />
                 </Button>
-
               </DropdownTrigger>
               <DropdownMenu variant="faded" aria-label="Static Actions">
-                <DropdownItem className={"duration-300"}
-                              onClick={() => push("/auth/login")}>
-                  <div className={"flex items-center gap-3 py-2 px-2 "}
-
-                  >
-                    <RiUserFill fontSize={24}
-                    />
-                    <span> {
-                      t.homepage.avatarDropdown.login
-                    }</span>
-
+                <DropdownItem
+                  className={"duration-300"}
+                  onClick={() => push("/auth/login")}
+                >
+                  <div className={"flex items-center gap-3 py-2 px-2 "}>
+                    <RiUserFill fontSize={24} />
+                    <span> {t.homepage.avatarDropdown.login}</span>
                   </div>
                 </DropdownItem>
-                <DropdownItem variant={"bordered"} color={"warning"}
-                              className={"duration-300"}
-                              onClick={() => push("/auth/register")}
+                <DropdownItem
+                  variant={"bordered"}
+                  color={"warning"}
+                  className={"duration-300"}
+                  onClick={() => push("/auth/register")}
                 >
                   <div className={"flex items-center gap-3 py-1.5 px-2"}>
-                    <RiUserAddLine fontSize={24}/>
-                    <span> {
-                      t.homepage.avatarDropdown.register
-                    }</span>
-
+                    <RiUserAddLine fontSize={24} />
+                    <span> {t.homepage.avatarDropdown.register}</span>
                   </div>
                 </DropdownItem>
-
               </DropdownMenu>
             </Dropdown>
-
           </>
         )}
       </NavbarContent>
