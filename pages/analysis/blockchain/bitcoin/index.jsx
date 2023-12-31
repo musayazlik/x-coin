@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "@/layouts/homeLayout";
 import { useAppContext } from "@/context";
 import {
@@ -15,6 +15,9 @@ import Image from "next/image";
 import axios from "axios";
 import Link from "next/link";
 import { RiCloseCircleLine, RiLineChartLine, RiTimeLine } from "react-icons/ri";
+import InfiniteScroll from "react-infinite-scroll-component";
+import PostCard from "@/components/postCard";
+import { FiChevronsUp } from "react-icons/fi";
 
 import { useRouter } from "next/router";
 import { lang } from "@lang/langT";
@@ -23,37 +26,64 @@ const Bitcoin = ({ data }) => {
   const { isServiceLoading, setIsServiceLoading } = useAppContext();
   const { locale } = useRouter();
   const t = lang(locale);
+  const [selectedTab, setSelectedTab] = useState({
+    id: "1",
+    label: "short-term",
+  });
 
   const [tabs, setTabs] = useState([
     {
       id: "1",
       label: "short-term",
-      content: data
-        ? data.filter((item) => item.subCategory === "short-term")
-        : [],
+      content: [],
     },
     {
       id: "2",
       label: "long-term",
-      content: data
-        ? data.filter((item) => item.subCategory === "long-term")
-        : [],
+      content: [],
     },
     {
       id: "3",
       label: "support-resistance",
-      content: data
-        ? data.filter((item) => item.subCategory === "support-resistance")
-        : [],
+      content: [],
     },
     {
       id: "4",
       label: "major-factors",
-      content: data
-        ? data.filter((item) => item.subCategory === "major-factors")
-        : [],
+      content: [],
     },
   ]);
+
+  const [hasMore, setHasMore] = useState(true);
+
+  const getMorePost = async () => {
+    setTimeout(async () => {
+      const { data } = await axios.get(
+        `/api/posts?category=bitcoin&subCategory=${
+          selectedTab.label
+        }&limit=2&page=${
+          Math.floor(tabs[selectedTab.id].content.length / 2) + 1
+        }`
+      );
+      if (data.data.length === 0) {
+        setHasMore(false);
+      }
+      setTabs((prev) => {
+        return {
+          ...prev,
+          [selectedTab.id]: {
+            ...prev[selectedTab.id],
+            content: [...prev[selectedTab.id].content, ...data.data],
+          },
+        };
+      });
+    }, 1000);
+  };
+
+  useEffect(() => {
+    setHasMore(true);
+    getMorePost();
+  }, [selectedTab]);
 
   return (
     <Layout>
@@ -91,139 +121,75 @@ const Bitcoin = ({ data }) => {
           </p>
         </div>
 
-        <section className="dark:bg-zinc-800 dark:text-gray-100">
-          <div className="flex flex-wrap gap-4 justify-center flex-col items-center">
-            <Tabs
-              size="lg"
-              color={"warning"}
-              variant={"bordered"}
-              aria-label="Dynamic tabs"
-              items={tabs}
-              className={"w-full overflow-auto flex justify-center"}
+        <section className="dark:bg-zinc-800 dark:text-gray-100 mb-20">
+          <div className="sm:hidden">
+            <label for="tabs" className="sr-only">
+              Select your country
+            </label>
+            <select
+              id="tabs"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
-              {(item) => (
-                <Tab
-                  key={item.id}
-                  title={item.label.replace("-", " ")}
-                  className={"capitalize"}
-                >
-                  <div className=" grid grid-cols-12 gap-4">
-                    {item.content.map((item, index) => (
-                      <div
-                        className={
-                          "relative w-full col-span-12" +
-                          " md:col-span-6 lg:col-span-4 2xl:col-span-3  "
-                        }
-                      >
-                        {index === 0 && (
-                          <Chip
-                            color="danger"
-                            variant={"dot"}
-                            className={
-                              "absolute bg-zinc-800" +
-                              " border-2 animate-pulse text-zinc-500" +
-                              " border-zinc-900" +
-                              " left-0" +
-                              " -top-3" +
-                              " right-0 mx-auto z-10"
-                            }
-                          >
-                            {t.newpost}
-                          </Chip>
-                        )}
-
-                        <Card className={`py-2 relative z-0 h-full `}>
-                          <CardHeader className=" mb-2 px-4 flex-col items-start  ">
-                            <div className="min-h-[180px] w-full relative box-content">
-                              <Image
-                                alt="Card background"
-                                className="object-cover rounded-xl "
-                                src={item.image}
-                                fill
-                                quality={50}
-                              />
-                            </div>
-                          </CardHeader>
-                          <CardBody className="overflow-visible py-2 flex flex-col justify-between">
-                            <div className="flex flex-col">
-                              <small
-                                className={
-                                  "font-medium flex items-center" +
-                                  " text-xs mb-2" +
-                                  " text-zinc-600"
-                                }
-                              >
-                                <RiTimeLine
-                                  className={"inline-block mr-1"}
-                                  fontSize={14}
-                                />
-                                {item.createdAt.split("T")[0]}
-                              </small>
-                              <Link
-                                href={`/analysis/blockchain/bitcoin/${item.slug}`}
-                              >
-                                <h2 className="text-tiny uppercase font-bold mb-3 hover:text-yellow-500 hover:duration-300 hover:cursor-pointer">
-                                  {item.title.length > 50
-                                    ? item.title.slice(0, 50) + "..."
-                                    : item.title}
-                                </h2>
-                              </Link>
-                              <p className="text-tiny leading-4 text-zinc-600 mb-6">
-                                {item.description.length > 100
-                                  ? item.description.slice(0, 100) + "..."
-                                  : item.description}
-                              </p>
-                            </div>
-                            <div className=" flex justify-between items-center">
-                              <div className="avatar">
-                                <div className="rounded-full flex gap-3 items-center ">
-                                  <Avatar
-                                    isBordered
-                                    radius="md"
-                                    color="warning"
-                                    size={"sm"}
-                                    src={item.user.image}
-                                  />
-                                  <div className="flex flex-col justify-center ">
-                                    <h3 className="text-xs font-semibold leading-4">
-                                      {item.user.name}
-                                    </h3>
-                                    <p className="text-tiny text-gray-500 leading-4">
-                                      {item.user.role}
-                                    </p>
-                                  </div>
-                                </div>
-                              </div>
-                              <Link
-                                href={`/analysis/blockchain/bitcoin/${item.slug}`}
-                                className="text-[10px]  uppercase font-bold text-zinc-500 hover:text-yellow-500 duration-300"
-                              >
-                                {t.readmore}
-                              </Link>
-                            </div>
-                          </CardBody>
-                        </Card>
-                      </div>
-                    ))}
-
-                    {item.content.length === 0 && (
-                      <div className={"col-span-12"}>
-                        <div className="flex justify-center flex-col gap-8 items-center h-96">
-                          <RiCloseCircleLine
-                            fontSize={120}
-                            className={"text-gray-500"}
-                          />
-                          <h1 className="text-4xl text-gray-500 font-bold">
-                            {t.nopost}
-                          </h1>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </Tab>
-              )}
-            </Tabs>
+              <option>Profile</option>
+              <option>Canada</option>
+            </select>
           </div>
+          <ul className="hidden text-sm font-medium text-center text-gray-500 rounded-lg shadow sm:flex dark:divide-gray-700 dark:text-gray-400">
+            <li
+              className="inline-block w-full p-4 text-gray-900 bg-gray-100 border-r border-gray-200 dark:border-gray-700  focus:ring-4 focus:ring-blue-300 active focus:outline-none dark:bg-gray-700 dark:text-white"
+              onClick={() => {
+                setSelectedTab({
+                  id: "1",
+                  label: "short-term",
+                });
+              }}
+            >
+              short-term
+            </li>
+
+            <li
+              className="inline-block w-full p-4 text-gray-900 bg-gray-100 border-r border-gray-200 dark:border-gray-700  focus:ring-4 focus:ring-blue-300 active focus:outline-none dark:bg-gray-700 dark:text-white"
+              onClick={() => {
+                setSelectedTab({
+                  id: "2",
+                  label: "long-term",
+                });
+              }}
+            >
+              long-term
+            </li>
+          </ul>
+
+          <InfiniteScroll
+            dataLength={
+              tabs[selectedTab.id].content.length > 0
+                ? tabs[selectedTab.id].content.length
+                : 0
+            }
+            next={getMorePost}
+            hasMore={hasMore}
+            className="h-auto relative scroll-smooth !overflow-hidden "
+            loader={
+              <div className="w-full absolute bottom-0 mb-5 px-6">
+                <div className="flex justify-center items-center absolute mx-auto right-0 left-0 gap-4">
+                  Yükleniyor{" "}
+                  <div>
+                    <div className="w-4 h-4 border-4 border-rose-600 border-dotted rounded-full animate-spin"></div>
+                  </div>
+                </div>
+              </div>
+            }
+          >
+            <div className="flex flex-col gap-4 mb-10 px-6 ">
+              {tabs[selectedTab.id].content.map((item, index) => (
+                <PostCard
+                  key={index}
+                  item={item}
+                  baseUrl="/analysis/blockchain/bitcoin"
+                />
+              ))}
+            </div>
+          </InfiniteScroll>
         </section>
       </div>
     </Layout>
@@ -235,7 +201,7 @@ export default Bitcoin;
 export async function getServerSideProps(context) {
   const cookie = context.req.headers.cookie;
   const { data } = await axios.get(
-    `/api/posts?category=bitcoin&limit=16&page=1`,
+    `/api/posts?category=bitcoin&subCategory=short-term&limit=2&page=1`,
     {
       headers: {
         cookie: cookie,
