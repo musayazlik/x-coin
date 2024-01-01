@@ -22,7 +22,6 @@ import EmptyData from "@/components/emptyData";
 
 const AnalysisPostList = () => {
   const { locale, query } = useRouter();
-  console.log(query.slug);
 
   const t = lang(locale);
   const [selectedTab, setSelectedTab] = useState({
@@ -125,8 +124,6 @@ const AnalysisPostList = () => {
       ]);
     }
   }, [query.slug]);
-
-  console.log(tabs);
 
   return (
     <Layout>
