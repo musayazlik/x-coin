@@ -10,7 +10,7 @@ const BreakAndIncom = ({ data }) => {
   return (
     <>
       <Head>
-        <title>Forex Alarmlar | X-Coin</title>
+        <title>Alarmlar | TraderEdit™</title>
         <meta
           name="description"
           content="Kırılımlar ve Uyumsuzluklar, kullanıcıların düşüncelerini ve fikirlerini dünyayla paylaşmalarını sağlayan merkezi olmayan bir sosyal medya platformudur. Kullanıcıların düşünce ve fikirlerini dünya ile paylaşabilecekleri bir platformdur."
@@ -24,14 +24,11 @@ const BreakAndIncom = ({ data }) => {
       <Layout>
         <div className=" mx-auto mb-8 mt-8 text-center relative z-0 max-w-3xl">
           <h1 className="text-4xl font-semibold mb-6 lg:text-5xl text-rose-600">
-            <div className=" border-b-4 inline-block border-rose-600">
-              Forex
-            </div>
-            <div className="text-indigo-600">Alarmlar</div>
+            <span className="text-indigo-600">Alarmlar</span>
           </h1>
           <p className="text-base text-gray-500 font-light mb-2">
-            Bu sayfada forex piyasası olan Alarmlar ile ilgili içerikleri sizler
-            ile paylaşıyoruz...
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+            voluptatum, quibusdam, quia, voluptates quod quos voluptate
           </p>
         </div>
 
@@ -80,7 +77,7 @@ const BreakAndIncom = ({ data }) => {
                         </div>
                         <div className="">
                           <Link
-                            href={`/forex/forex-alarms/${data[0].slug}`}
+                            href={`/alarms/${data[0].slug}`}
                             className="border-2 border-rose-600 hover:bg-rose-600 hover:text-rose-50 hover:outline-2 hover:outline-dotted hover:outline-offset-4 outline-offset-0 outline-rose-700 outline-2  px-4 py-2 rounded-lg text-rose-600 duration-300 flex items-center gap-2 hover:shadow-lg hover:shadow-rose-600/50"
                           >
                             <span>Devamını Oku</span>
@@ -141,7 +138,7 @@ const BreakAndIncom = ({ data }) => {
                       </div>
                       <div className="">
                         <Link
-                          href={`/forex/forex-alarms/${item.slug}`}
+                          href={`/alarms/${item.slug}`}
                           className="border-2 border-rose-600 hover:bg-rose-600 hover:text-rose-50 hover:outline-2 hover:outline-dotted hover:outline-offset-4 outline-offset-0 outline-rose-700 outline-2  px-4 py-2 rounded-lg text-rose-600 duration-300 flex items-center gap-2 hover:shadow-lg hover:shadow-rose-600/50"
                         >
                           <span>Devamını Oku</span>
@@ -171,7 +168,7 @@ export default BreakAndIncom;
 
 export async function getServerSideProps(context) {
   const cookie = context.req.headers.cookie;
-  const { data } = await axios.get(`/api/forex-alarms`, {
+  const { data } = await axios.get(`/api/alarms`, {
     headers: {
       cookie: cookie,
     },

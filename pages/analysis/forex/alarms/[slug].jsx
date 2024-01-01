@@ -2,7 +2,7 @@ import React from "react";
 import Layout from "@/layouts/homeLayout";
 import axios from "axios";
 
-const ForexBreakAndIncomContext = ({ data }) => {
+const BreakAndIncomContext = ({ data }) => {
   return (
     <Layout>
       <div className="flex flex-col gap-4 bg-zinc-900 rounded-lg  mt-6">
@@ -63,11 +63,11 @@ const ForexBreakAndIncomContext = ({ data }) => {
   );
 };
 
-export default ForexBreakAndIncomContext;
+export default BreakAndIncomContext;
 
 export async function getServerSideProps(context) {
   const res = await axios
-    .get(`/api/forex-alarms?slug=${context.query.slug}`)
+    .get(`/api/alarms?slug=${context.query.slug}`)
     .then((res) => res)
     .catch((err) => err.response);
 

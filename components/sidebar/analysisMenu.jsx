@@ -20,37 +20,25 @@ const AnalysisMenu = () => {
         Icon={MdCurrencyBitcoin}
         defaultOpen={true}
         subMenuList={[
-          "/analysis/blockchain/",
-          "/analysis/blockchain/bitcoin",
-          "/analysis/blockchain/ethereum",
-          "/analysis/blockchain/crypto-indices",
-          "/analysis/blockchain/sub-coins",
-          "/analysis/blockchain/on-chain",
+          "/analysis/",
+          "/analysis/bitcoin",
+          "/analysis/ethereum",
+          "/analysis/crypto-indices",
+          "/analysis/sub-coins",
+          "/analysis/on-chain",
           "/analysis/blockchain/alarms",
         ]}
       >
-        <SubMenuItem
-          text={t.cryptoPage.bitcoin}
-          url={"/analysis/blockchain/bitcoin"}
-        />
-        <SubMenuItem
-          text={t.cryptoPage.ethereum}
-          url={"/analysis/blockchain/ethereum"}
-        />
+        <SubMenuItem text={t.cryptoPage.bitcoin} url={"/analysis/bitcoin"} />
+        <SubMenuItem text={t.cryptoPage.ethereum} url={"/analysis/ethereum"} />
         <SubMenuItem
           text={t.cryptoPage.cryptoIndices}
-          url={"/analysis/blockchain/crypto-indices"}
+          url={"/analysis/crypto-indices"}
         />
 
-        <SubMenuItem
-          text={t.cryptoPage.subCoins}
-          url={"/analysis/blockchain/sub-coins"}
-        />
-        <SubMenuItem
-          text={t.cryptoPage.onChain}
-          url={"/analysis/blockchain/on-chain"}
-        />
-        <SubMenuItem text={t.alarms} url={"/analysis/blockchain/alarms"} />
+        <SubMenuItem text={t.cryptoPage.subCoins} url={"/analysis/sub-coins"} />
+        <SubMenuItem text={t.cryptoPage.onChain} url={"/analysis/on-chain"} />
+        <SubMenuItem text={t.alarms} url={"/analysis/alarms"} />
       </DropdownMenu>
       <DropdownMenu
         text={"Forex"}
@@ -58,30 +46,30 @@ const AnalysisMenu = () => {
         defaultOpen={true}
         Icon={BiDollarCircle}
         subMenuList={[
-          "/analysis/forex/sp500",
-          "/analysis/forex/nasdaq",
-          "/analysis/forex/dax",
-          "/analysis/forex/dxy",
-          "/analysis/forex/eur-usd",
-          "/analysis/forex/usd-jpy",
-          "/analysis/forex/gold",
-          "/analysis/forex/silver",
-          "/analysis/forex/oil",
-          "/analysis/forex/natqas",
-          "/analysis/forex/forex-alarms",
+          "/analysis/sp500",
+          "/analysis/nasdaq",
+          "/analysis/dax",
+          "/analysis/dxy",
+          "/analysis/eur-usd",
+          "/analysis/usd-jpy",
+          "/analysis/gold",
+          "/analysis/silver",
+          "/analysis/oil",
+          "/analysis/natqas",
+          "/analysis/forex/alarms",
         ]}
       >
-        <SubMenuItem text={"Sp500"} url={"/analysis/forex/sp500"} />
-        <SubMenuItem text={"Nasdaq"} url={"/analysis/forex/nasdaq"} />
-        <SubMenuItem text={"Dax"} url={"/analysis/forex/dax"} />
-        <SubMenuItem text={"Dxy"} url={"/analysis/forex/dxy"} />
-        <SubMenuItem text={"Eur/Usd"} url={"/analysis/forex/eur-usd"} />
-        <SubMenuItem text={"Usd/Jpy"} url={"/analysis/forex/usd-jpy"} />
-        <SubMenuItem text={t.forexPage.gold} url={"/analysis/forex/gold"} />
-        <SubMenuItem text={t.forexPage.silver} url={"/analysis/forex/silver"} />
-        <SubMenuItem text={t.forexPage.oil} url={"/analysis/forex/oil"} />
-        <SubMenuItem text={"Natqas"} url={"/analysis/forex/natqas"} />
-        <SubMenuItem text={t.alarms} url={"/analysis/forex/forex-alarms"} />
+        <SubMenuItem text={"Sp500"} url={"/analysis/sp500"} />
+        <SubMenuItem text={"Nasdaq"} url={"/analysis/nasdaq"} />
+        <SubMenuItem text={"Dax"} url={"/analysis/dax"} />
+        <SubMenuItem text={"Dxy"} url={"/analysis/dxy"} />
+        <SubMenuItem text={"Eur/Usd"} url={"/analysis/eur-usd"} />
+        <SubMenuItem text={"Usd/Jpy"} url={"/analysis/usd-jpy"} />
+        <SubMenuItem text={t.forexPage.gold} url={"/analysis/gold"} />
+        <SubMenuItem text={t.forexPage.silver} url={"/analysis/silver"} />
+        <SubMenuItem text={t.forexPage.oil} url={"/analysis/oil"} />
+        <SubMenuItem text={"Natqas"} url={"/analysis/natqas"} />
+        <SubMenuItem text={t.alarms} url={"/analysis/forex/alarms"} />
       </DropdownMenu>
       <DropdownMenu
         text={"All Markets"}
@@ -89,38 +77,38 @@ const AnalysisMenu = () => {
         defaultOpen={true}
         Icon={RiGlobalLine}
         subMenuList={[
-          "/analysis/all-markets/commodities/coffee",
-          "/analysis/all-markets/commodities/cotton",
-          "/analysis/all-markets/commodities/live-cattle",
-          "/analysis/all-markets/commodities/orange-juice",
-          "/analysis/all-markets/commodities/soybean",
-          "/analysis/all-markets/commodities/sugar",
-          "/analysis/all-markets/commodities/wheat",
-          "/analysis/all-markets/energy-market/energy-etf",
-          "/analysis/all-markets/energy-market/natgas",
-          "/analysis/all-markets/metal-market/copper",
-          "/analysis/all-markets/metal-market/aluminum",
-          "/analysis/all-markets/metal-market/nickel",
-          "/analysis/all-markets/metal-market/paladium",
-          "/analysis/all-markets/metal-market/platinium",
-          "/analysis/all-markets/parities/aud-usd",
-          "/analysis/all-markets/parities/gbp-usd",
-          "/analysis/all-markets/parities/nzd-usd",
-          "/analysis/all-markets/parities/usd-cad",
-          "/analysis/all-markets/parities/usd-chf",
-          "/analysis/all-markets/stock-markets/asia/china50",
-          "/analysis/all-markets/stock-markets/asia/hangseng50",
-          "/analysis/all-markets/stock-markets/asia/nse",
-          "/analysis/all-markets/stock-markets/asia/nikkei",
-          "/analysis/all-markets/stock-markets/europa/cac40",
-          "/analysis/all-markets/stock-markets/europa/dax",
-          "/analysis/all-markets/stock-markets/europa/stoxx50",
-          "/analysis/all-markets/stock-markets/europa/ftse",
-          "/analysis/all-markets/stock-markets/europa/smi",
-          "/analysis/all-markets/stock-markets/usa/down-jones",
-          "/analysis/all-markets/stock-markets/usa/nasdaq",
-          "/analysis/all-markets/stock-markets/usa/russell2000",
-          "/analysis/all-markets/stock-markets/usa/sp500",
+          "/analysis/coffee",
+          "/analysis/cotton",
+          "/analysis/live-cattle",
+          "/analysis/orange-juice",
+          "/analysis/soybean",
+          "/analysis/sugar",
+          "/analysis/wheat",
+          "/analysis/energy-etf",
+          "/analysis/natgas",
+          "/analysis/copper",
+          "/analysis/aluminum",
+          "/analysis/nickel",
+          "/analysis/paladium",
+          "/analysis/platinium",
+          "/analysis/aud-usd",
+          "/analysis/gbp-usd",
+          "/analysis/nzd-usd",
+          "/analysis/usd-cad",
+          "/analysis/usd-chf",
+          "/analysis/china50",
+          "/analysis/hangseng50",
+          "/analysis/nse",
+          "/analysis/nikkei",
+          "/analysis/cac40",
+          "/analysis/dax",
+          "/analysis/stoxx50",
+          "/analysis/ftse",
+          "/analysis/smi",
+          "/analysis/down-jones",
+          "/analysis/nasdaq",
+          "/analysis/russell2000",
+          "/analysis/sp500",
         ]}
       >
         <SubDropdownMenu
@@ -129,34 +117,13 @@ const AnalysisMenu = () => {
           label={"Commodities"}
           primaryKey={"Commodities"}
         >
-          <SubMenuItem
-            text={"Coffee"}
-            url={"/analysis/all-markets/commodities/coffee"}
-          />
-          <SubMenuItem
-            text={"Cotton"}
-            url={"/analysis/all-markets/commodities/cotton"}
-          />
-          <SubMenuItem
-            text={"Live Cattle"}
-            url={"/analysis/all-markets/commodities/live-cattle"}
-          />
-          <SubMenuItem
-            text={"Orange Juice"}
-            url={"/analysis/all-markets/commodities/orange-juice"}
-          />
-          <SubMenuItem
-            text={"Soybean"}
-            url={"/analysis/all-markets/commodities/soybean"}
-          />
-          <SubMenuItem
-            text={"Sugar"}
-            url={"/analysis/all-markets/commodities/sugar"}
-          />
-          <SubMenuItem
-            text={"Wheat"}
-            url={"/analysis/all-markets/commodities/wheat"}
-          />
+          <SubMenuItem text={"Coffee"} url={"/analysis/coffee"} />
+          <SubMenuItem text={"Cotton"} url={"/analysis/cotton"} />
+          <SubMenuItem text={"Live Cattle"} url={"/analysis/live-cattle"} />
+          <SubMenuItem text={"Orange Juice"} url={"/analysis/orange-juice"} />
+          <SubMenuItem text={"Soybean"} url={"/analysis/soybean"} />
+          <SubMenuItem text={"Sugar"} url={"/analysis/sugar"} />
+          <SubMenuItem text={"Wheat"} url={"/analysis/wheat"} />
         </SubDropdownMenu>
 
         <SubDropdownMenu
@@ -164,63 +131,27 @@ const AnalysisMenu = () => {
           label={"Energy Market"}
           title={"Energy Market"}
         >
-          <SubMenuItem
-            text={"Energy ETF"}
-            url={"/analysis/all-markets/energy-market/energy-etf"}
-          />
-          <SubMenuItem
-            text={"Natgas"}
-            url={"/analysis/all-markets/energy-market/natgas"}
-          />
+          <SubMenuItem text={"Energy ETF"} url={"/analysis/energy-etf"} />
+          <SubMenuItem text={"Natgas"} url={"/analysis/natgas"} />
         </SubDropdownMenu>
         <SubDropdownMenu
           key={"Metal Market"}
           label={"Metal Market"}
           title={"Metal Market"}
         >
-          <SubMenuItem
-            text={"Copper"}
-            url={"/analysis/all-markets/metal-market/copper"}
-          />
-          <SubMenuItem
-            text={"Aluminum"}
-            url={"/analysis/all-markets/metal-market/aluminum"}
-          />
-          <SubMenuItem
-            text={"Nickel"}
-            url={"/analysis/all-markets/metal-market/nickel"}
-          />
-          <SubMenuItem
-            text={"Paladium"}
-            url={"/analysis/all-markets/metal-market/paladium"}
-          />
+          <SubMenuItem text={"Copper"} url={"/analysis/copper"} />
+          <SubMenuItem text={"Aluminum"} url={"/analysis/aluminum"} />
+          <SubMenuItem text={"Nickel"} url={"/analysis/nickel"} />
+          <SubMenuItem text={"Paladium"} url={"/analysis/paladium"} />
 
-          <SubMenuItem
-            text={"Platinium"}
-            url={"/analysis/all-markets/metal-market/platinium"}
-          />
+          <SubMenuItem text={"Platinium"} url={"/analysis/platinium"} />
         </SubDropdownMenu>
         <SubDropdownMenu key={"Parities"} label={"Parities"} title={"Parities"}>
-          <SubMenuItem
-            text={"Aud/Usd"}
-            url={"/analysis/all-markets/parities/aud-usd"}
-          />
-          <SubMenuItem
-            text={"Gbp/Usd"}
-            url={"/analysis/all-markets/parities/gbp-usd"}
-          />
-          <SubMenuItem
-            text={"Nzd/Usd"}
-            url={"/analysis/all-markets/parities/nzd-usd"}
-          />
-          <SubMenuItem
-            text={"Usd/Cad"}
-            url={"/analysis/all-markets/parities/usd-cad"}
-          />
-          <SubMenuItem
-            text={"Usd/Chf"}
-            url={"/analysis/all-markets/parities/usd-chf"}
-          />
+          <SubMenuItem text={"Aud/Usd"} url={"/analysis/aud-usd"} />
+          <SubMenuItem text={"Gbp/Usd"} url={"/analysis/gbp-usd"} />
+          <SubMenuItem text={"Nzd/Usd"} url={"/analysis/nzd-usd"} />
+          <SubMenuItem text={"Usd/Cad"} url={"/analysis/usd-cad"} />
+          <SubMenuItem text={"Usd/Chf"} url={"/analysis/usd-chf"} />
         </SubDropdownMenu>
 
         <SubDropdownMenu
@@ -251,20 +182,14 @@ const AnalysisMenu = () => {
           <div className="px-1">
             <SubMenuItem
               text={"China50"}
-              url={"/analysis/all-markets/stock-markets/asia/china50"}
+              url={"/analysis/china50"}
             ></SubMenuItem>
             <SubMenuItem
               text={"Hangseng50 (HongKong)"}
-              url={"/analysis/all-markets/stock-markets/asia/hangseng50"}
+              url={"/analysis/hangseng50"}
             />
-            <SubMenuItem
-              text={"Nse (India)"}
-              url={"/analysis/all-markets/stock-markets/asia/nse"}
-            />
-            <SubMenuItem
-              text={"Nikkei (Japan)"}
-              url={"/analysis/all-markets/stock-markets/asia/nikkei"}
-            />
+            <SubMenuItem text={"Nse (India)"} url={"/analysis/nse"} />
+            <SubMenuItem text={"Nikkei (Japan)"} url={"/analysis/nikkei"} />
           </div>
 
           <div className="text-gray-200 flex items-center w-full  gap-2 text-xs font-semibold uppercase mb-2 px-1 mt-3 ">
@@ -275,25 +200,13 @@ const AnalysisMenu = () => {
           <div className="px-1">
             <SubMenuItem
               text={"Cac40 (France)"}
-              url={"/analysis/all-markets/stock-markets/europa/cac40"}
+              url={"/analysis/cac40"}
             ></SubMenuItem>
-            <SubMenuItem
-              text={"Dax (Germany)"}
-              url={"/analysis/all-markets/stock-markets/europa/dax"}
-            />
-            <SubMenuItem
-              text={"Stoxx50 (Euro)"}
-              url={"/analysis/all-markets/stock-markets/europa/stoxx50"}
-            />
-            <SubMenuItem
-              text={"Ftse (London)"}
-              url={"/analysis/all-markets/stock-markets/europa/ftse"}
-            />
+            <SubMenuItem text={"Dax (Germany)"} url={"/analysis/dax"} />
+            <SubMenuItem text={"Stoxx50 (Euro)"} url={"/analysis/stoxx50"} />
+            <SubMenuItem text={"Ftse (London)"} url={"/analysis/ftse"} />
 
-            <SubMenuItem
-              text={"Smi (Swiss)"}
-              url={"/analysis/all-markets/stock-markets/europa/smi"}
-            />
+            <SubMenuItem text={"Smi (Swiss)"} url={"/analysis/smi"} />
           </div>
 
           <div className="text-gray-200 flex items-center w-full  gap-2 text-xs font-semibold uppercase mb-2 px-1 mt-3 ">
@@ -304,20 +217,11 @@ const AnalysisMenu = () => {
           <div className="px-1">
             <SubMenuItem
               text={"Down Jones"}
-              url={"/analysis/all-markets/stock-markets/usa/down-jones"}
+              url={"/analysis/down-jones"}
             ></SubMenuItem>
-            <SubMenuItem
-              text={"Nasdaq"}
-              url={"/analysis/all-markets/stock-markets/usa/nasdaq"}
-            />
-            <SubMenuItem
-              text={"Russell2000"}
-              url={"/analysis/all-markets/stock-markets/usa/russell2000"}
-            />
-            <SubMenuItem
-              text={"Sp500"}
-              url={"/analysis/all-markets/stock-markets/usa/sp500"}
-            />
+            <SubMenuItem text={"Nasdaq"} url={"/analysis/nasdaq"} />
+            <SubMenuItem text={"Russell2000"} url={"/analysis/russell2000"} />
+            <SubMenuItem text={"Sp500"} url={"/analysis/sp500"} />
           </div>
         </SubDropdownMenu>
       </DropdownMenu>

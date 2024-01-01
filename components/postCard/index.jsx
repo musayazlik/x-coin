@@ -12,7 +12,7 @@ const PostCard = ({ item, baseUrl }) => {
 
   return (
     <>
-      <Link href={`${baseUrl}/${item.slug}`}>
+      <Link href={`${baseUrl}`}>
         <Card className={`py-2 relative z-0 h-full w-full `}>
           <CardHeader className=" mb-2 px-4 flex-col items-start  ">
             <div className="min-h-[180px] w-full relative box-content">

@@ -18,10 +18,12 @@ import PostCard from "@/components/postCard";
 
 import { useRouter } from "next/router";
 import { lang } from "@lang/langT";
+import EmptyData from "@/components/emptyData";
 
-const Bitcoin = ({ data }) => {
-  const { isServiceLoading, setIsServiceLoading } = useAppContext();
-  const { locale } = useRouter();
+const AnalysisPostList = () => {
+  const { locale, query } = useRouter();
+  console.log(query.slug);
+
   const t = lang(locale);
   const [selectedTab, setSelectedTab] = useState({
     id: 0,
@@ -56,9 +58,9 @@ const Bitcoin = ({ data }) => {
   const getMorePost = async () => {
     setTimeout(async () => {
       const { data } = await axios.get(
-        `/api/posts?category=bitcoin&subCategory=${selectedTab.label}&page=${
-          Math.floor(tabs[selectedTab.id].content.length / 6) + 1
-        }`
+        `/api/posts?category=${query.slug}&subCategory=${
+          selectedTab.label
+        }&page=${Math.floor(tabs[selectedTab.id].content.length / 6) + 1}`
       );
 
       if (data.data.length == tabs[selectedTab.id].content.length) {
@@ -95,7 +97,34 @@ const Bitcoin = ({ data }) => {
   useEffect(() => {
     setHasMore(true);
     getMorePost();
-  }, [selectedTab]);
+  }, [selectedTab, query.slug]);
+
+  useEffect(() => {
+    if (query.slug) {
+      setTabs([
+        {
+          id: 0,
+          label: "short-term",
+          content: [],
+        },
+        {
+          id: 1,
+          label: "long-term",
+          content: [],
+        },
+        {
+          id: 2,
+          label: "support-resistance",
+          content: [],
+        },
+        {
+          id: 3,
+          label: "major-factors",
+          content: [],
+        },
+      ]);
+    }
+  }, [query.slug]);
 
   console.log(tabs);
 
@@ -136,7 +165,7 @@ const Bitcoin = ({ data }) => {
         </div>
 
         <section>
-          <ul className=" text-sm gap-4 mb-6 max-w-[900px] overflow-x-auto mx-auto flex xl:justify-center text-center px-6 py-4 ">
+          <ul className=" text-sm gap-4 mb-6 max-w-[900px] overflow-x-auto font-bold mx-auto flex xl:justify-center text-center px-6 py-12 ">
             <li
               className={`inline-block px-8 cursor-pointer whitespace-nowrap hover:scale-105 duration-300 hover:shadow-xl hover:shadow-black/10 w-full text-base p-4 bg-black/20 border-2 rounded-sm text-zinc-200 border-zinc-950 focus:ring-4 ${
                 selectedTab.id === 0
@@ -227,9 +256,12 @@ const Bitcoin = ({ data }) => {
                 <PostCard
                   key={index}
                   item={item}
-                  baseUrl="/analysis/blockchain/bitcoin"
+                  baseUrl={"/analysis2/detail/" + item.slug}
                 />
               ))}
+
+              {tabs[selectedTab.id].content.length == 0 &&
+                hasMore === false && <EmptyData />}
             </div>
           </InfiniteScroll>
         </section>
@@ -238,4 +270,4 @@ const Bitcoin = ({ data }) => {
   );
 };
 
-export default Bitcoin;
+export default AnalysisPostList;
