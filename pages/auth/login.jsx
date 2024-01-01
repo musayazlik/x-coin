@@ -26,10 +26,10 @@ const Login = () => {
     signIn("credentials", {
       isData: emailandusername,
       password: password,
-      callbackUrl: "/analysis/",
+      callbackUrl: "/analysis/bitcoin",
     })
       .then((res) => {
-        router.push("/analysis/");
+        router.push("/analysis/bitcoin");
       })
       .catch((err) => {
         toast.error(err.message, {
