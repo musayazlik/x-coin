@@ -5,7 +5,7 @@ const nextConfig = {
     locales: ["en", "tr"],
     defaultLocale: "en",
   },
-  reactStrictMode: process.env.NODE_ENV !== "production" ? true : false,
+  reactStrictMode: false,
   productionBrowserSourceMaps: true,
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],

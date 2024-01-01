@@ -11,13 +11,10 @@ import {
   Tab,
   Tabs,
 } from "@nextui-org/react";
-import Image from "next/image";
 import axios from "axios";
-import Link from "next/link";
-import { RiCloseCircleLine, RiLineChartLine, RiTimeLine } from "react-icons/ri";
+import { RiLineChartLine } from "react-icons/ri";
 import InfiniteScroll from "react-infinite-scroll-component";
 import PostCard from "@/components/postCard";
-import { FiChevronsUp } from "react-icons/fi";
 
 import { useRouter } from "next/router";
 import { lang } from "@lang/langT";
@@ -27,28 +24,28 @@ const Bitcoin = ({ data }) => {
   const { locale } = useRouter();
   const t = lang(locale);
   const [selectedTab, setSelectedTab] = useState({
-    id: "1",
+    id: 0,
     label: "short-term",
   });
 
   const [tabs, setTabs] = useState([
     {
-      id: "1",
+      id: 0,
       label: "short-term",
       content: [],
     },
     {
-      id: "2",
+      id: 1,
       label: "long-term",
       content: [],
     },
     {
-      id: "3",
+      id: 2,
       label: "support-resistance",
       content: [],
     },
     {
-      id: "4",
+      id: 3,
       label: "major-factors",
       content: [],
     },
@@ -59,31 +56,48 @@ const Bitcoin = ({ data }) => {
   const getMorePost = async () => {
     setTimeout(async () => {
       const { data } = await axios.get(
-        `/api/posts?category=bitcoin&subCategory=${
-          selectedTab.label
-        }&limit=2&page=${
-          Math.floor(tabs[selectedTab.id].content.length / 2) + 1
+        `/api/posts?category=bitcoin&subCategory=${selectedTab.label}&page=${
+          Math.floor(tabs[selectedTab.id].content.length / 6) + 1
         }`
       );
-      if (data.data.length === 0) {
+
+      if (data.data.length == tabs[selectedTab.id].content.length) {
         setHasMore(false);
+      } else {
+        if (
+          data.data.length < 6 &&
+          data.data.length !== tabs[selectedTab.id].content.length
+        ) {
+          setTabs((prev) => {
+            return {
+              ...prev,
+              [selectedTab.id]: {
+                ...prev[selectedTab.id],
+                content: [...prev[selectedTab.id].content, ...data.data],
+              },
+            };
+          });
+          setHasMore(false);
+        } else {
+          setTabs((prev) => {
+            return {
+              ...prev,
+              [selectedTab.id]: {
+                ...prev[selectedTab.id],
+                content: [...prev[selectedTab.id].content, ...data.data],
+              },
+            };
+          });
+        }
       }
-      setTabs((prev) => {
-        return {
-          ...prev,
-          [selectedTab.id]: {
-            ...prev[selectedTab.id],
-            content: [...prev[selectedTab.id].content, ...data.data],
-          },
-        };
-      });
     }, 1000);
   };
-
   useEffect(() => {
     setHasMore(true);
     getMorePost();
   }, [selectedTab]);
+
+  console.log(tabs);
 
   return (
     <Layout>
@@ -121,49 +135,77 @@ const Bitcoin = ({ data }) => {
           </p>
         </div>
 
-        <section className="dark:bg-zinc-800 dark:text-gray-100 mb-20">
-          <div className="sm:hidden">
-            <label for="tabs" className="sr-only">
-              Select your country
-            </label>
-            <select
-              id="tabs"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            >
-              <option>Profile</option>
-              <option>Canada</option>
-            </select>
-          </div>
-          <ul className="hidden text-sm font-medium text-center text-gray-500 rounded-lg shadow sm:flex dark:divide-gray-700 dark:text-gray-400">
+        <section>
+          <ul className=" text-sm gap-4 mb-6 max-w-[900px] overflow-x-auto mx-auto flex xl:justify-center text-center px-6 py-4 ">
             <li
-              className="inline-block w-full p-4 text-gray-900 bg-gray-100 border-r border-gray-200 dark:border-gray-700  focus:ring-4 focus:ring-blue-300 active focus:outline-none dark:bg-gray-700 dark:text-white"
+              className={`inline-block px-8 cursor-pointer whitespace-nowrap hover:scale-105 duration-300 hover:shadow-xl hover:shadow-black/10 w-full text-base p-4 bg-black/20 border-2 rounded-sm text-zinc-200 border-zinc-950 focus:ring-4 ${
+                selectedTab.id === 0
+                  ? "ring-2 ring-yellow-500 !text-yellow-900 bg-yellow-500/80 hover:shadow-yellow-500/20 border-white/20"
+                  : "focus:ring-transparent"
+              }`}
               onClick={() => {
                 setSelectedTab({
-                  id: "1",
+                  id: 0,
                   label: "short-term",
                 });
               }}
             >
-              short-term
+              Short Term
             </li>
 
             <li
-              className="inline-block w-full p-4 text-gray-900 bg-gray-100 border-r border-gray-200 dark:border-gray-700  focus:ring-4 focus:ring-blue-300 active focus:outline-none dark:bg-gray-700 dark:text-white"
+              className={`inline-block px-8 cursor-pointer hover:scale-105 whitespace-nowrap duration-300 hover:shadow-xl hover:shadow-black/10 w-full text-base p-4 bg-black/20 border-2 rounded-sm text-zinc-200 border-zinc-950 focus:ring-4 ${
+                selectedTab.id === 1
+                  ? "ring-2 ring-yellow-500 !text-yellow-900 bg-yellow-500/80 hover:shadow-yellow-500/20 border-white/20"
+                  : "focus:ring-transparent"
+              }`}
               onClick={() => {
                 setSelectedTab({
-                  id: "2",
+                  id: 1,
                   label: "long-term",
                 });
               }}
             >
-              long-term
+              Long Term
+            </li>
+
+            <li
+              className={`inline-block px-8 cursor-pointer hover:scale-105 duration-300 whitespace-nowrap hover:shadow-xl hover:shadow-black/10 w-full text-base p-4 bg-black/20 border-2 rounded-sm text-zinc-200 border-zinc-950 focus:ring-4 ${
+                selectedTab.id === 2
+                  ? "ring-2 ring-yellow-500 !text-yellow-900 bg-yellow-500/80 hover:shadow-yellow-500/20 border-white/20"
+                  : "focus:ring-transparent"
+              }`}
+              onClick={() => {
+                setSelectedTab({
+                  id: 2,
+                  label: "support-resistance",
+                });
+              }}
+            >
+              Support Resistance
+            </li>
+
+            <li
+              className={`inline-block px-8 cursor-pointer hover:scale-105 duration-300 whitespace-nowrap hover:shadow-xl hover:shadow-black/10 w-full text-base p-4 bg-black/20 border-2 rounded-sm text-zinc-200 border-zinc-950 focus:ring-4 ${
+                selectedTab.id === 3
+                  ? "ring-2 ring-yellow-500 !text-yellow-900 bg-yellow-500/80 hover:shadow-yellow-500/20 border-white/20"
+                  : "focus:ring-transparent"
+              }`}
+              onClick={() => {
+                setSelectedTab({
+                  id: 3,
+                  label: "major-factors",
+                });
+              }}
+            >
+              Major Factors
             </li>
           </ul>
 
           <InfiniteScroll
             dataLength={
-              tabs[selectedTab.id].content.length > 0
-                ? tabs[selectedTab.id].content.length
+              tabs[selectedTab.id]?.content?.length > 0
+                ? tabs[selectedTab.id]?.content?.length
                 : 0
             }
             next={getMorePost}
@@ -197,21 +239,3 @@ const Bitcoin = ({ data }) => {
 };
 
 export default Bitcoin;
-
-export async function getServerSideProps(context) {
-  const cookie = context.req.headers.cookie;
-  const { data } = await axios.get(
-    `/api/posts?category=bitcoin&subCategory=short-term&limit=2&page=1`,
-    {
-      headers: {
-        cookie: cookie,
-      },
-    }
-  );
-
-  return {
-    props: {
-      data: data.data,
-    },
-  };
-}

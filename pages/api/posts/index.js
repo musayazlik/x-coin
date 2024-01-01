@@ -2,7 +2,7 @@ import Post from "@/models/Posts";
 import dbConnect from "@/libs/dbConnect";
 
 const getPosts = async (req, res) => {
-  const limit = 2;
+  const limit = 6;
   try {
     if (req.query.id) {
       const post = await Post.findById(req.query.id);
