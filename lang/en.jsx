@@ -31,6 +31,8 @@ export default {
   instructor: "Instructor",
   popularEducations: "Popular Educations",
   privacy_policy: "Privacy Policy",
+  analysisdescription:
+    "Welcome to the Analysis. You can review the analyzes we have prepared for you. The information contained in our analyzes is not investment advice. just education It is purposeful. Make your investment decisions based on your own research. Please give. It is not investment advice.",
 
   analytics: {
     title: "Analysis",
@@ -50,6 +52,7 @@ export default {
     menu: {
       home: "Home",
       feed: "Feed",
+      analysis: "Analysis",
       aboutus: "About Us",
       education: "Educations",
       contact: "Contact",
