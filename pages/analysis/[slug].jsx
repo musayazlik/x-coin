@@ -253,7 +253,7 @@ const AnalysisPostList = () => {
                 <PostCard
                   key={index}
                   item={item}
-                  baseUrl={"/analysis2/detail/" + item.slug}
+                  baseUrl={"/analysis/detail/" + item.slug}
                 />
               ))}
 
