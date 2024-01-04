@@ -37,13 +37,13 @@ const categoriesList = [
   { value: "nikkei", label: "Nikkei" },
   { value: "nse", label: "Nse" },
   { value: "cac40", label: "Cac40" },
-  { value: "europa-dax", label: "Dax" },
+  { value: "europa-dax", label: "Europa Dax" },
   { value: "ftse", label: "Ftse" },
   { value: "smi", label: "Smi" },
   { value: "stoxx50", label: "Stoxx50" },
   { value: "down-jones", label: "Downjones" },
-  { value: "usa-sp500", label: "Sp500" },
-  { value: "usa-nasdaq", label: "Nasdaq" },
+  { value: "usa-sp500", label: "Usa Sp500" },
+  { value: "usa-nasdaq", label: "Usa Nasdaq" },
   { value: "russell2000", label: "Russell2000" },
 ];
 

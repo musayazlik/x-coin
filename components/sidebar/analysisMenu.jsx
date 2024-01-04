@@ -202,7 +202,7 @@ const AnalysisMenu = () => {
               text={"Cac40 (France)"}
               url={"/analysis/cac40"}
             ></SubMenuItem>
-            <SubMenuItem text={"Dax (Germany)"} url={"/analysis/dax"} />
+            <SubMenuItem text={"Dax (Germany)"} url={"/analysis/europa-dax"} />
             <SubMenuItem text={"Stoxx50 (Euro)"} url={"/analysis/stoxx50"} />
             <SubMenuItem text={"Ftse (London)"} url={"/analysis/ftse"} />
 
@@ -219,9 +219,9 @@ const AnalysisMenu = () => {
               text={"Down Jones"}
               url={"/analysis/down-jones"}
             ></SubMenuItem>
-            <SubMenuItem text={"Nasdaq"} url={"/analysis/nasdaq"} />
+            <SubMenuItem text={"Nasdaq"} url={"/analysis/usa-nasdaq"} />
             <SubMenuItem text={"Russell2000"} url={"/analysis/russell2000"} />
-            <SubMenuItem text={"Sp500"} url={"/analysis/sp500"} />
+            <SubMenuItem text={"Sp500"} url={"/analysis/usa-sp500"} />
           </div>
         </SubDropdownMenu>
       </DropdownMenu>

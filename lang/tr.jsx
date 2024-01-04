@@ -34,6 +34,10 @@ export default {
   analysisdescription:
     "Analizlere hoş geldiniz. Analizlerinizi sizler için hazırladığımız analizleri inceleyebilirsiniz. Analizlerimizde yer alan bilgiler yatırım tavsiyesi değildir. Sadece eğitim amaçlıdır. Yatırım kararlarınızı kendi araştırmalarınız sonucunda veriniz. Lütfen dikkate almayınız. Yatırım tavsiyesi değildir.",
 
+  goBackAnalysis: "Analizlere Geri Dön",
+  analysisPageDescription:
+    "Analizlerimizde yer alan bilgiler yatırım tavsiyesi değildir. Sadece eğitim amaçlıdır. Yatırım kararlarınızı kendi araştırmalarınız sonucunda veriniz. Lütfen dikkate almayınız. Yatırım tavsiyesi değildir.",
+
   analytics: {
     title: "Analiz",
     bitcoin: "Bitcoin",
