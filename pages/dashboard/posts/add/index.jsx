@@ -14,11 +14,13 @@ import { Tooltip } from "@nextui-org/react";
 import { RiInformationFill } from "react-icons/ri";
 import IframeContent from "@/components/IframeContent";
 import categoriesList from "@/libs/catagoriesList";
+import Loading from "@/components/loading";
 
 const PostAdd = () => {
   const router = useRouter();
   const { data: session } = useSession();
   const t = lang(router.locale);
+  const [loading, setLoading] = React.useState(false);
 
   const editor = useEditor({
     extensions: [StarterKit],
@@ -32,6 +34,7 @@ const PostAdd = () => {
   });
 
   const blogAdd = (e) => {
+    setLoading(true);
     e.preventDefault();
     const title = e.target.title.value;
     const description = e.target.description.value;
@@ -58,6 +61,7 @@ const PostAdd = () => {
         autoClose: 1500,
         theme: "colored",
       });
+      setLoading(false);
       return;
     }
 
@@ -83,6 +87,7 @@ const PostAdd = () => {
       data,
     })
       .then((res) => {
+        setLoading(false);
         Swal.fire({
           icon: "success",
           title: "Başarılı",
@@ -94,6 +99,7 @@ const PostAdd = () => {
         });
       })
       .catch((err) => {
+        setLoading(false);
         Swal.fire({
           icon: "error",
           title: "Oops...",
@@ -104,181 +110,185 @@ const PostAdd = () => {
   };
 
   return (
-    <Layout>
-      <div className="bg-zinc-800 shadow-md shadow-zinc-900/20 px-2 py-8 border-t-2 border-custom_pink">
-        <h1 className=" px-2 text-3xl font-bold text-white">İçerik Ekle</h1>
-        <p className=" px-2 text-base font-normal mt-2 text-white">
-          Bu sayfa kırılımlar ve uyumsuzluklar için içerik ekleme sayfasıdır.
-        </p>
-        <p className="px-2 text-base font-normal mt-2 text-white bg-yellow-600 inline-block rounded-sm">
-          Bilgi için sarı renkli bilgi ikonuna tıklayınız.
-        </p>
+    <>
+      <Layout>
+        <div className="bg-zinc-800 shadow-md shadow-zinc-900/20 px-2 py-8 border-t-2 border-custom_pink">
+          <h1 className=" px-2 text-3xl font-bold text-white">İçerik Ekle</h1>
+          <p className=" px-2 text-base font-normal mt-2 text-white">
+            Bu sayfa kırılımlar ve uyumsuzluklar için içerik ekleme sayfasıdır.
+          </p>
+          <p className="px-2 text-base font-normal mt-2 text-white bg-yellow-600 inline-block rounded-sm">
+            Bilgi için sarı renkli bilgi ikonuna tıklayınız.
+          </p>
 
-        <form
-          className="contentArea px-2"
-          encType="multipart/form-data"
-          onSubmit={(e) => {
-            blogAdd(e);
-          }}
-        >
-          <div className="flex flex-col w-full md:w-1/2 mt-6">
-            <div className="flex flex-col">
-              <label className="text-white font-semibold">Başlık</label>
-              <input
-                type="text"
-                name="title"
-                id="title"
-                maxLength={60}
-                placeholder="İçeriğin başlığını giriniz... (Max: 60 karakter) "
-                className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
-              />
-            </div>
+          <form
+            className="contentArea px-2"
+            encType="multipart/form-data"
+            onSubmit={(e) => {
+              blogAdd(e);
+            }}
+          >
+            <div className="flex flex-col w-full md:w-1/2 mt-6">
+              <div className="flex flex-col">
+                <label className="text-white font-semibold">Başlık</label>
+                <input
+                  type="text"
+                  name="title"
+                  id="title"
+                  maxLength={60}
+                  placeholder="İçeriğin başlığını giriniz... (Max: 60 karakter) "
+                  className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
+                />
+              </div>
 
-            <div className="flex flex-col">
-              <label className="text-white font-semibold">Kısa Metin</label>
-              <input
-                type="text"
-                name="description"
-                id="description"
-                maxLength={160}
-                placeholder="İçerik için kısa metin giriniz... (Max: 160 karakter) "
-                className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
-              />
-            </div>
+              <div className="flex flex-col">
+                <label className="text-white font-semibold">Kısa Metin</label>
+                <input
+                  type="text"
+                  name="description"
+                  id="description"
+                  maxLength={160}
+                  placeholder="İçerik için kısa metin giriniz... (Max: 160 karakter) "
+                  className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
+                />
+              </div>
 
-            <div className="flex flex-col">
-              <label className="text-white font-semibold flex gap-2">
-                <span>Kısa Url</span>
-                <Tooltip
-                  content={
+              <div className="flex flex-col">
+                <label className="text-white font-semibold flex gap-2">
+                  <span>Kısa Url</span>
+                  <Tooltip
+                    content={
+                      <div>
+                        <p className="text-white font-semibold">
+                          Örnek: blog-adi-1 (Büyük harf ve boşluk kullanmayınız.
+                          Boşluk yerine "-" kullanınız.)
+                        </p>
+                      </div>
+                    }
+                  >
                     <div>
-                      <p className="text-white font-semibold">
-                        Örnek: blog-adi-1 (Büyük harf ve boşluk kullanmayınız.
-                        Boşluk yerine "-" kullanınız.)
-                      </p>
+                      <RiInformationFill
+                        className={"text-yellow-500"}
+                        fontSize={18}
+                      />
                     </div>
-                  }
+                  </Tooltip>
+                </label>
+                <input
+                  type="text"
+                  name="slug"
+                  id="slug"
+                  placeholder="İçerik için kısa url giriniz... Ör: blog-adi-1"
+                  className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
+                />
+              </div>
+
+              <div className="flex flex-col">
+                <label className="text-white font-semibold">Kategori</label>
+                <select
+                  name="category"
+                  id="category"
+                  className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
                 >
-                  <div>
-                    <RiInformationFill
-                      className={"text-yellow-500"}
-                      fontSize={18}
-                    />
-                  </div>
-                </Tooltip>
-              </label>
-              <input
-                type="text"
-                name="slug"
-                id="slug"
-                placeholder="İçerik için kısa url giriniz... Ör: blog-adi-1"
-                className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
-              />
-            </div>
-
-            <div className="flex flex-col">
-              <label className="text-white font-semibold">Kategori</label>
-              <select
-                name="category"
-                id="category"
-                className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
-              >
-                <option selected={true} disabled>
-                  İçerik kategorisini seçiniz...
-                </option>
-                {categoriesList.map((item) => (
-                  <option key={item.value} value={item.value}>
-                    {item.label}
+                  <option selected={true} disabled>
+                    İçerik kategorisini seçiniz...
                   </option>
-                ))}
-              </select>
-            </div>
+                  {categoriesList.map((item) => (
+                    <option key={item.value} value={item.value}>
+                      {item.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
 
-            <div className="flex flex-col">
-              <label className="text-white font-semibold">Alt Kategori</label>
-              <select
-                name="subCategory"
-                id="subCategory"
-                className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
+              <div className="flex flex-col">
+                <label className="text-white font-semibold">Alt Kategori</label>
+                <select
+                  name="subCategory"
+                  id="subCategory"
+                  className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
+                >
+                  <option selected={true} disabled>
+                    İçerik kategorisini seçiniz...
+                  </option>
+                  <option value="short-term">Short Term (Kısa Vadeli)</option>
+                  <option value="long-term">Long Term (Uzun Vadeli)</option>
+                  <option value="support-resistance">
+                    Support - Resistance (Destek - Direnç)
+                  </option>
+                  <option value="major-factors">
+                    Major Factors (Ana Faktörler)
+                  </option>
+                </select>
+              </div>
+
+              <div className="flex flex-col">
+                <label className="text-white font-semibold">Küçük Resmi</label>
+                <input
+                  type="file"
+                  name="image"
+                  id="image"
+                  className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
+                />
+              </div>
+
+              <div className="flex flex-col">
+                <label className="text-white font-semibold">İçerik Metni</label>
+                <EditorContent editor={editor} />
+              </div>
+
+              <div className="flex flex-col">
+                <label className="text-white font-semibold flex gap-2 items-center">
+                  <span>İframe Text</span>
+                  <Tooltip content={<IframeContent />}>
+                    <div>
+                      <RiInformationFill
+                        className={"text-yellow-500"}
+                        fontSize={18}
+                      />
+                    </div>
+                  </Tooltip>
+                </label>
+                <textarea
+                  rows={20}
+                  name={"iframeText"}
+                  className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
+                  placeholder={"İframe içeriğini buraya yapıştırınız..."}
+                ></textarea>
+              </div>
+
+              <div className="flex flex-col">
+                <label className="text-white font-semibold">Durum</label>
+                <select
+                  name="status"
+                  id="status"
+                  className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
+                >
+                  <option defaultValue="" disabled>
+                    İçerik durumunu seçiniz...
+                  </option>
+                  <option value={true}>Yayınla</option>
+                  <option value={false}>Taslağa Al</option>
+                </select>
+              </div>
+            </div>
+            <div className="button mt-8 flex gap-6 items-center my-4">
+              <button
+                type="submit"
+                className="bg-custom_green border-2 hover:bg-green-600 duration-300 border-green-700 flex-shrink-0 text-green-800 font-semibold rounded-md px-4  py-3  relative z-100"
               >
-                <option selected={true} disabled>
-                  İçerik kategorisini seçiniz...
-                </option>
-                <option value="short-term">Short Term (Kısa Vadeli)</option>
-                <option value="long-term">Long Term (Uzun Vadeli)</option>
-                <option value="support-resistance">
-                  Support - Resistance (Destek - Direnç)
-                </option>
-                <option value="major-factors">
-                  Major Factors (Ana Faktörler)
-                </option>
-              </select>
+                Blog Oluştur
+              </button>
+              <Link href="/admin/blogs" className="text-red-700">
+                İptal Et
+              </Link>
             </div>
+          </form>
+        </div>
+      </Layout>
 
-            <div className="flex flex-col">
-              <label className="text-white font-semibold">Küçük Resmi</label>
-              <input
-                type="file"
-                name="image"
-                id="image"
-                className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
-              />
-            </div>
-
-            <div className="flex flex-col">
-              <label className="text-white font-semibold">İçerik Metni</label>
-              <EditorContent editor={editor} />
-            </div>
-
-            <div className="flex flex-col">
-              <label className="text-white font-semibold flex gap-2 items-center">
-                <span>İframe Text</span>
-                <Tooltip content={<IframeContent />}>
-                  <div>
-                    <RiInformationFill
-                      className={"text-yellow-500"}
-                      fontSize={18}
-                    />
-                  </div>
-                </Tooltip>
-              </label>
-              <textarea
-                rows={20}
-                name={"iframeText"}
-                className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
-                placeholder={"İframe içeriğini buraya yapıştırınız..."}
-              ></textarea>
-            </div>
-
-            <div className="flex flex-col">
-              <label className="text-white font-semibold">Durum</label>
-              <select
-                name="status"
-                id="status"
-                className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
-              >
-                <option defaultValue="" disabled>
-                  İçerik durumunu seçiniz...
-                </option>
-                <option value={true}>Yayınla</option>
-                <option value={false}>Taslağa Al</option>
-              </select>
-            </div>
-          </div>
-          <div className="button mt-8 flex gap-6 items-center my-4">
-            <button
-              type="submit"
-              className="bg-custom_green border-2 hover:bg-green-600 duration-300 border-green-700 flex-shrink-0 text-green-800 font-semibold rounded-md px-4  py-3  relative z-100"
-            >
-              Blog Oluştur
-            </button>
-            <Link href="/admin/blogs" className="text-red-700">
-              İptal Et
-            </Link>
-          </div>
-        </form>
-      </div>
-    </Layout>
+      {loading && <Loading />}
+    </>
   );
 };
 

@@ -12,6 +12,7 @@ import {
 import { useRouter } from "next/router";
 import {
   RiArrowLeftSLine,
+  RiBarChartBoxLine,
   RiFilter2Fill,
   RiGraduationCapLine,
   RiLineChartLine,
@@ -33,20 +34,6 @@ const Header = () => {
     >
       <div className=" bg-zinc-900/80 border-2 border-zinc-950/50 h-full rounded-md shadow-lg shadow-zinc-950/20  flex justify-between items-center px-4 py-3 z-20 relative ">
         <div className="left flex items-center flex-shrink-0">
-          <div className={"w-full  flex"}>
-            {!pathname.includes("/analysis") && (
-              <Button
-                size="md"
-                color="default"
-                className="rounded mr-4 "
-                variant="ghost"
-                isIconOnly={true}
-                onClick={() => push("/analysis")}
-              >
-                <RiArrowLeftSLine fontSize={20} className={"text-zinc-500"} />
-              </Button>
-            )}
-          </div>
           <div className={"flex "}>
             <div className={"w-full "}>
               {!pathname.includes("/dashboard") && (
@@ -133,6 +120,24 @@ const Header = () => {
                   </Dropdown>
 
                   <div className="hidden lg:flex gap-4">
+                    <Button
+                      size="md"
+                      color={
+                        pathname.includes("/analysis") ? "warning" : "default"
+                      }
+                      className="rounded gap-2"
+                      variant={
+                        pathname.includes("/analysis") ? "solid" : "ghost"
+                      }
+                      onClick={() =>
+                        !pathname.includes("/analysis")
+                          ? push("/analysis")
+                          : push("/feed")
+                      }
+                    >
+                      <RiBarChartBoxLine fontSize={20} />
+                      {t.analytics.title}
+                    </Button>
                     <Button
                       size="md"
                       color={
