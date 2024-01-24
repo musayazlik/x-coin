@@ -201,7 +201,7 @@ const AnalysisPostList = () => {
                   });
                 }}
               >
-                Short Term
+                {t.shortTerm}
               </li>
 
               <li
@@ -217,7 +217,7 @@ const AnalysisPostList = () => {
                   });
                 }}
               >
-                Long Term
+                {t.longTerm}
               </li>
 
               <li
@@ -233,7 +233,7 @@ const AnalysisPostList = () => {
                   });
                 }}
               >
-                Support Resistance
+                {t.supportResistance}
               </li>
 
               <li
@@ -249,7 +249,7 @@ const AnalysisPostList = () => {
                   });
                 }}
               >
-                Major Factors
+                {t.majorFactors}
               </li>
             </ul>
 

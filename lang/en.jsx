@@ -28,6 +28,9 @@ export default {
     "Some of our popular trainings are listed below. You can visit our education page for more education.",
   free: "Free",
   alarms: "Alarms",
+  alarmsDescription:
+    "The analyzes contained herein are not investment advice. It is for educational purposes only. Make your investment decisions based on your own research. Please do not take it as advice.",
+  noAlarms: "Content not found...",
   instructor: "Instructor",
   popularEducations: "Popular Educations",
   privacy_policy: "Privacy Policy",
@@ -37,6 +40,11 @@ export default {
   goBackAnalysis: "Go Back Analysis",
   analysisPageDescription:
     "The information contained in our analyzes is not investment advice. just education It is purposeful. Make your investment decisions based on your own research. Please give. It is not investment advice.",
+
+  shortTerm: "Short Term",
+  longTerm: "Long Term",
+  supportResistance: "Support Resistance",
+  majorFactors: "Major Factors",
 
   analytics: {
     title: "Analysis",

@@ -38,7 +38,7 @@ const AnalysisMenu = () => {
 
         <SubMenuItem text={t.cryptoPage.subCoins} url={"/analysis/sub-coins"} />
         <SubMenuItem text={t.cryptoPage.onChain} url={"/analysis/on-chain"} />
-        <SubMenuItem text={t.alarms} url={"/analysis/alarms"} />
+        <SubMenuItem text={t.alarms} url={"/analysis/blockchain/alarms"} />
       </DropdownMenu>
       <DropdownMenu
         text={"Forex"}
@@ -55,7 +55,6 @@ const AnalysisMenu = () => {
           "/analysis/gold",
           "/analysis/silver",
           "/analysis/oil",
-          "/analysis/natqas",
           "/analysis/forex/alarms",
         ]}
       >
@@ -68,7 +67,6 @@ const AnalysisMenu = () => {
         <SubMenuItem text={t.forexPage.gold} url={"/analysis/gold"} />
         <SubMenuItem text={t.forexPage.silver} url={"/analysis/silver"} />
         <SubMenuItem text={t.forexPage.oil} url={"/analysis/oil"} />
-        <SubMenuItem text={"Natqas"} url={"/analysis/natqas"} />
         <SubMenuItem text={t.alarms} url={"/analysis/forex/alarms"} />
       </DropdownMenu>
       <DropdownMenu
@@ -160,7 +158,7 @@ const AnalysisMenu = () => {
           title={"Stock Market"}
           menuList={[
             "china50",
-            "hangseng50",
+            "hongkong50",
             "nse",
             "nikkei",
             "cac40",
@@ -185,8 +183,8 @@ const AnalysisMenu = () => {
               url={"/analysis/china50"}
             ></SubMenuItem>
             <SubMenuItem
-              text={"Hangseng50 (HongKong)"}
-              url={"/analysis/hangseng50"}
+              text={"Hongkong50 (HongKong)"}
+              url={"/analysis/hongkong50"}
             />
             <SubMenuItem text={"Nse (India)"} url={"/analysis/nse"} />
             <SubMenuItem text={"Nikkei (Japan)"} url={"/analysis/nikkei"} />

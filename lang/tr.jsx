@@ -28,6 +28,9 @@ export default {
     "Popüler eğitimlerimizden bazıları aşağıda yer almaktadır. Daha fazla eğitim için eğitim sayfamızı ziyaret edebilirsiniz.",
   free: "Ücretsiz",
   alarms: "Alarmlar",
+  alarmsDescription:
+    "Burada yer alan analizler yatırım tavsiyesi değildir. Sadece eğitim amaçlıdır. Yatırım kararlarınızı kendi araştırmalarınız sonucunda veriniz. Lütfen dikkate almayınız. Yatırım tavsiyesi değildir.",
+  noAlarms: "İçerik bulunamadı...",
   instructor: "Eğitmen",
   popularEducations: "Popüler Eğitimler",
   privacy_policy: "Gizlilik Politikası",
@@ -37,6 +40,11 @@ export default {
   goBackAnalysis: "Analizlere Geri Dön",
   analysisPageDescription:
     "Analizlerimizde yer alan bilgiler yatırım tavsiyesi değildir. Sadece eğitim amaçlıdır. Yatırım kararlarınızı kendi araştırmalarınız sonucunda veriniz. Lütfen dikkate almayınız. Yatırım tavsiyesi değildir.",
+
+  shortTerm: "Kısa Vadeli",
+  longTerm: "Uzun Vadeli",
+  supportResistance: "Destek Direnç",
+  majorFactors: "Ana Faktörler",
 
   analytics: {
     title: "Analiz",

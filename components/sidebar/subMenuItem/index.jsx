@@ -11,14 +11,14 @@ import S from "../style.module.css";
 
 const SubMenuItem = ({ text, url, Icon, children }) => {
   const { setIsOpenSidebar } = useAppContext();
-  const { pathname } = useRouter();
+  const { asPath } = useRouter();
   return (
     <Link href={url || "/"}>
       <li
         onClick={() => {
           setIsOpenSidebar(true);
         }}
-        className={`${pathname.includes(url) ? "!text-yellow-500" : ""} ${
+        className={`${asPath.includes(url) ? "!text-yellow-500" : ""} ${
           S.menuSubItemText
         } py-1  pr-4 `}
       >
