@@ -342,8 +342,6 @@ const QuestionAnswer = ({ questionData }) => {
 export default QuestionAnswer;
 
 export async function getServerSideProps(context) {
-  console.log(context.query.slug);
-
   const { data } = await axios({
     method: "GET",
     url: "/api/questions/questionsCrud?slug=" + context.query.slug,
