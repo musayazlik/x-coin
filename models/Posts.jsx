@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 
-
 const postSchema = mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
@@ -19,10 +18,6 @@ const postSchema = mongoose.Schema({
     default: "",
   },
   subCategory: {
-    type: String,
-    default: "",
-  },
-  slug: {
     type: String,
     default: "",
   },
@@ -58,4 +53,3 @@ const postSchema = mongoose.Schema({
 });
 
 export default mongoose.models.Post || mongoose.model("Post", postSchema);
-

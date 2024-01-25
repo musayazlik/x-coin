@@ -17,7 +17,6 @@ const updatePosts = async (req, res, fields, files) => {
   const {
     title,
     description,
-    slug,
     content,
     status,
     user,
@@ -28,7 +27,6 @@ const updatePosts = async (req, res, fields, files) => {
   let data = {
     title: title?.[0],
     description: description?.[0],
-    slug: slug?.[0].trim().toLowerCase().replace(/ /g, "-"),
     content: content?.[0],
     category: category?.[0],
     subCategory: subCategory?.[0],
@@ -38,7 +36,7 @@ const updatePosts = async (req, res, fields, files) => {
   };
 
   if (files.image || files.image !== undefined) {
-    const imageName = `${fields.slug}-${Date.now()}`;
+    const imageName = `${Date.now()}`;
     const imagePath = files.image?.[0].filepath;
     const imageUrl = await cloudinary.v2.uploader.upload(imagePath, {
       folder: "posts",
@@ -70,7 +68,7 @@ const updatePosts = async (req, res, fields, files) => {
       const {
         title,
         description,
-        slug,
+
         content,
         status,
         category,
@@ -78,18 +76,17 @@ const updatePosts = async (req, res, fields, files) => {
         user,
       } = fields;
       const data = {
-        title: title[0],
-        description: description[0],
-        slug: slug[0].trim().toLowerCase().replace(/ /g, "-"),
-        content: content[0],
-        category: category[0],
-        subCategory: subCategory[0],
-        status: status[0] === "true",
-        user: user[0],
+        title: title?.[0],
+        description: description?.[0],
+        content: content?.[0],
+        category: category?.[0],
+        subCategory: subCategory?.[0],
+        status: status?.[0] === "true",
+        user: user?.[0],
       };
 
       const postsUpdated = await Posts.findOneAndUpdate(
-        { _id: fields.id[0] },
+        { _id: fields.id?.[0] },
         { $set: data },
         { new: true }
       );
@@ -161,35 +158,35 @@ export default async function handler(req, res) {
           const {
             title,
             description,
-            slug,
             content,
             status,
             user,
-
             category,
             subCategory,
             iframeText,
           } = fields;
 
-          const imageName = `${slug[0]}-${Date.now()}`;
+          const imageName = `${Date.now()}`;
 
-          const imagePath = files.image[0].filepath;
+          const imagePath = files.image?.[0].filepath;
+          let imageUrl;
 
-          const imageUrl = await cloudinary.v2.uploader.upload(imagePath, {
-            folder: "posts",
-            public_id: imageName,
-          });
+          if (imagePath) {
+            imageUrl = await cloudinary.v2.uploader.upload(imagePath, {
+              folder: "posts",
+              public_id: imageName,
+            });
+          }
           const data = {
-            title: title[0],
-            description: description[0],
-            slug: slug[0].trim().toLowerCase().replace(/ /g, "-"),
-            content: content[0],
-            status: status[0] === "true",
-            user: user[0],
-            category: category[0],
-            subCategory: subCategory[0],
-            image: imageUrl.secure_url,
-            iframeText: iframeText[0],
+            title: title?.[0],
+            description: description?.[0],
+            content: content?.[0],
+            status: status?.[0] === "true",
+            user: user?.[0],
+            category: category?.[0],
+            subCategory: subCategory?.[0],
+            image: imageUrl?.secure_url || "",
+            iframeText: iframeText?.[0],
           };
 
           const newPosts = await Posts.create(data);

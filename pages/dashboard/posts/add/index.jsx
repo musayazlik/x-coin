@@ -36,9 +36,8 @@ const PostAdd = () => {
   const blogAdd = (e) => {
     setLoading(true);
     e.preventDefault();
-    const title = e.target.title.value;
-    const description = e.target.description.value;
-    const slug = e.target.slug.value;
+    const title = e.target.title.value || "";
+    const description = e.target.description.value || "";
     const category = e.target.category.value;
     const subCategory = e.target.subCategory.value;
     const image = e.target.image.files[0];
@@ -46,29 +45,21 @@ const PostAdd = () => {
     const status = e.target.status.value;
     const content = editor.getHTML();
 
-    if (
-      !title ||
-      !description ||
-      !slug ||
-      !image ||
-      !content ||
-      !category ||
-      !subCategory ||
-      !status
-    ) {
-      toast.error("Lütfen tüm alanları doldurunuz!", {
-        position: "top-center",
-        autoClose: 1500,
-        theme: "colored",
-      });
+    if (image.size > 10000000) {
       setLoading(false);
-      return;
+      return toast.error(
+        "Resim boyutu 10MB'dan büyük olamaz! Daha küçük boyutlu bir resim seçiniz...",
+        {
+          theme: "dark",
+          autoClose: 3000,
+        }
+      );
     }
 
     const data = {
       title,
       description,
-      slug,
+
       image,
       content,
       status: status === "true",
@@ -149,36 +140,6 @@ const PostAdd = () => {
                   id="description"
                   maxLength={160}
                   placeholder="İçerik için kısa metin giriniz... (Max: 160 karakter) "
-                  className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
-                />
-              </div>
-
-              <div className="flex flex-col">
-                <label className="text-white font-semibold flex gap-2">
-                  <span>Kısa Url</span>
-                  <Tooltip
-                    content={
-                      <div>
-                        <p className="text-white font-semibold">
-                          Örnek: blog-adi-1 (Büyük harf ve boşluk kullanmayınız.
-                          Boşluk yerine "-" kullanınız.)
-                        </p>
-                      </div>
-                    }
-                  >
-                    <div>
-                      <RiInformationFill
-                        className={"text-yellow-500"}
-                        fontSize={18}
-                      />
-                    </div>
-                  </Tooltip>
-                </label>
-                <input
-                  type="text"
-                  name="slug"
-                  id="slug"
-                  placeholder="İçerik için kısa url giriniz... Ör: blog-adi-1"
                   className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
                 />
               </div>

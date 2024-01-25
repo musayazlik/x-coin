@@ -35,7 +35,6 @@ const PostEdit = ({ resData }) => {
     e.preventDefault();
     const title = e.target.title.value;
     const description = e.target.description.value;
-    const slug = e.target.slug.value;
     const category = e.target.category.value;
     const subCategory = e.target.subCategory.value;
     const image = e.target.image.files[0];
@@ -47,7 +46,7 @@ const PostEdit = ({ resData }) => {
       id: resData._id,
       title,
       description,
-      slug,
+
       image,
       content,
       status: status === "true" ? true : false,
@@ -128,18 +127,6 @@ const PostEdit = ({ resData }) => {
                 maxLength={160}
                 defaultValue={resData.description}
                 placeholder="İçerik için kısa metin giriniz... (Max: 160 karakter) "
-                className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
-              />
-            </div>
-
-            <div className="flex flex-col">
-              <label className="text-white font-semibold">Kısa Url</label>
-              <input
-                type="text"
-                name="slug"
-                id="slug"
-                defaultValue={resData.slug}
-                placeholder="İçerik için kısa url giriniz..."
                 className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
               />
             </div>
