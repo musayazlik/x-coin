@@ -42,11 +42,21 @@ const PostEdit = ({ resData }) => {
     const status = e.target.status.value;
     const content = editor.getHTML();
 
+    if (image?.size > 10000000) {
+      setLoading(false);
+      return toast.error(
+        "Resim boyutu 10MB'dan büyük olamaz! Daha küçük boyutlu bir resim seçiniz...",
+        {
+          theme: "dark",
+          autoClose: 3000,
+        }
+      );
+    }
+
     const data = {
       id: resData._id,
       title,
       description,
-
       image,
       content,
       status: status === "true" ? true : false,

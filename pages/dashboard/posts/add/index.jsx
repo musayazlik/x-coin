@@ -45,7 +45,7 @@ const PostAdd = () => {
     const status = e.target.status.value;
     const content = editor.getHTML();
 
-    if (image.size > 10000000) {
+    if (image?.size > 10000000) {
       setLoading(false);
       return toast.error(
         "Resim boyutu 10MB'dan büyük olamaz! Daha küçük boyutlu bir resim seçiniz...",
