@@ -5,8 +5,13 @@ import axios from "axios";
 import { useSession, getSession } from "next-auth/react";
 import { toast } from "react-toastify";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { lang } from "@/lang/langT";
 
 const QuestionAnswer = () => {
+  const router = useRouter();
+  const t = lang(router.locale);
+
   const { data: session } = useSession();
 
   const [questions, setQuestions] = React.useState([]);
@@ -109,29 +114,21 @@ const QuestionAnswer = () => {
 
   return (
     <Layout>
-      <div className="max-w-xl mx-auto mb-14  mt-8 text-center relative z-0">
+      <div className="max-w-4xl mx-auto mb-14  mt-8 text-center relative z-0">
         <h1 className="text-4xl font-semibold mb-6 lg:text-5xl text-rose-600">
-          <span className="text-indigo-600">Soru</span> Cevap
+          <span className="text-indigo-600">{t?.questionAnswer}</span>
         </h1>
         <p className="text-xl text-gray-500 font-medium mb-2">
-          Burada sorularınızı sorabilir, cevaplarınızı verebilirsiniz.
+          {t?.questionAnswerDescription}
         </p>
 
         <p className=" text-gray-500 font-normal text-sm">
-          Sorularınız admin onayından sonra yayınlanacaktır. Soru sormadan önce
-          lütfen
-          <a href="http://www.google.com" className="text-indigo-600 mx-2">
-            soru sorma kuralları
-          </a>
-          nı okuyunuz.
+          {t?.warningInforQuestion}
         </p>
 
         <p className="mt-2">
           {session && session.user.role === "admin" && (
-            <span className="text-red-500">
-              *Admin olarak giriş yaptınız. Soruları onaylayabilirsiniz.
-              Onaylamak için onaylama butonuna tıklayınız.
-            </span>
+            <span className="text-red-500">{t.isAdminQuestion}</span>
           )}
         </p>
       </div>
@@ -145,9 +142,7 @@ const QuestionAnswer = () => {
                   id="question"
                   name="question"
                   rows="4"
-                  title="Lütfen bu alanı boş bırakmayın."
                   className="w-full px-0 text-sm text-zinc-900 bg-white border-0 dark:bg-zinc-800 focus:ring-0 dark:text-white dark:placeholder-zinc-400 focus-visible:ring-0 ring-0 outline-0 focus:outline-none min-h-[150px]"
-                  placeholder="Sorunuzu yazın..."
                   required
                 ></textarea>
               </div>
@@ -156,7 +151,7 @@ const QuestionAnswer = () => {
                   type="submit"
                   className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-indigo-700 rounded-lg focus:ring-4 focus:ring-indigo-200 dark:focus:ring-indigo-900 hover:bg-indigo-800"
                 >
-                  Sorunu Gönder
+                  {t.askQuestion}
                 </button>
               </div>
             </div>
@@ -204,7 +199,7 @@ const QuestionAnswer = () => {
                         className=" border-2 border-rose-600 text-md hover:bg-rose-600 hover:text-rose-50 duration-300 px-4 py-2 rounded-md font-light  mt-2"
                       >
                         <FiMessageSquare className="inline-block mr-2" />
-                        Yanıtla
+                        {t.Answer}
                       </Link>
                     </div>
                   </div>
@@ -219,7 +214,7 @@ const QuestionAnswer = () => {
                 <div className="flex flex-col justify-center items-center">
                   <FiMessageSquare className="text-rose-600 text-9xl mb-4" />
                   <p className="text-rose-600 text-2xl font-semibold">
-                    Henüz soru sorulmamış.
+                    {t.noQuestionAnswer}
                   </p>
                 </div>
               </div>

@@ -19,6 +19,8 @@ export default async function handler(req, res) {
       try {
         let questions;
 
+        console.log("req.query.slug", req.query.slug);
+
         if (req.query.slug) {
           questions = await Question.findOne({ slug: req.query.slug })
             .populate("user", "name surname image")

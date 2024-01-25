@@ -46,6 +46,18 @@ export default {
   supportResistance: "Support Resistance",
   majorFactors: "Major Factors",
 
+  questionAnswer: "Question Answer",
+  questionAnswerDescription:
+    " Here you can ask your questions. Your questions can be answered by other users. Your questions will be published after admin approval.",
+  noQuestionAnswer: "Content not found...",
+  askQuestion: "Ask Question",
+  warningInforQuestion: `Your questions will be published after admin approval. Before asking a question, please read the question rules.`,
+  questionRules: `Question Rules`,
+  isAdminQuestion:
+    "*You are logged in as admin. You can confirm the questions. Click the confirm button to confirm.",
+
+  Answer: "Answer",
+
   analytics: {
     title: "Analysis",
     bitcoin: "Bitcoin",

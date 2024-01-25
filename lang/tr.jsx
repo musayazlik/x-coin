@@ -46,6 +46,16 @@ export default {
   supportResistance: "Destek Direnç",
   majorFactors: "Ana Faktörler",
 
+  questionAnswer: "Soru Cevap",
+  questionAnswerDescription:
+    "Burada sorularınızı sorabilirsiniz. Diğer kullanıcılar tarafından sorularınıza cevap verilebilir. Sorularınız admin onayından sonra yayınlanacaktır.",
+  noQuestionAnswer: "İçerik bulunamadı...",
+  askQuestion: "Soru Sor",
+  warningInforQuestion: `Sorularınız admin onayından sonra yayınlanacaktır. Soru sormadan önce soru kurallarını okumanızı rica ederiz.`,
+  questionRules: `Soru Kuralları`,
+  isAdminQuestion: `*Admin olarak giriş yaptınız. Soruları onaylayabilirsiniz. Onaylamak için onayla butonuna tıklayınız.`,
+  Answer: "Yanıtla",
+
   analytics: {
     title: "Analiz",
     bitcoin: "Bitcoin",

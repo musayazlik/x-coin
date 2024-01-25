@@ -83,7 +83,7 @@ const BreakAndIncom = ({ data }) => {
                             href={`/alarms/${data[0].slug}`}
                             className="border-2 border-rose-600 hover:bg-rose-600 hover:text-rose-50 hover:outline-2 hover:outline-dotted hover:outline-offset-4 outline-offset-0 outline-rose-700 outline-2  px-4 py-2 rounded-lg text-rose-600 duration-300 flex items-center gap-2 hover:shadow-lg hover:shadow-rose-600/50"
                           >
-                            <span>Devamını Oku</span>
+                            <span>{t.readMore}</span>
                             <FiArrowRight className="inline-block" />
                           </Link>
                         </div>
@@ -144,7 +144,7 @@ const BreakAndIncom = ({ data }) => {
                           href={`/alarms/${item.slug}`}
                           className="border-2 border-rose-600 hover:bg-rose-600 hover:text-rose-50 hover:outline-2 hover:outline-dotted hover:outline-offset-4 outline-offset-0 outline-rose-700 outline-2  px-4 py-2 rounded-lg text-rose-600 duration-300 flex items-center gap-2 hover:shadow-lg hover:shadow-rose-600/50"
                         >
-                          <span>Devamını Oku</span>
+                          <span>{t.readMore}</span>
                           <FiArrowRight className="inline-block" />
                         </Link>
                       </div>
@@ -157,7 +157,7 @@ const BreakAndIncom = ({ data }) => {
           {data.length === 0 && (
             <div>
               <p className="text-center text-zinc-500 text-xl bg-zinc-700 py-6 font-bold rounded-md">
-                Henüz içerik yüklenmedi. Takipte kalın !
+                {t.noAlarms}
               </p>
             </div>
           )}

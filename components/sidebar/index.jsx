@@ -16,6 +16,8 @@ const Sidebar = () => {
         <SidebarLayout>
           {/* {pathname.includes("/feed") && <FeedMenu/>} */}
           {pathname.includes("/analysis") && <AnalysisMenu />}
+          {pathname.includes("/question-answer") && <AnalysisMenu />}
+
           {/* {pathname.includes("/education") && <EducationMenu/>}*/}
         </SidebarLayout>
       )}

@@ -224,7 +224,7 @@ const AnalysisMenu = () => {
         </SubDropdownMenu>
       </DropdownMenu>
       <MenuItem
-        url={"/analysis/question-answer"}
+        url={"/question-answer"}
         Icon={BsQuestionLg}
         text={t.questionAnswerPage.questionAnswer}
       />
