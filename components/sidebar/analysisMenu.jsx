@@ -24,7 +24,7 @@ const AnalysisMenu = () => {
           "/analysis/bitcoin",
           "/analysis/ethereum",
           "/analysis/crypto-indices",
-          "/analysis/sub-coins",
+          "/analysis/alt-coin",
           "/analysis/on-chain",
           "/analysis/blockchain/alarms",
         ]}
@@ -36,7 +36,7 @@ const AnalysisMenu = () => {
           url={"/analysis/crypto-indices"}
         />
 
-        <SubMenuItem text={t.cryptoPage.subCoins} url={"/analysis/sub-coins"} />
+        <SubMenuItem text={t.cryptoPage.subCoins} url={"/analysis/alt-coin"} />
         <SubMenuItem text={t.cryptoPage.onChain} url={"/analysis/on-chain"} />
         <SubMenuItem text={t.alarms} url={"/analysis/blockchain/alarms"} />
       </DropdownMenu>

@@ -2,7 +2,7 @@ const categoriesList = [
   { value: "bitcoin", label: "Bitcoin" },
   { value: "ethereum", label: "Ethereum" },
   { value: "crypto-indices", label: "Crypto Indices" },
-  { value: "sub-coins", label: "Alt Coin" },
+  { value: "alt-coin", label: "Alt Coin" },
   { value: "on-chain", label: "On Chain" },
   { value: "sp500", label: "Sp500" },
   { value: "nasdaq", label: "Nasdaq" },

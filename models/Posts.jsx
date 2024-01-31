@@ -21,19 +21,10 @@ const postSchema = mongoose.Schema({
     type: String,
     default: "",
   },
-  image: {
-    type: String,
-    default: "",
-  },
   content: {
     type: String,
     default: "",
   },
-  iframeText: {
-    type: String,
-    default: "",
-  },
-
   status: {
     type: Boolean,
     default: false,

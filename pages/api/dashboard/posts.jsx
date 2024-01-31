@@ -14,16 +14,8 @@ export const config = {
 
 // Update posts
 const updatePosts = async (req, res, fields, files) => {
-  const {
-    title,
-    description,
-    content,
-    status,
-    user,
-    category,
-    subCategory,
-    iframeText,
-  } = fields;
+  const { title, description, content, status, user, category, subCategory } =
+    fields;
   let data = {
     title: title?.[0],
     description: description?.[0],
@@ -32,73 +24,22 @@ const updatePosts = async (req, res, fields, files) => {
     subCategory: subCategory?.[0],
     status: status?.[0] === "true",
     user: user?.[0],
-    iframeText: iframeText?.[0],
   };
 
-  if (files.image || files.image !== undefined) {
-    const imageName = `${Date.now()}`;
-    const imagePath = files.image?.[0].filepath;
-    const imageUrl = await cloudinary.v2.uploader.upload(imagePath, {
-      folder: "posts",
-      public_id: imageName,
-    });
+  try {
+    const postsUpdated = await Posts.findOneAndUpdate(
+      { _id: fields.id?.[0] },
+      { $set: data },
+      { new: true }
+    );
 
-    data = {
-      ...data,
-      image: imageUrl.secure_url,
-    };
-
-    try {
-      const postsUpdated = await Posts.findOneAndUpdate(
-        { _id: fields.id[0] },
-        { $set: data },
-        { new: true }
-      );
-
-      if (!postsUpdated) {
-        sendErrorResponse(res, 404, "İçerik bulunamadı.");
-      } else {
-        sendSuccessResponse(res, postsUpdated);
-      }
-    } catch (error) {
-      sendErrorResponse(res, 400, error.message);
+    if (!postsUpdated) {
+      sendErrorResponse(res, 404, "İçerik bulunamadı.");
+    } else {
+      sendSuccessResponse(res, postsUpdated);
     }
-  } else {
-    try {
-      const {
-        title,
-        description,
-
-        content,
-        status,
-        category,
-        subCategory,
-        user,
-      } = fields;
-      const data = {
-        title: title?.[0],
-        description: description?.[0],
-        content: content?.[0],
-        category: category?.[0],
-        subCategory: subCategory?.[0],
-        status: status?.[0] === "true",
-        user: user?.[0],
-      };
-
-      const postsUpdated = await Posts.findOneAndUpdate(
-        { _id: fields.id?.[0] },
-        { $set: data },
-        { new: true }
-      );
-
-      if (!postsUpdated) {
-        sendErrorResponse(res, 404, "İçerik bulunamadı.");
-      } else {
-        sendSuccessResponse(res, postsUpdated);
-      }
-    } catch (error) {
-      sendErrorResponse(res, 400, error.message);
-    }
+  } catch (error) {
+    sendErrorResponse(res, 400, error.message);
   }
 };
 
@@ -163,20 +104,8 @@ export default async function handler(req, res) {
             user,
             category,
             subCategory,
-            iframeText,
           } = fields;
 
-          const imageName = `${Date.now()}`;
-
-          const imagePath = files.image?.[0].filepath;
-          let imageUrl;
-
-          if (imagePath) {
-            imageUrl = await cloudinary.v2.uploader.upload(imagePath, {
-              folder: "posts",
-              public_id: imageName,
-            });
-          }
           const data = {
             title: title?.[0],
             description: description?.[0],
@@ -185,8 +114,6 @@ export default async function handler(req, res) {
             user: user?.[0],
             category: category?.[0],
             subCategory: subCategory?.[0],
-            image: imageUrl?.secure_url || "",
-            iframeText: iframeText?.[0],
           };
 
           const newPosts = await Posts.create(data);

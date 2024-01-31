@@ -38,20 +38,8 @@ const PostEdit = ({ resData }) => {
     const category = e.target.category.value;
     const subCategory = e.target.subCategory.value;
     const image = e.target.image.files[0];
-    const iframeText = e.target.iframeText.value;
     const status = e.target.status.value;
     const content = editor.getHTML();
-
-    if (image?.size > 10000000) {
-      setLoading(false);
-      return toast.error(
-        "Resim boyutu 10MB'dan büyük olamaz! Daha küçük boyutlu bir resim seçiniz...",
-        {
-          theme: "dark",
-          autoClose: 3000,
-        }
-      );
-    }
 
     const data = {
       id: resData._id,
@@ -63,7 +51,6 @@ const PostEdit = ({ resData }) => {
       user: session.user.id,
       category,
       subCategory,
-      iframeText,
     };
 
     axios({
@@ -104,7 +91,7 @@ const PostEdit = ({ resData }) => {
       <div className="bg-zinc-800 shadow-md shadow-zinc-900/20 px-2 py-8 border-t-2 border-custom_pink">
         <h1 className=" px-2 text-3xl font-bold text-white">İçerik Ekle</h1>
         <p className=" px-2 text-base font-normal mt-2 text-white">
-          Bu sayfa kırılımlar ve uyumsuzluklar için içerik ekleme sayfasıdır.
+          Bu sayfa analiz düzenleme sayfasıdır.
         </p>
 
         <form
@@ -201,50 +188,8 @@ const PostEdit = ({ resData }) => {
             </div>
 
             <div className="flex flex-col">
-              <label className="text-white font-semibold">Küçük Resmi</label>
-              <Image
-                src={resData.image}
-                alt={"Post Image"}
-                width={50}
-                height={50}
-                className={
-                  "border-4" +
-                  " border-gray-600 rounded-lg object-cover min-w-[50px]" +
-                  " min-h-[50px]"
-                }
-              />
-              <input
-                type="file"
-                name="image"
-                id="image"
-                className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
-              />
-            </div>
-
-            <div className="flex flex-col">
               <label className="text-white font-semibold">İçerik Metni</label>
               <EditorContent editor={editor} />
-            </div>
-
-            <div className="flex flex-col">
-              <label className="text-white font-semibold flex gap-2 items-center">
-                <span>İframe Text</span>
-                <Tooltip content={<IframeContent />}>
-                  <div>
-                    <RiInformationFill
-                      className={"text-yellow-500/50"}
-                      fontSize={18}
-                    />
-                  </div>
-                </Tooltip>
-              </label>
-              <textarea
-                rows={20}
-                name={"iframeText"}
-                defaultValue={resData.iframeText}
-                className="border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500"
-                placeholder={"İframe içeriğini buraya yapıştırınız..."}
-              ></textarea>
             </div>
 
             <div className="flex flex-col">

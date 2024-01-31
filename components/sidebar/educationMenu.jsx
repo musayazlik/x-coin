@@ -23,7 +23,7 @@ const EducationMenu = () => {
           "/education/blockchain/bitcoin",
           "/education/blockchain/ethereum",
           "/education/blockchain/crypto-indices",
-          "/education/blockchain/sub-coins",
+          "/education/blockchain/alt-coin",
           "/education/blockchain/on-chain",
           "/analysis/blockchain/alarms",
         ]}
@@ -43,7 +43,7 @@ const EducationMenu = () => {
 
         <SubMenuItem
           text={t.cryptoPage.subCoins}
-          url={"/education/blockchain/sub-coins"}
+          url={"/education/blockchain/alt-coin"}
         />
         <SubMenuItem
           text={t.cryptoPage.onChain}

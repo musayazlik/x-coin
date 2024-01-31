@@ -1,19 +1,19 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import Layout from "../../../../layouts/dashboardLayout";
 import axios from "axios";
 import Swal from "sweetalert2";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 
-import {EditorContent, useEditor} from "@tiptap/react";
+import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import {useSession} from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import Image from "next/image";
-import {lang} from "@lang/langT";
+import { lang } from "@lang/langT";
 
-const PostEdit = ({resData}) => {
+const PostEdit = ({ resData }) => {
   const router = useRouter();
-  const {data: session} = useSession();
+  const { data: session } = useSession();
   const t = lang(router.locale);
 
   const editor = useEditor({
@@ -55,7 +55,6 @@ const PostEdit = ({resData}) => {
       status: status === "true" ? true : false,
       user: session.user.id,
       category,
-      subCategory,
     };
 
     axios({
@@ -93,8 +92,7 @@ const PostEdit = ({resData}) => {
 
   return (
     <Layout>
-      <div
-        className="bg-zinc-800 shadow-md shadow-zinc-900/20 px-2 py-8 border-t-2 border-custom_pink">
+      <div className="bg-zinc-800 shadow-md shadow-zinc-900/20 px-2 py-8 border-t-2 border-custom_pink">
         <h1 className=" px-2 text-3xl font-bold text-white">İçerik Ekle</h1>
         <p className=" px-2 text-base font-normal mt-2 text-white">
           Bu sayfa kırılımlar ve uyumsuzluklar için içerik ekleme sayfasıdır.
@@ -181,7 +179,6 @@ const PostEdit = ({resData}) => {
               />
             </div>
 
-
             <div className="flex flex-col">
               <label className="text-white font-semibold">Kategori</label>
               <select
@@ -255,7 +252,7 @@ const PostEdit = ({resData}) => {
 
             <div className="flex flex-col">
               <label className="text-white font-semibold">İçerik Metni</label>
-              <EditorContent editor={editor}/>
+              <EditorContent editor={editor} />
             </div>
 
             <div className="flex flex-col">
@@ -299,7 +296,7 @@ export default PostEdit;
 export async function getServerSideProps(context) {
   const cookie = context.req.headers.cookie;
 
-  const {data} = await axios.get(
+  const { data } = await axios.get(
     `/api/dashboard/educations?id=${context.params.id}`,
     {
       headers: {

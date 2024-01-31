@@ -13,19 +13,6 @@ const PostCard = ({ item, baseUrl }) => {
   return (
     <>
       <Card className={`py-2 relative z-0 h-full w-full `}>
-        {item?.image && (
-          <CardHeader className=" mb-2 px-4 flex-col items-start  ">
-            <div className="min-h-[400px] w-full relative box-content">
-              <Image
-                alt="Card background"
-                className="object-cover rounded-xl "
-                src={item.image}
-                fill
-                quality={50}
-              />
-            </div>
-          </CardHeader>
-        )}
         <CardBody className="overflow-visible py-2 flex flex-col justify-between">
           <div className="flex flex-col px-4">
             <small
@@ -57,14 +44,6 @@ const PostCard = ({ item, baseUrl }) => {
                   className="text-sm leading-4 text-zinc-300 mb-6"
                   dangerouslySetInnerHTML={{ __html: item.content }}
                 ></div>
-              )}
-            </div>
-
-            <div className="">
-              {item?.iframeText && (
-                <div className="text-tiny leading-4 text-zinc-300 mb-6">
-                  <TradingViewWidget data={item?.iframeText} />
-                </div>
               )}
             </div>
           </div>

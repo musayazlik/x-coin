@@ -88,10 +88,8 @@ const Posts = ({ data }) => {
                   >
                     <TableHeader className={"w-full"}>
                       <TableColumn>Id</TableColumn>
-                      <TableColumn>Image</TableColumn>
                       <TableColumn>Title</TableColumn>
                       <TableColumn>Description</TableColumn>
-
                       <TableColumn>Kategori</TableColumn>
                       <TableColumn>Alt Kategori</TableColumn>
                       <TableColumn>Status</TableColumn>
@@ -102,19 +100,6 @@ const Posts = ({ data }) => {
                         {data.map((item, index) => (
                           <TableRow key={item.id}>
                             <TableCell>{index + 1}</TableCell>
-                            <TableCell>
-                              <Image
-                                src={item.image || "/notImage.png"}
-                                alt={"Post Image"}
-                                width={50}
-                                height={50}
-                                className={
-                                  "border-4" +
-                                  " border-gray-600 rounded-lg min-w-[50px]" +
-                                  " min-h-[50px] object-cover"
-                                }
-                              />
-                            </TableCell>
                             <TableCell>{item.title || "-"}</TableCell>
                             <TableCell>
                               {item.description.length > 160
