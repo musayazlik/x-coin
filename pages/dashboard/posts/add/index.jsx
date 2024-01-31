@@ -5,16 +5,19 @@ import Swal from "sweetalert2";
 import { useRouter } from "next/router";
 
 import { EditorContent, useEditor } from "@tiptap/react";
+import Document from "@tiptap/extension-document";
+import Dropcursor from "@tiptap/extension-dropcursor";
+import Image from "@tiptap/extension-image";
+import Paragraph from "@tiptap/extension-paragraph";
+import Text from "@tiptap/extension-text";
 import StarterKit from "@tiptap/starter-kit";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { toast } from "react-toastify";
 import { lang } from "@lang/langT";
-import { Tooltip } from "@nextui-org/react";
-import { RiInformationFill } from "react-icons/ri";
-import IframeContent from "@/components/IframeContent";
+
 import categoriesList from "@/libs/catagoriesList";
 import Loading from "@/components/loading";
+import { RiImageAddFill } from "react-icons/ri";
 
 const PostAdd = () => {
   const router = useRouter();
@@ -22,13 +25,21 @@ const PostAdd = () => {
   const t = lang(router.locale);
   const [loading, setLoading] = React.useState(false);
 
+  const addImage = () => {
+    const url = window.prompt("URL");
+
+    if (url) {
+      editor.chain().focus().setImage({ src: url }).run();
+    }
+  };
+
   const editor = useEditor({
-    extensions: [StarterKit],
+    extensions: [StarterKit, Document, Paragraph, Text, Image, Dropcursor],
     placeholder: "Blog içeriğini buraya yazınız...",
     editorProps: {
       attributes: {
         class:
-          "prose prose-p:font-inter prose-p:text-16-30 prose-p:mb-6 border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500 min-h-[400px]",
+          " w-full overflow-auto prose-p:text-16-30  border-2 border-zinc-700 rounded-md px-4 mt-2 mb-5 py-3 bg-zinc-900 focus:outline-none focus:ring-1 focus:ring-yellow-600 focus:border-transparent w-full text-zinc-500 placeholder:text-zinc-500 min-h-[400px]",
       },
     },
   });
@@ -165,9 +176,18 @@ const PostAdd = () => {
                 </select>
               </div>
 
-              <div className="flex flex-col">
+              <div className="flex flex-col items-start">
                 <label className="text-white font-semibold">İçerik Metni</label>
-                <EditorContent editor={editor} />
+                <div
+                  onClick={addImage}
+                  className="bg-green-500 cursor-pointer mt-2 inline-flex border-2 hover:bg-green-600 duration-300 border-green-700 flex-shrink-0 text-green-800 font-semibold rounded-md px-4  py-3  relative z-100"
+                >
+                  <RiImageAddFill className="inline-block mr-2" fontSize={24} />
+                  Analiz Resmi Ekle
+                </div>
+                <div className="w-full">
+                  <EditorContent editor={editor} />
+                </div>
               </div>
 
               <div className="flex flex-col">

@@ -41,13 +41,13 @@ const PostCard = ({ item, baseUrl }) => {
             <div className="">
               {item?.content && (
                 <div
-                  className="text-sm leading-4 text-zinc-300 mb-6"
+                  className="text-base prose prose:w-full prose-p:w-full inline prose-p:text-base  leading-6 prose-p:mb-6 text-zinc-300 mb-6 "
                   dangerouslySetInnerHTML={{ __html: item.content }}
                 ></div>
               )}
             </div>
           </div>
-          <div className=" flex justify-between px-4 items-center">
+          <div className=" flex justify-between px-4 pt-4 items-center">
             <div className="avatar">
               <div className="rounded-full flex gap-3 items-center ">
                 <Avatar
